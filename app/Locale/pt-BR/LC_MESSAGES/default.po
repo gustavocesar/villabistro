@@ -1,0 +1,1145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Project-Id-Version: gustavocesar\n"
+"Last-Translator: Gustavo Cesar <contato@gustavocesar.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid  "Action"
+msgstr "Ação"
+
+msgid  "Actions"
+msgstr "Ações"
+
+msgid  "Status"
+msgstr "Situação"
+
+msgid  "status"
+msgstr "Situação"
+
+msgid  "Home"
+msgstr "Início"
+
+msgid  "Start Page"
+msgstr "Página Inicial"
+
+msgid  "Pages"
+msgstr "Página Inicial"
+
+msgid  "Errors"
+msgstr "Erro"
+
+msgid  "Id"
+msgstr "Código"
+
+msgid  "id"
+msgstr "Código"
+
+msgid  "Created"
+msgstr "Data de Cadastro"
+
+msgid  "created"
+msgstr "Data de Cadastro"
+
+msgid  "Modified"
+msgstr "Data de Alteração"
+
+msgid  "modified"
+msgstr "Data de Alteração"
+
+msgid  "List"
+msgstr "Listagem"
+
+msgid  "View"
+msgstr "Visualizar"
+
+msgid  "Add"
+msgstr "Incluir"
+
+msgid  "Edit"
+msgstr "Editar"
+
+msgid  "Delete"
+msgstr "Excluir"
+
+msgid  "Cancel"
+msgstr "Cancelar"
+
+msgid  "Are you sure you want to delete # %s?"
+msgstr "Confirma a exclusão do registro #%s?"
+
+msgid  "Are you sure you want to cancel the order # %s?"
+msgstr "Confirma o cancelamento do pedido #%s?"
+
+msgid  "The order could not be canceled because it's alteady paid out!"
+msgstr "O pedido não pôde ser cancelado, pois o mesmo já se encontra pago!"
+
+msgid  "The order could not be canceled because it's alteady canceled!"
+msgstr "O pedido não pôde ser cancelado, pois o mesmo já se encontra cancelado!"
+
+msgid  "Submit"
+msgstr "Gravar"
+
+msgid  "Back"
+msgstr "Voltar"
+
+msgid  "Configurations"
+msgstr "Configurações"
+
+msgid  "Sequence"
+msgstr "Sequência"
+
+msgid  "Consider As"
+msgstr "Considerar Pedidos Como"
+
+
+
+
+msgid  "Bill"
+msgstr "Conta"
+
+msgid  "bill"
+msgstr "Conta"
+
+msgid  "Bills"
+msgstr "Contas"
+
+msgid  "Pending Bills"
+msgstr "Contas em Aberto"
+
+msgid  "Closed Bills"
+msgstr "Contas Fechadas"
+
+msgid  "Invalid bill"
+msgstr "Conta não encontrada"
+
+msgid  "The bill has been saved."
+msgstr "Conta gravada com sucesso"
+
+msgid  "The bill could not be saved. Please, try again."
+msgstr "A Conta não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The bill has been deleted."
+msgstr "Conta excluída com sucesso"
+
+msgid  "The bill could not be deleted. Please, try again."
+msgstr "A Conta não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Identifier"
+msgstr "Identificação"
+
+msgid  "Related Orders"
+msgstr "Pedidos Relacionados"
+
+msgid  "User Id"
+msgstr "Usuário"
+
+msgid  "user_id"
+msgstr "Usuário"
+
+msgid  "Observation"
+msgstr "Observação"
+
+msgid  "Product Id"
+msgstr "Produto"
+
+msgid  "quantity"
+msgstr "Quantidade"
+
+msgid  "product"
+msgstr "Produto"
+
+msgid  "Quantity"
+msgstr "Quantidade"
+
+msgid  "Stockable"
+msgstr "Estocável"
+
+msgid  "Status Order Id"
+msgstr "Situação"
+
+msgid  "Add Order"
+msgstr "Novo Pedido"
+
+msgid  "List Orders"
+msgstr "Relação de Pedidos"
+
+msgid  "Pending Orders"
+msgstr "Pedidos Pendentes"
+
+msgid  "Paid Orders"
+msgstr "Pedidos Pagos"
+
+msgid  "Completed Orders"
+msgstr "Pedidos Concluídos"
+
+msgid  "attendant"
+msgstr "Atendente"
+
+msgid  "Attendant"
+msgstr "Atendente"
+
+msgid  "date/time"
+msgstr "Data/Hora"
+
+msgid  "Date/Time"
+msgstr "Data/Hora"
+
+msgid  "last updated"
+msgstr "Última Atualização"
+
+msgid  "Last Updated"
+msgstr "Última Atualização"
+
+
+
+
+msgid  "Category"
+msgstr "Categoria"
+
+msgid  "Categories"
+msgstr "Categorias"
+
+msgid  "Invalid category"
+msgstr "Categoria não encontrada"
+
+msgid  "The category has been saved."
+msgstr "Categoria gravada com sucesso"
+
+msgid  "The category could not be saved. Please, try again."
+msgstr "A Categoria não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The category has been deleted."
+msgstr "Categoria excluída com sucesso"
+
+msgid  "The category could not be deleted. Please, try again."
+msgstr "A Categoria não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Name"
+msgstr "Nome"
+
+msgid  "Category Id"
+msgstr "Categoria"
+
+msgid  "Stage Id"
+msgstr "Etapa"
+
+msgid  "Stage"
+msgstr "Etapa"
+
+msgid  "stage"
+msgstr "Etapa"
+
+msgid  "Related Subcategories"
+msgstr "Subcategorias Relacionadas"
+
+msgid  "Label Class"
+msgstr "Label Class (deixe em branco)"
+
+
+
+
+msgid  "Entry Note Item"
+msgstr "Item"
+
+msgid  "Entry Note Items"
+msgstr "Itens da Nota de Entrada"
+
+msgid  "Invalid entry note item"
+msgstr "Item não encontrado"
+
+msgid  "The entry note item has been saved."
+msgstr "Item gravado com sucesso"
+
+msgid  "The entry note item could not be saved. Please, try again."
+msgstr "O Item não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The entry note item has been deleted."
+msgstr "Item excluído com sucesso"
+
+msgid  "The entry note item could not be deleted. Please, try again."
+msgstr "O Item não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "EntryNoteItems"
+msgstr "Itens de Nota de Entrada"
+
+msgid  "Cost Price"
+msgstr "Preço de Custo"
+
+msgid  "cost_price"
+msgstr "Preço de Custo"
+
+msgid  "Fisical Location"
+msgstr "Local Físico (Destino)"
+
+
+
+
+msgid  "Entry Note"
+msgstr "Nota de Entrada"
+
+msgid  "Invalid entry note"
+msgstr "Nota de Entrada não encontrada"
+
+msgid  "The entry note has been saved."
+msgstr "Nota de Entrada gravada com sucesso"
+
+msgid  "The entry note could not be saved. Please, try again."
+msgstr "A Nota de Entrada não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The entry note has been deleted."
+msgstr "Nota de Entrada excluída com sucesso"
+
+msgid  "The entry note could not be deleted. Please, try again."
+msgstr "A Nota de Entrada não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "EntryNotes"
+msgstr "Notas de Entrada"
+
+msgid  "Entry Notes"
+msgstr "Notas de Entrada"
+
+msgid  "Status Entry Note"
+msgstr "Situação"
+
+msgid  "Fiscal Note"
+msgstr "Nota Fiscal"
+
+msgid  "Related Entry Note Items"
+msgstr "Itens Relacionados"
+
+msgid  "Entry Note Id"
+msgstr "Nota de Entrada"
+
+
+
+
+msgid  "Group"
+msgstr "Grupo"
+
+msgid  "Invalid group"
+msgstr "Grupo não encontrado"
+
+msgid  "The group has been saved."
+msgstr "Grupo gravado com sucesso"
+
+msgid  "The group could not be saved. Please, try again."
+msgstr "O Grupo não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The group has been deleted."
+msgstr "Grupo excluído com sucesso"
+
+msgid  "The group could not be deleted. Please, try again."
+msgstr "O Grupo não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Groups"
+msgstr "Grupos"
+
+msgid  "Group Id"
+msgstr "Grupo"
+
+msgid  "Password"
+msgstr "Senha"
+
+msgid  "Related Users"
+msgstr "Usuários Relacionados"
+
+
+
+msgid  "payment"
+msgstr "Pagamento"
+
+msgid  "Payment"
+msgstr "Pagamento"
+
+msgid  "Pay"
+msgstr "Pagar"
+
+msgid  "Selected Total"
+msgstr "Total Selecionado"
+
+msgid  "Payd Value"
+msgstr "Valor Pago"
+
+msgid  "payd_value"
+msgstr "Valor Pago"
+
+msgid  "Payback"
+msgstr "Troco"
+
+msgid  "payback"
+msgstr "Troco"
+
+msgid  "Receive Payment"
+msgstr "Receber Pagamento"
+
+msgid  "Invalid payment"
+msgstr "Pagamento não encontrado"
+
+msgid  "The payment has been saved."
+msgstr "Pagamento realizado com sucesso"
+
+msgid  "The payment could not be saved. Please, try again."
+msgstr "O Pagamento não pôde ser realizado. Por favor, tente novamente"
+
+msgid  "The payment has been deleted."
+msgstr "Pagamento excluído com sucesso"
+
+msgid  "The payment could not be deleted. Please, try again."
+msgstr "O Pagamento não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Payments"
+msgstr "Pagamentos"
+
+msgid  "Payment Id"
+msgstr "Pagamento"
+
+msgid  "Related Payments"
+msgstr "Pagamentos Relacionados"
+
+
+
+
+msgid  "Order"
+msgstr "Pedido"
+
+msgid  "Orders"
+msgstr "Pedidos"
+
+msgid  "Invalid order"
+msgstr "Pedido não encontrado"
+
+msgid  "The order has been saved."
+msgstr "Pedido gravado com sucesso"
+
+msgid  "The order could not be saved. Please, try again."
+msgstr "O Pedido não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The order has been canceled."
+msgstr "Pedido cancelado com sucesso"
+
+msgid  "The order could not be canceled. Please, try again."
+msgstr "O Pedido não pôde ser cancelado. Por favor, tente novamente"
+
+msgid  "Status Order"
+msgstr "Situação"
+
+msgid  "Done!"
+msgstr "Feito!"
+
+msgid  "OK! The Order has been done"
+msgstr "OK! Pedido realizado com sucesso"
+
+msgid  "Order Wizard"
+msgstr "Fazer Pedido"
+
+
+
+
+msgid  "Product"
+msgstr "Produto"
+
+msgid  "Invalid product"
+msgstr "Produto não encontrado"
+
+msgid  "The product has been saved."
+msgstr "Produto gravado com sucesso"
+
+msgid  "The product could not be saved. Please, try again."
+msgstr "O Produto não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The product has been deleted."
+msgstr "Produto excluído com sucesso"
+
+msgid  "The product could not be deleted. Please, try again."
+msgstr "O Produto não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Products"
+msgstr "Produtos"
+
+msgid  "Profit Margin"
+msgstr "Percentual de Lucro"
+
+msgid  "Sell Price"
+msgstr "Valor de Venda"
+
+msgid  "sell_price"
+msgstr "Valor de Venda"
+
+msgid  "avaliable_to_order"
+msgstr "Disponível para Pedido"
+
+msgid  "Avaliable To Order"
+msgstr "Disponível para Pedido"
+
+msgid  "Minimum Stock"
+msgstr "Estoque Mínimo"
+
+msgid  "Description"
+msgstr "Descrição"
+
+msgid  "Related Stocks"
+msgstr "Estoque Relacionado"
+
+msgid  "Related Units"
+msgstr "Unidades de Medida Relacionadas"
+
+msgid  "Initials"
+msgstr "Sigla"
+
+msgid  "Bill Id"
+msgstr "Conta"
+
+msgid  "Subcategory Id"
+msgstr "Subcategoria"
+
+msgid  "Unit Id"
+msgstr "Unidade de Medida"
+
+msgid  "Location Id"
+msgstr "Localização"
+
+msgid  "Value"
+msgstr "Valor"
+
+msgid  "Item Id"
+msgstr "Produto"
+
+msgid  "Related Product Items"
+msgstr "Produtos Relacionados"
+
+
+
+
+msgid  "Stage"
+msgstr "Etapa"
+
+msgid  "Invalid stage"
+msgstr "Etapa não encontrada"
+
+msgid  "The stage has been saved."
+msgstr "Etapa gravada com sucesso"
+
+msgid  "The stage could not be saved. Please, try again."
+msgstr "A Etapa não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The stage has been deleted."
+msgstr "Etapa excluída com sucesso"
+
+msgid  "The stage could not be deleted. Please, try again."
+msgstr "A Etapa não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Stages"
+msgstr "Etapas"
+
+msgid  "Status Bill Id"
+msgstr "Situação"
+
+
+
+
+msgid  "product item"
+msgstr "Produto"
+
+msgid  "Product Item"
+msgstr "Produto"
+
+msgid  "product_item_id"
+msgstr "Produto"
+
+msgid  "Product Item Id"
+msgstr "Produto"
+
+msgid  "Invalid product item"
+msgstr "Produto não encontrado"
+
+msgid  "The product item has been saved."
+msgstr "Produto gravado com sucesso"
+
+msgid  "The product item could not be saved. Please, try again."
+msgstr "O Produto não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The product item has been deleted."
+msgstr "Produto excluído com sucesso"
+
+msgid  "The product item could not be deleted. Please, try again."
+msgstr "O Produto não pôde ser excluído. Por favor, tente novamente"
+
+
+
+
+
+msgid  "Table Id"
+msgstr "Mesa"
+
+msgid  "table"
+msgstr "Mesa"
+
+msgid  "Show On Kitchen"
+msgstr "Exibir Na Cozinha"
+
+msgid  "Related Bills"
+msgstr "Contas Relacionadas"
+
+
+
+
+msgid  "StatusBills"
+msgstr "Situação de Conta"
+
+msgid  "Status Bill"
+msgstr "Situação"
+
+msgid  "Invalid status bill"
+msgstr "Situação não encontrada"
+
+msgid  "The status bill has been saved."
+msgstr "Situação gravada com sucesso"
+
+msgid  "The status bill could not be saved. Please, try again."
+msgstr "A Situação não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The status bill has been deleted."
+msgstr "Situação excluída com sucesso"
+
+msgid  "The status bill could not be deleted. Please, try again."
+msgstr "A Situação não pôde ser excluída. Por favor, tente novamente"
+
+
+
+
+msgid  "Invalid status entry note"
+msgstr "Situação não encontrada"
+
+msgid  "The status entry note has been saved."
+msgstr "Situação gravada com sucesso"
+
+msgid  "The status entry note could not be saved. Please, try again."
+msgstr "A Situação não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The status entry note has been deleted."
+msgstr "Situação excluída com sucesso"
+
+msgid  "The status entry note could not be deleted. Please, try again."
+msgstr "A Situação não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "StatusEntryNotes"
+msgstr "Situações das Notas de Entrada"
+
+msgid  "Related Entry Notes"
+msgstr "Notas de Entrada Relacionadas"
+
+msgid  "Status Entry Note Id"
+msgstr "Situação"
+
+msgid  "Entry Date"
+msgstr "Data da Entrada"
+
+msgid  "Entry Hour"
+msgstr "Hora da Entrada"
+
+
+
+msgid  "Invalid status order"
+msgstr "Situação não encontrada"
+
+msgid  "The status order has been saved."
+msgstr "Situação gravada com sucesso"
+
+msgid  "The status order could not be saved. Please, try again."
+msgstr "A Situação não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The status order has been deleted."
+msgstr "Situação excluída com sucesso"
+
+msgid  "The status order could not be deleted. Please, try again."
+msgstr "A Situação não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "StatusOrders"
+msgstr "Situações dos Pedidos"
+
+
+
+
+msgid  "Stock"
+msgstr "Estoque"
+
+msgid  "Stocks"
+msgstr "Estoque"
+
+msgid  "Referency"
+msgstr "Referência"
+
+msgid  "Moved Quantity"
+msgstr "Quantidade Movimentada"
+
+msgid  "Current Balance"
+msgstr "Saldo Atual"
+
+msgid  "Balance"
+msgstr "Saldo"
+
+msgid  "Stock Control"
+msgstr "Controle de Estoque"
+
+msgid  "Stock Control (Movements)"
+msgstr "Controle de Estoque (Movimentações)"
+
+msgid  "Movements"
+msgstr "Movimentações"
+
+msgid  "Stock List"
+msgstr "Posição do Estoque"
+
+msgid  "Invalid stock"
+msgstr "Registro de Estoque não encontrado"
+
+msgid  "The stock has been saved."
+msgstr "Estoque gravado com sucesso"
+
+msgid  "The stock could not be saved. Please, try again."
+msgstr "O Estoque não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The stock has been deleted."
+msgstr "Estoque excluído com sucesso"
+
+msgid  "The stock could not be deleted. Please, try again."
+msgstr "O Estoque não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "The stock registers can not be deleted manually!"
+msgstr "Os registros de Estoque não podem ser excluídos manualmente!"
+
+
+
+
+msgid  "Invalid subcategory"
+msgstr "Subcategoria não encontrada"
+
+msgid  "Subcategory"
+msgstr "Subcategoria"
+
+msgid  "The subcategory has been saved."
+msgstr "Subcategoria gravada com sucesso"
+
+msgid  "The subcategory could not be saved. Please, try again."
+msgstr "A Subcategoria não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The subcategory has been deleted."
+msgstr "Subcategoria excluída com sucesso"
+
+msgid  "The subcategory could not be deleted. Please, try again."
+msgstr "A Subcategoria não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Subcategories"
+msgstr "Subcategorias"
+
+msgid  "Related Products"
+msgstr "Produtos Relacionados"
+
+msgid  "Default Stage"
+msgstr "Etapa Padrão"
+
+
+
+
+msgid  "Supplier"
+msgstr "Fornecedor"
+
+msgid  "Invalid supplier"
+msgstr "Fornecedor não encontrado"
+
+msgid  "The supplier has been saved."
+msgstr "Fornecedor gravado com sucesso"
+
+msgid  "The supplier could not be saved. Please, try again."
+msgstr "O Fornecedor não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The supplier has been deleted."
+msgstr "Fornecedor excluído com sucesso"
+
+msgid  "The supplier could not be deleted. Please, try again."
+msgstr "O Fornecedor não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Suppliers"
+msgstr "Fornecedores"
+
+msgid  "Company Name"
+msgstr "Nome da Empresa"
+
+msgid  "Contact Name"
+msgstr "Nome para Contato"
+
+msgid  "Phone"
+msgstr "Telefone"
+
+msgid  "Supplier Id"
+msgstr "Fornecedor"
+
+
+
+
+msgid  "Invalid table"
+msgstr "Mesa não encontrada"
+
+msgid  "Table"
+msgstr "Mesa"
+
+msgid  "The table has been saved."
+msgstr "Mesa gravada com sucesso"
+
+msgid  "The table could not be saved. Please, try again."
+msgstr "A Mesa não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The table has been deleted."
+msgstr "Mesa excluída com sucesso"
+
+msgid  "The table could not be deleted. Please, try again."
+msgstr "A Mesa não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Tables"
+msgstr "Mesas"
+
+msgid  "Close Table"
+msgstr "Fechar Conta"
+
+msgid  "Close Bill"
+msgstr "Fechar Conta"
+
+msgid  "Balcony"
+msgstr "Balcão"
+
+
+
+
+msgid  "Unit"
+msgstr "Unidade de Medida"
+
+msgid  "Invalid unit"
+msgstr "Unidade de Medida não encontrada"
+
+msgid  "The unit has been saved."
+msgstr "Unidade de Medida gravada com sucesso"
+
+msgid  "The unit could not be saved. Please, try again."
+msgstr "A Unidade de Medida não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The unit has been deleted."
+msgstr "Unidade de Medida excluída com sucesso"
+
+msgid  "The unit could not be deleted. Please, try again."
+msgstr "A Unidade de Medida não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Units"
+msgstr "Unidades de Medida"
+
+
+
+
+
+msgid  "Location"
+msgstr "Localização"
+
+msgid  "Invalid location"
+msgstr "Localização não encontrada"
+
+msgid  "The location has been saved."
+msgstr "Localização gravada com sucesso"
+
+msgid  "The location could not be saved. Please, try again."
+msgstr "A Localização não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The location has been deleted."
+msgstr "Localização excluída com sucesso"
+
+msgid  "The location could not be deleted. Please, try again."
+msgstr "A Localização não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Locations"
+msgstr "Localizações"
+
+msgid  "Location Type"
+msgstr "Tipo"
+
+msgid  "LocationTypes"
+msgstr "Tipo de Localização"
+
+msgid  "Related Locations"
+msgstr "Localizações Relacionadas"
+
+
+
+
+
+msgid  "Manual Adjustment"
+msgstr "Ajuste Manual"
+
+msgid  "ManualAdjustments"
+msgstr "Ajustes Manuais"
+
+msgid  "Invalid manual adjustment"
+msgstr "Ajuste Manual não encontrado"
+
+msgid  "The manual adjustment has been saved."
+msgstr "Ajuste Manual gravado com sucesso"
+
+msgid  "The manual adjustment could not be saved. Please, try again."
+msgstr "O Ajuste Manual não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The manual adjustment has been deleted."
+msgstr "Ajuste Manual excluído com sucesso"
+
+msgid  "The manual adjustment could not be deleted. Please, try again."
+msgstr "O Ajuste Manual não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Manual Adjustments"
+msgstr "Ajustes Manuais"
+
+msgid  "Related Manual Adjustments"
+msgstr "Ajustes Manuais Relacionadas"
+
+msgid  "New Quantity"
+msgstr "Nova Quantidade"
+
+msgid  "Current Quantity"
+msgstr "Quantidade Atual"
+
+msgid  "Manual Adjustment has been done."
+msgstr "Ajuste Manual realizado com sucesso."
+
+msgid  "The Manual Adjustment could not be done. Please, try again."
+msgstr "O Ajuste Manual não pôde ser feito. Por favor, tente novamente"
+
+
+
+
+
+msgid  "InternalTransferItems"
+msgstr "Transferência Interna"
+
+msgid  "Internal Transfers"
+msgstr "Transferências Internas"
+
+msgid  "InternalTransfers"
+msgstr "Transferências Internas"
+
+msgid  "internal_transfer"
+msgstr "Transferência Interna"
+
+msgid  "The internal transfer has been saved."
+msgstr "Transferência Interna gravada com sucesso"
+
+msgid  "The internal transfer could not be saved. Please, try again."
+msgstr "A Transferência Interna não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The internal transfer has been deleted."
+msgstr "Transferência Interna excluída com sucesso"
+
+msgid  "The internal transfer could not be deleted. Please, try again."
+msgstr "A Transferência Interna não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Location Origin"
+msgstr "Origem"
+
+msgid  "Origin"
+msgstr "Origem"
+
+msgid  "Location Destiny"
+msgstr "Destino"
+
+msgid  "Destiny"
+msgstr "Destino"
+
+msgid  "Status Internal Transfers"
+msgstr "Situação"
+
+msgid  "Time"
+msgstr "Hora"
+
+
+
+
+
+msgid  "InternalTransferItems"
+msgstr "Item da Transferência"
+
+msgid  "The internal transfer item has been saved."
+msgstr "Item da Transferência gravado com sucesso"
+
+msgid  "The internal transfer item could not be saved. Please, try again."
+msgstr "O Item da Transferência não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The internal transfer item has been deleted."
+msgstr "Item da Transferência excluído com sucesso"
+
+msgid  "The internal transfer item could not be deleted. Please, try again."
+msgstr "O Item da Transferência não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "Internal Transfer Item"
+msgstr "Item da Transferência Interna"
+
+msgid  "internal_transfer_item"
+msgstr "Item da Transferência Interna"
+
+msgid  "Internal Transfer"
+msgstr "Transferência Interna"
+
+msgid  "Status Internal Transfer"
+msgstr "Situação"
+
+msgid  "Date"
+msgstr "Dia"
+
+msgid  "Related Internal Transfer Items"
+msgstr "Itens da Transferência"
+
+
+
+
+msgid  "User"
+msgstr "Usuário"
+
+msgid  "Users"
+msgstr "Usuários"
+
+msgid  "Invalid user"
+msgstr "Usuário não encontrado"
+
+msgid  "The user has been saved."
+msgstr "Usuário gravado com sucesso"
+
+msgid  "The user could not be saved. Please, try again."
+msgstr "O Usuário não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The user has been deleted."
+msgstr "Usuário excluído com sucesso"
+
+msgid  "The user could not be deleted. Please, try again."
+msgstr "O Usuário não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "This email is already been used by another user. Please, choose another one!"
+msgstr "Este email já foi cadastrado para outro usuário. Por favor, escolha outro endereço de email."
+
+msgid  "This User has been inactivated!"
+msgstr "Este usuário foi inativado!"
+
+
+
+
+
+
+msgid  "Orders Board"
+msgstr "Fila de Pedidos"
+
+msgid  "Tables Board"
+msgstr "Quadro de Mesas"
+
+msgid  "Kitchen"
+msgstr "Cozinha"
+
+msgid  "Kitchen Orders"
+msgstr "Pedidos na Cozinha"
+
+msgid  "Kitchen Order"
+msgstr "Sequencia na Cozinha"
+
+msgid  "My Profile"
+msgstr "Meu Perfil"
+
+msgid  "Your username or password was incorrect."
+msgstr "Email ou Senha incorretos"
+
+msgid  "Location Control"
+msgstr "Controle de Localização"
+
+msgid  "Close"
+msgstr "Fechar"
+
+msgid  "Add Item"
+msgstr "Incluir Item"
+
+msgid  "product_id"
+msgstr "Produto"
+
+msgid  "total_cost"
+msgstr "Valor Total"
+
+msgid  "Total Cost"
+msgstr "Valor Total"
+
+msgid  "unit_cost"
+msgstr "Valor Unitário"
+
+msgid  "Unit Cost"
+msgstr "Valor Unitário"
+
+msgid  "location_id"
+msgstr "Localização"
+
+msgid  "The operation could not be done because the Entry Note is Completed!"
+msgstr "A operação não pôde ser realizada pois a Nota de Entrada está Concluída!"
+
+msgid  "The operation could not be done because the Internal Transfer is Completed!"
+msgstr "A operação não pôde ser realizada pois a Transferência Interna está Concluída!"
+
+
+
+
+msgid  "Cashier"
+msgstr "Caixa"
+
+msgid  "Cashiers"
+msgstr "Controle de Caixa"
+
+msgid  "Requested Quantity"
+msgstr "Quantidade Solicitada"
+
+msgid  "Quantity (In Stock)"
+msgstr "Quantidade (Em Estoque)"
+
+msgid  "The operation could not be done because this is a fixed Location!"
+msgstr "A operação não pôde ser realizada pois esta é uma Localização fixa!"
+
+msgid  "item_id"
+msgstr "Produto"
+
+msgid  "Components"
+msgstr "Componentes"
+
+msgid  "Add Component"
+msgstr "Incluir Componente"
+
+msgid  "This component has already been added to product!"
+msgstr "Este componente já foi relacionado ao produto!"
+
+msgid  "Allowed Quantity (Origin)"
+msgstr "Qtd Disponível (Origem)"
+
+msgid  "The Internal Transfer could not to be finished because the origin location (%s) has some product(s) with insufficient quantity to transfer!"
+msgstr "A Transferência Interna não pode ser Concluída pois o local de origem (%s) possui produto(s) com quantidade insuficiente para transferir!"
+
+msgid  "The location destiny should be diferent of the location origin!"
+msgstr "O local de Destino deve ser diferente do local de Origem!"
+
+msgid  "Change Table"
+msgstr "Mudar de Mesa"
+
+msgid  "Origin Table"
+msgstr "Mesa (origem)"
+
+msgid  "Destiny Table"
+msgstr "Mesa (destino)"
+
+msgid  "The Table has been changed"
+msgstr "Mudança de mesa realizada com sucesso"
+
+msgid  "Error changing Table"
+msgstr "Erro ao mudar de mesa"

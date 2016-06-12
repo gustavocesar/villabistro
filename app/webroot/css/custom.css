@@ -1,0 +1,21 @@
+.custom-required {
+    padding: 6px !important;
+    margin-top: 4px !important;
+}
+
+.custom-label-link a {
+    color: #FFFFFF !important;
+}
+
+.logo-text-icon {
+    text-align: left !important;
+}
+
+.cursor_pointer {
+    cursor: pointer !important;
+}
+
+.border_category {
+    border-top: 5px #999 solid !important;
+    border-bottom: 2px #999 solid !important;
+}
