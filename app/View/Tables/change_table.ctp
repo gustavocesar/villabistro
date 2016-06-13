@@ -39,7 +39,7 @@
 
 </div>
 
-<input type="text" id="redirect" name="redirect" value="<?php echo $this->Html->url(['controller' => 'tables', 'action' => 'table_details'])?>" />
+<input type="hidden" id="redirect" name="redirect" value="<?php echo $this->Html->url(['controller' => 'tables', 'action' => 'table_details'])?>" />
 
 <?php echo $this->Form->end(); ?>
 
