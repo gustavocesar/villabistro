@@ -176,4 +176,6 @@
     $(document).ready(function () {
 //        $('.nav-tabs a:first').click();
     });
+
+    function showItems() {}
 </script>

@@ -39,11 +39,14 @@
 
 </div>
 
+<input type="text" id="redirect" name="redirect" value="<?php echo $this->Html->url(['controller' => 'tables', 'action' => 'table_details'])?>" />
+
 <?php echo $this->Form->end(); ?>
 
 <script type="text/javascript">
     function showItems() {
-//        alert("ae: " + $("#TableTableId").val());
-//        document.location = <?php echo $this->Html->url(['controller' => 'tables', 'action' => 'table_details', $this->request->data['Table']['table_id']])?>;
+        var urlRedirect = $("#redirect").val()+"/"+$("#TableTableId").val();
+        alert("Mudança de Mesa realizada com sucesso!");
+        document.location = urlRedirect;
     }
 </script>

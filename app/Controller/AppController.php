@@ -42,7 +42,8 @@ class AppController extends Controller {
                 'add_order',
                 'order_wizard',
                 'list_orders',
-                'add'
+                'add',
+                'change_table'
             ]
         ],
     ];
