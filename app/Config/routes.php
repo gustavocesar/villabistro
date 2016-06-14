@@ -12,6 +12,7 @@ Router::connect('/cashier/*', array('controller' => 'cashiers', 'action' => 'cas
 Router::connect('/stock_control/*', array('controller' => 'stocks', 'action' => 'stock_control'));
 Router::connect('/add_order', array('controller' => 'orders', 'action' => 'add_order'));
 Router::connect('/getOrdersByStage/*', array('controller' => 'orders', 'action' => 'getOrdersByStage'));
+Router::connect('/documentation', array('controller' => 'pages', 'action' => 'documentation'));
 Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 

@@ -50,6 +50,13 @@
                             )
                             ?>
                         </li>
+                        <li>
+                            <?php
+                            echo $this->Html->link(
+                                    "<i class='fa fa-question-circle'></i>&nbsp;" . __('Documentation'), ['controller' => 'pages', 'action' => 'documentation'], ['escape' => false]
+                            )
+                            ?>
+                        </li>
                         <li class="divider"></li>
                         
                         <li>

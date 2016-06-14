@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Jun-2016 às 06:22
+-- Generation Time: 14-Jun-2016 às 04:47
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `acos` (
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=532 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=533 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 398),
+(1, NULL, NULL, NULL, 'controllers', 1, 400),
 (2, 1, NULL, NULL, 'Bills', 2, 13),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -94,152 +94,153 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (51, 50, NULL, NULL, 'index', 99, 100),
 (52, 50, NULL, NULL, 'view', 101, 102),
 (54, 50, NULL, NULL, 'edit', 103, 104),
-(56, 1, NULL, NULL, 'Pages', 120, 123),
-(58, 1, NULL, NULL, 'ProductItems', 124, 137),
-(59, 58, NULL, NULL, 'index', 125, 126),
-(60, 58, NULL, NULL, 'view', 127, 128),
-(61, 58, NULL, NULL, 'add', 129, 130),
-(62, 58, NULL, NULL, 'edit', 131, 132),
-(63, 58, NULL, NULL, 'delete', 133, 134),
-(64, 1, NULL, NULL, 'Products', 138, 151),
-(65, 64, NULL, NULL, 'index', 139, 140),
-(66, 64, NULL, NULL, 'view', 141, 142),
-(67, 64, NULL, NULL, 'add', 143, 144),
-(68, 64, NULL, NULL, 'edit', 145, 146),
-(69, 64, NULL, NULL, 'delete', 147, 148),
-(70, 1, NULL, NULL, 'Stages', 152, 163),
-(71, 70, NULL, NULL, 'index', 153, 154),
-(72, 70, NULL, NULL, 'view', 155, 156),
-(73, 70, NULL, NULL, 'add', 157, 158),
-(74, 70, NULL, NULL, 'edit', 159, 160),
-(75, 70, NULL, NULL, 'delete', 161, 162),
-(76, 1, NULL, NULL, 'StatusBills', 164, 175),
-(77, 76, NULL, NULL, 'index', 165, 166),
-(78, 76, NULL, NULL, 'view', 167, 168),
-(79, 76, NULL, NULL, 'add', 169, 170),
-(80, 76, NULL, NULL, 'edit', 171, 172),
-(81, 76, NULL, NULL, 'delete', 173, 174),
-(82, 1, NULL, NULL, 'StatusEntryNotes', 176, 187),
-(83, 82, NULL, NULL, 'index', 177, 178),
-(84, 82, NULL, NULL, 'view', 179, 180),
-(85, 82, NULL, NULL, 'add', 181, 182),
-(86, 82, NULL, NULL, 'edit', 183, 184),
-(87, 82, NULL, NULL, 'delete', 185, 186),
-(88, 1, NULL, NULL, 'StatusOrders', 188, 199),
-(89, 88, NULL, NULL, 'index', 189, 190),
-(90, 88, NULL, NULL, 'view', 191, 192),
-(91, 88, NULL, NULL, 'add', 193, 194),
-(92, 88, NULL, NULL, 'edit', 195, 196),
-(93, 88, NULL, NULL, 'delete', 197, 198),
-(94, 1, NULL, NULL, 'Stocks', 200, 229),
-(95, 94, NULL, NULL, 'index', 201, 202),
-(96, 94, NULL, NULL, 'view', 203, 204),
-(99, 94, NULL, NULL, 'delete', 205, 206),
-(100, 1, NULL, NULL, 'Subcategories', 230, 241),
-(101, 100, NULL, NULL, 'index', 231, 232),
-(102, 100, NULL, NULL, 'view', 233, 234),
-(103, 100, NULL, NULL, 'add', 235, 236),
-(104, 100, NULL, NULL, 'edit', 237, 238),
-(105, 100, NULL, NULL, 'delete', 239, 240),
-(106, 1, NULL, NULL, 'Suppliers', 242, 253),
-(107, 106, NULL, NULL, 'index', 243, 244),
-(108, 106, NULL, NULL, 'view', 245, 246),
-(109, 106, NULL, NULL, 'add', 247, 248),
-(110, 106, NULL, NULL, 'edit', 249, 250),
-(111, 106, NULL, NULL, 'delete', 251, 252),
-(112, 1, NULL, NULL, 'Tables', 254, 275),
-(113, 112, NULL, NULL, 'index', 255, 256),
-(114, 112, NULL, NULL, 'view', 257, 258),
-(115, 112, NULL, NULL, 'add', 259, 260),
-(116, 112, NULL, NULL, 'edit', 261, 262),
-(117, 112, NULL, NULL, 'delete', 263, 264),
-(118, 1, NULL, NULL, 'Units', 276, 287),
-(119, 118, NULL, NULL, 'index', 277, 278),
-(120, 118, NULL, NULL, 'view', 279, 280),
-(121, 118, NULL, NULL, 'add', 281, 282),
-(122, 118, NULL, NULL, 'edit', 283, 284),
-(123, 118, NULL, NULL, 'delete', 285, 286),
-(124, 1, NULL, NULL, 'Users', 288, 305),
-(125, 124, NULL, NULL, 'login', 289, 290),
-(126, 124, NULL, NULL, 'logout', 291, 292),
-(127, 124, NULL, NULL, 'initDB', 293, 294),
-(128, 124, NULL, NULL, 'index', 295, 296),
-(129, 124, NULL, NULL, 'view', 297, 298),
-(130, 124, NULL, NULL, 'add', 299, 300),
-(131, 124, NULL, NULL, 'edit', 301, 302),
-(132, 124, NULL, NULL, 'delete', 303, 304),
-(133, 1, NULL, NULL, 'AclExtras', 306, 307),
-(134, 1, NULL, NULL, 'DebugKit', 308, 315),
-(135, 134, NULL, NULL, 'ToolbarAccess', 309, 314),
-(136, 135, NULL, NULL, 'history_state', 310, 311),
-(137, 135, NULL, NULL, 'sql_explain', 312, 313),
-(310, 1, NULL, NULL, 'Configurations', 316, 319),
-(311, 310, NULL, NULL, 'index', 317, 318),
-(319, 1, NULL, NULL, 'InternalTransfers', 320, 331),
-(320, 319, NULL, NULL, 'index', 321, 322),
-(321, 319, NULL, NULL, 'view', 323, 324),
-(322, 319, NULL, NULL, 'add', 325, 326),
-(323, 319, NULL, NULL, 'edit', 327, 328),
-(324, 319, NULL, NULL, 'delete', 329, 330),
-(332, 1, NULL, NULL, 'StatusInternalTransfers', 332, 343),
-(333, 332, NULL, NULL, 'index', 333, 334),
-(334, 332, NULL, NULL, 'view', 335, 336),
-(335, 332, NULL, NULL, 'add', 337, 338),
-(336, 332, NULL, NULL, 'edit', 339, 340),
-(337, 332, NULL, NULL, 'delete', 341, 342),
-(345, 1, NULL, NULL, 'InternalTransferItems', 344, 355),
-(346, 345, NULL, NULL, 'index', 345, 346),
-(347, 345, NULL, NULL, 'view', 347, 348),
-(348, 345, NULL, NULL, 'add', 349, 350),
-(349, 345, NULL, NULL, 'edit', 351, 352),
-(350, 345, NULL, NULL, 'delete', 353, 354),
-(394, 1, NULL, NULL, 'Cashiers', 356, 367),
-(395, 394, NULL, NULL, 'index', 357, 358),
-(396, 394, NULL, NULL, 'view', 359, 360),
-(397, 394, NULL, NULL, 'add', 361, 362),
-(398, 394, NULL, NULL, 'edit', 363, 364),
-(399, 394, NULL, NULL, 'delete', 365, 366),
-(407, 94, NULL, NULL, 'stock_control', 207, 208),
-(408, 94, NULL, NULL, 'getListLocation', 209, 210),
-(409, 94, NULL, NULL, 'get_list_stock_by_location', 211, 212),
-(425, 64, NULL, NULL, 'getUnit', 149, 150),
-(482, 94, NULL, NULL, 'modal_edit', 213, 214),
-(483, 1, NULL, NULL, 'ManualAdjustments', 368, 379),
-(484, 483, NULL, NULL, 'index', 369, 370),
-(485, 483, NULL, NULL, 'view', 371, 372),
-(486, 483, NULL, NULL, 'add', 373, 374),
-(487, 483, NULL, NULL, 'edit', 375, 376),
-(488, 483, NULL, NULL, 'delete', 377, 378),
-(497, 94, NULL, NULL, 'stock_details', 215, 216),
-(498, 94, NULL, NULL, 'listStock', 217, 218),
-(499, 94, NULL, NULL, 'listStockSuppliers', 219, 220),
-(500, 94, NULL, NULL, 'listStockClients', 221, 222),
-(501, 94, NULL, NULL, 'listStockLosses', 223, 224),
+(56, 1, NULL, NULL, 'Pages', 120, 125),
+(58, 1, NULL, NULL, 'ProductItems', 126, 139),
+(59, 58, NULL, NULL, 'index', 127, 128),
+(60, 58, NULL, NULL, 'view', 129, 130),
+(61, 58, NULL, NULL, 'add', 131, 132),
+(62, 58, NULL, NULL, 'edit', 133, 134),
+(63, 58, NULL, NULL, 'delete', 135, 136),
+(64, 1, NULL, NULL, 'Products', 140, 153),
+(65, 64, NULL, NULL, 'index', 141, 142),
+(66, 64, NULL, NULL, 'view', 143, 144),
+(67, 64, NULL, NULL, 'add', 145, 146),
+(68, 64, NULL, NULL, 'edit', 147, 148),
+(69, 64, NULL, NULL, 'delete', 149, 150),
+(70, 1, NULL, NULL, 'Stages', 154, 165),
+(71, 70, NULL, NULL, 'index', 155, 156),
+(72, 70, NULL, NULL, 'view', 157, 158),
+(73, 70, NULL, NULL, 'add', 159, 160),
+(74, 70, NULL, NULL, 'edit', 161, 162),
+(75, 70, NULL, NULL, 'delete', 163, 164),
+(76, 1, NULL, NULL, 'StatusBills', 166, 177),
+(77, 76, NULL, NULL, 'index', 167, 168),
+(78, 76, NULL, NULL, 'view', 169, 170),
+(79, 76, NULL, NULL, 'add', 171, 172),
+(80, 76, NULL, NULL, 'edit', 173, 174),
+(81, 76, NULL, NULL, 'delete', 175, 176),
+(82, 1, NULL, NULL, 'StatusEntryNotes', 178, 189),
+(83, 82, NULL, NULL, 'index', 179, 180),
+(84, 82, NULL, NULL, 'view', 181, 182),
+(85, 82, NULL, NULL, 'add', 183, 184),
+(86, 82, NULL, NULL, 'edit', 185, 186),
+(87, 82, NULL, NULL, 'delete', 187, 188),
+(88, 1, NULL, NULL, 'StatusOrders', 190, 201),
+(89, 88, NULL, NULL, 'index', 191, 192),
+(90, 88, NULL, NULL, 'view', 193, 194),
+(91, 88, NULL, NULL, 'add', 195, 196),
+(92, 88, NULL, NULL, 'edit', 197, 198),
+(93, 88, NULL, NULL, 'delete', 199, 200),
+(94, 1, NULL, NULL, 'Stocks', 202, 231),
+(95, 94, NULL, NULL, 'index', 203, 204),
+(96, 94, NULL, NULL, 'view', 205, 206),
+(99, 94, NULL, NULL, 'delete', 207, 208),
+(100, 1, NULL, NULL, 'Subcategories', 232, 243),
+(101, 100, NULL, NULL, 'index', 233, 234),
+(102, 100, NULL, NULL, 'view', 235, 236),
+(103, 100, NULL, NULL, 'add', 237, 238),
+(104, 100, NULL, NULL, 'edit', 239, 240),
+(105, 100, NULL, NULL, 'delete', 241, 242),
+(106, 1, NULL, NULL, 'Suppliers', 244, 255),
+(107, 106, NULL, NULL, 'index', 245, 246),
+(108, 106, NULL, NULL, 'view', 247, 248),
+(109, 106, NULL, NULL, 'add', 249, 250),
+(110, 106, NULL, NULL, 'edit', 251, 252),
+(111, 106, NULL, NULL, 'delete', 253, 254),
+(112, 1, NULL, NULL, 'Tables', 256, 277),
+(113, 112, NULL, NULL, 'index', 257, 258),
+(114, 112, NULL, NULL, 'view', 259, 260),
+(115, 112, NULL, NULL, 'add', 261, 262),
+(116, 112, NULL, NULL, 'edit', 263, 264),
+(117, 112, NULL, NULL, 'delete', 265, 266),
+(118, 1, NULL, NULL, 'Units', 278, 289),
+(119, 118, NULL, NULL, 'index', 279, 280),
+(120, 118, NULL, NULL, 'view', 281, 282),
+(121, 118, NULL, NULL, 'add', 283, 284),
+(122, 118, NULL, NULL, 'edit', 285, 286),
+(123, 118, NULL, NULL, 'delete', 287, 288),
+(124, 1, NULL, NULL, 'Users', 290, 307),
+(125, 124, NULL, NULL, 'login', 291, 292),
+(126, 124, NULL, NULL, 'logout', 293, 294),
+(127, 124, NULL, NULL, 'initDB', 295, 296),
+(128, 124, NULL, NULL, 'index', 297, 298),
+(129, 124, NULL, NULL, 'view', 299, 300),
+(130, 124, NULL, NULL, 'add', 301, 302),
+(131, 124, NULL, NULL, 'edit', 303, 304),
+(132, 124, NULL, NULL, 'delete', 305, 306),
+(133, 1, NULL, NULL, 'AclExtras', 308, 309),
+(134, 1, NULL, NULL, 'DebugKit', 310, 317),
+(135, 134, NULL, NULL, 'ToolbarAccess', 311, 316),
+(136, 135, NULL, NULL, 'history_state', 312, 313),
+(137, 135, NULL, NULL, 'sql_explain', 314, 315),
+(310, 1, NULL, NULL, 'Configurations', 318, 321),
+(311, 310, NULL, NULL, 'index', 319, 320),
+(319, 1, NULL, NULL, 'InternalTransfers', 322, 333),
+(320, 319, NULL, NULL, 'index', 323, 324),
+(321, 319, NULL, NULL, 'view', 325, 326),
+(322, 319, NULL, NULL, 'add', 327, 328),
+(323, 319, NULL, NULL, 'edit', 329, 330),
+(324, 319, NULL, NULL, 'delete', 331, 332),
+(332, 1, NULL, NULL, 'StatusInternalTransfers', 334, 345),
+(333, 332, NULL, NULL, 'index', 335, 336),
+(334, 332, NULL, NULL, 'view', 337, 338),
+(335, 332, NULL, NULL, 'add', 339, 340),
+(336, 332, NULL, NULL, 'edit', 341, 342),
+(337, 332, NULL, NULL, 'delete', 343, 344),
+(345, 1, NULL, NULL, 'InternalTransferItems', 346, 357),
+(346, 345, NULL, NULL, 'index', 347, 348),
+(347, 345, NULL, NULL, 'view', 349, 350),
+(348, 345, NULL, NULL, 'add', 351, 352),
+(349, 345, NULL, NULL, 'edit', 353, 354),
+(350, 345, NULL, NULL, 'delete', 355, 356),
+(394, 1, NULL, NULL, 'Cashiers', 358, 369),
+(395, 394, NULL, NULL, 'index', 359, 360),
+(396, 394, NULL, NULL, 'view', 361, 362),
+(397, 394, NULL, NULL, 'add', 363, 364),
+(398, 394, NULL, NULL, 'edit', 365, 366),
+(399, 394, NULL, NULL, 'delete', 367, 368),
+(407, 94, NULL, NULL, 'stock_control', 209, 210),
+(408, 94, NULL, NULL, 'getListLocation', 211, 212),
+(409, 94, NULL, NULL, 'get_list_stock_by_location', 213, 214),
+(425, 64, NULL, NULL, 'getUnit', 151, 152),
+(482, 94, NULL, NULL, 'modal_edit', 215, 216),
+(483, 1, NULL, NULL, 'ManualAdjustments', 370, 381),
+(484, 483, NULL, NULL, 'index', 371, 372),
+(485, 483, NULL, NULL, 'view', 373, 374),
+(486, 483, NULL, NULL, 'add', 375, 376),
+(487, 483, NULL, NULL, 'edit', 377, 378),
+(488, 483, NULL, NULL, 'delete', 379, 380),
+(497, 94, NULL, NULL, 'stock_details', 217, 218),
+(498, 94, NULL, NULL, 'listStock', 219, 220),
+(499, 94, NULL, NULL, 'listStockSuppliers', 221, 222),
+(500, 94, NULL, NULL, 'listStockClients', 223, 224),
+(501, 94, NULL, NULL, 'listStockLosses', 225, 226),
 (502, 50, NULL, NULL, 'orders_board', 105, 106),
 (503, 50, NULL, NULL, 'add_order', 107, 108),
-(504, 112, NULL, NULL, 'tables_board', 265, 266),
+(504, 112, NULL, NULL, 'tables_board', 267, 268),
 (505, 50, NULL, NULL, 'kitchen_orders', 109, 110),
 (506, 50, NULL, NULL, 'getOrdersByStage', 111, 112),
 (507, 50, NULL, NULL, 'update_sequence', 113, 114),
 (508, 56, NULL, NULL, 'home', 121, 122),
-(509, 112, NULL, NULL, 'table_details', 267, 268),
-(510, 1, NULL, NULL, 'Charts', 380, 383),
-(511, 510, NULL, NULL, 'index', 381, 382),
-(513, 94, NULL, NULL, 'drawLineChartGlobalInventory', 225, 226),
-(514, 94, NULL, NULL, 'getStockQuantityByProduct', 227, 228),
+(509, 112, NULL, NULL, 'table_details', 269, 270),
+(510, 1, NULL, NULL, 'Charts', 382, 385),
+(511, 510, NULL, NULL, 'index', 383, 384),
+(513, 94, NULL, NULL, 'drawLineChartGlobalInventory', 227, 228),
+(514, 94, NULL, NULL, 'getStockQuantityByProduct', 229, 230),
 (515, 50, NULL, NULL, 'order_wizard', 115, 116),
-(518, 58, NULL, NULL, 'getProductItems', 135, 136),
+(518, 58, NULL, NULL, 'getProductItems', 137, 138),
 (519, 50, NULL, NULL, 'cancel', 117, 118),
-(520, 112, NULL, NULL, 'close_table', 269, 270),
-(522, 112, NULL, NULL, 'getBills', 271, 272),
-(524, 1, NULL, NULL, 'Payments', 384, 397),
-(525, 524, NULL, NULL, 'index', 385, 386),
-(526, 524, NULL, NULL, 'view', 387, 388),
-(527, 524, NULL, NULL, 'add', 389, 390),
-(528, 524, NULL, NULL, 'edit', 391, 392),
-(529, 524, NULL, NULL, 'delete', 393, 394),
-(530, 524, NULL, NULL, 'list_orders', 395, 396),
-(531, 112, NULL, NULL, 'change_table', 273, 274);
+(520, 112, NULL, NULL, 'close_table', 271, 272),
+(522, 112, NULL, NULL, 'getBills', 273, 274),
+(524, 1, NULL, NULL, 'Payments', 386, 399),
+(525, 524, NULL, NULL, 'index', 387, 388),
+(526, 524, NULL, NULL, 'view', 389, 390),
+(527, 524, NULL, NULL, 'add', 391, 392),
+(528, 524, NULL, NULL, 'edit', 393, 394),
+(529, 524, NULL, NULL, 'delete', 395, 396),
+(530, 524, NULL, NULL, 'list_orders', 397, 398),
+(531, 112, NULL, NULL, 'change_table', 275, 276),
+(532, 56, NULL, NULL, 'documentation', 123, 124);
 
 -- --------------------------------------------------------
 
@@ -305,14 +306,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `identifier` varchar(45) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `bills`
---
-
-INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`, `modified`) VALUES
-(1, 1, 2, 'I', '2016-06-12 01:15:14', '2016-06-12 01:15:14');
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -360,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `entry_notes` (
   `entry_hour` time DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -378,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
   `location_id` int(11) NOT NULL COMMENT 'Local de destino, para onde o produto vai quando a nota for concluída',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -512,15 +506,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `kitchen_order` int(10) unsigned NOT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `table_id`, `bill_id`, `status_order_id`, `payment_id`, `observation`, `kitchen_order`, `created`, `modified`) VALUES
-(41, 1, 1, 1.00, 2, 2, 1, 1, NULL, '', 0, '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(42, 1, 9, 1.00, 4, 2, 1, 1, NULL, '', 0, '2016-06-12 01:15:14', '2016-06-12 01:15:14');
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -537,7 +523,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -734,25 +720,7 @@ CREATE TABLE IF NOT EXISTS `stocks` (
   `finished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=460 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `stocks`
---
-
-INSERT INTO `stocks` (`id`, `location_id`, `product_id`, `quantity`, `value`, `entry_note_item_id`, `internal_transfer_item_id`, `order_id`, `manual_adjustment_id`, `finished`, `created`, `modified`) VALUES
-(448, 2, 7, 0.200, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(449, 2, 6, 1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(450, 2, 4, 1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(451, 2, 2, 0.200, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(452, 2, 8, 1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(453, 100, 7, -0.200, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(454, 100, 6, -1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(455, 100, 4, -1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(456, 100, 2, -0.200, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(457, 100, 8, -1.000, NULL, NULL, NULL, 41, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(458, 2, 9, 1.000, NULL, NULL, NULL, 42, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14'),
-(459, 100, 9, -1.000, NULL, NULL, NULL, 42, NULL, '2016-06-12 01:15:14', '2016-06-12 01:15:14', '2016-06-12 01:15:14');
+) ENGINE=InnoDB AUTO_INCREMENT=509 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1067,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `acos`
 --
 ALTER TABLE `acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=532;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=533;
 --
 -- AUTO_INCREMENT for table `aros`
 --
@@ -1114,7 +1082,7 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `cashiers`
 --
@@ -1129,12 +1097,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `entry_notes`
 --
 ALTER TABLE `entry_notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `entry_note_items`
 --
 ALTER TABLE `entry_note_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -1169,12 +1137,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `products`
 --
@@ -1214,7 +1182,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=460;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=509;
 --
 -- AUTO_INCREMENT for table `subcategories`
 --

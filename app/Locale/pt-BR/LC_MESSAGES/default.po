@@ -1143,3 +1143,6 @@ msgstr "Mudança de mesa realizada com sucesso"
 
 msgid  "Error changing Table"
 msgstr "Erro ao mudar de mesa"
+
+msgid  "Documentation"
+msgstr "Documentação"
