@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Jun-2016 às 04:47
+-- Generation Time: 14-Jun-2016 às 19:12
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `acos` (
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=533 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=534 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 400),
+(1, NULL, NULL, NULL, 'controllers', 1, 402),
 (2, 1, NULL, NULL, 'Bills', 2, 13),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -223,7 +223,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (507, 50, NULL, NULL, 'update_sequence', 113, 114),
 (508, 56, NULL, NULL, 'home', 121, 122),
 (509, 112, NULL, NULL, 'table_details', 269, 270),
-(510, 1, NULL, NULL, 'Charts', 382, 385),
+(510, 1, NULL, NULL, 'Charts', 382, 387),
 (511, 510, NULL, NULL, 'index', 383, 384),
 (513, 94, NULL, NULL, 'drawLineChartGlobalInventory', 227, 228),
 (514, 94, NULL, NULL, 'getStockQuantityByProduct', 229, 230),
@@ -232,15 +232,16 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (519, 50, NULL, NULL, 'cancel', 117, 118),
 (520, 112, NULL, NULL, 'close_table', 271, 272),
 (522, 112, NULL, NULL, 'getBills', 273, 274),
-(524, 1, NULL, NULL, 'Payments', 386, 399),
-(525, 524, NULL, NULL, 'index', 387, 388),
-(526, 524, NULL, NULL, 'view', 389, 390),
-(527, 524, NULL, NULL, 'add', 391, 392),
-(528, 524, NULL, NULL, 'edit', 393, 394),
-(529, 524, NULL, NULL, 'delete', 395, 396),
-(530, 524, NULL, NULL, 'list_orders', 397, 398),
+(524, 1, NULL, NULL, 'Payments', 388, 401),
+(525, 524, NULL, NULL, 'index', 389, 390),
+(526, 524, NULL, NULL, 'view', 391, 392),
+(527, 524, NULL, NULL, 'add', 393, 394),
+(528, 524, NULL, NULL, 'edit', 395, 396),
+(529, 524, NULL, NULL, 'delete', 397, 398),
+(530, 524, NULL, NULL, 'list_orders', 399, 400),
 (531, 112, NULL, NULL, 'change_table', 275, 276),
-(532, 56, NULL, NULL, 'documentation', 123, 124);
+(532, 56, NULL, NULL, 'documentation', 123, 124),
+(533, 510, NULL, NULL, 'weekly_stock', 385, 386);
 
 -- --------------------------------------------------------
 
@@ -306,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `identifier` varchar(45) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -484,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `manual_adjustments` (
   `location_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -506,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `kitchen_order` int(10) unsigned NOT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -523,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -720,7 +721,7 @@ CREATE TABLE IF NOT EXISTS `stocks` (
   `finished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=509 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=510 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1067,7 +1068,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `acos`
 --
 ALTER TABLE `acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=533;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=534;
 --
 -- AUTO_INCREMENT for table `aros`
 --
@@ -1082,7 +1083,7 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `cashiers`
 --
@@ -1132,17 +1133,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `manual_adjustments`
 --
 ALTER TABLE `manual_adjustments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `products`
 --
@@ -1182,7 +1183,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=509;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=510;
 --
 -- AUTO_INCREMENT for table `subcategories`
 --

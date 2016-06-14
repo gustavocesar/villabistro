@@ -1146,3 +1146,9 @@ msgstr "Erro ao mudar de mesa"
 
 msgid  "Documentation"
 msgstr "Documentação"
+
+msgid  "Charts"
+msgstr "Gráficos"
+
+msgid  "Weekly stock"
+msgstr "Estoque Semanal"

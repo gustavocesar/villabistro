@@ -103,7 +103,12 @@
                                 $statusLabel = "";
                                 $statusText = "";
                                 $classTr = "";
-                                if (isset($order['status_order_id']) && $order['status_order_id'] == 1) {
+                                
+                                if ($stage['name'] == 'Cancelado') {
+                                    $statusLabel = "label-warning";
+                                    $statusText = '<i class="fa fa-minus" aria-hidden="true"></i>';
+                                    $classTr = "danger";
+                                } elseif (isset($order['status_order_id']) && $order['status_order_id'] == 1) {
                                     $statusLabel = "label-warning";
                                     $statusText = '<i class="fa fa-minus" aria-hidden="true"></i>';
                                     $classTr = "";

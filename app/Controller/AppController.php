@@ -77,6 +77,7 @@ class AppController extends Controller {
         $this->set('activeTables', '');
         $this->set('activeKitchen', '');
         $this->set('activeConfigurations', '');
+        $this->set('activeCharts', '');
 
         //Configure AuthComponent
         $this->Auth->loginAction = [
@@ -98,18 +99,6 @@ class AppController extends Controller {
 
 //        $this->Security->unlockedActions = ['index'];
 //        $this->Auth->allow();
-        
-        /**
-         * TESTE
-         */
-        $this->loadModel('Bill');
-        $bill = $this->Bill->find('first');
-
-        if ($bill) {
-            $this->Bill->id = $bill['Bill']['id'];
-//            $this->Bill->close();
-        }
-
     }
 
     public function beforeRender() {

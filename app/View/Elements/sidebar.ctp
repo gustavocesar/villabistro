@@ -79,24 +79,6 @@
                 );
                 ?>
             </li>
-            
-            <li class="<?=$activeStockControl?>">
-                <?php
-                echo $this->Html->link('
-                    <i class="fa fa-archive">
-                        <div class="icon-bg bg-primary"></div>
-                    </i>
-                    <span class="menu-title">' . __('Stock Control') . '</span>
-                ', [
-                    'controller' => 'stocks',
-                    'action' => 'stock_control'
-                        ], [
-                    'escape' => false,
-                    'title' => __('Stock Control')
-                        ]
-                );
-                ?>
-            </li>
 
             <li class="<?=$activeEntryNotes?>">
                 <?php
@@ -129,6 +111,42 @@
                         ], [
                     'escape' => false,
                     'title' => __('Internal Transfer')
+                        ]
+                );
+                ?>
+            </li>
+
+            <li class="<?=$activeStockControl?>">
+                <?php
+                echo $this->Html->link('
+                    <i class="fa fa-archive">
+                        <div class="icon-bg bg-primary"></div>
+                    </i>
+                    <span class="menu-title">' . __('Stock Control') . '</span>
+                ', [
+                    'controller' => 'stocks',
+                    'action' => 'stock_control'
+                        ], [
+                    'escape' => false,
+                    'title' => __('Stock Control')
+                        ]
+                );
+                ?>
+            </li>
+
+            <li class="<?=$activeCharts?>">
+                <?php
+                echo $this->Html->link('
+                    <i class="fa fa-pie-chart">
+                        <div class="icon-bg bg-primary"></div>
+                    </i>
+                    <span class="menu-title">' . __('Charts') . '</span>
+                ', [
+                    'controller' => 'charts',
+                    'action' => 'index'
+                        ], [
+                    'escape' => false,
+                    'title' => __('Charts')
                         ]
                 );
                 ?>

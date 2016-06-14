@@ -11,7 +11,6 @@ class PagesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->layout = 'admin';
-        $this->set('title', __('Start Page'));
     }
 
     public function beforeRender() {

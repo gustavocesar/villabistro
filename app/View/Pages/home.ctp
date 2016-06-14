@@ -1,18 +1,16 @@
-<?= $this->element('Charts/line-chart-global-inventory'); ?>
+<?php
+$usuarioLogado = AuthComponent::user();
+$arrName = explode(" ", $usuarioLogado["name"]);
 
-<!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+echo "
+<h4>Olá ".$arrName[0].". Seja bem vindo(a)!</h4>
+<h5>Seu primeiro acesso? Clique ".$this->Html->link('aqui',['controller'=>'pages', 'action'=>'documentation'])." e confira a documentação do sistema.</h5>
+<br />
+<br />
+<br />
+<br />
+";
+?>
 
-<div id="lineChartGlobalInventory"></div>
+<hr />
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.get(
-            "stocks/drawLineChartGlobalInventory",
-            null,
-            function (data) {
-                $("#lineChartGlobalInventory").html(data);
-            }
-        );
-    });
-</script>
--->

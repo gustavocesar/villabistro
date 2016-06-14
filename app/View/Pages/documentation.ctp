@@ -2,33 +2,26 @@
 
 <ul class="text-justify">
     <li>
-        <u>Inventário</u>: é a contagem física dos produtos mantidos pela empresa. Essa contagem pode ser controlada manualmente ou por um sistema de informação.
+        <u>Inventário</u>: é a contagem física dos produtos mantidos pela empresa.
     </li>
-
     <li>
         <u>Localização</u>: o controle de localização é usado para definir os locais de armazenamento dos produtos, podendo ser dividido em dois grupos: Físico e Virtual.
     </li>
-
     <li>
         <u>Estoque Físico</u>: é o estoque real mantido pelo estabelecimento (prateleiras).
     </li>
-
     <li>
         <u>Estoque Virtual</u>: é o estoque dos produtos que estão em processo de compra ou que foram vendidos. Por exemplo, quando uma nota de entrada é criada para que seja feita a reposição de um produto, a quantidade solicitada entra para o estoque virtual. E quando um produto é vendido, a quantidade vendida sai do estoque físico e passa a compor um estoque virtual.
     </li>
-
     <li>
         O Estoque Virtual normalmente é conduzido automaticamente pelo sistema. E o Estoque Físico é conduzido por uma pessoa (controlador do estoque).
     </li>
-
     <li>
         <u>Estoque Mínimo</u>: é uma quantidade morta, só sendo consumida em caso de necessidade. É a quantidade destinada a cobrir eventuais atrasos no ressuprimento, garantindo o funcionamento ininterrupto e eficiente do processo produtivo sem o risco de faltas.
     </li>
-
     <li>
-        <u>Ruptura do Estoque</u>: é caracterizada quando o estoque chega a zero e não se pode atender a uma necessidade de consumo.
+        <u>Ruptura do Estoque</u>: é caracterizada quando o estoque chega a zero e não se pode atender a uma necessidade de consumo. Quaisquer pedidos feitos nesse momento irão causar <strong>valores negativos</strong> na contabilização do inventário.
     </li>
-
     <li>
         Possíveis causas para ruptura de estoque:
         <ul>
@@ -51,8 +44,9 @@
 <h3>Recursos do Sistema</h3>
 
 <ol class="text-justify">
+
     <li>
-        Cadastros
+        <h4>Cadastros<small>&nbsp;(menu Configurações)</small></h4>
         <ul>
             <li>
                 <u>Categorias</u>:&nbsp;Classificação dos produtos numa perspectiva dos setores do estabelecimento. Ex: Restaurante, Bar, etc.
@@ -79,7 +73,99 @@
     </li>
 
     <li>
-        Notas de Entrada
+        <h4>Controle de Mesas<small>&nbsp;(menu Mesas)</small></h4>
+        <ul>
+            <li>
+                O sistema disponibiliza um <strong>Quadro de Mesas</strong> para que os atendentes possam realizar o lançamento de pedidos por mesa, além de oferecer uma interface simples para o acompanhamento dos pedidos de cada mesa.
+            </li>
+            <li>
+                Para diferenciar as mesas livres das mesas ocupadas, o sistema exibe as mesas livres na cor <strong>branca</strong> e as mesas ocupadas na cor <strong>verde</strong>.
+            </li>
+            <ul>
+                <li>
+                    Exemplo:&nbsp;
+                    <a class="btn btn-sm btn-default" href="javascript:;">
+                        <span class="fa fa-bookmark-o"></span>
+                        MESA LIVRE
+                    </a>
+                    &nbsp;
+                    |
+                    &nbsp;
+                    <a class="btn btn-sm btn-green" href="javascript:;">
+                        <span class="fa fa-bookmark"></span>
+                        MESA OCUPADA
+                    </a>
+                </li>
+            </ul>
+            <li>
+                Selecionando uma Mesa Livre, o sistema exibe uma tela com a opção de criar um Novo Pedido através do botão <a class="btn btn-sm btn-primary" href="javascript:;"><span class="fa fa-plus"></span>Novo Pedido</a>.
+            </li>
+            <li>
+                Selecionando uma Mesa Ocupada, o sistema exibe uma tela com a listagem dos pedidos realizados e a opção para criar um Novo Pedido. Além disso, o sistema oferece as seguintes ações:
+                <ul>
+                    <li>
+                        <u>Cancelar Pedido</u> (ícone <i class="fa fa-times"></i>): ao cancelar o pedido, o mesmo passa a ser considerado concluído e não aparecerá no fechamento da conta.
+                    </li>
+                    <li>
+                        <u>Fechar Conta</u> (ícone <i class="fa fa-check"></i>): redireciona para a tela de pagamento e fechamento de conta.
+                        <ul>
+                            <li>
+                                Nesta tela é possível pagar a conta <strong>parcialmente</strong> ou <strong>completa</strong>. Também permite abater um valor na conta atual.
+                            </li>
+                            <li>
+                                Para pagar a conta parcialmente, basta selecionar apenas os itens as serem pagos no momento e clicar em Pagar. (botão <a class="btn btn-sm btn-green" href="javascript:;"><span class="fa fa-usd"></span>PAGAR</a>)
+                            </li>
+                            <li>
+                                Para pagar a conta completa, selecione todos os itens e clique em Pagar.
+                            </li>
+                            <li>
+                                Para abater um valor, clique em Pagar sem selecionar nenhum item.
+                            </li>
+                            <li>
+                                A medida que são feitos pagamentos para uma mesa, o sistema verifica se ainda existem pendencias. Se ainda existirem itens a serem pagos, a mesa continua <strong>Ocupada</strong>. Se todos os itens tiverem sido quitados ou se o valor pago for maior que o valor da conta, a mesa passa a ser considerada como <strong>Liberada</strong> automaticamente.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <u>Mudar de Mesa</u> (ícone <i class="fa fa-exchange"></i>): esta ação transfere tudo que está em andamento de uma mesa para outra. Isso inclui todos os pedidos e todos os valores abatidos.
+                    </li>
+                    <li>
+                        <u>Histórico</u> (ícone <i class="fa fa-folder-open"></i>): 
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <h4>Fila de Pedidos</h4>
+        <ul>
+            <li>
+                Nesta tela é disponibilizada uma visão global de todos os pedidos do dia, separando-os por situação (pendente X concluído).
+            </li>
+            <li>
+                Aqui é possível criar um Novo Pedido, ou cancelar um pedido realizado.
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <h4>Cozinha</h4>
+        <ul>
+            <li>
+                Esta tela oferece uma visão dos pedidos numa perspectiva para os funcionários da cozinha.
+            </li>
+            <li>
+                As etapas importantes nesta visão são exibidas no formato <strong><i>Kanban</i></strong>, para que os funcionários da cozinha possam alterar os pedidos de uma etapa para outra simplesmente arrastando e ordenando os mesmos.
+            </li>
+            <li>
+                Os novos pedidos criados pelos atendentes sempre entram no final da fila, na parte inferior da listagem. Então, os funcionários da cozinha podem atender os pedidos de cima para baixo, seguindo a ordem natural das solicitações.
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <h4>Notas de Entrada</h4>
         <ul>
             <li>
                 As Notas de Entrada são os comprovantes da compra de produtos. É por elas que o sistema realiza a entrada no estoque.
@@ -99,7 +185,7 @@
     </li>
 
     <li>
-        Transferência Interna
+        <h4>Transferência Interna</h4>
         <ul>
             <li>
                 A Transferência Interna é o recurso usado para alterar o local de estoque de produtos dentro da empresa, com o objetivo de deixar o inventário correto.
@@ -114,7 +200,7 @@
     </li>
 
     <li>
-        Controle de Estoque
+        <h4>Controle de Estoque</h4>
         <ul>
             <li>
                 Nesta parte do sistema é fornecida uma visão das Localidades e seus respectivos Produtos em estoque.
@@ -150,6 +236,20 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+    </li>
+
+    <li>
+        <h4>Gráficos</h4>
+        <ul>
+            <li>
+                Para facilitar a visualização de dados e estatísticas, o sistema disponibiliza as informações em gráficos.
+            </li>
+            <ol>
+                <li>
+                    <u>Estoque Semanal</u>:&nbsp;exibe as informações do estoque da última semana. Neste gráfico é exibido somente o estoque físico, o que garante uma visão real dos produtos mantidos nas prateleiras no momento.
+                </li>
+            </ol>
         </ul>
     </li>
 </ol>

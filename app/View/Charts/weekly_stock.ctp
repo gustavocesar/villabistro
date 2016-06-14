@@ -1,0 +1,1 @@
+<?= $this->element('Charts/line-chart-global-inventory'); ?>
