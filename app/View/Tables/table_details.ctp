@@ -35,7 +35,7 @@
                 ?>
             </li>
             <!--<li class="divider"></li>-->
-            <li><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;Histórico</a></li>
+            <li id="history"><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;Histórico</a></li>
         </ul>
     </div>
 </div>
@@ -174,6 +174,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#history").click(function(){
+            alert("Em Desenvolvimento!");
+        });
 //        $('.nav-tabs a:first').click();
     });
+
+    function showItems() {}
 </script>
