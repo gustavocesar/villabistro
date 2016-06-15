@@ -288,6 +288,66 @@ class TablesController extends AppController {
         ]);
     }
 
+    public function history($id) {
+        $this->set('activeTables', 'active');
+
+        $this->Table->id = $id;
+        $table = $this->Table->find('first', [
+            'conditions' => ['id' => $id],
+        ]);
+
+        if (empty($table)) {
+            throw new NotFoundException(__('Invalid table'));
+        }
+
+        if ($table['Table']['balcony'] == 'Sim') {
+            $title = $table['Table']['name'];
+        } else {
+            $title = __('Table') . ' ' . $table['Table']['name'];
+        }
+        
+        $this->set('title', __('History')." - ".$title);
+
+        $this->set('table', $table);
+        
+        $this->Table->Bill->recursive = 1;
+        $this->set('bills', $this->Table->Bill->find("all", [
+            'conditions' => [
+                "{$this->Table->Bill->alias}.table_id" => $id
+            ],
+            'order' => [
+                "{$this->Table->Bill->alias}.id" => "desc"
+            ]
+        ]));
+
+        $this->set('arrayBreadCrumb', [
+            0 => [
+                'label' => __('Tables Board'),
+                'link' => [
+                    'controller' => $this->params['controller'],
+                    'action' => 'tables_board',
+                    'params' => []
+                ]
+            ],
+            1 => [
+                'label' => $title,
+                'link' => [
+                    'controller' => $this->params['controller'],
+                    'action' => 'table_details',
+                    'params' => [$id]
+                ]
+            ],
+            2 => [
+                'label' => __('History'),
+                'link' => [
+                    'controller' => $this->params['controller'],
+                    'action' => $this->params['action'],
+                    'params' => []
+                ]
+            ]
+        ]);
+    }
+
     public function close_table($id) {
         $this->set('activeTables', 'active');
 

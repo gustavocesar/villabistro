@@ -1152,3 +1152,6 @@ msgstr "Gráficos"
 
 msgid  "Weekly stock"
 msgstr "Estoque Semanal"
+
+msgid  "History"
+msgstr "Histórico"

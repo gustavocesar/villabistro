@@ -34,8 +34,12 @@
                 );
                 ?>
             </li>
+            <li>
+                <?php
+                echo $this->Html->link('<i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;' . __('History'), ['controller' => 'tables', 'action' => 'history', $table['Table']['id']], ['escape' => false]);
+                ?>
+            </li>
             <!--<li class="divider"></li>-->
-            <li id="history"><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;Histórico</a></li>
         </ul>
     </div>
 </div>
@@ -179,9 +183,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#history").click(function(){
-            alert("Em Desenvolvimento!");
-        });
 //        $('.nav-tabs a:first').click();
     });
 

@@ -241,7 +241,8 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (530, 524, NULL, NULL, 'list_orders', 399, 400),
 (531, 112, NULL, NULL, 'change_table', 275, 276),
 (532, 56, NULL, NULL, 'documentation', 123, 124),
-(533, 510, NULL, NULL, 'weekly_stock', 385, 386);
+(533, 510, NULL, NULL, 'weekly_stock', 385, 386),
+(534, 112, NULL, NULL, 'history', 277, 278);
 
 -- --------------------------------------------------------
 
