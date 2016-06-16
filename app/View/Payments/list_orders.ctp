@@ -10,6 +10,17 @@ echo $this->Html->script('/checked-list-group/list-group');
             <a class="btn btn-default" href="javascript:;" id="mark-all">
                 <span class="fa fa-check-square-o"></span>&nbsp;Inverter Seleção
             </a>
+
+            <div class="col-sm-2 pull-right">
+                <p>
+                    <?php
+                    echo $this->Html->link(
+                            '<span class="fa fa-arrow-left"></span>&nbsp' . __('Back'), ['controller' => 'tables', 'action' => 'table_details', $table['Table']['id']], ['class' => 'btn btn-yellow pull-right', 'escape' => false]
+                    )
+                    ?>
+                </p>
+            </div>
+
             <div class="clearfix"></div>
             <br />
             <?php
@@ -63,7 +74,6 @@ echo $this->Html->script('/checked-list-group/list-group');
                 }
 
                 $total -= $payment['Payment']['payd_value'];
-                
                 ?>
                 <div class="col-xs-12 text-right">
                     -<?php echo $this->MyFormat->format_show($payment['Payment']['payd_value'], 2); ?>
@@ -71,7 +81,7 @@ echo $this->Html->script('/checked-list-group/list-group');
                 <?php
             }
             ?>
-                
+
             <div class="col-xs-12 text-right">
                 <strong>
                     TOTAL: <?php echo $this->MyFormat->format_show($total, 2); ?>

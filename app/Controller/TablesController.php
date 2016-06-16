@@ -309,17 +309,10 @@ class TablesController extends AppController {
         $this->set('title', __('History')." - ".$title);
 
         $this->set('table', $table);
-        
-        $this->Table->Bill->recursive = 1;
-        $this->set('bills', $this->Table->Bill->find("all", [
-            'conditions' => [
-                "{$this->Table->Bill->alias}.table_id" => $id
-            ],
-            'order' => [
-                "{$this->Table->Bill->alias}.id" => "desc"
-            ]
-        ]));
 
+        $this->Table->id = $id;
+        $this->set('items', $this->Table->getHistory());
+        
         $this->set('arrayBreadCrumb', [
             0 => [
                 'label' => __('Tables Board'),
