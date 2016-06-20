@@ -28,6 +28,10 @@ class OrdersController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->Order->alias}.id desc"
+        ];
+
         $this->Order->recursive = 0;
         $this->set('orders', $this->Paginator->paginate());
 

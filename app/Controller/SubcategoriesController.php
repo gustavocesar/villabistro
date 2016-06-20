@@ -29,6 +29,10 @@ class SubcategoriesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->Subcategory->alias}.id asc"
+        ];
+
         $this->Subcategory->recursive = 0;
         $this->set('subcategories', $this->Paginator->paginate());
 

@@ -83,8 +83,13 @@ echo $this->Form->create(
 
                             <?php
                             foreach ($arrFullMenu as $categoryId => $arrCategories) {
-                                foreach ($arrCategories['Subcategories'] as $subcategoryId => $arrProducts) {
-                                    foreach ($arrProducts['products'] as $key => $product) {
+                                foreach ($arrCategories['Subcategories'] as $subcategoryId => $arrSubcategory) {
+                                    ?>
+                                    <tr class="success">
+                                        <th scope="row" colspan="4" class="text-center"><h4><?php echo $arrSubcategory['name']; ?></h4></th>
+                                    </tr>
+                                    <?php
+                                    foreach ($arrSubcategory['products'] as $key => $product) {
 
                                         $inputId = "input_" . $subcategoryId . "_" . $product['Product']['id'];
 
@@ -94,7 +99,7 @@ echo $this->Form->create(
                                         }
                                         ?>
                                         <tr>
-                                            <th scope="row"><?php echo $product['Product']['name']; ?></th>
+                                            <th scope="row"><?php echo str_pad($product['Product']['id'], 3, '0', STR_PAD_LEFT) .' - '. $product['Product']['name']; ?></th>
                                             <td class="text-right">
                                                 <?php echo $this->MyFormat->format_show($sellPrice, 2); ?>
                                                 <input type="hidden" id="hiddenSellPrice_<?= $subcategoryId . "_" . $product['Product']['id'] ?>" value="<?= $sellPrice; ?>" />

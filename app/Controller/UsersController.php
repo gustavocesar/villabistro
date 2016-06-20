@@ -78,6 +78,10 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->User->alias}.id asc"
+        ];
+
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
 

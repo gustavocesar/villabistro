@@ -28,6 +28,10 @@ class TablesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->Table->alias}.id asc"
+        ];
+
         $this->Table->recursive = 0;
         $this->set('tables', $this->Paginator->paginate());
 

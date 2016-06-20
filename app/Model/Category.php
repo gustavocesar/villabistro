@@ -80,7 +80,7 @@ class Category extends AppModel {
                     'conditions' => [
                         'Subcategory.category_id' => $category['id']
                     ],
-                    'order' => ['Subcategory.name' => 'asc']
+                    'order' => ['Subcategory.name' => 'asc', 'Category.name' => 'asc']
                 ]);
 
                 $arrProductSubcategories = [];
@@ -94,7 +94,7 @@ class Category extends AppModel {
                          WHERE Product.status <> 'Inativo'
                            AND Product.subcategory_id = {$subcategory['id']}
                            AND Product.avaliable_to_order = 'Sim'
-                      ORDER BY Product.name ASC
+                      ORDER BY Product.id ASC
                     ");
 
                     $arrProductSubcategories[$subcategory['id']] = [

@@ -29,6 +29,10 @@ class CategoriesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->Category->alias}.id asc"
+        ];
+
         $this->Category->recursive = 0;
         $this->set('categories', $this->Paginator->paginate());
 

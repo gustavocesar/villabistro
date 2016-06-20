@@ -29,6 +29,10 @@ class ProductsController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = [
+            'order' => "{$this->Product->alias}.id desc"
+        ];
+
         $this->Product->recursive = 0;
         $this->set('products', $this->Paginator->paginate());
 
