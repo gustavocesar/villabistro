@@ -34,7 +34,7 @@ class Table extends AppModel {
         if (!$result) {
             $this->recursive = -1;
             $result = $this->find('all', [
-                'order' => ['name'],
+                'order' => ['id'],
             ]);
 
             Cache::write('all_tables', $result);

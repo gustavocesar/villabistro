@@ -55,8 +55,8 @@
                         $isOrder   = $itemBill['origin'] == 'order';
                         $isPayment = $itemBill['origin'] == 'payment';
 
-                        $qtdOrders = array_sum($itemBill['qtd_orders']);
-                        $qtdPayments = array_sum($itemBill['qtd_payments']);
+                        $qtdOrders = @array_sum($itemBill['qtd_orders']);
+                        $qtdPayments = @array_sum($itemBill['qtd_payments']);
 
                         ?>
                         <tr>
