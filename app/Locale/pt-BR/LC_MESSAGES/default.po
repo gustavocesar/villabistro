@@ -1155,3 +1155,6 @@ msgstr "Estoque Semanal"
 
 msgid  "History"
 msgstr "Histórico"
+
+msgid  "Print Bill"
+msgstr "Imprimir Conta"

@@ -116,4 +116,12 @@ class BillsController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    public function print_bill($tableId = null) {
+        $this->Bill->Table->id = $tableId;
+        if (!$this->Bill->Table->exists()) {
+            throw new NotFoundException(__('Invalid table'));
+        }
+
+    }
+
 }
