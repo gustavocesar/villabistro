@@ -46,9 +46,9 @@
     <div class="col-sm-2 pull-right">
         <p>
             <?php
-//            echo $this->Html->link(
-//                    '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'orders', 'action' => 'print_bill', $table['Table']['id']], ['class' => 'btn btn-primary btn-block', 'escape' => false]
-//            )
+            echo $this->Html->link(
+                    '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'tables', 'action' => 'print_bill', $table['Table']['id']], ['class' => 'btn btn-primary btn-block', 'escape' => false]
+            )
             ?>
         </p>
     </div>

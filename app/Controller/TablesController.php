@@ -309,14 +309,14 @@ class TablesController extends AppController {
         } else {
             $title = __('Table') . ' ' . $table['Table']['name'];
         }
-        
-        $this->set('title', __('History')." - ".$title);
+
+        $this->set('title', __('History') . " - " . $title);
 
         $this->set('table', $table);
 
         $this->Table->id = $id;
         $this->set('items', $this->Table->getHistory());
-        
+
         $this->set('arrayBreadCrumb', [
             0 => [
                 'label' => __('Tables Board'),
@@ -405,20 +405,20 @@ class TablesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $this->autoRender = false;
 
-            $origin  = $this->request->data['Table']['id'];
+            $origin = $this->request->data['Table']['id'];
             $destiny = $this->request->data['Table']['table_id'];
 
             try {
                 $this->Table->id = $origin;
                 $openBills = $this->Table->getBills(Configure::read('Status.pendent'));
                 foreach ($openBills as $bill) {
-                    
+
                     //changes the table
                     $this->Table->Bill->id = $bill['Bill']['id'];
                     if ($this->Table->Bill->exists()) {
                         $this->Table->Bill->saveField('table_id', $destiny);
                     }
-                    
+
                     //changes the orders to the new table
                     $this->Table->Order->recursive = 0;
                     $orders = $this->Table->Order->find('all', [
@@ -430,7 +430,7 @@ class TablesController extends AppController {
                             $this->Table->Order->saveField('table_id', $destiny);
                         }
                     }
-                    
+
                     //changes the payments to the new table
                     $this->Table->Bill->Payment->recursive = 0;
                     $payments = $this->Table->Order->Payment->find('all', [
@@ -442,17 +442,15 @@ class TablesController extends AppController {
                             $this->Table->Order->Payment->saveField('table_id', $destiny);
                         }
                     }
-
                 }
 
                 $this->response->body(json_encode([
                     'success' => true,
                     'message' => __('The Table has been changed')
                 ]));
-                
             } catch (Exception $ex) {
                 if (!$this->Table->Bill->error) {
-                    $this->Table->Bill->error = __('Error changing Table').": " . $ex->getMessage();
+                    $this->Table->Bill->error = __('Error changing Table') . ": " . $ex->getMessage();
                 }
 
                 $this->response->body(json_encode([
@@ -460,7 +458,6 @@ class TablesController extends AppController {
                     'message' => $this->Table->Bill->error
                 ]));
             }
-
         } else {
             if ($table['Table']['balcony'] == 'Sim') {
                 $title = $table['Table']['name'];
@@ -468,7 +465,7 @@ class TablesController extends AppController {
                 $title = __('Table') . ' ' . $table['Table']['name'];
             }
             $this->set('title', $title);
-            
+
             $this->set('table', $table);
 
             $this->Table->displayField = 'name';
@@ -486,6 +483,22 @@ class TablesController extends AppController {
 
         $this->Table->id = $tableId;
         return $this->Table->getBills($statusBillId);
+    }
+
+    public function print_bill($tableId = null) {
+        if (!$this->Table->exists($tableId)) {
+            throw new NotFoundException(__('Invalid table'));
+        }
+
+        $this->layout = 'pdf';
+
+        $this->Table->id = $tableId;
+        $bill = $this->Table->getCurrentBill();
+        $this->set('currentBill', $bill);
+
+        $this->Table->Bill->Payment->Order->recursive = 0;
+        $this->set('pendingOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [1]));
+        $this->set('completedOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [2]));
     }
 
 }
