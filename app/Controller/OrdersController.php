@@ -225,7 +225,7 @@ class OrdersController extends AppController {
                     $stage = $this->Order->Product->Subcategory->Stage->findById($subcategory['Subcategory']['stage_id']);
 
                     $usuarioLogado = CakeSession::read("Auth");
-                    
+
                     $this->Order->Table->id = $table_id;
                     $bill = $this->Order->Table->getCurrentBill();
                     if (empty($bill)) {
@@ -343,7 +343,6 @@ class OrdersController extends AppController {
                         $i++;
                     }
                 }
-                
             } catch (Exception $exc) {
                 $message = $exc->getMessage();
                 $class = 'alert-danger';
@@ -380,51 +379,53 @@ class OrdersController extends AppController {
                         continue;
                     }
 
-                    $this->Order->Product->Subcategory->recursive = -1;
-                    $subcategory = $this->Order->Product->Subcategory->findById($subcategoryId);
+                    for ($i = 1; $i <= $quantity; $i++) {
 
-                    $this->Order->Product->Subcategory->Stage->recursive = -1;
-                    $stage = $this->Order->Product->Subcategory->Stage->findById($subcategory['Subcategory']['stage_id']);
+                        $this->Order->Product->Subcategory->recursive = -1;
+                        $subcategory = $this->Order->Product->Subcategory->findById($subcategoryId);
 
-                    $usuarioLogado = CakeSession::read("Auth");
-                    
-                    $this->Order->Table->id = $table_id;
-                    $bill = $this->Order->Table->getCurrentBill();
-                    if (empty($bill)) {
-                        $bill = $this->Order->Table->createBill();
-                    }
+                        $this->Order->Product->Subcategory->Stage->recursive = -1;
+                        $stage = $this->Order->Product->Subcategory->Stage->findById($subcategory['Subcategory']['stage_id']);
 
-                    $data = ['Order' => [
-                            'user_id' => $usuarioLogado['User']['id'],
-                            'product_id' => $productId,
-                            'quantity' => $quantity,
-                            'table_id' => $table_id,
-                            'bill_id' => $bill['Bill']['id'],
-                            'stage_id' => '4',
-                            'stage_id' => $stage['Stage']['id'],
-                            'status_order_id' => '1',
-                            'observation' => ''
-                    ]];
+                        $usuarioLogado = CakeSession::read("Auth");
 
-                    $this->Order->create();
-                    $newOrder = $this->Order->save($data);
-                    
-                    //different of Canceled
-                    if ($stage['Stage']['id'] != 5) {
-                        $this->Order->id = $newOrder['Order']['id'];
-                        $this->Order->finishItems();
+                        $this->Order->Table->id = $table_id;
+                        $bill = $this->Order->Table->getCurrentBill();
+                        if (empty($bill)) {
+                            $bill = $this->Order->Table->createBill();
+                        }
+
+                        $data = ['Order' => [
+                                'user_id' => $usuarioLogado['User']['id'],
+                                'product_id' => $productId,
+                                'quantity' => 1,
+                                'table_id' => $table_id,
+                                'bill_id' => $bill['Bill']['id'],
+                                'stage_id' => '4',
+                                'stage_id' => $stage['Stage']['id'],
+                                'status_order_id' => '1',
+                                'observation' => ''
+                        ]];
+
+                        $this->Order->create();
+                        $newOrder = $this->Order->save($data);
+
+                        //different of Canceled
+                        if ($stage['Stage']['id'] != 5) {
+                            $this->Order->id = $newOrder['Order']['id'];
+                            $this->Order->finishItems();
+                        }
                     }
                 }
             }
 
             $this->Flash->success(__('OK! The Order has been done'));
-            
+
             if (isset($this->request['data']['table_selected_id']) && $this->request['data']['table_selected_id'] != "") {
                 return $this->redirect(['controller' => 'tables', 'action' => 'table_details', $this->request['data']['table_selected_id']]);
             } else {
                 return $this->redirect(['controller' => 'orders', 'action' => 'orders_board']);
             }
-            
         } else {
             $arrAllTables = $this->Order->Bill->Table->getAllTables();
             $arrFullMenu = $this->Order->Product->Subcategory->Category->getMenuAvaliableToOrder();

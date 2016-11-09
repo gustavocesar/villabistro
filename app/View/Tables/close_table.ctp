@@ -22,8 +22,7 @@
         $.ajax({
             async: false,
             data: {
-                table: $("table").val(),
-                location: "Boston"
+                table: $("table").val()
             },
             dataType: "html",
             type: "POST",

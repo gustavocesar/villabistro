@@ -171,29 +171,19 @@ class PaymentsController extends AppController {
             throw new NotFoundException(__('Invalid table'));
         }
 
+        $this->Payment->Table->id = $tableId;
         $this->Payment->Table->recursive = -1;
         $table = $this->Payment->Table->findById($tableId);
+
+        $bill = $this->Payment->Table->getCurrentBill();
+        $billId = isset($bill['Bill']) ? $bill['Bill']['id'] : null;
 
         $this->set('table', $table);
 
         $this->Payment->Order->recursive = 0;
         $this->set('pendingOrders', $this->Payment->Order->getOrdersByPaymentStatus($tableId, [1]));
         $this->set('completedOrders', $this->Payment->Order->getOrdersByPaymentStatus($tableId, [2]));
-
-        $this->Payment->Table->id = $tableId;
-        $bill = $this->Payment->Table->getCurrentBill();
-
-        $payments = [];
-        if (isset($bill['Bill'])) {
-            $this->Payment->recursive = -1;
-            $payments = $this->Payment->find('all', [
-                'conditions' => [
-                    "Payment.table_id" => $tableId,
-                    "Payment.bill_id" => $bill['Bill']['id']
-                ]
-            ]);
-        }
-        $this->set('payments', $payments);
+        $this->set('payments', $this->Payment->getPaymentsByTable($tableId, $billId));
     }
 
 }

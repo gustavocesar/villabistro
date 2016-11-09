@@ -67,6 +67,28 @@ class Payment extends AppModel {
         parent::afterSave($created, $options);
     }
 
+    public function getPaymentsByTable($tableId = null, $billId = null) {
+
+        $conditions = [];
+
+        if ($tableId) {
+            $conditions = array_merge($conditions, [
+                "{$this->alias}.table_id" => $tableId,
+            ]);
+        }
+
+        if ($billId) {
+            $conditions = array_merge($conditions, [
+                "{$this->alias}.bill_id" => $billId
+            ]);
+        }
+
+        $this->recursive = -1;
+        return $this->find('all', [
+            'conditions' => $conditions,
+        ]);
+    }
+
     // The Associations below have been created with all possible keys, those that are not needed can be removed
 
     /**

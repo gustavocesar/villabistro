@@ -4,156 +4,91 @@ echo $this->Html->css('bootstrap.min');
 $bill = $currentBill["Bill"];
 $statusBill = $currentBill["StatusBill"];
 $table = $currentBill["Table"];
-
-//pr($currentBill);
 ?>
 
-<h3 class="text-center">Recibo</h3>
-<h4 class="text-left">Data: <?php echo date('d/m/Y'); ?></h4>
-
-<div class="table-responsive">
-    <table class="table">
-        <tr class="warning">
-            <td>Mesa:</td>
-            <td><?php echo h($table['name']); ?></td>
-        </tr>
-        <tr class="warning">
-            <td>Total</td>
-            <td>R$ 123,45</td>
-        </tr>
-    </table>
-</div>
-
 <div class="container">
+    <h3 class="text-center">Recibo</h3>
+    <h4 class="text-left">Mesa: <?php echo h($table['name']); ?></h4>
+    <h4 class="text-left">Data: <?php echo date('d/m/Y'); ?></h4>
+
     <div class="table-responsive">
         <table class="table">
             <tr class="">
-                <td>Código</td>
-                <td>Valor (R$)</td>
-                <td>Pedido</td>
+                <td class="text-center"><strong>Código</strong></td>
+                <td class="text-right"><strong>Valor (R$)</strong></td>
+                <td>&nbsp;</td>
+                <td><strong>Pedido</strong></td>
             </tr>
-            <tr class="">
-                <td>999999</td>
-                <td>R$ 12,34</td>
-                <td>askdfj laskdflkasjdf lkasjdfl kasdlfk asdlkf</td>
-            </tr>
-
-
-
-
             <?php
+            $total = 0;
+
             /* PENDING ORDERS */
-            $arrBill = [];
             foreach ($pendingOrders as $order) {
                 if ($order['Order']['stage_id'] == 5) {
                     continue;
                 }
 
-                $quantity = $order['Order']['quantity'];
-                $product = $order['Products']['name'];
-                $productValue = $order['Products']['sell_price'] * $order['Order']['quantity'];
+                $productCode = $order['Products']['id'];
+                $productName = $order['Products']['name'];
+                $productValue = $order['Products']['sell_price'];
 
-                $hidden = '<input type="hidden" name="order[]" value="' . $order['Order']['id'] . '" />';
-
-                if (isset($arrBill[$product])) {
-                    $arrBill[$product]['quantity'] += $quantity;
-                    $arrBill[$product]['value'] += $productValue;
-                    $arrBill[$product]['hidden'] = $arrBill[$product]['hidden'] . " " . $hidden;
-                } else {
-                    $arrBill[$product]['quantity'] = $quantity;
-                    $arrBill[$product]['value'] = $productValue;
-                    $arrBill[$product]['hidden'] = $hidden;
-                }
-            }
-
-            $total = 0;
-            foreach ($arrBill as $product => $arrProduct) {
-                $quantity = $this->MyFormat->format_show($arrProduct['quantity']);
-                $productValue = $arrProduct['value'];
-
-                $value = $this->MyFormat->format_show($productValue, 2);
                 $total += $productValue;
                 ?>
-
-                <li class="list-group-item">
-                    <?php echo $quantity . ' - ' . $product; ?>
-                    <span class="pull-right">
-                        <?php echo $value; ?>
-                        <?php echo $arrProduct['hidden']; ?>
-                    </span>
-                </li>
+                <tr>
+                    <td class="text-center"><?= $productCode; ?></td>
+                    <td class="text-right"><?php echo h($this->MyFormat->format_show($productValue)); ?></td>
+                    <td>&nbsp;</td>
+                    <td><?= $productName; ?></td>
+                </tr>
                 <?php
             }
-            ?>
-            <?php
+
             /* COMPLETED ORDERS */
-            $arrBill = [];
             foreach ($completedOrders as $order) {
                 if ($order['Order']['stage_id'] == 5) {
                     continue;
                 }
 
-                $quantity = $order['Order']['quantity'];
-                $product = $order['Products']['name'];
-                $productValue = $order['Products']['sell_price'] * $order['Order']['quantity'];
-
-                $hidden = '<input type="hidden" name="order[]" value="' . $order['Order']['id'] . '" />';
-
-                if (isset($arrBill[$product])) {
-                    $arrBill[$product]['quantity'] += $quantity;
-                    $arrBill[$product]['value'] += $productValue;
-                    $arrBill[$product]['hidden'] = $arrBill[$product]['hidden'] . " " . $hidden;
-                } else {
-                    $arrBill[$product]['quantity'] = $quantity;
-                    $arrBill[$product]['value'] = $productValue;
-                    $arrBill[$product]['hidden'] = $hidden;
-                }
-            }
-
-            $total = 0;
-            foreach ($arrBill as $product => $arrProduct) {
-                $quantity = $this->MyFormat->format_show($arrProduct['quantity']);
-                $productValue = $arrProduct['value'];
-
-                $value = $this->MyFormat->format_show($productValue, 2);
-                $total += $productValue;
+                $productCode = $order['Products']['id'];
+                $productName = $order['Products']['name'];
+                $productValue = $order['Products']['sell_price'];
                 ?>
-                <s>
-                    <li class="list-group-item">
-                        <?php echo $quantity . ' - ' . $product; ?>
-                        <span class="pull-right">
-                            <?php echo $value; ?>
-                            <?php echo $arrProduct['hidden']; ?>
-                        </span>
-                    </li>
-                </s>
+                <tr>
+                    <td class="text-center"><del><?= $productCode; ?></del></td>
+                    <td class="text-right"><del><?php echo h($this->MyFormat->format_show($productValue)); ?></del></td>
+                    <td>&nbsp;</td>
+                    <td><del><?= $productName; ?></del></td>
+                </tr>
                 <?php
             }
-            ?>
-            <?php
+
+            /* PAYMENTS */
             foreach ($payments as $payment) {
 
-                //hide payments from items
-                if ($payment['Payment']['subtotal'] > 0) {
-                    continue;
+                if ($payment['Payment']['subtotal'] > 0.00) {
+                    //payment of a item (pagamento de item)
+                    $paymentValue = $payment['Payment']['subtotal'];
+                } else {
+                    //payment of a value (abatimento da conta)
+                    $paymentValue = $payment['Payment']['payd_value'];
                 }
 
-                $total -= $payment['Payment']['payd_value'];
+                $total -= $paymentValue;
                 ?>
                 <div class="col-xs-12 text-right">
-                    -<?php echo $this->MyFormat->format_show($payment['Payment']['payd_value'], 2); ?>
+                    -<?php echo $this->MyFormat->format_show($paymentValue, 2); ?>
                 </div>
                 <?php
             }
             ?>
 
+            <tr class="warning">
+                <td class="text-right"><strong>TOTAL</strong></td>
+                <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($total, 3)); ?></strong></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
 
         </table>
     </div>
-</div>
-
-<div class="col-xs-12 text-right">
-    <strong>
-        TOTAL: <?php echo $this->MyFormat->format_show($total, 2); ?>
-    </strong>
 </div>

@@ -493,12 +493,17 @@ class TablesController extends AppController {
         $this->layout = 'pdf';
 
         $this->Table->id = $tableId;
+
         $bill = $this->Table->getCurrentBill();
+        $billId = isset($bill['Bill']) ? $bill['Bill']['id'] : null;
+
         $this->set('currentBill', $bill);
 
         $this->Table->Bill->Payment->Order->recursive = 0;
         $this->set('pendingOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [1]));
         $this->set('completedOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [2]));
+        $this->set('payments', $this->Table->Bill->Payment->getPaymentsByTable($tableId, $billId));
+
     }
 
 }

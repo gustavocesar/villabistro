@@ -59,10 +59,19 @@
         <div class="tab-content">
             <?php
             foreach ($payments as $payment) {
+
+                if ($payment['Payment']['subtotal'] > 0.00) {
+                    //payment of a item (pagamento de item)
+                    $paymentValue = $payment['Payment']['subtotal'];
+                } else {
+                    //payment of a value (abatimento da conta)
+                    $paymentValue = $payment['Payment']['payd_value'];
+                }
+
                 ?>
                 <strong class="pull-right">
                 <?php
-                echo h("- ".$this->MyFormat->format_show($payment['Payment']['payd_value'], 2));
+                echo h("- ".$this->MyFormat->format_show($paymentValue, 2));
                 ?>
                 </strong><br />
                 <?php

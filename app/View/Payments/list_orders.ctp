@@ -24,7 +24,7 @@ echo $this->Html->script('/checked-list-group/list-group');
             <div class="clearfix"></div>
             <br />
             <?php
-            $arrBill = [];
+            $total = 0;
             foreach ($pendingOrders as $order) {
                 if ($order['Order']['stage_id'] == 5) {
                     continue;
@@ -32,51 +32,62 @@ echo $this->Html->script('/checked-list-group/list-group');
 
                 $quantity = $order['Order']['quantity'];
                 $product = $order['Products']['name'];
-                $productValue = $order['Products']['sell_price'] * $order['Order']['quantity'];
 
-                $hidden = '<input type="hidden" name="order[]" value="' . $order['Order']['id'] . '" />';
-
-                if (isset($arrBill[$product])) {
-                    $arrBill[$product]['quantity'] += $quantity;
-                    $arrBill[$product]['value'] += $productValue;
-                    $arrBill[$product]['hidden'] = $arrBill[$product]['hidden'] . " " . $hidden;
-                } else {
-                    $arrBill[$product]['quantity'] = $quantity;
-                    $arrBill[$product]['value'] = $productValue;
-                    $arrBill[$product]['hidden'] = $hidden;
-                }
-            }
-
-            $total = 0;
-            foreach ($arrBill as $product => $arrProduct) {
-                $quantity = $this->MyFormat->format_show($arrProduct['quantity']);
-                $productValue = $arrProduct['value'];
-
-                $value = $this->MyFormat->format_show($productValue, 2);
-                $total += $productValue;
+                $total += $order['Products']['sell_price'];
                 ?>
                 <li class="list-group-item">
                     <?php echo $quantity . ' - ' . $product; ?>
                     <span class="pull-right">
-                        <?php echo $value; ?>
-                        <?php echo $arrProduct['hidden']; ?>
+                        <?php echo h($this->MyFormat->format_show($order['Products']['sell_price'])); ?>
+                        <input type="hidden" name="order[]" value="<?php echo $order['Order']['id']; ?>" />
                     </span>
                 </li>
                 <?php
             }
-            ?>
-            <?php
-            foreach ($payments as $payment) {
 
-                //hide payments from items
-                if ($payment['Payment']['subtotal'] > 0) {
+            foreach ($completedOrders as $order) {
+                
+                //não mostrar os itens já pagos
+                break;
+
+                if ($order['Order']['stage_id'] == 5) {
                     continue;
                 }
 
-                $total -= $payment['Payment']['payd_value'];
+                $quantity = $order['Order']['quantity'];
+                $product = $order['Products']['name'];
+
+                $total += $order['Products']['sell_price'];
+                ?>
+                <li class="list-group-item">
+                    <s>
+                        <?php echo $quantity . ' - ' . $product; ?>
+                        <span class="pull-right">
+                            <s>
+                                <?php echo h($this->MyFormat->format_show($order['Products']['sell_price'])); ?>
+                                <input type="hidden" name="order[]" value="<?php echo $order['Order']['id']; ?>" />
+                            </s>
+                        </span>
+                    </s>
+                </li>
+                <?php
+            }
+
+            foreach ($payments as $payment) {
+
+                if ($payment['Payment']['subtotal'] > 0.00) {
+                    //payment of a item (pagamento de item)
+                    $paymentValue = $payment['Payment']['subtotal'];
+                } else {
+                    //payment of a value (abatimento da conta)
+                    $paymentValue = $payment['Payment']['payd_value'];
+                }
+
+                $total -= $paymentValue;
+
                 ?>
                 <div class="col-xs-12 text-right">
-                    -<?php echo $this->MyFormat->format_show($payment['Payment']['payd_value'], 2); ?>
+                    -<?php echo $this->MyFormat->format_show($paymentValue, 2); ?>
                 </div>
                 <?php
             }
