@@ -40,6 +40,7 @@
                             <tbody>
                                 <?php
                                 foreach ($pendingOrders as $pendingOrder) {
+//                                    pr($pendingOrder);
                                     $order = $pendingOrder['Order'];
                                     $table = $pendingOrder['Tables'];
                                     $stage = $pendingOrder['Stages'];

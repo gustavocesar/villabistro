@@ -185,13 +185,19 @@ class Order extends AppModel {
         $this->Stock->save($arrData);
     }
 
-    public function getOrdersByPaymentStatus($tableId = null, $arrPaymentStatus = null) {
+    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null) {
 
         $conditions = [];
 
         if ($tableId) {
             $conditions = array_merge($conditions, [
                 "Order.table_id" => $tableId
+            ]);
+        }
+
+        if ($billId) {
+            $conditions = array_merge($conditions, [
+                "Order.bill_id" => $billId
             ]);
         }
 
@@ -243,140 +249,21 @@ class Order extends AppModel {
                         'Bills.id = Order.bill_id'
                     ]
                 ],
+                [
+                    'table' => 'tables',
+                    'alias' => 'Tables',
+                    'type' => 'LEFT',
+                    'conditions' => [
+                        'Bills.table_id = Table.id'
+                    ]
+                ],
             ],
             'conditions' => $conditions,
-            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*'],
-            'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc']
+            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'],
+            'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc'],
+            'group' => ['Order.id']
         ]);
 //        debug($this->getDataSource()->getLog(false, false));
-
-        return $result;
-    }
-
-    public function getPendingOrders($tableId = null) {
-
-        $conditions = [
-            'StatusOrders.id = 1',
-            "Stages.consider_as not in ('Concluídos')"
-        ];
-
-        if ($tableId) {
-            $conditions = array_merge($conditions, [
-                "Order.table_id" => $tableId
-            ]);
-        }
-
-        $result = $this->find('all', [
-            'joins' => [
-                [
-                    'table' => 'stages',
-                    'alias' => 'Stages',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Stages.id = Order.stage_id'
-                    ]
-                ],
-                [
-                    'table' => 'users',
-                    'alias' => 'Users',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Users.id = Order.user_id'
-                    ]
-                ],
-                [
-                    'table' => 'products',
-                    'alias' => 'Products',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Products.id = Order.product_id'
-                    ]
-                ],
-                [
-                    'table' => 'status_orders',
-                    'alias' => 'StatusOrders',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'StatusOrders.id = Order.status_order_id'
-                    ]
-                ],
-                [
-                    'table' => 'tables',
-                    'alias' => 'Tables',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Tables.id = Order.table_id'
-                    ]
-                ],
-            ],
-            'conditions' => $conditions,
-            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Tables.*'],
-            'order' => ['Order.created asc', 'Order.id asc']
-        ]);
-
-        return $result;
-    }
-
-    public function getCompletedOrders($tableId = null) {
-
-        $conditions = [
-            'StatusOrders.id = 1',
-            "Stages.consider_as in ('Concluídos')"
-        ];
-
-        if ($tableId) {
-            $conditions = array_merge($conditions, [
-                "Order.table_id" => $tableId
-            ]);
-        }
-
-        $result = $this->find('all', [
-            'joins' => [
-                [
-                    'table' => 'stages',
-                    'alias' => 'Stages',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Stages.id = Order.stage_id'
-                    ]
-                ],
-                [
-                    'table' => 'users',
-                    'alias' => 'Users',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Users.id = Order.user_id'
-                    ]
-                ],
-                [
-                    'table' => 'products',
-                    'alias' => 'Products',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Products.id = Order.product_id'
-                    ]
-                ],
-                [
-                    'table' => 'status_orders',
-                    'alias' => 'StatusOrders',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'StatusOrders.id = Order.status_order_id'
-                    ]
-                ],
-                [
-                    'table' => 'tables',
-                    'alias' => 'Tables',
-                    'type' => 'INNER',
-                    'conditions' => [
-                        'Tables.id = Order.table_id'
-                    ]
-                ],
-            ],
-            'conditions' => $conditions,
-            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Tables.*'],
-            'order' => ['Order.created desc', 'Order.id desc']
-        ]);
 
         return $result;
     }

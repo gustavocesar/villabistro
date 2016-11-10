@@ -253,13 +253,19 @@ class TablesController extends AppController {
         }
         $this->set('title', $title);
 
-        $this->set('table', $table);
-        $this->Table->Order->recursive = 0;
-        $this->set('ordersByTable', $this->Table->Order->getOrdersByPaymentStatus($id));
-
         $this->Table->id = $id;
         $bill = $this->Table->getCurrentBill();
+        $billId = isset($bill['Bill']) ? $bill['Bill']['id'] : null;
         $this->set('currentBill', $bill);
+
+        $this->set('table', $table);
+        $this->Table->Order->recursive = 0;
+        
+        $orders = [];
+        if ($billId) {
+            $orders = $this->Table->Order->getOrdersByPaymentStatus($id, $billId);
+        }
+        $this->set('ordersByTable', $orders);
 
         $payments = [];
         if (isset($bill['Bill']['id'])) {
@@ -500,8 +506,8 @@ class TablesController extends AppController {
         $this->set('currentBill', $bill);
 
         $this->Table->Bill->Payment->Order->recursive = 0;
-        $this->set('pendingOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [1]));
-        $this->set('completedOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, [2]));
+        $this->set('pendingOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, $billId, [1]));
+        $this->set('completedOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, $billId, [2]));
         $this->set('payments', $this->Table->Bill->Payment->getPaymentsByTable($tableId, $billId));
 
     }

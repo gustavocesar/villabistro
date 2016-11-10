@@ -14,26 +14,34 @@
             <?php echo __('Actions'); ?>&nbsp;<i class="fa fa-caret-down"></i>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li>
-                <?php
-                echo $this->Html->link('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;' . __('Close Table'), ['controller' => 'tables', 'action' => 'close_table', $table['Table']['id']], ['escape' => false]);
+            <?php
+            if (isset($currentBill['Bill']['id'])) {
                 ?>
-            </li>
-            <li>
+
+                <li>
+                    <?php
+                    echo $this->Html->link('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;' . __('Close Table'), ['controller' => 'tables', 'action' => 'close_table', $table['Table']['id']], ['escape' => false]);
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    echo $this->Html->link(
+                            '<i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;' . __('Change Table'), $this->Html->url([
+                                'controller' => 'tables',
+                                'action' => 'change_table',
+                                $table['Table']['id']
+                                    ], true), [
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modal',
+                        'escape' => false
+                            ]
+                    );
+                    ?>
+                </li>
                 <?php
-                echo $this->Html->link(
-                        '<i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;'.__('Change Table'), $this->Html->url([
-                            'controller' => 'tables',
-                            'action' => 'change_table',
-                            $table['Table']['id']
-                                ], true), [
-                    'data-toggle' => 'modal',
-                    'data-target' => '#modal',
-                    'escape' => false
-                        ]
-                );
-                ?>
-            </li>
+            }
+            ?>
+
             <li>
                 <?php
                 echo $this->Html->link('<i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;' . __('History'), ['controller' => 'tables', 'action' => 'history', $table['Table']['id']], ['escape' => false]);
@@ -43,15 +51,21 @@
         </ul>
     </div>
 
-    <div class="col-sm-2 pull-right">
-        <p>
-            <?php
-            echo $this->Html->link(
-                    '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'tables', 'action' => 'print_bill', $table['Table']['id']], ['class' => 'btn btn-primary btn-block', 'escape' => false]
-            )
-            ?>
-        </p>
-    </div>
+    <?php
+    if (isset($currentBill['Bill']['id'])) {
+        ?>
+        <div class="col-sm-2 pull-right">
+            <p>
+                <?php
+                echo $this->Html->link(
+                        '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'tables', 'action' => 'print_bill', $table['Table']['id']], ['class' => 'btn btn-primary btn-block', 'escape' => false]
+                )
+                ?>
+            </p>
+        </div>
+        <?php
+    }
+    ?>
 </div>
 
 <div class="row">
@@ -67,12 +81,11 @@
                     //payment of a value (abatimento da conta)
                     $paymentValue = $payment['Payment']['payd_value'];
                 }
-
                 ?>
                 <strong class="pull-right">
-                <?php
-                echo h("- ".$this->MyFormat->format_show($paymentValue, 2));
-                ?>
+                    <?php
+                    echo h("- " . $this->MyFormat->format_show($paymentValue, 2));
+                    ?>
                 </strong><br />
                 <?php
             }
@@ -113,20 +126,11 @@
                                 $user = $orderTable['Users'];
                                 $product = $orderTable['Products'];
                                 $staturOrder = $orderTable['StatusOrders'];
-                                $bill = isset($orderTable['Bills']['id']) ? $orderTable['Bills'] : null;
-
-                                if (!isset($currentBill['Bill']['id'])) {
-                                    continue;
-                                }
-
-                                if ($currentBill['Bill']['id'] != $bill['id']) {
-                                    continue;
-                                }
 
                                 $statusLabel = "";
                                 $statusText = "";
                                 $classTr = "";
-                                
+
                                 if ($stage['name'] == 'Cancelado') {
                                     $statusLabel = "label-warning";
                                     $statusText = '<i class="fa fa-minus" aria-hidden="true"></i>';

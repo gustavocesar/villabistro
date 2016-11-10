@@ -6,6 +6,16 @@ $statusBill = $currentBill["StatusBill"];
 $table = $currentBill["Table"];
 ?>
 
+<div class="col-sm-2 pull-right">
+    <p>
+        <?php
+        echo $this->Html->link(
+                '<span class="fa fa-arrow-left"></span>&nbsp' . __('Back'), ['controller' => 'tables', 'action' => 'table_details', $table['id']], ['class' => 'btn btn-default btn-block', 'escape' => false]
+        )
+        ?>
+    </p>
+</div>
+
 <div class="container">
     <h3 class="text-center">Recibo</h3>
     <h4 class="text-left">Mesa: <?php echo h($table['name']); ?></h4>

@@ -175,13 +175,8 @@ class OrdersController extends AppController {
         $this->set('title', $title);
         $this->set('activeOrdersBoard', 'active');
 
-        $this->Order->recursive = 0;
-        $pendingOrders = $this->Order->getPendingOrders();
-        $this->set('pendingOrders', $pendingOrders);
-
-        $this->Order->recursive = 0;
-        $completedOrders = $this->Order->getCompletedOrders();
-        $this->set('completedOrders', $completedOrders);
+        $this->set('pendingOrders', $this->Order->getOrdersByPaymentStatus(null, null, [1]));
+        $this->set('completedOrders', $this->Order->getOrdersByPaymentStatus(null, null, [2]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

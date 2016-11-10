@@ -133,11 +133,6 @@ class Stock extends AppModel {
             'order' => ["{$this->alias}.id desc"]
         ]);
             
-//        $log = $this->getDataSource()->getLog(false, false);
-//        debug($log);
-            
-//            pr($result);
-                
         return $result;
     }
 
