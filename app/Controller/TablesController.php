@@ -298,59 +298,6 @@ class TablesController extends AppController {
         ]);
     }
 
-    public function history($id) {
-        $this->set('activeTables', 'active');
-
-        $this->Table->id = $id;
-        $table = $this->Table->find('first', [
-            'conditions' => ['id' => $id],
-        ]);
-
-        if (empty($table)) {
-            throw new NotFoundException(__('Invalid table'));
-        }
-
-        if ($table['Table']['balcony'] == 'Sim') {
-            $title = $table['Table']['name'];
-        } else {
-            $title = __('Table') . ' ' . $table['Table']['name'];
-        }
-
-        $this->set('title', __('History') . " - " . $title);
-
-        $this->set('table', $table);
-
-        $this->Table->id = $id;
-        $this->set('items', $this->Table->getHistory());
-
-        $this->set('arrayBreadCrumb', [
-            0 => [
-                'label' => __('Tables Board'),
-                'link' => [
-                    'controller' => $this->params['controller'],
-                    'action' => 'tables_board',
-                    'params' => []
-                ]
-            ],
-            1 => [
-                'label' => $title,
-                'link' => [
-                    'controller' => $this->params['controller'],
-                    'action' => 'table_details',
-                    'params' => [$id]
-                ]
-            ],
-            2 => [
-                'label' => __('History'),
-                'link' => [
-                    'controller' => $this->params['controller'],
-                    'action' => $this->params['action'],
-                    'params' => []
-                ]
-            ]
-        ]);
-    }
-
     public function close_table($id) {
         $this->set('activeTables', 'active');
 
@@ -489,27 +436,6 @@ class TablesController extends AppController {
 
         $this->Table->id = $tableId;
         return $this->Table->getBills($statusBillId);
-    }
-
-    public function print_bill($tableId = null) {
-        if (!$this->Table->exists($tableId)) {
-            throw new NotFoundException(__('Invalid table'));
-        }
-
-        $this->layout = 'pdf';
-
-        $this->Table->id = $tableId;
-
-        $bill = $this->Table->getCurrentBill();
-        $billId = isset($bill['Bill']) ? $bill['Bill']['id'] : null;
-
-        $this->set('currentBill', $bill);
-
-        $this->Table->Bill->Payment->Order->recursive = 0;
-        $this->set('pendingOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, $billId, [1]));
-        $this->set('completedOrders', $this->Table->Bill->Payment->Order->getOrdersByPaymentStatus($tableId, $billId, [2]));
-        $this->set('payments', $this->Table->Bill->Payment->getPaymentsByTable($tableId, $billId));
-
     }
 
 }

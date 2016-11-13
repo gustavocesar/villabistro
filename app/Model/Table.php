@@ -101,56 +101,56 @@ class Table extends AppModel {
         return $bill;
     }
 
-    public function getHistory() {
-        $sql = "
-            select
-                'order' as origin,
-                bi.id as bill,
-                od.quantity as quantity,
-                concat(pr.name, ' (', un.initials, ')') as product,
-                st.name as stage,
-                us.name as attendant,
-                so.name as status_order,
-                so.id as status_order_id,
-                pr.cost_price as value,
-                1 as qtd_orders,
-                0 as qtd_payments,
-                od.created
-            from bills as bi
-            inner join tables as ta on ta.id = bi.table_id
-            inner join orders as od on od.bill_id = bi.id
-            inner join stages as st on st.id = od.stage_id
-            inner join products as pr on pr.id = od.product_id
-            inner join units as un on un.id = pr.unit_id
-            inner join users as us on us.id = od.user_id
-            inner join status_orders as so on so.id = od.status_order_id
-            where ta.id = {$this->id}
-
-            union
-
-            select
-                'payment' as origin,
-                bi.id as bill,
-                '' as quantity,
-                '' as product,
-                '' as stage,
-                '' as attendant,
-                '' as status_order,
-                '' as status_order_id,
-                pa.payd_value - pa.payback as value,
-                0 as qtd_orders,
-                1 as qtd_payments,
-                pa.created
-            from payments as pa
-            inner join bills as bi on bi.id = pa.bill_id
-            inner join tables ta on ta.id = bi.table_id
-            where ta.id = {$this->id}
-
-            order by bill, created
-        ";
-
-        return $this->query($sql);
-    }
+//    public function getHistory() {
+//        $sql = "
+//            select
+//                'order' as origin,
+//                bi.id as bill,
+//                od.quantity as quantity,
+//                concat(pr.name, ' (', un.initials, ')') as product,
+//                st.name as stage,
+//                us.name as attendant,
+//                so.name as status_order,
+//                so.id as status_order_id,
+//                pr.cost_price as value,
+//                1 as qtd_orders,
+//                0 as qtd_payments,
+//                od.created
+//            from bills as bi
+//            inner join tables as ta on ta.id = bi.table_id
+//            inner join orders as od on od.bill_id = bi.id
+//            inner join stages as st on st.id = od.stage_id
+//            inner join products as pr on pr.id = od.product_id
+//            inner join units as un on un.id = pr.unit_id
+//            inner join users as us on us.id = od.user_id
+//            inner join status_orders as so on so.id = od.status_order_id
+//            where ta.id = {$this->id}
+//
+//            union
+//
+//            select
+//                'payment' as origin,
+//                bi.id as bill,
+//                '' as quantity,
+//                '' as product,
+//                '' as stage,
+//                '' as attendant,
+//                '' as status_order,
+//                '' as status_order_id,
+//                pa.payd_value - pa.payback as value,
+//                0 as qtd_orders,
+//                1 as qtd_payments,
+//                pa.created
+//            from payments as pa
+//            inner join bills as bi on bi.id = pa.bill_id
+//            inner join tables ta on ta.id = bi.table_id
+//            where ta.id = {$this->id}
+//
+//            order by bill, created
+//        ";
+//
+//        return $this->query($sql);
+//    }
 
     /**
      * Validation rules

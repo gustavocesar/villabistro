@@ -1158,3 +1158,15 @@ msgstr "Histórico"
 
 msgid  "Print Bill"
 msgstr "Imprimir Conta"
+
+msgid  "open date"
+msgstr "Data de Abertura"
+
+msgid  "Open Date"
+msgstr "Data de Abertura"
+
+msgid  "last change"
+msgstr "Última Alteração"
+
+msgid  "Last Change"
+msgstr "Última Alteração"

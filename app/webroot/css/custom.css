@@ -19,3 +19,7 @@
     border-top: 5px #999 solid !important;
     border-bottom: 2px #999 solid !important;
 }
+
+.no-border {
+    border: 0px !important;
+}

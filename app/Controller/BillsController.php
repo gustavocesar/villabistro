@@ -31,6 +31,66 @@ class BillsController extends AppController {
         $this->Bill->recursive = 0;
         $this->set('bills', $this->Paginator->paginate());
     }
+    
+    public function history($tableId = null) {
+        $this->set('activeTables', 'active');
+        
+        if (!$this->Bill->Table->exists($tableId)) {
+            throw new NotFoundException(__('Invalid table'));
+        }
+        
+        $this->Bill->Table->recursive = 0;
+        $this->Bill->Table->id = $tableId;
+        $table = $this->Bill->Table->find('first', [
+            'conditions' => ['id' => $tableId],
+        ]);
+        
+        if ($table['Table']['balcony'] == 'Sim') {
+            $title = $table['Table']['name'];
+        } else {
+            $title = __('Table') . ' ' . $table['Table']['name'];
+        }
+
+        $this->set('title', __('History') . " - " . $title);
+        
+        $this->Paginator->settings = array(
+            'conditions' => [
+                "{$this->Bill->Table->alias}.id" => $tableId
+            ],
+            'order' => ["{$this->Bill->alias}.id" => 'DESC']
+        );
+        
+        $this->Bill->recursive = 0;
+        $this->set('bills', $this->Paginator->paginate());
+        $this->set('table', $table);
+        
+        $this->set('arrayBreadCrumb', [
+            0 => [
+                'label' => __('Tables Board'),
+                'link' => [
+                    'controller' => 'tables',
+                    'action' => 'tables_board',
+                    'params' => []
+                ]
+            ],
+            1 => [
+                'label' => $title,
+                'link' => [
+                    'controller' => 'tables',
+                    'action' => 'table_details',
+                    'params' => [$tableId]
+                ]
+            ],
+            2 => [
+                'label' => __('History'),
+                'link' => [
+                    'controller' => $this->params['controller'],
+                    'action' => $this->params['action'],
+                    'params' => []
+                ]
+            ]
+        ]);
+    }
 
     /**
      * view method
@@ -115,13 +175,25 @@ class BillsController extends AppController {
         }
         return $this->redirect(array('action' => 'index'));
     }
-
-    public function print_bill($tableId = null) {
-        $this->Bill->Table->id = $tableId;
-        if (!$this->Bill->Table->exists()) {
-            throw new NotFoundException(__('Invalid table'));
+    
+    public function print_bill($billId = null) {
+        if (!$this->Bill->exists($billId)) {
+            throw new NotFoundException(__('Invalid bill'));
         }
 
+        $this->layout = 'pdf';
+
+        $this->Bill->recursive = 0;
+        $bill = $this->Bill->find('first', [
+            'conditions' => ["{$this->Bill->alias}.id" => $billId],
+        ]);
+
+        $this->set('bill', $bill);
+
+        $this->Bill->Payment->Order->recursive = 0;
+        $this->set('pendingOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [1]));
+        $this->set('completedOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [2]));
+        $this->set('payments', $this->Bill->Payment->getPaymentsByTable(null, $billId));
     }
 
 }

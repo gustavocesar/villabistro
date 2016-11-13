@@ -44,7 +44,7 @@
 
             <li>
                 <?php
-                echo $this->Html->link('<i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;' . __('History'), ['controller' => 'tables', 'action' => 'history', $table['Table']['id']], ['escape' => false]);
+                echo $this->Html->link('<i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;' . __('History'), ['controller' => 'bills', 'action' => 'history', $table['Table']['id']], ['escape' => false]);
                 ?>
             </li>
             <!--<li class="divider"></li>-->
@@ -58,7 +58,7 @@
             <p>
                 <?php
                 echo $this->Html->link(
-                        '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'tables', 'action' => 'print_bill', $table['Table']['id']], ['class' => 'btn btn-primary btn-block', 'escape' => false]
+                        '&nbsp;<span class="fa fa-print"></span>&nbsp' . __('Print Bill') . '&nbsp;', ['controller' => 'bills', 'action' => 'print_bill', $currentBill['Bill']['id']], ['class' => 'btn btn-primary btn-block', 'target' => '_blank', 'escape' => false]
                 )
                 ?>
             </p>
