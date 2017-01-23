@@ -37,6 +37,9 @@ class UsersController extends AppController {
 
                 Cache::clear();
 
+                $this->Session->delete('Permissions');
+                $this->loadPermissions();
+
                 //avoid "Permission Denied" messages at login
                 $this->Session->delete('Message.auth');
 
@@ -51,25 +54,53 @@ class UsersController extends AppController {
     }
 
     public function initDB() {
+        $this->Session->delete('Permissions');
+
         $group = $this->User->Group;
 
-        // Allow admins to everything
+        /**
+         * 1 - Administrador
+         */
         $group->id = 1;
         $this->Acl->allow($group, 'controllers');
 
+        /**
+         * 2 - Cozinha
+         */
         $group->id = 2;
         $this->Acl->allow($group, 'controllers');
 
+        /**
+         * 3 - Atendimento
+         */
         $group->id = 3;
+        $this->Acl->deny($group, 'controllers');
         $this->Acl->allow($group, 'controllers');
+        
+        $this->Acl->deny($group, 'controllers/orders/cancel');
 
+//        $this->Acl->allow($group, 'controllers/bills');
+//        $this->Acl->allow($group, 'controllers/pages/home');
+//        $this->Acl->allow($group, 'controllers/configurations/index');
+//
+//        $this->Acl->allow($group, 'controllers/users/index');
+//        $this->Acl->allow($group, 'controllers/users/view');
+//        $this->Acl->allow($group, 'controllers/users/login');
+//        $this->Acl->allow($group, 'controllers/users/logout');
+//
+//        $this->Acl->allow($group, 'controllers/orders/add_order');
 
-        // allow basic users to log out
-        $this->Acl->allow($group, 'controllers/users/logout');
-
-        // we add an exit to avoid an ugly "missing views" error message
         echo "all done";
         exit;
+    }
+
+    public function loadPermissions() {
+        if (!$this->Session->read('Permissions.orders.cancel')) {
+            $group = $this->Group;
+            $group->id = AuthComponent::user('group_id');
+
+            $this->Session->write('Permissions.orders.cancel', $this->Acl->check($group, 'controllers/orders/cancel'));
+        }
     }
 
     /**

@@ -97,6 +97,8 @@ class AppController extends Controller {
 
         $this->Auth->allow('modal');
 
+        pr($this->Session->read('Permissions.orders.cancel'));
+
 //        $this->Security->unlockedActions = ['index'];
 //        $this->Auth->allow();
     }
