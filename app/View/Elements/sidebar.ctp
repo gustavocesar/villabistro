@@ -152,6 +152,25 @@
                 ?>
             </li>
 
+            <li class="<?=$activeReports?>">
+                <?php
+                echo $this->Html->link('
+                    <i class="fa fa-file-text">
+                        <div class="icon-bg bg-primary"></div>
+                    </i>
+                    <span class="menu-title">' . __('Reports') . '</span>
+                ', [
+                    'controller' => 'reports',
+                    'action' => 'index'
+                        ], [
+                    'escape' => false,
+                    'title' => __('Reports')
+                        ]
+                );
+                ?>
+                <link href="../../../../../../Users/gusta_000.SENACDN513/AppData/Local/Temp/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+            </li>
+
             <li class="<?=$activeConfigurations?>">
                 <?php
                 echo $this->Html->link('

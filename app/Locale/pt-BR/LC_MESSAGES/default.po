@@ -1170,3 +1170,29 @@ msgstr "Última Alteração"
 
 msgid  "Last Change"
 msgstr "Última Alteração"
+
+
+
+msgid  "Reports"
+msgstr "Relatórios"
+
+msgid  "Sales by Period"
+msgstr "Vendas por Período"
+
+msgid  "Sales by Period Report"
+msgstr "Relatório de Vendas por Período"
+
+msgid  "Start Date"
+msgstr "Data Inicial"
+
+msgid  "Finish Date"
+msgstr "Data Final"
+
+msgid  "Start Hour"
+msgstr "Hora Inicial"
+
+msgid  "Finish Hour"
+msgstr "Hora Final"
+
+msgid  "Print"
+msgstr "Imprimir"

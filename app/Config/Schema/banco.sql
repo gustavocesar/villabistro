@@ -1,14 +1,13 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tempo de Geração: 23/01/2017 às 12:21:04
--- Versão do Servidor: 10.0.28-MariaDB
--- Versão do PHP: 5.2.17
+-- Host: 127.0.0.1
+-- Generation Time: 24-Jan-2017 às 17:06
+-- Versão do servidor: 5.6.21
+-- PHP Version: 5.6.3
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `u267690752_bistr`
+-- Database: `villabistro`
 --
 
 -- --------------------------------------------------------
@@ -28,24 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `acos` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_acos_lft_rght` (`lft`,`rght`),
-  KEY `idx_acos_alias` (`alias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=538 ;
+  `rght` int(10) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=542 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 406),
+(1, NULL, NULL, NULL, 'controllers', 1, 414),
 (2, 1, NULL, NULL, 'Bills', 2, 17),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -163,7 +159,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (121, 118, NULL, NULL, 'add', 287, 288),
 (122, 118, NULL, NULL, 'edit', 289, 290),
 (123, 118, NULL, NULL, 'delete', 291, 292),
-(124, 1, NULL, NULL, 'Users', 294, 311),
+(124, 1, NULL, NULL, 'Users', 294, 313),
 (125, 124, NULL, NULL, 'login', 295, 296),
 (126, 124, NULL, NULL, 'logout', 297, 298),
 (127, 124, NULL, NULL, 'initDB', 299, 300),
@@ -172,48 +168,48 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (130, 124, NULL, NULL, 'add', 305, 306),
 (131, 124, NULL, NULL, 'edit', 307, 308),
 (132, 124, NULL, NULL, 'delete', 309, 310),
-(133, 1, NULL, NULL, 'AclExtras', 312, 313),
-(134, 1, NULL, NULL, 'DebugKit', 314, 321),
-(135, 134, NULL, NULL, 'ToolbarAccess', 315, 320),
-(136, 135, NULL, NULL, 'history_state', 316, 317),
-(137, 135, NULL, NULL, 'sql_explain', 318, 319),
-(310, 1, NULL, NULL, 'Configurations', 322, 325),
-(311, 310, NULL, NULL, 'index', 323, 324),
-(319, 1, NULL, NULL, 'InternalTransfers', 326, 337),
-(320, 319, NULL, NULL, 'index', 327, 328),
-(321, 319, NULL, NULL, 'view', 329, 330),
-(322, 319, NULL, NULL, 'add', 331, 332),
-(323, 319, NULL, NULL, 'edit', 333, 334),
-(324, 319, NULL, NULL, 'delete', 335, 336),
-(332, 1, NULL, NULL, 'StatusInternalTransfers', 338, 349),
-(333, 332, NULL, NULL, 'index', 339, 340),
-(334, 332, NULL, NULL, 'view', 341, 342),
-(335, 332, NULL, NULL, 'add', 343, 344),
-(336, 332, NULL, NULL, 'edit', 345, 346),
-(337, 332, NULL, NULL, 'delete', 347, 348),
-(345, 1, NULL, NULL, 'InternalTransferItems', 350, 361),
-(346, 345, NULL, NULL, 'index', 351, 352),
-(347, 345, NULL, NULL, 'view', 353, 354),
-(348, 345, NULL, NULL, 'add', 355, 356),
-(349, 345, NULL, NULL, 'edit', 357, 358),
-(350, 345, NULL, NULL, 'delete', 359, 360),
-(394, 1, NULL, NULL, 'Cashiers', 362, 373),
-(395, 394, NULL, NULL, 'index', 363, 364),
-(396, 394, NULL, NULL, 'view', 365, 366),
-(397, 394, NULL, NULL, 'add', 367, 368),
-(398, 394, NULL, NULL, 'edit', 369, 370),
-(399, 394, NULL, NULL, 'delete', 371, 372),
+(133, 1, NULL, NULL, 'AclExtras', 314, 315),
+(134, 1, NULL, NULL, 'DebugKit', 316, 323),
+(135, 134, NULL, NULL, 'ToolbarAccess', 317, 322),
+(136, 135, NULL, NULL, 'history_state', 318, 319),
+(137, 135, NULL, NULL, 'sql_explain', 320, 321),
+(310, 1, NULL, NULL, 'Configurations', 324, 327),
+(311, 310, NULL, NULL, 'index', 325, 326),
+(319, 1, NULL, NULL, 'InternalTransfers', 328, 339),
+(320, 319, NULL, NULL, 'index', 329, 330),
+(321, 319, NULL, NULL, 'view', 331, 332),
+(322, 319, NULL, NULL, 'add', 333, 334),
+(323, 319, NULL, NULL, 'edit', 335, 336),
+(324, 319, NULL, NULL, 'delete', 337, 338),
+(332, 1, NULL, NULL, 'StatusInternalTransfers', 340, 351),
+(333, 332, NULL, NULL, 'index', 341, 342),
+(334, 332, NULL, NULL, 'view', 343, 344),
+(335, 332, NULL, NULL, 'add', 345, 346),
+(336, 332, NULL, NULL, 'edit', 347, 348),
+(337, 332, NULL, NULL, 'delete', 349, 350),
+(345, 1, NULL, NULL, 'InternalTransferItems', 352, 363),
+(346, 345, NULL, NULL, 'index', 353, 354),
+(347, 345, NULL, NULL, 'view', 355, 356),
+(348, 345, NULL, NULL, 'add', 357, 358),
+(349, 345, NULL, NULL, 'edit', 359, 360),
+(350, 345, NULL, NULL, 'delete', 361, 362),
+(394, 1, NULL, NULL, 'Cashiers', 364, 375),
+(395, 394, NULL, NULL, 'index', 365, 366),
+(396, 394, NULL, NULL, 'view', 367, 368),
+(397, 394, NULL, NULL, 'add', 369, 370),
+(398, 394, NULL, NULL, 'edit', 371, 372),
+(399, 394, NULL, NULL, 'delete', 373, 374),
 (407, 94, NULL, NULL, 'stock_control', 213, 214),
 (408, 94, NULL, NULL, 'getListLocation', 215, 216),
 (409, 94, NULL, NULL, 'get_list_stock_by_location', 217, 218),
 (425, 64, NULL, NULL, 'getUnit', 155, 156),
 (482, 94, NULL, NULL, 'modal_edit', 219, 220),
-(483, 1, NULL, NULL, 'ManualAdjustments', 374, 385),
-(484, 483, NULL, NULL, 'index', 375, 376),
-(485, 483, NULL, NULL, 'view', 377, 378),
-(486, 483, NULL, NULL, 'add', 379, 380),
-(487, 483, NULL, NULL, 'edit', 381, 382),
-(488, 483, NULL, NULL, 'delete', 383, 384),
+(483, 1, NULL, NULL, 'ManualAdjustments', 376, 387),
+(484, 483, NULL, NULL, 'index', 377, 378),
+(485, 483, NULL, NULL, 'view', 379, 380),
+(486, 483, NULL, NULL, 'add', 381, 382),
+(487, 483, NULL, NULL, 'edit', 383, 384),
+(488, 483, NULL, NULL, 'delete', 385, 386),
 (497, 94, NULL, NULL, 'stock_details', 221, 222),
 (498, 94, NULL, NULL, 'listStock', 223, 224),
 (499, 94, NULL, NULL, 'listStockSuppliers', 225, 226),
@@ -227,8 +223,8 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (507, 50, NULL, NULL, 'update_sequence', 117, 118),
 (508, 56, NULL, NULL, 'home', 125, 126),
 (509, 112, NULL, NULL, 'table_details', 273, 274),
-(510, 1, NULL, NULL, 'Charts', 386, 391),
-(511, 510, NULL, NULL, 'index', 387, 388),
+(510, 1, NULL, NULL, 'Charts', 388, 393),
+(511, 510, NULL, NULL, 'index', 389, 390),
 (513, 94, NULL, NULL, 'drawLineChartGlobalInventory', 231, 232),
 (514, 94, NULL, NULL, 'getStockQuantityByProduct', 233, 234),
 (515, 50, NULL, NULL, 'order_wizard', 119, 120),
@@ -236,18 +232,22 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (519, 50, NULL, NULL, 'cancel', 121, 122),
 (520, 112, NULL, NULL, 'close_table', 275, 276),
 (522, 112, NULL, NULL, 'getBills', 277, 278),
-(524, 1, NULL, NULL, 'Payments', 392, 405),
-(525, 524, NULL, NULL, 'index', 393, 394),
-(526, 524, NULL, NULL, 'view', 395, 396),
-(527, 524, NULL, NULL, 'add', 397, 398),
-(528, 524, NULL, NULL, 'edit', 399, 400),
-(529, 524, NULL, NULL, 'delete', 401, 402),
-(530, 524, NULL, NULL, 'list_orders', 403, 404),
+(524, 1, NULL, NULL, 'Payments', 394, 407),
+(525, 524, NULL, NULL, 'index', 395, 396),
+(526, 524, NULL, NULL, 'view', 397, 398),
+(527, 524, NULL, NULL, 'add', 399, 400),
+(528, 524, NULL, NULL, 'edit', 401, 402),
+(529, 524, NULL, NULL, 'delete', 403, 404),
+(530, 524, NULL, NULL, 'list_orders', 405, 406),
 (531, 112, NULL, NULL, 'change_table', 279, 280),
 (532, 56, NULL, NULL, 'documentation', 127, 128),
-(533, 510, NULL, NULL, 'weekly_stock', 389, 390),
+(533, 510, NULL, NULL, 'weekly_stock', 391, 392),
 (535, 2, NULL, NULL, 'print_bill', 13, 14),
-(537, 2, NULL, NULL, 'history', 15, 16);
+(537, 2, NULL, NULL, 'history', 15, 16),
+(538, 1, NULL, NULL, 'Reports', 408, 413),
+(539, 538, NULL, NULL, 'index', 409, 410),
+(540, 124, NULL, NULL, 'loadPermissions', 311, 312),
+(541, 538, NULL, NULL, 'sales_period', 411, 412);
 
 -- --------------------------------------------------------
 
@@ -256,17 +256,14 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_aros_lft_rght` (`lft`,`rght`),
-  KEY `idx_aros_alias` (`alias`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
+  `rght` int(10) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `aros`
@@ -284,17 +281,14 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros_acos` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `aro_id` int(10) NOT NULL,
   `aco_id` int(10) NOT NULL,
   `_create` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_read` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_update` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
-  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`),
-  KEY `idx_aco_id` (`aco_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=5 ;
+  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `aros_acos`
@@ -304,7 +298,19 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 (1, 1, 1, '1', '1', '1', '1'),
 (2, 2, 1, '1', '1', '1', '1'),
 (3, 3, 1, '1', '1', '1', '1'),
-(4, 3, 126, '1', '1', '1', '1');
+(4, 3, 126, '1', '1', '1', '1'),
+(5, 2, 128, '1', '1', '1', '1'),
+(6, 2, 129, '1', '1', '1', '1'),
+(7, 2, 125, '1', '1', '1', '1'),
+(8, 2, 126, '1', '1', '1', '1'),
+(9, 2, 503, '1', '1', '1', '1'),
+(10, 3, 128, '1', '1', '1', '1'),
+(11, 3, 129, '1', '1', '1', '1'),
+(12, 3, 125, '1', '1', '1', '1'),
+(13, 3, 503, '1', '1', '1', '1'),
+(14, 3, 508, '1', '1', '1', '1'),
+(15, 3, 311, '1', '1', '1', '1'),
+(16, 3, 519, '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -313,24 +319,20 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 --
 
 CREATE TABLE IF NOT EXISTS `bills` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `status_bill_id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
   `identifier` varchar(45) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `bills`
 --
 
 INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`, `modified`) VALUES
-(6, 2, 5, 'I', '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(7, 2, 8, 'I', '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(8, 2, 1, 'I', '2016-12-21 19:22:37', '2017-01-20 12:37:15'),
-(9, 2, 3, 'I', '2017-01-20 12:02:47', '2017-01-20 12:37:42');
+(1, 1, 1, 'I', '2017-01-23 13:06:53', '2017-01-23 13:06:53');
 
 -- --------------------------------------------------------
 
@@ -339,9 +341,8 @@ INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`
 --
 
 CREATE TABLE IF NOT EXISTS `cashiers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
+`id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -350,13 +351,11 @@ CREATE TABLE IF NOT EXISTS `cashiers` (
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(55) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `categories`
@@ -373,16 +372,15 @@ INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `entry_notes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `supplier_id` int(11) DEFAULT NULL,
   `status_entry_note_id` int(11) NOT NULL DEFAULT '1',
   `fiscal_note` varchar(45) NOT NULL,
   `entry_date` date NOT NULL,
   `entry_hour` time DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -391,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `entry_notes` (
 --
 
 CREATE TABLE IF NOT EXISTS `entry_note_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `entry_note_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) unsigned NOT NULL,
@@ -399,9 +397,8 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
   `total_cost` double(50,6) unsigned NOT NULL,
   `location_id` int(11) NOT NULL COMMENT 'Local de destino, para onde o produto vai quando a nota for concluída',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -410,11 +407,9 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+`id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `groups`
@@ -432,7 +427,7 @@ INSERT INTO `groups` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
   `location_destiny_id` int(11) NOT NULL,
   `status_internal_transfer_id` int(11) NOT NULL DEFAULT '1',
@@ -440,9 +435,8 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
   `time` time NOT NULL,
   `observation` text COLLATE utf8_swedish_ci,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -451,14 +445,13 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `internal_transfer_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` double(50,3) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -467,14 +460,12 @@ CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `location_type_id` int(11) NOT NULL DEFAULT '1',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=102 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `locations`
@@ -494,13 +485,11 @@ INSERT INTO `locations` (`id`, `name`, `location_type_id`, `created`, `modified`
 --
 
 CREATE TABLE IF NOT EXISTS `location_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `location_types`
@@ -517,24 +506,11 @@ INSERT INTO `location_types` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `manual_adjustments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `location_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=7 ;
-
---
--- Extraindo dados da tabela `manual_adjustments`
---
-
-INSERT INTO `manual_adjustments` (`id`, `location_id`, `created`, `modified`) VALUES
-(1, 100, '2017-01-20 13:53:56', '2017-01-20 13:53:56'),
-(2, 100, '2017-01-20 13:54:37', '2017-01-20 13:54:37'),
-(3, 100, '2017-01-20 13:55:02', '2017-01-20 13:55:02'),
-(4, 100, '2017-01-20 13:55:26', '2017-01-20 13:55:26'),
-(5, 100, '2017-01-20 13:56:00', '2017-01-20 13:56:00'),
-(6, 100, '2017-01-20 13:56:18', '2017-01-20 13:56:18');
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -543,7 +519,7 @@ INSERT INTO `manual_adjustments` (`id`, `location_id`, `created`, `modified`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` float(10,2) unsigned NOT NULL,
@@ -555,54 +531,36 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `observation` text,
   `kitchen_order` int(10) unsigned NOT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `table_id`, `bill_id`, `status_order_id`, `payment_id`, `observation`, `kitchen_order`, `created`, `modified`) VALUES
-(39, 1, 43, 1.00, 2, 5, 6, 2, 8, '', 0, '2016-11-13 18:18:32', '2016-11-13 18:21:14'),
-(40, 1, 20, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(41, 1, 22, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(42, 1, 2, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(43, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(44, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(45, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(46, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(47, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(48, 1, 61, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(49, 1, 90, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
-(50, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(51, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(52, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(53, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(54, 1, 30, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(55, 1, 32, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(56, 1, 12, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(57, 1, 12, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(58, 1, 51, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(59, 1, 52, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(60, 1, 52, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(61, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(62, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
-(63, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(64, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(65, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(66, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(67, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(68, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(69, 1, 80, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(70, 1, 120, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(71, 1, 120, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
-(72, 1, 120, 1.00, 5, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:19:25'),
-(73, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:20'),
-(74, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:17'),
-(75, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:14'),
-(76, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:06'),
-(77, 1, 102, 1.00, 5, 3, 9, 2, NULL, '', 0, '2017-01-20 12:02:47', '2017-01-20 12:37:29');
+(1, 2, 40, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:53', '2017-01-23 13:06:53'),
+(2, 2, 40, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(3, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(4, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(5, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(6, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(7, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(8, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(9, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(10, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(11, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(12, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(13, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(14, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(15, 2, 20, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(16, 2, 21, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(17, 2, 21, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(18, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
+(19, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
+(20, 2, 23, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
+(21, 2, 23, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
+(22, 2, 23, 1.00, 5, 1, 1, 2, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:07:55');
 
 -- --------------------------------------------------------
 
@@ -611,28 +569,15 @@ INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `ta
 --
 
 CREATE TABLE IF NOT EXISTS `payments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
   `bill_id` int(11) DEFAULT NULL,
   `subtotal` double(50,2) DEFAULT NULL,
   `payd_value` double(50,2) DEFAULT NULL,
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=14 ;
-
---
--- Extraindo dados da tabela `payments`
---
-
-INSERT INTO `payments` (`id`, `table_id`, `bill_id`, `subtotal`, `payd_value`, `payback`, `created`, `modified`) VALUES
-(8, 5, 6, 4.00, 10.00, 6.00, '2016-11-13 18:21:14', '2016-11-13 18:21:14'),
-(9, 5, 6, 0.00, 120.00, 0.00, '2016-12-08 22:44:22', '2016-12-08 22:44:22'),
-(10, 8, 7, 0.00, 100.00, 0.00, '2016-12-21 19:21:12', '2016-12-21 19:21:12'),
-(11, 8, 7, 0.00, 87.00, 0.00, '2016-12-21 19:21:29', '2016-12-21 19:21:29'),
-(12, 1, 8, 0.00, 0.00, 0.00, '2017-01-20 12:37:15', '2017-01-20 12:37:15'),
-(13, 3, 9, 0.00, 0.00, 0.00, '2017-01-20 12:37:42', '2017-01-20 12:37:42');
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -641,7 +586,7 @@ INSERT INTO `payments` (`id`, `table_id`, `bill_id`, `subtotal`, `payd_value`, `
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `subcategory_id` int(11) NOT NULL,
   `unit_id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
@@ -653,108 +598,71 @@ CREATE TABLE IF NOT EXISTS `products` (
   `minimum_stock` double(50,3) unsigned NOT NULL DEFAULT '0.000',
   `description` text,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=167 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `products`
 --
 
 INSERT INTO `products` (`id`, `subcategory_id`, `unit_id`, `name`, `status`, `cost_price`, `sell_price`, `avaliable_to_order`, `stockable`, `minimum_stock`, `description`, `created`, `modified`) VALUES
-(2, 5, 1, 'Grand Gateou com Magnum', 'Ativo', 12.000, 21.000, 'Sim', 'Sim', 10.000, '', '2016-06-20 09:16:23', '2017-01-20 13:14:50'),
-(3, 5, 1, 'Pudim de Cream Cheese com Cobertura de Goiabada', 'Ativo', 2.300, 6.000, 'Sim', 'Sim', 10.000, '', '2016-06-20 09:18:53', '2017-01-20 13:14:21'),
-(10, 1, 1, 'Grelhado de Carré Suíno', 'Ativo', 6.500, 17.000, 'Sim', 'Sim', 20.000, 'Carré Suíno 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:40:43', '2017-01-20 13:13:04'),
-(11, 1, 1, 'Grelhado de Contrafilé', 'Ativo', 7.380, 18.000, 'Sim', 'Sim', 20.000, 'Chuleta 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:41:32', '2017-01-20 13:12:28'),
-(12, 1, 1, 'Grelhado de Filé de Frango', 'Ativo', 4.900, 16.000, 'Sim', 'Sim', 20.000, 'Frango 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:43:12', '2017-01-20 13:11:45'),
-(13, 1, 1, 'Salada', 'Ativo', 7.000, 15.000, 'Sim', 'Sim', 20.000, 'Alface Americana, Alface Roxa, Tomate Seco, Rúcula, Ricota, Palmito, Champignon, Azeitona Preta, Croutons, Cebola Roxa, Molho de Mostarda e Mel', '2016-06-20 08:46:24', '2017-01-20 13:11:08'),
-(14, 1, 1, 'Queijo Coalho com Mel', 'Ativo', 4.000, 9.000, 'Sim', 'Sim', 20.000, '2 Queijos Coalho Grelhados com Mel', '2016-06-20 08:48:28', '2017-01-20 13:10:24'),
-(20, 3, 1, 'Boi Gordo', 'Ativo', 7.500, 16.500, 'Sim', 'Sim', 20.000, 'Pão, Molho de Ervas, Hambúrguer Bovino 180gr, Queijo Cheddar, Picles, Cebola Roxa, Alface Americana, Bacon.\r\nAcompanha Molho Especial de Abacaxi', '2016-06-20 09:05:49', '2017-01-20 13:09:47'),
-(21, 3, 1, 'Porcão', 'Ativo', 8.150, 15.500, 'Sim', 'Sim', 20.000, 'Pão, Molho Rosé, Hambúrguer Suíno 180gr, Queijo Prato, Picles, Cebola Roxa, Tomate Seco e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:08:26', '2017-01-20 13:09:18'),
-(22, 3, 1, 'Frangoso', 'Ativo', 5.500, 14.500, 'Sim', 'Sim', 20.000, 'Pão, Molho, Hambúrguer de Ave 180gr, Requeijão Cremoso, Picles, Tomate, Cebola Caramelizada, Alface Roxa e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:09:54', '2017-01-20 13:08:47'),
-(23, 3, 1, 'Fit', 'Ativo', 4.900, 13.000, 'Sim', 'Sim', 20.000, 'Pão, Molho Rosé, Queijo Prato, Cebola Caramelizada, Tomate Seco, Alface Americana e Rúcula.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:11:11', '2017-01-20 13:07:45'),
-(30, 2, 1, 'Isca de Filé de Frango', 'Ativo', 7.550, 20.000, 'Sim', 'Sim', 20.000, '400gr de Filé de Frango Empanado, Molho Picante e Molho da Casa', '2016-06-20 08:50:00', '2017-01-20 13:07:00'),
-(31, 2, 1, 'Frios', 'Ativo', 9.000, 22.000, 'Sim', 'Sim', 20.000, 'Salaminho, Muçarela, Azeitona Verde, Palmito, Queijo Prato e Azeite', '2016-06-20 08:51:01', '2017-01-20 13:03:59'),
-(32, 2, 1, 'Almondega ao Molho Sugo', 'Ativo', 12.950, 22.000, 'Sim', 'Sim', 20.000, 'Almondega 500gr, Molho ao Sugo, Mandioca Cozida', '2016-06-20 08:52:06', '2017-01-20 13:02:17'),
-(33, 2, 1, 'Almondega Tradicional', 'Ativo', 10.950, 22.000, 'Sim', 'Sim', 20.000, 'Almondega 500gr, Requeijão Cremoso e Mandioca Cozida', '2016-06-20 08:53:00', '2017-01-20 13:01:52'),
-(34, 2, 1, 'Costelinha Suína com Barbecue', 'Ativo', 10.950, 24.000, 'Sim', 'Sim', 20.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:53:56', '2017-01-20 13:00:41'),
-(35, 2, 1, 'Costelinha Suína Tradicional', 'Ativo', 9.950, 22.000, 'Sim', 'Sim', 20.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:54:53', '2017-01-20 13:00:12'),
-(37, 2, 1, 'Batata com Cheddar e Bacon', 'Ativo', 10.200, 22.000, 'Sim', 'Sim', 20.000, 'Batata Palito 600gr, Cheddar, Bacon e Molho da Casa', '2016-06-20 09:02:43', '2017-01-20 12:57:06'),
-(40, 4, 1, 'Arroz', 'Ativo', 0.850, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:13:50', '2017-01-20 12:55:29'),
-(41, 4, 1, 'Salada Simples', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:14:14', '2017-01-20 12:54:52'),
-(42, 4, 1, 'Mandioca Cozida', 'Ativo', 0.620, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:14:40', '2017-01-20 12:53:58'),
-(43, 4, 1, 'Batata Frita 150gr', 'Ativo', 1.050, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:15:34', '2017-01-20 12:54:23'),
-(51, 6, 3, 'Sol Mexicana - Long Neck', 'Ativo', 3.290, 6.000, 'Sim', 'Sim', 50.000, '', '2016-06-20 09:22:55', '2017-01-20 12:52:37'),
-(52, 6, 3, 'Heinekein - Long Neck', 'Ativo', 3.330, 6.000, 'Sim', 'Sim', 50.000, '', '2016-06-20 09:23:56', '2017-01-20 12:52:16'),
-(53, 6, 3, 'Budwaiser - Long Neck', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:16', '2017-01-20 12:51:38'),
-(54, 6, 3, 'Caracu ', 'Ativo', 3.500, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:55', '2017-01-20 12:51:18'),
-(55, 6, 5, 'Brahma Zero', 'Ativo', 3.500, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:25:29', '2017-01-20 12:50:45'),
-(60, 7, 1, 'Red Label', 'Ativo', 3.250, 8.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:28:25', '2017-01-20 12:49:05'),
-(61, 7, 1, 'Jack Daniel''s', 'Ativo', 4.950, 15.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:31:00', '2017-01-20 12:48:30'),
-(62, 7, 1, 'Old Parr', 'Ativo', 6.000, 13.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:31:58', '2017-01-20 12:47:40'),
-(70, 7, 1, 'Absolut', 'Ativo', 4.900, 10.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:32:24', '2017-01-20 12:39:34'),
-(71, 7, 1, 'Smirnoff', 'Ativo', 1.750, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:32:42', '2017-01-19 21:12:35'),
-(78, 7, 1, 'Tequila José Cuervo', 'Ativo', 5.000, 10.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:33:01', '2017-01-19 21:11:57'),
-(79, 7, 1, 'Cachaça', 'Ativo', 0.500, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:33:22', '2017-01-19 21:10:40'),
-(80, 8, 5, 'Coca Cola', 'Ativo', 1.910, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:34:43', '2017-01-19 21:09:37'),
-(81, 8, 5, 'Coca Cola Zero', 'Ativo', 1.990, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:35:33', '2017-01-19 20:33:41'),
-(82, 8, 5, 'Guaraná Antarctica', 'Ativo', 1.990, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:19', '2017-01-19 20:26:29'),
-(84, 8, 5, 'Fanta Laranja', 'Ativo', 1.990, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:53', '2017-01-19 20:26:07'),
-(85, 8, 5, 'Soda Limonada', 'Ativo', 1.990, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:52:16', '2017-01-19 20:25:39'),
-(90, 9, 5, 'Red Bull', 'Ativo', 6.200, 12.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 09:53:15', '2017-01-19 19:58:04'),
-(91, 9, 5, 'Extra Power', 'Ativo', 3.650, 8.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 10:00:05', '2017-01-19 19:57:48'),
-(98, 10, 3, 'Água Sem Gás 500ml', 'Ativo', 0.650, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:10', '2017-01-19 19:57:28'),
-(99, 10, 3, 'Água Com Gás 500ml', 'Ativo', 0.850, 2.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:33', '2017-01-19 19:57:14'),
-(100, 11, 3, 'Concha y Toro', 'Ativo', 22.000, 38.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:09', '2016-12-21 18:39:01'),
-(101, 11, 3, 'Santa Helena', 'Ativo', 23.000, 37.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:42', '2016-12-08 22:52:32'),
-(102, 11, 3, 'Concha y Toro Sauvignon', 'Ativo', 22.000, 39.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:03:26', '2016-12-08 22:52:02'),
-(103, 11, 19, 'Quinta do Morgado', 'Ativo', 2.450, 6.000, 'Sim', 'Sim', 4.000, '', '2016-06-20 10:04:13', '2017-01-19 19:56:15'),
-(120, 12, 1, 'Suco de Laranja', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:48:33'),
-(121, 12, 1, 'Suco de Acerola', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:48:17'),
-(122, 12, 1, 'Suco de Maracujá', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:57'),
-(123, 12, 1, 'Suco de Limão', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:40'),
-(125, 12, 1, 'Laranja com Acerola', 'Ativo', 3.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:23'),
-(126, 12, 1, 'Suco de Uva', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:04'),
-(127, 12, 1, 'Suco de Abacaxi', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:50'),
-(128, 12, 1, 'Abacaxi com Hortelã', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:27'),
-(129, 12, 1, 'Suco de Morango', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:11'),
-(130, 12, 1, 'suco de Laranja com Morango', 'Ativo', 3.000, 7.000, 'Sim', 'Não', 0.000, '', '2016-12-08 22:50:12', '2016-12-08 22:50:12'),
-(131, 1, 18, 'Grelhado de Pirarucu', 'Ativo', 13.000, 23.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:16:15', '2017-01-20 13:16:15'),
-(132, 1, 18, 'Salada Moda da Casa', 'Ativo', 8.000, 15.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:16:58', '2017-01-20 13:16:58'),
-(133, 2, 17, 'Isca de Tilápia', 'Ativo', 12.500, 33.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:18:37', '2017-01-20 13:18:37'),
-(134, 2, 17, 'Carne na Chapa', 'Ativo', 24.800, 42.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:20:37', '2017-01-20 13:20:37'),
-(135, 4, 17, 'Batata temperada', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:21:29', '2017-01-20 13:21:29'),
-(136, 4, 17, 'molho da casa', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:02', '2017-01-20 13:22:02'),
-(137, 4, 17, 'Molho Picante', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:29', '2017-01-20 13:22:29'),
-(138, 4, 17, 'Molho Mostarda e Mel', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:59', '2017-01-20 13:22:59'),
-(139, 4, 17, 'Molho de Ervas', 'Ativo', 1.500, 1.500, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:23:24', '2017-01-20 13:23:24'),
-(140, 4, 17, 'Molho Barbecue', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:23:55', '2017-01-20 13:23:55'),
-(141, 4, 17, 'Geleia de Pimenta', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:24:27', '2017-01-20 13:24:27'),
-(142, 4, 17, 'Adicional de Queijo', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:25:04', '2017-01-20 13:25:04'),
-(143, 4, 17, 'Adicional de Bacon', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:25:30', '2017-01-20 13:25:30'),
-(144, 4, 17, 'Adicional de Hamburguer', 'Ativo', 3.200, 7.000, 'Sim', 'Sim', 40.000, '', '2017-01-20 13:26:32', '2017-01-20 13:26:32'),
-(145, 4, 13, 'Gelo', 'Ativo', 1.000, 2.500, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:26:55', '2017-01-20 13:26:55'),
-(146, 10, 3, 'H2O Limoneto', 'Ativo', 3.100, 5.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:27:37', '2017-01-20 13:27:37'),
-(147, 10, 3, 'H2O Limão', 'Ativo', 3.200, 5.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:28:01', '2017-01-20 13:28:01'),
-(148, 6, 3, 'Eisenbahn ', 'Ativo', 3.500, 8.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:29:08', '2017-01-20 13:29:08'),
-(149, 6, 3, 'Colorado Appia', 'Ativo', 16.900, 24.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:29:56', '2017-01-20 13:29:56'),
-(150, 6, 3, 'Weihenstephan Vitus', 'Ativo', 19.900, 28.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:31:23', '2017-01-20 13:31:23'),
-(151, 6, 3, 'Duvel', 'Ativo', 17.200, 28.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:32:01', '2017-01-20 13:32:01'),
-(152, 6, 3, 'Paulaner ', 'Ativo', 19.900, 28.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:32:33', '2017-01-20 13:32:33'),
-(153, 6, 3, 'Baden Baden Cristal', 'Ativo', 12.900, 21.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:33:11', '2017-01-20 13:33:11'),
-(154, 11, 3, 'Lambrusco Cella', 'Ativo', 19.000, 35.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:33:56', '2017-01-20 13:33:56'),
-(155, 11, 3, 'Periquita Original', 'Ativo', 32.000, 65.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:35:07', '2017-01-20 13:35:07'),
-(156, 11, 3, 'Casa Valduga', 'Ativo', 38.000, 73.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:35:41', '2017-01-20 13:35:41'),
-(157, 11, 3, 'Porto Vaoldouro', 'Ativo', 47.000, 84.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:36:19', '2017-01-20 13:36:19'),
-(158, 7, 19, 'Absolut Vanilia', 'Ativo', 4.900, 12.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:40:28', '2017-01-20 13:40:28'),
-(159, 7, 8, 'Black Label', 'Ativo', 4.900, 12.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:41:11', '2017-01-20 13:41:11'),
-(160, 7, 8, 'Pinga de Mutamba', 'Ativo', 1.250, 5.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:42:06', '2017-01-20 13:42:06'),
-(161, 7, 8, 'Bananinha', 'Ativo', 2.600, 6.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:42:56', '2017-01-20 13:42:56'),
-(162, 7, 8, 'Licor 43', 'Ativo', 4.450, 10.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:43:31', '2017-01-20 13:43:31'),
-(163, 8, 5, 'Schweppes', 'Ativo', 2.650, 4.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:44:31', '2017-01-20 13:44:31'),
-(164, 5, 17, 'Pastelzinho de Nutela', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:46:16', '2017-01-20 13:46:16'),
-(165, 5, 17, 'Coquetel de Churros', 'Ativo', 5.000, 18.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:46:55', '2017-01-20 13:46:55'),
-(166, 5, 17, 'Mousse de Maracujá', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:47:28', '2017-01-20 13:47:28');
+(2, 5, 1, 'Grand Gateou com Magnum', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:16:23', '2016-06-20 09:16:23'),
+(3, 5, 1, 'Pudim de Cream Cheese com Cobertura de Goiabada', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:18:53', '2016-06-20 09:20:13'),
+(10, 1, 1, 'Grelhado de Carré Suíno', 'Ativo', 13.000, 13.000, 'Sim', 'Não', 0.000, 'Carré Suíno 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:40:43', '2016-06-20 08:40:43'),
+(11, 1, 1, 'Grelhado de Chuleta', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, 'Chuleta 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:41:32', '2016-06-20 08:41:32'),
+(12, 1, 1, 'Grelhado de Filé de Frango', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, 'Frango 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:43:12', '2016-06-20 08:43:12'),
+(13, 1, 1, 'Salada', 'Ativo', 12.000, 12.000, 'Sim', 'Não', 0.000, 'Alface Americana, Alface Roxa, Tomate Seco, Rúcula, Ricota, Palmito, Champignon, Azeitona Preta, Croutons, Cebola Roxa, Molho de Mostarda e Mel', '2016-06-20 08:46:24', '2016-06-20 08:46:24'),
+(14, 1, 1, 'Queijo Coalho com Mel', 'Ativo', 8.000, 8.000, 'Sim', 'Não', 0.000, '2 Queijos Coalho Grelhados com Mel', '2016-06-20 08:48:28', '2016-06-20 08:48:28'),
+(20, 3, 1, 'Boi Gordo', 'Ativo', 14.000, 14.000, 'Sim', 'Não', 0.000, 'Pão, Molho de Ervas, Hambúrguer Bovino 180gr, Queijo Cheddar, Picles, Cebola Roxa, Alface Americana, Bacon.\r\nAcompanha Molho Especial de Abacaxi', '2016-06-20 09:05:49', '2016-06-20 09:05:49'),
+(21, 3, 1, 'Porcão', 'Ativo', 14.000, 14.000, 'Sim', 'Não', 0.000, 'Pão, Molho Rosé, Hambúrguer Suíno 180gr, Queijo Prato, Picles, Cebola Roxa, Tomate Seco e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:08:26', '2016-06-20 09:08:26'),
+(22, 3, 1, 'Frangoso', 'Ativo', 12.000, 12.000, 'Sim', 'Não', 0.000, 'Pão, Molho, Hambúrguer de Ave 180gr, Requeijão Cremoso, Picles, Tomate, Cebola Caramelizada, Alface Roxa e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:09:54', '2016-06-20 09:09:54'),
+(23, 3, 1, 'Fit', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, 'Pão, Molho Rosé, Queijo Prato, Cebola Caramelizada, Tomate Seco, Alface Americana e Rúcula.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:11:11', '2016-06-20 09:11:11'),
+(30, 2, 1, 'Isca de Filé de Frango', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, '400gr de Filé de Frango Empanado, Molho Picante e Molho da Casa', '2016-06-20 08:50:00', '2016-06-20 08:50:00'),
+(31, 2, 1, 'Frios', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, 'Salaminho, Muçarela, Azeitona Verde, Palmito, Queijo Prato e Azeite', '2016-06-20 08:51:01', '2016-06-20 08:51:01'),
+(32, 2, 1, 'Almondega ao Molho Sugo', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, 'Almondega 500gr, Molho ao Sugo, Mandioca Cozida', '2016-06-20 08:52:06', '2016-06-20 08:52:06'),
+(33, 2, 1, 'Almondega Tradicional', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Almondega 500gr, Requeijão Cremoso e Mandioca Cozida', '2016-06-20 08:53:00', '2016-06-20 08:53:00'),
+(34, 2, 1, 'Costelinha Suína com Barbecue', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:53:56', '2016-06-20 08:53:56'),
+(35, 2, 1, 'Costelinha Suína Tradicional', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:54:53', '2016-06-20 08:54:53'),
+(37, 2, 1, 'Batata com Cheddar e Bacon', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Batata Palito 600gr, Cheddar, Bacon e Molho da Casa', '2016-06-20 09:02:43', '2016-06-20 09:02:43'),
+(38, 2, 1, 'Ninho de Cobra', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, 'Linguiça Suína Apimentada 500gr, Ovo de Codorna, Batata Palha e Molho da Casa', '2016-06-20 09:04:08', '2016-06-20 09:04:08'),
+(40, 4, 1, 'Arroz', 'Ativo', 2.750, 2.750, 'Sim', 'Não', 0.000, '', '2016-06-20 09:13:50', '2016-11-07 13:23:26'),
+(41, 4, 1, 'Salada Simples', 'Ativo', 2.600, 2.600, 'Sim', 'Não', 0.000, '', '2016-06-20 09:14:14', '2016-11-07 13:22:45'),
+(42, 4, 1, 'Mandioca Cozida', 'Ativo', 2.500, 2.500, 'Sim', 'Não', 0.000, '', '2016-06-20 09:14:40', '2016-06-20 09:14:40'),
+(43, 4, 1, 'Batata Frita 150gr', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:15:34', '2016-06-20 09:15:34'),
+(51, 6, 3, 'Sol Mexicana - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:22:55', '2016-06-20 09:28:54'),
+(52, 6, 3, 'Heinekein - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:23:56', '2016-06-20 09:29:13'),
+(53, 6, 3, 'Budwaiser - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:16', '2016-06-20 09:29:25'),
+(54, 6, 5, 'Caracu - Lata', 'Ativo', 4.000, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:55', '2016-06-20 09:29:40'),
+(55, 6, 5, 'Cerveja Zero - Lata', 'Ativo', 4.000, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:25:29', '2016-06-20 09:29:52'),
+(60, 7, 1, 'Red Label', 'Ativo', 8.000, 8.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:28:25', '2016-06-20 09:28:25'),
+(61, 7, 1, 'Jack Daniel''s', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:31:00', '2016-06-20 09:31:00'),
+(62, 7, 1, 'Old Parr', 'Ativo', 13.000, 13.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:31:58', '2016-06-20 09:31:58'),
+(70, 7, 1, 'Absolut', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:32:24', '2016-06-20 09:32:24'),
+(71, 7, 1, 'Smirnoff', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:32:42', '2016-06-20 09:32:42'),
+(78, 7, 1, 'Tequila José Cuervo', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:33:01', '2016-06-20 09:33:01'),
+(79, 7, 1, 'Cachaça', 'Ativo', 2.000, 2.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:33:22', '2016-06-20 09:33:22'),
+(80, 8, 5, 'Coca Cola', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:34:43', '2016-06-20 09:35:56'),
+(81, 8, 5, 'Coca Cola Zero', 'Ativo', 3.500, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:35:33', '2016-06-20 09:35:33'),
+(82, 8, 5, 'Guaraná Antarctica', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:19', '2016-06-20 09:51:19'),
+(84, 8, 5, 'Fanta Laranja', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:53', '2016-06-20 09:51:53'),
+(85, 8, 5, 'Soda Limonada', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:52:16', '2016-06-20 09:52:16'),
+(90, 9, 5, 'Red Bull', 'Ativo', 12.000, 12.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 09:53:15', '2016-06-20 09:53:15'),
+(91, 9, 5, 'Extra Power', 'Ativo', 8.000, 8.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 10:00:05', '2016-06-20 10:00:05'),
+(98, 10, 3, 'Água Sem Gás 500ml', 'Ativo', 2.000, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:10', '2016-06-20 10:01:10'),
+(99, 10, 5, 'Água Com Gás 500ml', 'Ativo', 2.500, 2.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:33', '2016-06-20 10:01:33'),
+(100, 11, 3, 'Concha y Toro', 'Ativo', 38.000, 38.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:09', '2016-06-20 10:02:09'),
+(101, 11, 3, 'Santa Helena', 'Ativo', 37.000, 37.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:42', '2016-06-20 10:02:42'),
+(102, 11, 3, 'Concha y Toro Sauvignon', 'Ativo', 39.000, 39.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:03:26', '2016-06-20 10:03:26'),
+(103, 11, 19, 'Quinta do Morgado', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:04:13', '2016-06-20 10:04:13'),
+(120, 12, 1, 'Suco de Laranja', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(121, 12, 1, 'Suco de Acerola', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(122, 12, 1, 'Suco de Maracujá', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(123, 12, 1, 'Suco de Limão', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(125, 12, 1, 'Laranja com Acerola', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(126, 12, 1, 'Suco de Uva', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(127, 12, 1, 'Suco de Abacaxi', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(128, 12, 1, 'Abacaxi com Hortelã', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
+(129, 12, 1, 'Suco de Morango', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08');
 
 -- --------------------------------------------------------
 
@@ -763,12 +671,11 @@ INSERT INTO `products` (`id`, `subcategory_id`, `unit_id`, `name`, `status`, `co
 --
 
 CREATE TABLE IF NOT EXISTS `product_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
+  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -777,17 +684,15 @@ CREATE TABLE IF NOT EXISTS `product_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `stages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Ativo',
   `show_on_kitchen` enum('Sim','Não') DEFAULT 'Sim',
   `consider_as` enum('Concluídos','Pendentes') DEFAULT 'Pendentes' COMMENT 'Diferenciação para montagem da Fila de Pedidos (Pedidos Pendentes e Pedidos Concluídos)',
   `label_class` varchar(55) DEFAULT 'label-primary',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `stages`
@@ -807,14 +712,12 @@ INSERT INTO `stages` (`id`, `name`, `status`, `show_on_kitchen`, `consider_as`, 
 --
 
 CREATE TABLE IF NOT EXISTS `status_bills` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `status_bills`
@@ -831,14 +734,12 @@ INSERT INTO `status_bills` (`id`, `name`, `finish`, `created`, `modified`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `status_entry_notes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `status_entry_notes`
@@ -855,14 +756,12 @@ INSERT INTO `status_entry_notes` (`id`, `name`, `finish`, `created`, `modified`)
 --
 
 CREATE TABLE IF NOT EXISTS `status_internal_transfers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `finish` enum('Sim','Não') COLLATE utf8_swedish_ci DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `status_internal_transfers`
@@ -879,14 +778,12 @@ INSERT INTO `status_internal_transfers` (`id`, `name`, `finish`, `created`, `mod
 --
 
 CREATE TABLE IF NOT EXISTS `status_orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `status_orders`
@@ -903,7 +800,7 @@ INSERT INTO `status_orders` (`id`, `name`, `finish`, `created`, `modified`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `stocks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) NOT NULL,
@@ -914,57 +811,8 @@ CREATE TABLE IF NOT EXISTS `stocks` (
   `manual_adjustment_id` int(11) DEFAULT NULL,
   `finished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
-
---
--- Extraindo dados da tabela `stocks`
---
-
-INSERT INTO `stocks` (`id`, `location_id`, `product_id`, `quantity`, `value`, `entry_note_item_id`, `internal_transfer_item_id`, `order_id`, `manual_adjustment_id`, `finished`, `created`, `modified`) VALUES
-(1, 2, 52, 1.000, NULL, NULL, NULL, 43, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(2, 100, 52, -1.000, NULL, NULL, NULL, 43, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(3, 2, 52, 1.000, NULL, NULL, NULL, 44, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(4, 100, 52, -1.000, NULL, NULL, NULL, 44, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(5, 2, 52, 1.000, NULL, NULL, NULL, 45, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(6, 100, 52, -1.000, NULL, NULL, NULL, 45, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(7, 2, 52, 1.000, NULL, NULL, NULL, 46, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(8, 100, 52, -1.000, NULL, NULL, NULL, 46, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(9, 2, 52, 1.000, NULL, NULL, NULL, 47, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(10, 100, 52, -1.000, NULL, NULL, NULL, 47, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(11, 2, 90, 1.000, NULL, NULL, NULL, 49, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(12, 100, 90, -1.000, NULL, NULL, NULL, 49, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
-(13, 2, 51, 1.000, NULL, NULL, NULL, 58, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(14, 100, 51, -1.000, NULL, NULL, NULL, 58, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(15, 2, 52, 1.000, NULL, NULL, NULL, 59, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(16, 100, 52, -1.000, NULL, NULL, NULL, 59, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(17, 2, 52, 1.000, NULL, NULL, NULL, 60, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(18, 100, 52, -1.000, NULL, NULL, NULL, 60, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(19, 2, 53, 1.000, NULL, NULL, NULL, 61, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(20, 100, 53, -1.000, NULL, NULL, NULL, 61, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(21, 2, 53, 1.000, NULL, NULL, NULL, 62, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(22, 100, 53, -1.000, NULL, NULL, NULL, 62, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(23, 2, 53, 1.000, NULL, NULL, NULL, 63, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(24, 100, 53, -1.000, NULL, NULL, NULL, 63, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(25, 2, 53, 1.000, NULL, NULL, NULL, 64, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(26, 100, 53, -1.000, NULL, NULL, NULL, 64, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(27, 2, 53, 1.000, NULL, NULL, NULL, 65, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(28, 100, 53, -1.000, NULL, NULL, NULL, 65, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(29, 2, 53, 1.000, NULL, NULL, NULL, 66, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(30, 100, 53, -1.000, NULL, NULL, NULL, 66, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(31, 2, 53, 1.000, NULL, NULL, NULL, 67, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(32, 100, 53, -1.000, NULL, NULL, NULL, 67, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(33, 2, 53, 1.000, NULL, NULL, NULL, 68, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(34, 100, 53, -1.000, NULL, NULL, NULL, 68, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(35, 2, 80, 1.000, NULL, NULL, NULL, 69, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(36, 100, 80, -1.000, NULL, NULL, NULL, 69, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
-(39, 100, 51, 45.000, NULL, NULL, NULL, NULL, 1, '2017-01-20 13:53:56', '2017-01-20 13:53:56', '2017-01-20 13:53:56'),
-(40, 100, 52, 57.000, NULL, NULL, NULL, NULL, 2, '2017-01-20 13:54:37', '2017-01-20 13:54:37', '2017-01-20 13:54:37'),
-(41, 100, 53, 296.000, NULL, NULL, NULL, NULL, 3, '2017-01-20 13:55:02', '2017-01-20 13:55:02', '2017-01-20 13:55:02'),
-(42, 100, 52, 2.000, NULL, NULL, NULL, NULL, 4, '2017-01-20 13:55:26', '2017-01-20 13:55:26', '2017-01-20 13:55:26'),
-(43, 100, 80, 18.000, NULL, NULL, NULL, NULL, 5, '2017-01-20 13:56:00', '2017-01-20 13:56:00', '2017-01-20 13:56:00'),
-(44, 100, 90, 11.000, NULL, NULL, NULL, NULL, 6, '2017-01-20 13:56:18', '2017-01-20 13:56:18', '2017-01-20 13:56:18');
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -973,15 +821,13 @@ INSERT INTO `stocks` (`id`, `location_id`, `product_id`, `quantity`, `value`, `e
 --
 
 CREATE TABLE IF NOT EXISTS `subcategories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `name` varchar(55) NOT NULL,
   `stage_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `subcategories`
@@ -1008,17 +854,15 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `stage_id`, `created`,
 --
 
 CREATE TABLE IF NOT EXISTS `suppliers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `company_name` varchar(45) NOT NULL,
   `contact_name` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `fax` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `suppliers`
@@ -1034,14 +878,12 @@ INSERT INTO `suppliers` (`id`, `company_name`, `contact_name`, `phone`, `fax`, `
 --
 
 CREATE TABLE IF NOT EXISTS `tables` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `balcony` enum('Sim','Não') NOT NULL DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tables`
@@ -1062,22 +904,7 @@ INSERT INTO `tables` (`id`, `name`, `balcony`, `created`, `modified`) VALUES
 (12, '12', 'Não', '2015-12-11 00:23:09', '2015-12-11 00:23:09'),
 (13, '13', 'Não', '2015-12-11 00:23:12', '2015-12-11 00:23:12'),
 (14, '14', 'Não', '2015-12-11 00:23:15', '2015-12-11 00:23:15'),
-(15, '15', 'Não', '2015-12-11 00:23:18', '2015-12-11 00:23:18'),
-(16, '16', '', '2017-01-20 13:48:01', '2017-01-20 13:48:01'),
-(17, '17', '', '2017-01-20 13:48:10', '2017-01-20 13:48:10'),
-(18, '18', '', '2017-01-20 13:48:17', '2017-01-20 13:48:17'),
-(19, '19', '', '2017-01-20 13:48:24', '2017-01-20 13:48:24'),
-(24, '20', '', '2017-01-20 13:49:52', '2017-01-20 13:49:52'),
-(25, '21', '', '2017-01-20 13:50:01', '2017-01-20 13:50:01'),
-(26, '22', '', '2017-01-20 13:50:36', '2017-01-20 13:50:36'),
-(27, '23', '', '2017-01-20 13:50:44', '2017-01-20 13:50:44'),
-(28, '24', '', '2017-01-20 13:50:56', '2017-01-20 13:50:56'),
-(29, '25', '', '2017-01-20 13:51:01', '2017-01-20 13:51:01'),
-(30, '26', '', '2017-01-20 13:51:05', '2017-01-20 13:51:05'),
-(31, '27', '', '2017-01-20 13:51:10', '2017-01-20 13:51:10'),
-(32, '28', '', '2017-01-20 13:51:16', '2017-01-20 13:51:16'),
-(33, '29', '', '2017-01-20 13:51:21', '2017-01-20 13:51:21'),
-(34, '30', '', '2017-01-20 13:51:27', '2017-01-20 13:51:27');
+(15, '15', 'Não', '2015-12-11 00:23:18', '2015-12-11 00:23:18');
 
 -- --------------------------------------------------------
 
@@ -1086,15 +913,12 @@ INSERT INTO `tables` (`id`, `name`, `balcony`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `units` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `initials` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`),
-  UNIQUE KEY `initials_UNIQUE` (`initials`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `units`
@@ -1129,25 +953,351 @@ INSERT INTO `units` (`id`, `name`, `initials`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Inativo',
   `name` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `modified` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `group_id`, `status`, `name`, `email`, `password`, `created`, `modified`) VALUES
-(1, 1, 'Ativo', 'Gustavo César de Melo', 'delfino.cesar@gmail.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2016-02-09 14:36:03', '2016-05-21 15:33:12');
+(1, 1, 'Ativo', 'Gustavo César de Melo', 'delfino.cesar@gmail.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2016-02-09 14:36:03', '2016-05-21 15:33:12'),
+(2, 3, 'Ativo', 'Garçom 1', 'gustavo.cesar123@outlook.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2017-01-23 11:30:49', '2017-01-23 11:30:49');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `acos`
+--
+ALTER TABLE `acos`
+ ADD PRIMARY KEY (`id`), ADD KEY `idx_acos_lft_rght` (`lft`,`rght`), ADD KEY `idx_acos_alias` (`alias`);
+
+--
+-- Indexes for table `aros`
+--
+ALTER TABLE `aros`
+ ADD PRIMARY KEY (`id`), ADD KEY `idx_aros_lft_rght` (`lft`,`rght`), ADD KEY `idx_aros_alias` (`alias`);
+
+--
+-- Indexes for table `aros_acos`
+--
+ALTER TABLE `aros_acos`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`), ADD KEY `idx_aco_id` (`aco_id`);
+
+--
+-- Indexes for table `bills`
+--
+ALTER TABLE `bills`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cashiers`
+--
+ALTER TABLE `cashiers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `entry_notes`
+--
+ALTER TABLE `entry_notes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `entry_note_items`
+--
+ALTER TABLE `entry_note_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `internal_transfers`
+--
+ALTER TABLE `internal_transfers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `internal_transfer_items`
+--
+ALTER TABLE `internal_transfer_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `location_types`
+--
+ALTER TABLE `location_types`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `manual_adjustments`
+--
+ALTER TABLE `manual_adjustments`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_items`
+--
+ALTER TABLE `product_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stages`
+--
+ALTER TABLE `stages`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `status_bills`
+--
+ALTER TABLE `status_bills`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `status_entry_notes`
+--
+ALTER TABLE `status_entry_notes`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `status_internal_transfers`
+--
+ALTER TABLE `status_internal_transfers`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `status_orders`
+--
+ALTER TABLE `status_orders`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `stocks`
+--
+ALTER TABLE `stocks`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subcategories`
+--
+ALTER TABLE `subcategories`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
+
+--
+-- Indexes for table `tables`
+--
+ALTER TABLE `tables`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`), ADD UNIQUE KEY `initials_UNIQUE` (`initials`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `acos`
+--
+ALTER TABLE `acos`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=542;
+--
+-- AUTO_INCREMENT for table `aros`
+--
+ALTER TABLE `aros`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `aros_acos`
+--
+ALTER TABLE `aros_acos`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `bills`
+--
+ALTER TABLE `bills`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `cashiers`
+--
+ALTER TABLE `cashiers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `entry_notes`
+--
+ALTER TABLE `entry_notes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `entry_note_items`
+--
+ALTER TABLE `entry_note_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `internal_transfers`
+--
+ALTER TABLE `internal_transfers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `internal_transfer_items`
+--
+ALTER TABLE `internal_transfer_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
+--
+-- AUTO_INCREMENT for table `location_types`
+--
+ALTER TABLE `location_types`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `manual_adjustments`
+--
+ALTER TABLE `manual_adjustments`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=130;
+--
+-- AUTO_INCREMENT for table `product_items`
+--
+ALTER TABLE `product_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `stages`
+--
+ALTER TABLE `stages`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `status_bills`
+--
+ALTER TABLE `status_bills`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `status_entry_notes`
+--
+ALTER TABLE `status_entry_notes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `status_internal_transfers`
+--
+ALTER TABLE `status_internal_transfers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `status_orders`
+--
+ALTER TABLE `status_orders`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `stocks`
+--
+ALTER TABLE `stocks`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `subcategories`
+--
+ALTER TABLE `subcategories`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tables`
+--
+ALTER TABLE `tables`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

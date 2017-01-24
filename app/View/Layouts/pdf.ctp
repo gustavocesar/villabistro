@@ -47,3 +47,12 @@
     <body class="pace-done">
     <?= $this->fetch('content'); ?>
     </body>
+
+    <script type="text/javascript">
+        function printPage() {
+            window.print();
+            return false;
+        }
+    </script>
+
+</html>

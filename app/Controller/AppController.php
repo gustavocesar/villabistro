@@ -78,6 +78,7 @@ class AppController extends Controller {
         $this->set('activeKitchen', '');
         $this->set('activeConfigurations', '');
         $this->set('activeCharts', '');
+        $this->set('activeReports', '');
 
         //Configure AuthComponent
         $this->Auth->loginAction = [
@@ -96,8 +97,6 @@ class AppController extends Controller {
         $this->Auth->allow('initDB');
 
         $this->Auth->allow('modal');
-
-        pr($this->Session->read('Permissions.orders.cancel'));
 
 //        $this->Security->unlockedActions = ['index'];
 //        $this->Auth->allow();
