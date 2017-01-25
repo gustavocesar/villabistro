@@ -1,3 +1,13 @@
+<div class="page-content">
+<h3>
+    <i class="fa fa-hand-peace-o " aria-hidden="true"></i>
+    &nbsp;
+    Em Desenvolvimento
+    &nbsp;
+    <i class="fa fa-hand-peace-o " aria-hidden="true"></i>
+</h3>
+</div>
+<!--
 <table class="table">
     <caption>
         <a href="#" class="btn" onclick="javascript:window.top.close();" title="Fechar Esta Aba">
@@ -56,4 +66,4 @@
         </tr>
     </tbody>
 </table>
-
+-->

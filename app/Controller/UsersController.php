@@ -74,10 +74,10 @@ class UsersController extends AppController {
          * 3 - Atendimento
          */
         $group->id = 3;
-        $this->Acl->deny($group, 'controllers');
+//        $this->Acl->deny($group, 'controllers');
         $this->Acl->allow($group, 'controllers');
         
-        $this->Acl->deny($group, 'controllers/orders/cancel');
+//        $this->Acl->deny($group, 'controllers/orders/cancel');
 
 //        $this->Acl->allow($group, 'controllers/bills');
 //        $this->Acl->allow($group, 'controllers/pages/home');

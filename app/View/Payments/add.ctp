@@ -89,42 +89,23 @@ echo $this->Form->create('Payment', [
             ?>
         </div>
 
+        <label class="control-label" for="payment_method_id"><?php echo __("Payment Method");?></label>
         <div class="radio">
-            <!--<label class="control-label" for="payment_method_id"><?php echo __("Payment Method");?></label>-->
             <?php
-            /*
-              $this->Form->input('payment_method_id', ['class'=>'form-control', 'div'=>false, 'label'=>['class'=>'control-label']])
-             */
-            foreach ($paymentMethods as $paymentMethod) {
-                ?>
+            $i = 0;
+            foreach ($paymentMethods as $paymentMethodId => $paymentMethod) {
+                  $checked = $i == 0 ? "checked" : "";
+//                ?>
+                    <label>
+                        <input name="data[Payment][payment_method_id]" value="<?php echo $paymentMethodId; ?>" <?php echo $checked;?> type="radio">
+                        <?php echo $paymentMethod; ?>
+                    </label>
+                    <br />
                 <?php
-                echo $this->Form->input('payment_method_id', ['class' => 'form-control', 'div' => false, 'label' => false]);
-                ?>
-                <?php
+                $i++;
             }
             ?>
         </div>
-
-        <!--
-        <div class="radio">
-            <label>
-                <input name="optionsRadios" id="optionsRadios1" value="option1" checked="" type="radio">
-                Option one is this and that&mdash;be sure to include why it's great
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input name="optionsRadios" id="optionsRadios2" value="option2" type="radio">
-                Option two can be something else and selecting it will deselect option one
-            </label>
-        </div>
-        <div class="radio disabled">
-            <label>
-                <input name="optionsRadios" id="optionsRadios3" value="option3" disabled="" type="radio">
-                Option three is disabled
-            </label>
-        </div>
-        -->
 
         <div class="modal-footer">
             <?php echo $this->Form->button(__('Close'), ['id=' => 'btnCloseModal', 'type' => 'button', 'class' => 'btn btn-default', 'data-dismiss' => 'modal']); ?>
