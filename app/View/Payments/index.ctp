@@ -4,7 +4,7 @@
         <p>
             <?php
             echo $this->Html->link(
-                    '&nbsp;<span class="fa fa-plus"></span>&nbsp' . __('Add'). '&nbsp;', ['action' => 'add'], ['class' => 'btn btn-primary btn-block', 'escape' => false]
+                    '<span class="fa fa-plus"></span>&nbsp' . __('Add'), ['action' => 'add'], ['class' => 'btn btn-primary btn-block', 'escape' => false]
             )
             ?>
         </p>
@@ -26,9 +26,13 @@
                                 <th>&nbsp;</th>
                                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                                 <th><?php echo $this->Paginator->sort('table_id'); ?></th>
+                                <th><?php echo $this->Paginator->sort('bill_id'); ?></th>
+                                <th><?php echo $this->Paginator->sort('payment_method_id'); ?></th>
                                 <th><?php echo $this->Paginator->sort('subtotal'); ?></th>
                                 <th><?php echo $this->Paginator->sort('payd_value'); ?></th>
                                 <th><?php echo $this->Paginator->sort('payback'); ?></th>
+                                <th><?php echo $this->Paginator->sort('created'); ?></th>
+                                <th><?php echo $this->Paginator->sort('modified'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,9 +77,17 @@
                                     <td>
                                         <?php echo $this->Html->link($payment['Table']['name'], array('controller' => 'tables', 'action' => 'view', $payment['Table']['id'])); ?>
                                     </td>
+                                    <td>
+                                        <?php echo $this->Html->link($payment['Bill']['id'], array('controller' => 'bills', 'action' => 'view', $payment['Bill']['id'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $this->Html->link($payment['PaymentMethod']['name'], array('controller' => 'payment_methods', 'action' => 'view', $payment['PaymentMethod']['id'])); ?>
+                                    </td>
                                     <td><?php echo h($payment['Payment']['subtotal']); ?></td>
                                     <td><?php echo h($payment['Payment']['payd_value']); ?></td>
                                     <td><?php echo h($payment['Payment']['payback']); ?></td>
+                                    <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($payment['Payment']['created']))); ?></td>
+                                    <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($payment['Payment']['modified']))); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

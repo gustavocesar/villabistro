@@ -409,6 +409,39 @@ msgstr "Pagamentos Relacionados"
 
 
 
+msgid  "PaymentMethod"
+msgstr "Forma de Pagamento"
+
+msgid  "Payment Method"
+msgstr "Forma de Pagamento"
+
+msgid  "PaymentMethods"
+msgstr "Formas de Pagamento"
+
+msgid  "Invalid payment method"
+msgstr "Forma de Pagamento não encontrada"
+
+msgid  "The payment method has been saved."
+msgstr "Forma de Pagamento gravada com sucesso"
+
+msgid  "The payment method could not be saved. Please, try again."
+msgstr "A Forma de Pagamento não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The payment method has been deleted."
+msgstr "Forma de Pagamento excluída com sucesso"
+
+msgid  "The payment method could not be deleted. Please, try again."
+msgstr "A Forma de Pagamento não pôde ser excluída. Por favor, tente novamente"
+
+msgid  "Payment Method Id"
+msgstr "Forma de Pagamento"
+
+msgid  "Status Payment Method"
+msgstr "Situação"
+
+
+
+
 msgid  "Order"
 msgstr "Pedido"
 
@@ -612,6 +645,30 @@ msgid  "The status bill has been deleted."
 msgstr "Situação excluída com sucesso"
 
 msgid  "The status bill could not be deleted. Please, try again."
+msgstr "A Situação não pôde ser excluída. Por favor, tente novamente"
+
+
+
+
+msgid  "StatusPaymentMethods"
+msgstr "Situação de Forma de Pagamento"
+
+msgid  "Status Payment Methods"
+msgstr "Situação"
+
+msgid  "Invalid status payment method"
+msgstr "Situação não encontrada"
+
+msgid  "The status payment method has been saved."
+msgstr "Situação gravada com sucesso"
+
+msgid  "The status payment method could not be saved. Please, try again."
+msgstr "A Situação não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The status payment method has been deleted."
+msgstr "Situação excluída com sucesso"
+
+msgid  "The status payment method could not be deleted. Please, try again."
 msgstr "A Situação não pôde ser excluída. Por favor, tente novamente"
 
 

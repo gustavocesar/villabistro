@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Jan-2017 às 17:06
+-- Generation Time: 25-Jan-2017 às 16:57
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `acos` (
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=542 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=554 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 414),
+(1, NULL, NULL, NULL, 'controllers', 1, 438),
 (2, 1, NULL, NULL, 'Bills', 2, 17),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -247,7 +247,19 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (538, 1, NULL, NULL, 'Reports', 408, 413),
 (539, 538, NULL, NULL, 'index', 409, 410),
 (540, 124, NULL, NULL, 'loadPermissions', 311, 312),
-(541, 538, NULL, NULL, 'sales_period', 411, 412);
+(541, 538, NULL, NULL, 'sales_period', 411, 412),
+(542, 1, NULL, NULL, 'PaymentMethods', 414, 425),
+(543, 542, NULL, NULL, 'index', 415, 416),
+(544, 542, NULL, NULL, 'view', 417, 418),
+(545, 542, NULL, NULL, 'add', 419, 420),
+(546, 542, NULL, NULL, 'edit', 421, 422),
+(547, 542, NULL, NULL, 'delete', 423, 424),
+(548, 1, NULL, NULL, 'StatusPaymentMethods', 426, 437),
+(549, 548, NULL, NULL, 'index', 427, 428),
+(550, 548, NULL, NULL, 'view', 429, 430),
+(551, 548, NULL, NULL, 'add', 431, 432),
+(552, 548, NULL, NULL, 'edit', 433, 434),
+(553, 548, NULL, NULL, 'delete', 435, 436);
 
 -- --------------------------------------------------------
 
@@ -559,7 +571,7 @@ INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `ta
 (18, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
 (19, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
 (20, 2, 23, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
-(21, 2, 23, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
+(21, 2, 23, 1.00, 2, 1, 1, 2, 1, '', 0, '2017-01-23 13:06:55', '2017-01-25 13:24:48'),
 (22, 2, 23, 1.00, 5, 1, 1, 2, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:07:55');
 
 -- --------------------------------------------------------
@@ -572,12 +584,45 @@ CREATE TABLE IF NOT EXISTS `payments` (
 `id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
   `bill_id` int(11) DEFAULT NULL,
+  `payment_method_id` int(11) NOT NULL DEFAULT '1',
   `subtotal` double(50,2) DEFAULT NULL,
   `payd_value` double(50,2) DEFAULT NULL,
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Extraindo dados da tabela `payments`
+--
+
+INSERT INTO `payments` (`id`, `table_id`, `bill_id`, `payment_method_id`, `subtotal`, `payd_value`, `payback`, `created`, `modified`) VALUES
+(1, 1, 1, 1, 10.00, 22.22, 12.22, '2017-01-25 13:24:48', '2017-01-25 13:24:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `payment_methods`
+--
+
+CREATE TABLE IF NOT EXISTS `payment_methods` (
+`id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status_payment_method_id` int(11) NOT NULL,
+  `sequence` int(11) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `payment_methods`
+--
+
+INSERT INTO `payment_methods` (`id`, `name`, `status_payment_method_id`, `sequence`, `created`, `modified`) VALUES
+(1, 'Dinheiro', 1, 1, '2017-01-25 13:35:36', '2017-01-25 13:36:20'),
+(2, 'Cartão de Débito', 1, 2, '2017-01-25 13:36:34', '2017-01-25 13:36:34'),
+(3, 'Cartão de Crédito', 1, 3, '2017-01-25 13:36:45', '2017-01-25 13:36:45'),
+(4, 'Cheque', 1, 4, '2017-01-25 13:37:34', '2017-01-25 13:37:34');
 
 -- --------------------------------------------------------
 
@@ -792,6 +837,27 @@ CREATE TABLE IF NOT EXISTS `status_orders` (
 INSERT INTO `status_orders` (`id`, `name`, `finish`, `created`, `modified`) VALUES
 (1, 'Pendente', 'Não', '2015-12-11 00:48:59', '2015-12-11 00:48:59'),
 (2, 'Quitado', 'Sim', '2015-12-11 00:49:14', '2016-04-19 08:31:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `status_payment_methods`
+--
+
+CREATE TABLE IF NOT EXISTS `status_payment_methods` (
+`id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `status_payment_methods`
+--
+
+INSERT INTO `status_payment_methods` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'Ativo', '2017-01-25 13:29:33', '2017-01-25 13:29:33'),
+(2, 'Inativo', '2017-01-25 13:29:38', '2017-01-25 13:29:38');
 
 -- --------------------------------------------------------
 
@@ -1072,6 +1138,12 @@ ALTER TABLE `payments`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -1112,6 +1184,12 @@ ALTER TABLE `status_internal_transfers`
 --
 ALTER TABLE `status_orders`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
+
+--
+-- Indexes for table `status_payment_methods`
+--
+ALTER TABLE `status_payment_methods`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `stocks`
@@ -1157,7 +1235,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `acos`
 --
 ALTER TABLE `acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=542;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=554;
 --
 -- AUTO_INCREMENT for table `aros`
 --
@@ -1232,7 +1310,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `products`
 --
@@ -1269,6 +1352,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `status_orders`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `status_payment_methods`
+--
+ALTER TABLE `status_payment_methods`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
@@ -1301,3 +1389,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--ALTER TABLE `payments` ADD `payment_method_id` INT NOT NULL DEFAULT '1' AFTER `bill_id`;

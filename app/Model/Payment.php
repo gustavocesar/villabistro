@@ -8,6 +8,7 @@ App::uses('AppModel', 'Model');
  * @property Table $Table
  * @property Bill $Bill
  * @property Order $Order
+ * @property PaymentMethod $PaymentMethod
  */
 class Payment extends AppModel {
 
@@ -85,9 +86,27 @@ class Payment extends AppModel {
 
         $this->recursive = -1;
         return $this->find('all', [
-            'conditions' => $conditions,
+                    'conditions' => $conditions,
         ]);
     }
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
+        'payment_method_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+    );
 
     // The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -107,6 +126,13 @@ class Payment extends AppModel {
         'Bill' => array(
             'className' => 'Bill',
             'foreignKey' => 'bill_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'PaymentMethod' => array(
+            'className' => 'PaymentMethod',
+            'foreignKey' => 'payment_method_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''

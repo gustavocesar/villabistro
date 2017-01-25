@@ -116,6 +116,7 @@ class PaymentsController extends AppController {
             $this->set('stringOrders', $stringOrders);
 
             $this->set('orders', $orders);
+            $this->set('paymentMethods', $this->Payment->PaymentMethod->find('list'));
         }
     }
 

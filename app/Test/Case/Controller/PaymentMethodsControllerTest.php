@@ -1,10 +1,10 @@
 <?php
-App::uses('PaymentsController', 'Controller');
+App::uses('PaymentMethodsController', 'Controller');
 
 /**
- * PaymentsController Test Case
+ * PaymentMethodsController Test Case
  */
-class PaymentsControllerTest extends ControllerTestCase {
+class PaymentMethodsControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -12,6 +12,8 @@ class PaymentsControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'app.payment_method',
+		'app.status_payment_method',
 		'app.payment',
 		'app.table',
 		'app.bill',
@@ -36,9 +38,7 @@ class PaymentsControllerTest extends ControllerTestCase {
 		'app.status_internal_transfer',
 		'app.manual_adjustment',
 		'app.product_item',
-		'app.status_order',
-		'app.payment_method',
-		'app.status_payment_method'
+		'app.status_order'
 	);
 
 /**

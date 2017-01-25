@@ -20,6 +20,22 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="col-lg-3"><?php echo __('Bill'); ?></td>
+                            <td class="col-lg-9">
+                                <span class="label label-sm label-success custom-label-link">
+                                    <?php echo $this->Html->link($payment['Bill']['id'], array('controller' => 'bills', 'action' => 'view', $payment['Bill']['id'])); ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-lg-3"><?php echo __('Payment Method'); ?></td>
+                            <td class="col-lg-9">
+                                <span class="label label-sm label-success custom-label-link">
+                                    <?php echo $this->Html->link($payment['PaymentMethod']['name'], array('controller' => 'payment_methods', 'action' => 'view', $payment['PaymentMethod']['id'])); ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="col-lg-3"><?php echo __('Subtotal'); ?></td>
                             <td class="col-lg-9">
                                 <?php echo h($payment['Payment']['subtotal']); ?>
@@ -108,9 +124,9 @@
                                 </tr>
                             <?php endforeach; ?>
                         </table>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
 
+                </div>
             </div>
         </div>
     </div>

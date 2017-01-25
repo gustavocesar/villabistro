@@ -1,15 +1,12 @@
 <div class="panel panel-blue" style="background:#fff;">
     <div class="panel-heading">
-        <?php echo '<i class="fa fa-pencil"></i>&nbsp;' . __('Edit'); ?>
+        <?php echo '<i class="fa fa-plus"></i>&nbsp;' . __('Add'); ?>
     </div>
     <div class="panel-body pan">
         <?php echo $this->Form->create('Payment', ['inputDefaults'=>['error'=>['attributes'=>['class'=>'alert alert-danger custom-required']]]]); ?>
         <div class="form-body pal">
 
             	
-		<div class="form-group">
-		<?php echo $this->Form->input('id', ['class'=>'form-control', 'div'=>false, 'label'=>['class'=>'control-label']]); ?>
-		</div>
 		<div class="form-group">
 		<?php echo $this->Form->input('table_id', ['class'=>'form-control', 'div'=>false, 'label'=>['class'=>'control-label']]); ?>
 		</div>
