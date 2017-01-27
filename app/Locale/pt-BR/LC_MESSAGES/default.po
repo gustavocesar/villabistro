@@ -418,6 +418,9 @@ msgstr "Forma de Pagamento"
 msgid  "PaymentMethods"
 msgstr "Formas de Pagamento"
 
+msgid  "Related Payment Methods"
+msgstr "Formas de Pagamento Ralacionadas"
+
 msgid  "Invalid payment method"
 msgstr "Forma de Pagamento não encontrada"
 
@@ -437,6 +440,9 @@ msgid  "Payment Method Id"
 msgstr "Forma de Pagamento"
 
 msgid  "Status Payment Method"
+msgstr "Situação"
+
+msgid  "Status Payment Method Id"
 msgstr "Situação"
 
 

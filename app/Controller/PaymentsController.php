@@ -116,7 +116,14 @@ class PaymentsController extends AppController {
             $this->set('stringOrders', $stringOrders);
 
             $this->set('orders', $orders);
-            $this->set('paymentMethods', $this->Payment->PaymentMethod->find('list'));
+            $this->set('paymentMethods', $this->Payment->PaymentMethod->find('list', [
+                'conditions' => [
+                    "{$this->Payment->PaymentMethod->alias}.status_payment_method_id" => 1
+                ],
+                'order' => [
+                    "{$this->Payment->PaymentMethod->alias}.sequence" => "ASC"
+                ]
+            ]));
         }
     }
 

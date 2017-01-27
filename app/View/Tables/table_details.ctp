@@ -149,19 +149,17 @@
                                 <tr class="<?= $classTr ?>">
                                     <td class="text-center">
                                         <?php
-                                        if ($this->Session->read('Permissions.orders.cancel')) {
-                                            echo $this->Form->postLink(
-                                                    '<i class="fa fa-times"></i>', [
-                                                'controller' => 'orders',
-                                                'action' => 'cancel',
-                                                $order['id']
-                                                    ], [
-                                                'escape' => false,
-                                                'title' => __('Cancel'),
-                                                'confirm' => __('Are you sure you want to cancel the order # %s?', $order['id'])
-                                                    ]
-                                            );
-                                        }
+                                        echo $this->Form->postLink(
+                                                '<i class="fa fa-times"></i>', [
+                                            'controller' => 'orders',
+                                            'action' => 'cancel',
+                                            $order['id']
+                                                ], [
+                                            'escape' => false,
+                                            'title' => __('Cancel'),
+                                            'confirm' => __('Are you sure you want to cancel the order # %s?', $order['id'])
+                                                ]
+                                        );
                                         ?>
                                     </td>
 
