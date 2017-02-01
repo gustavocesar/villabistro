@@ -1,13 +1,3 @@
-<div class="page-content">
-<h3>
-    <i class="fa fa-hand-peace-o " aria-hidden="true"></i>
-    &nbsp;
-    Em Desenvolvimento
-    &nbsp;
-    <i class="fa fa-hand-peace-o " aria-hidden="true"></i>
-</h3>
-</div>
-<!--
 <table class="table">
     <caption>
         <a href="#" class="btn" onclick="javascript:window.top.close();" title="Fechar Esta Aba">
@@ -23,7 +13,7 @@
             <strong>Início:</strong>
         </td>
         <td class="text-left no-border">
-            <strong>01/01/1987</strong>
+            <strong><?php echo $startDate;?></strong>
         </td>
     </tr>
     <tr>
@@ -31,7 +21,7 @@
             <strong>Fim:</strong>
         </td>
         <td class="text-left no-border">
-            <strong>01/01/1987</strong>
+            <strong><?php echo $finishDate;?></strong>
         </td>
     </tr>
 </table>
@@ -39,31 +29,30 @@
 <table class="table">
     <thead>
         <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th><?php echo __("Payment Method");?></th>
+            <th class="text-right"><?php echo __("Total");?></th>
         </tr>
     </thead>
     <tbody>
+        <?php
+        $total = 0;
+
+        foreach ($payments as $payment) {
+            $paymentMethod = $payment['PaymentMethod']['name'];
+            $sum = $payment[0];
+            
+            $total += $sum['Total'];
+            ?>
+            <tr>
+                <td><?php echo h($paymentMethod);?></td>
+                <td class="text-right"><?php echo h($this->MyFormat->format_show($sum['Total'], 2));?></td>
+            </tr>
+            <?php
+        }
+        ?>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td class="text-center"><strong><?php echo h("Total Geral");?></strong></td>
+            <td class="text-right"><?php echo h($this->MyFormat->format_show($total, 2));?></td>
         </tr>
     </tbody>
 </table>
--->
