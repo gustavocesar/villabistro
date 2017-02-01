@@ -49,6 +49,42 @@ class Product extends AppModel {
         
         return true;
     }
+
+    /**
+     * Depois de Salvar
+     * @param bool $created
+     * @param array $options
+     */
+    public function afterSave($created, $options = array()) {
+        parent::afterSave($created, $options);
+
+        $this->insertEmptyStock();
+    }
+
+    public function insertEmptyStock() {
+
+        $this->Stock->recursive = 0;
+        $count = $this->Stock->find('count', [
+            'conditions' => [
+                "{$this->Stock->alias}.product_id" => $this->id
+            ]
+        ]);
+
+//        if ($count <= 0) {
+//            $arrData = [];
+//            $arrData[$this->Stock->alias]['location_id']           = $locationId;
+//            $arrData[$this->Stock->alias]['entry_note_item_id']    = $entryNoteItem['id'];
+//            $arrData[$this->Stock->alias]['product_id']            = $entryNoteItem['product_id'];
+//            $arrData[$this->Stock->alias]['quantity']              = $entryNoteItem['quantity'] * $coefficient;
+//            $arrData[$this->Stock->alias]['value']                 = $entryNoteItem['total_cost'] * $coefficient;
+//            $arrData[$this->Stock->alias]['finished']              = $finishDate;
+//            $arrData[$this->Stock->alias]['order_id']              = null;
+//            $arrData[$this->Stock->alias]['internal_transfer_item_id']  = null;
+//
+//            $this->Stock->create();
+//            $this->Stock->save($arrData);
+//        }
+    }
     
     /**
      * Depois do Find

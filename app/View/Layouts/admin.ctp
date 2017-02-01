@@ -128,3 +128,7 @@
     <?= $this->element('google-analytics'); ?>
 
 </html>
+
+<?php
+//echo $this->element('sql_dump');
+?>
