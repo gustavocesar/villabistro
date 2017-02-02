@@ -1,13 +1,14 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 25-Jan-2017 às 16:57
--- Versão do servidor: 5.6.21
--- PHP Version: 5.6.3
+-- Servidor: localhost
+-- Tempo de Geração: 02/02/2017 às 16:00:05
+-- Versão do Servidor: 10.0.28-MariaDB
+-- Versão do PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `villabistro`
+-- Banco de Dados: `u267690752_bistr`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `acos` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=554 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_acos_lft_rght` (`lft`,`rght`),
+  KEY `idx_acos_alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=554 ;
 
 --
 -- Extraindo dados da tabela `acos`
@@ -268,14 +272,17 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_aros_lft_rght` (`lft`,`rght`),
+  KEY `idx_aros_alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `aros`
@@ -293,14 +300,17 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros_acos` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `aro_id` int(10) NOT NULL,
   `aco_id` int(10) NOT NULL,
   `_create` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_read` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_update` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
-  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`),
+  KEY `idx_aco_id` (`aco_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=17 ;
 
 --
 -- Extraindo dados da tabela `aros_acos`
@@ -331,20 +341,30 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 --
 
 CREATE TABLE IF NOT EXISTS `bills` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `status_bill_id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
   `identifier` varchar(45) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Extraindo dados da tabela `bills`
 --
 
 INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`, `modified`) VALUES
-(1, 1, 1, 'I', '2017-01-23 13:06:53', '2017-01-23 13:06:53');
+(6, 2, 5, 'I', '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(7, 2, 8, 'I', '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(8, 2, 1, 'I', '2016-12-21 19:22:37', '2017-01-20 12:37:15'),
+(9, 2, 3, 'I', '2017-01-20 12:02:47', '2017-01-20 12:37:42'),
+(10, 1, 3, 'I', '2017-01-27 19:28:10', '2017-02-01 00:02:30'),
+(11, 1, 14, 'I', '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(12, 1, 12, 'I', '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(13, 1, 13, 'I', '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(14, 1, 1, 'I', '2017-01-31 23:51:46', '2017-01-31 23:51:46'),
+(15, 2, 2, 'I', '2017-01-31 23:58:32', '2017-02-01 00:01:47');
 
 -- --------------------------------------------------------
 
@@ -353,8 +373,9 @@ INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`
 --
 
 CREATE TABLE IF NOT EXISTS `cashiers` (
-`id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -363,11 +384,13 @@ CREATE TABLE IF NOT EXISTS `cashiers` (
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `categories`
@@ -384,15 +407,16 @@ INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `entry_notes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `supplier_id` int(11) DEFAULT NULL,
   `status_entry_note_id` int(11) NOT NULL DEFAULT '1',
   `fiscal_note` varchar(45) NOT NULL,
   `entry_date` date NOT NULL,
   `entry_hour` time DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -401,7 +425,7 @@ CREATE TABLE IF NOT EXISTS `entry_notes` (
 --
 
 CREATE TABLE IF NOT EXISTS `entry_note_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `entry_note_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) unsigned NOT NULL,
@@ -409,8 +433,9 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
   `total_cost` double(50,6) unsigned NOT NULL,
   `location_id` int(11) NOT NULL COMMENT 'Local de destino, para onde o produto vai quando a nota for concluída',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -419,9 +444,11 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
-`id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `groups`
@@ -439,7 +466,7 @@ INSERT INTO `groups` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
   `location_destiny_id` int(11) NOT NULL,
   `status_internal_transfer_id` int(11) NOT NULL DEFAULT '1',
@@ -447,8 +474,9 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
   `time` time NOT NULL,
   `observation` text COLLATE utf8_swedish_ci,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -457,13 +485,14 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `internal_transfer_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` double(50,3) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -472,12 +501,14 @@ CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `location_type_id` int(11) NOT NULL DEFAULT '1',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=102 ;
 
 --
 -- Extraindo dados da tabela `locations`
@@ -497,11 +528,13 @@ INSERT INTO `locations` (`id`, `name`, `location_type_id`, `created`, `modified`
 --
 
 CREATE TABLE IF NOT EXISTS `location_types` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `location_types`
@@ -518,11 +551,24 @@ INSERT INTO `location_types` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `manual_adjustments` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=7 ;
+
+--
+-- Extraindo dados da tabela `manual_adjustments`
+--
+
+INSERT INTO `manual_adjustments` (`id`, `location_id`, `created`, `modified`) VALUES
+(1, 100, '2017-01-20 13:53:56', '2017-01-20 13:53:56'),
+(2, 100, '2017-01-20 13:54:37', '2017-01-20 13:54:37'),
+(3, 100, '2017-01-20 13:55:02', '2017-01-20 13:55:02'),
+(4, 100, '2017-01-20 13:55:26', '2017-01-20 13:55:26'),
+(5, 100, '2017-01-20 13:56:00', '2017-01-20 13:56:00'),
+(6, 100, '2017-01-20 13:56:18', '2017-01-20 13:56:18');
 
 -- --------------------------------------------------------
 
@@ -531,7 +577,7 @@ CREATE TABLE IF NOT EXISTS `manual_adjustments` (
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` float(10,2) unsigned NOT NULL,
@@ -543,36 +589,77 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `observation` text,
   `kitchen_order` int(10) unsigned NOT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
 
 --
 -- Extraindo dados da tabela `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `table_id`, `bill_id`, `status_order_id`, `payment_id`, `observation`, `kitchen_order`, `created`, `modified`) VALUES
-(1, 2, 40, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:53', '2017-01-23 13:06:53'),
-(2, 2, 40, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(3, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(4, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(5, 2, 41, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(6, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(7, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(8, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(9, 2, 42, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(10, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(11, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(12, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(13, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(14, 2, 43, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(15, 2, 20, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(16, 2, 21, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(17, 2, 21, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(18, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:54', '2017-01-23 13:06:54'),
-(19, 2, 22, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
-(20, 2, 23, 1.00, 2, 1, 1, 1, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:06:55'),
-(21, 2, 23, 1.00, 2, 1, 1, 2, 1, '', 0, '2017-01-23 13:06:55', '2017-01-25 13:24:48'),
-(22, 2, 23, 1.00, 5, 1, 1, 2, NULL, '', 0, '2017-01-23 13:06:55', '2017-01-23 13:07:55');
+(39, 1, 43, 1.00, 2, 5, 6, 2, 8, '', 0, '2016-11-13 18:18:32', '2016-11-13 18:21:14'),
+(40, 1, 20, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(41, 1, 22, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(42, 1, 2, 1.00, 2, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(43, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(44, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(45, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(46, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(47, 1, 52, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(48, 1, 61, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(49, 1, 90, 1.00, 4, 5, 6, 2, NULL, '', 0, '2016-11-13 18:18:32', '2016-12-08 22:44:22'),
+(50, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(51, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(52, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(53, 1, 20, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(54, 1, 30, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(55, 1, 32, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(56, 1, 12, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(57, 1, 12, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(58, 1, 51, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(59, 1, 52, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(60, 1, 52, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(61, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(62, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:29'),
+(63, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(64, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(65, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(66, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(67, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(68, 1, 53, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(69, 1, 80, 1.00, 4, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(70, 1, 120, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(71, 1, 120, 1.00, 2, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:21:30'),
+(72, 1, 120, 1.00, 5, 8, 7, 2, NULL, '', 0, '2016-12-08 22:57:29', '2016-12-21 19:19:25'),
+(73, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:20'),
+(74, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:17'),
+(75, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:14'),
+(76, 1, 40, 1.00, 5, 1, 8, 2, NULL, '', 0, '2016-12-21 19:22:37', '2017-01-20 12:36:06'),
+(77, 1, 102, 1.00, 5, 3, 9, 2, NULL, '', 0, '2017-01-20 12:02:47', '2017-01-20 12:37:29'),
+(78, 1, 37, 1.00, 2, 3, 10, 1, NULL, '', 0, '2017-01-27 19:28:10', '2017-02-01 00:02:30'),
+(79, 1, 11, 1.00, 2, 3, 10, 1, NULL, '', 0, '2017-01-27 19:28:10', '2017-02-01 00:02:30'),
+(80, 1, 52, 1.00, 4, 3, 10, 1, NULL, '', 0, '2017-01-27 19:28:10', '2017-02-01 00:02:30'),
+(81, 1, 55, 1.00, 4, 3, 10, 1, NULL, '', 0, '2017-01-27 19:28:10', '2017-02-01 00:02:30'),
+(82, 1, 53, 1.00, 4, 14, 11, 1, NULL, '', 0, '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(83, 1, 103, 1.00, 4, 14, 11, 1, NULL, '', 0, '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(84, 1, 11, 1.00, 2, 14, 11, 1, NULL, '', 0, '2017-01-27 19:35:11', '2017-01-27 19:35:11'),
+(85, 1, 35, 1.00, 2, 12, 12, 1, NULL, '', 0, '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(86, 1, 103, 1.00, 4, 12, 12, 1, NULL, '', 0, '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(87, 1, 103, 1.00, 4, 12, 12, 1, NULL, '', 0, '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(88, 1, 52, 1.00, 4, 3, 10, 1, NULL, '', 0, '2017-01-27 19:48:09', '2017-02-01 00:02:30'),
+(89, 1, 20, 1.00, 2, 13, 13, 1, NULL, '', 0, '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(90, 1, 37, 1.00, 2, 13, 13, 1, NULL, '', 0, '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(91, 1, 133, 1.00, 2, 13, 13, 1, NULL, '', 0, '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(92, 1, 53, 1.00, 4, 13, 13, 1, NULL, '', 0, '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(93, 1, 126, 1.00, 2, 13, 13, 1, NULL, '', 0, '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(94, 1, 53, 1.00, 4, 14, 11, 1, NULL, '', 0, '2017-01-27 20:05:29', '2017-01-27 20:05:29'),
+(95, 1, 54, 1.00, 4, 1, 14, 1, NULL, '', 0, '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(96, 1, 54, 1.00, 4, 1, 14, 1, NULL, '', 0, '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(97, 1, 54, 1.00, 4, 1, 14, 1, NULL, '', 0, '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(98, 1, 54, 1.00, 4, 1, 14, 1, NULL, '', 0, '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(99, 1, 53, 1.00, 4, 2, 15, 2, 14, '', 0, '2017-01-31 23:58:32', '2017-02-01 00:01:47'),
+(100, 1, 53, 1.00, 4, 2, 15, 2, 14, '', 0, '2017-01-31 23:58:32', '2017-02-01 00:01:47');
 
 -- --------------------------------------------------------
 
@@ -581,7 +668,7 @@ INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `ta
 --
 
 CREATE TABLE IF NOT EXISTS `payments` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `table_id` int(11) DEFAULT NULL,
   `bill_id` int(11) DEFAULT NULL,
   `payment_method_id` int(11) NOT NULL DEFAULT '1',
@@ -589,15 +676,22 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `payd_value` double(50,2) DEFAULT NULL,
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=15 ;
 
 --
 -- Extraindo dados da tabela `payments`
 --
 
 INSERT INTO `payments` (`id`, `table_id`, `bill_id`, `payment_method_id`, `subtotal`, `payd_value`, `payback`, `created`, `modified`) VALUES
-(1, 1, 1, 1, 10.00, 22.22, 12.22, '2017-01-25 13:24:48', '2017-01-25 13:24:48');
+(8, 5, 6, 1, 4.00, 10.00, 6.00, '2016-11-13 18:21:14', '2016-11-13 18:21:14'),
+(9, 5, 6, 1, 0.00, 120.00, 0.00, '2016-12-08 22:44:22', '2016-12-08 22:44:22'),
+(10, 8, 7, 1, 0.00, 100.00, 0.00, '2016-12-21 19:21:12', '2016-12-21 19:21:12'),
+(11, 8, 7, 1, 0.00, 87.00, 0.00, '2016-12-21 19:21:29', '2016-12-21 19:21:29'),
+(12, 1, 8, 1, 0.00, 0.00, 0.00, '2017-01-20 12:37:15', '2017-01-20 12:37:15'),
+(13, 3, 9, 1, 0.00, 0.00, 0.00, '2017-01-20 12:37:42', '2017-01-20 12:37:42'),
+(14, 2, 15, 4, 12.00, 12.00, 0.00, '2017-02-01 00:01:47', '2017-02-01 00:01:47');
 
 -- --------------------------------------------------------
 
@@ -606,13 +700,13 @@ INSERT INTO `payments` (`id`, `table_id`, `bill_id`, `payment_method_id`, `subto
 --
 
 CREATE TABLE IF NOT EXISTS `payment_methods` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `status_payment_method_id` int(11) NOT NULL,
   `sequence` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `payment_methods`
@@ -631,7 +725,7 @@ INSERT INTO `payment_methods` (`id`, `name`, `status_payment_method_id`, `sequen
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `subcategory_id` int(11) NOT NULL,
   `unit_id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
@@ -643,71 +737,108 @@ CREATE TABLE IF NOT EXISTS `products` (
   `minimum_stock` double(50,3) unsigned NOT NULL DEFAULT '0.000',
   `description` text,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=167 ;
 
 --
 -- Extraindo dados da tabela `products`
 --
 
 INSERT INTO `products` (`id`, `subcategory_id`, `unit_id`, `name`, `status`, `cost_price`, `sell_price`, `avaliable_to_order`, `stockable`, `minimum_stock`, `description`, `created`, `modified`) VALUES
-(2, 5, 1, 'Grand Gateou com Magnum', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:16:23', '2016-06-20 09:16:23'),
-(3, 5, 1, 'Pudim de Cream Cheese com Cobertura de Goiabada', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:18:53', '2016-06-20 09:20:13'),
-(10, 1, 1, 'Grelhado de Carré Suíno', 'Ativo', 13.000, 13.000, 'Sim', 'Não', 0.000, 'Carré Suíno 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:40:43', '2016-06-20 08:40:43'),
-(11, 1, 1, 'Grelhado de Chuleta', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, 'Chuleta 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:41:32', '2016-06-20 08:41:32'),
-(12, 1, 1, 'Grelhado de Filé de Frango', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, 'Frango 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:43:12', '2016-06-20 08:43:12'),
-(13, 1, 1, 'Salada', 'Ativo', 12.000, 12.000, 'Sim', 'Não', 0.000, 'Alface Americana, Alface Roxa, Tomate Seco, Rúcula, Ricota, Palmito, Champignon, Azeitona Preta, Croutons, Cebola Roxa, Molho de Mostarda e Mel', '2016-06-20 08:46:24', '2016-06-20 08:46:24'),
-(14, 1, 1, 'Queijo Coalho com Mel', 'Ativo', 8.000, 8.000, 'Sim', 'Não', 0.000, '2 Queijos Coalho Grelhados com Mel', '2016-06-20 08:48:28', '2016-06-20 08:48:28'),
-(20, 3, 1, 'Boi Gordo', 'Ativo', 14.000, 14.000, 'Sim', 'Não', 0.000, 'Pão, Molho de Ervas, Hambúrguer Bovino 180gr, Queijo Cheddar, Picles, Cebola Roxa, Alface Americana, Bacon.\r\nAcompanha Molho Especial de Abacaxi', '2016-06-20 09:05:49', '2016-06-20 09:05:49'),
-(21, 3, 1, 'Porcão', 'Ativo', 14.000, 14.000, 'Sim', 'Não', 0.000, 'Pão, Molho Rosé, Hambúrguer Suíno 180gr, Queijo Prato, Picles, Cebola Roxa, Tomate Seco e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:08:26', '2016-06-20 09:08:26'),
-(22, 3, 1, 'Frangoso', 'Ativo', 12.000, 12.000, 'Sim', 'Não', 0.000, 'Pão, Molho, Hambúrguer de Ave 180gr, Requeijão Cremoso, Picles, Tomate, Cebola Caramelizada, Alface Roxa e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:09:54', '2016-06-20 09:09:54'),
-(23, 3, 1, 'Fit', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, 'Pão, Molho Rosé, Queijo Prato, Cebola Caramelizada, Tomate Seco, Alface Americana e Rúcula.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:11:11', '2016-06-20 09:11:11'),
-(30, 2, 1, 'Isca de Filé de Frango', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, '400gr de Filé de Frango Empanado, Molho Picante e Molho da Casa', '2016-06-20 08:50:00', '2016-06-20 08:50:00'),
-(31, 2, 1, 'Frios', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, 'Salaminho, Muçarela, Azeitona Verde, Palmito, Queijo Prato e Azeite', '2016-06-20 08:51:01', '2016-06-20 08:51:01'),
-(32, 2, 1, 'Almondega ao Molho Sugo', 'Ativo', 18.000, 18.000, 'Sim', 'Não', 0.000, 'Almondega 500gr, Molho ao Sugo, Mandioca Cozida', '2016-06-20 08:52:06', '2016-06-20 08:52:06'),
-(33, 2, 1, 'Almondega Tradicional', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Almondega 500gr, Requeijão Cremoso e Mandioca Cozida', '2016-06-20 08:53:00', '2016-06-20 08:53:00'),
-(34, 2, 1, 'Costelinha Suína com Barbecue', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:53:56', '2016-06-20 08:53:56'),
-(35, 2, 1, 'Costelinha Suína Tradicional', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:54:53', '2016-06-20 08:54:53'),
-(37, 2, 1, 'Batata com Cheddar e Bacon', 'Ativo', 17.000, 17.000, 'Sim', 'Não', 0.000, 'Batata Palito 600gr, Cheddar, Bacon e Molho da Casa', '2016-06-20 09:02:43', '2016-06-20 09:02:43'),
-(38, 2, 1, 'Ninho de Cobra', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, 'Linguiça Suína Apimentada 500gr, Ovo de Codorna, Batata Palha e Molho da Casa', '2016-06-20 09:04:08', '2016-06-20 09:04:08'),
-(40, 4, 1, 'Arroz', 'Ativo', 2.750, 2.750, 'Sim', 'Não', 0.000, '', '2016-06-20 09:13:50', '2016-11-07 13:23:26'),
-(41, 4, 1, 'Salada Simples', 'Ativo', 2.600, 2.600, 'Sim', 'Não', 0.000, '', '2016-06-20 09:14:14', '2016-11-07 13:22:45'),
-(42, 4, 1, 'Mandioca Cozida', 'Ativo', 2.500, 2.500, 'Sim', 'Não', 0.000, '', '2016-06-20 09:14:40', '2016-06-20 09:14:40'),
-(43, 4, 1, 'Batata Frita 150gr', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:15:34', '2016-06-20 09:15:34'),
-(51, 6, 3, 'Sol Mexicana - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:22:55', '2016-06-20 09:28:54'),
-(52, 6, 3, 'Heinekein - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:23:56', '2016-06-20 09:29:13'),
-(53, 6, 3, 'Budwaiser - Long Neck', 'Ativo', 6.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:16', '2016-06-20 09:29:25'),
-(54, 6, 5, 'Caracu - Lata', 'Ativo', 4.000, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:55', '2016-06-20 09:29:40'),
-(55, 6, 5, 'Cerveja Zero - Lata', 'Ativo', 4.000, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:25:29', '2016-06-20 09:29:52'),
-(60, 7, 1, 'Red Label', 'Ativo', 8.000, 8.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:28:25', '2016-06-20 09:28:25'),
-(61, 7, 1, 'Jack Daniel''s', 'Ativo', 15.000, 15.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:31:00', '2016-06-20 09:31:00'),
-(62, 7, 1, 'Old Parr', 'Ativo', 13.000, 13.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:31:58', '2016-06-20 09:31:58'),
-(70, 7, 1, 'Absolut', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:32:24', '2016-06-20 09:32:24'),
-(71, 7, 1, 'Smirnoff', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:32:42', '2016-06-20 09:32:42'),
-(78, 7, 1, 'Tequila José Cuervo', 'Ativo', 10.000, 10.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:33:01', '2016-06-20 09:33:01'),
-(79, 7, 1, 'Cachaça', 'Ativo', 2.000, 2.000, 'Sim', 'Não', 0.000, '', '2016-06-20 09:33:22', '2016-06-20 09:33:22'),
-(80, 8, 5, 'Coca Cola', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:34:43', '2016-06-20 09:35:56'),
-(81, 8, 5, 'Coca Cola Zero', 'Ativo', 3.500, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:35:33', '2016-06-20 09:35:33'),
-(82, 8, 5, 'Guaraná Antarctica', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:19', '2016-06-20 09:51:19'),
-(84, 8, 5, 'Fanta Laranja', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:53', '2016-06-20 09:51:53'),
-(85, 8, 5, 'Soda Limonada', 'Ativo', 3.000, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:52:16', '2016-06-20 09:52:16'),
-(90, 9, 5, 'Red Bull', 'Ativo', 12.000, 12.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 09:53:15', '2016-06-20 09:53:15'),
-(91, 9, 5, 'Extra Power', 'Ativo', 8.000, 8.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 10:00:05', '2016-06-20 10:00:05'),
-(98, 10, 3, 'Água Sem Gás 500ml', 'Ativo', 2.000, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:10', '2016-06-20 10:01:10'),
-(99, 10, 5, 'Água Com Gás 500ml', 'Ativo', 2.500, 2.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:33', '2016-06-20 10:01:33'),
-(100, 11, 3, 'Concha y Toro', 'Ativo', 38.000, 38.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:09', '2016-06-20 10:02:09'),
-(101, 11, 3, 'Santa Helena', 'Ativo', 37.000, 37.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:42', '2016-06-20 10:02:42'),
-(102, 11, 3, 'Concha y Toro Sauvignon', 'Ativo', 39.000, 39.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:03:26', '2016-06-20 10:03:26'),
-(103, 11, 19, 'Quinta do Morgado', 'Ativo', 6.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:04:13', '2016-06-20 10:04:13'),
-(120, 12, 1, 'Suco de Laranja', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(121, 12, 1, 'Suco de Acerola', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(122, 12, 1, 'Suco de Maracujá', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(123, 12, 1, 'Suco de Limão', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(125, 12, 1, 'Laranja com Acerola', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(126, 12, 1, 'Suco de Uva', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(127, 12, 1, 'Suco de Abacaxi', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(128, 12, 1, 'Abacaxi com Hortelã', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08'),
-(129, 12, 1, 'Suco de Morango', 'Ativo', 4.000, 4.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-06-20 10:05:08');
+(2, 5, 1, 'Grand Gateou com Magnum', 'Ativo', 12.000, 21.000, 'Sim', 'Sim', 10.000, '', '2016-06-20 09:16:23', '2017-02-02 13:57:23'),
+(3, 5, 1, 'Pudim de Cream Cheese com Cobertura de Goiabada', 'Ativo', 2.300, 6.000, 'Sim', 'Sim', 10.000, '', '2016-06-20 09:18:53', '2017-02-02 13:57:22'),
+(10, 1, 1, 'Grelhado de Carré Suíno', 'Ativo', 6.500, 17.000, 'Sim', 'Sim', 20.000, 'Carré Suíno 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:40:43', '2017-01-20 13:13:04'),
+(11, 1, 1, 'Grelhado de Contrafilé', 'Ativo', 7.380, 18.000, 'Sim', 'Sim', 20.000, 'Chuleta 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:41:32', '2017-02-02 13:57:42'),
+(12, 1, 1, 'Grelhado de Filé de Frango', 'Ativo', 4.900, 16.000, 'Sim', 'Sim', 20.000, 'Frango 300gr, Batata Temperada e Molho Picante', '2016-06-20 08:43:12', '2017-02-02 13:57:40'),
+(13, 1, 1, 'Salada', 'Ativo', 7.000, 15.000, 'Sim', 'Sim', 20.000, 'Alface Americana, Alface Roxa, Tomate Seco, Rúcula, Ricota, Palmito, Champignon, Azeitona Preta, Croutons, Cebola Roxa, Molho de Mostarda e Mel', '2016-06-20 08:46:24', '2017-02-02 13:57:39'),
+(14, 1, 1, 'Queijo Coalho com Mel', 'Ativo', 4.000, 9.000, 'Sim', 'Sim', 20.000, '2 Queijos Coalho Grelhados com Mel', '2016-06-20 08:48:28', '2017-02-02 13:57:37'),
+(20, 3, 1, 'Boi Gordo', 'Ativo', 7.500, 16.500, 'Sim', 'Sim', 20.000, 'Pão, Molho de Ervas, Hambúrguer Bovino 180gr, Queijo Cheddar, Picles, Cebola Roxa, Alface Americana, Bacon.\r\nAcompanha Molho Especial de Abacaxi', '2016-06-20 09:05:49', '2017-01-20 13:09:47'),
+(21, 3, 1, 'Porcão', 'Ativo', 8.150, 15.500, 'Sim', 'Sim', 20.000, 'Pão, Molho Rosé, Hambúrguer Suíno 180gr, Queijo Prato, Picles, Cebola Roxa, Tomate Seco e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:08:26', '2017-01-20 13:09:18'),
+(22, 3, 1, 'Frangoso', 'Ativo', 5.500, 14.500, 'Sim', 'Sim', 20.000, 'Pão, Molho, Hambúrguer de Ave 180gr, Requeijão Cremoso, Picles, Tomate, Cebola Caramelizada, Alface Roxa e Bacon.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:09:54', '2017-01-20 13:08:47'),
+(23, 3, 1, 'Fit', 'Ativo', 4.900, 13.000, 'Sim', 'Sim', 20.000, 'Pão, Molho Rosé, Queijo Prato, Cebola Caramelizada, Tomate Seco, Alface Americana e Rúcula.\r\nAcompanha Molho Especial de Abacaxi.', '2016-06-20 09:11:11', '2017-01-20 13:07:45'),
+(30, 2, 1, 'Isca de Filé de Frango', 'Ativo', 7.550, 20.000, 'Sim', 'Sim', 20.000, '400gr de Filé de Frango Empanado, Molho Picante e Molho da Casa', '2016-06-20 08:50:00', '2017-01-20 13:07:00'),
+(31, 2, 1, 'Frios', 'Ativo', 9.000, 22.000, 'Sim', 'Sim', 20.000, 'Salaminho, Muçarela, Azeitona Verde, Palmito, Queijo Prato e Azeite', '2016-06-20 08:51:01', '2017-01-20 13:03:59'),
+(32, 2, 1, 'Almondega ao Molho Sugo', 'Ativo', 12.950, 22.000, 'Sim', 'Sim', 20.000, 'Almondega 500gr, Molho ao Sugo, Mandioca Cozida', '2016-06-20 08:52:06', '2017-01-20 13:02:17'),
+(33, 2, 1, 'Almondega Tradicional', 'Ativo', 10.950, 22.000, 'Sim', 'Sim', 20.000, 'Almondega 500gr, Requeijão Cremoso e Mandioca Cozida', '2016-06-20 08:53:00', '2017-01-20 13:01:52'),
+(34, 2, 1, 'Costelinha Suína com Barbecue', 'Ativo', 10.950, 24.000, 'Sim', 'Sim', 20.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:53:56', '2017-01-20 13:00:41'),
+(35, 2, 1, 'Costelinha Suína Tradicional', 'Ativo', 9.950, 22.000, 'Sim', 'Sim', 20.000, 'Costelinha Suína 500gr, Mandioca Cozida e Molho da Casa', '2016-06-20 08:54:53', '2017-01-20 13:00:12'),
+(37, 2, 1, 'Batata com Cheddar e Bacon', 'Ativo', 10.200, 22.000, 'Sim', 'Sim', 20.000, 'Batata Palito 600gr, Cheddar, Bacon e Molho da Casa', '2016-06-20 09:02:43', '2017-01-20 12:57:06'),
+(40, 4, 1, 'Arroz', 'Ativo', 0.850, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:13:50', '2017-01-20 12:55:29'),
+(41, 4, 1, 'Salada Simples', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:14:14', '2017-01-20 12:54:52'),
+(42, 4, 1, 'Mandioca Cozida', 'Ativo', 0.620, 4.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:14:40', '2017-01-20 12:53:58'),
+(43, 4, 1, 'Batata Frita 150gr', 'Ativo', 1.050, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:15:34', '2017-01-20 12:54:23'),
+(51, 6, 3, 'Sol Mexicana - Long Neck', 'Ativo', 3.290, 6.000, 'Sim', 'Sim', 50.000, '', '2016-06-20 09:22:55', '2017-02-02 13:54:15'),
+(52, 6, 3, 'Heinekein - Long Neck', 'Ativo', 3.330, 6.000, 'Sim', 'Sim', 50.000, '', '2016-06-20 09:23:56', '2017-02-02 13:54:16'),
+(53, 6, 3, 'Budwaiser - Long Neck', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:16', '2017-02-02 13:54:18'),
+(54, 6, 3, 'Caracu ', 'Ativo', 3.500, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:24:55', '2017-02-02 13:54:20'),
+(55, 6, 5, 'Brahma Zero', 'Ativo', 3.500, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:25:29', '2017-02-02 13:54:37'),
+(60, 7, 1, 'Red Label', 'Ativo', 3.250, 8.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:28:25', '2017-02-02 13:55:37'),
+(61, 7, 1, 'Jack Daniel''s', 'Ativo', 4.950, 15.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:31:00', '2017-02-02 13:55:39'),
+(62, 7, 1, 'Old Parr', 'Ativo', 6.000, 13.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:31:58', '2017-02-02 13:55:41'),
+(70, 7, 1, 'Absolut', 'Ativo', 4.900, 10.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:32:24', '2017-02-02 13:55:43'),
+(71, 7, 1, 'Smirnoff', 'Ativo', 1.750, 6.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:32:42', '2017-02-02 13:55:45'),
+(78, 7, 1, 'Tequila José Cuervo', 'Ativo', 5.000, 10.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:33:01', '2017-02-02 13:55:47'),
+(79, 7, 1, 'Cachaça', 'Ativo', 0.500, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:33:22', '2017-02-02 13:55:50'),
+(80, 8, 5, 'Coca Cola', 'Ativo', 1.910, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:34:43', '2017-02-02 13:57:36'),
+(81, 8, 5, 'Coca Cola Zero', 'Ativo', 1.990, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:35:33', '2017-02-02 13:57:35'),
+(82, 8, 5, 'Guaraná Antarctica', 'Ativo', 1.990, 3.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:19', '2017-02-02 13:57:33'),
+(84, 8, 5, 'Fanta Laranja', 'Ativo', 1.990, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:51:53', '2017-02-02 13:57:32'),
+(85, 8, 5, 'Soda Limonada', 'Ativo', 1.990, 3.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 09:52:16', '2017-02-02 13:57:30'),
+(90, 9, 5, 'Red Bull', 'Ativo', 6.200, 12.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 09:53:15', '2017-02-02 13:55:54'),
+(91, 9, 5, 'Extra Power', 'Ativo', 3.650, 8.000, 'Sim', 'Sim', 15.000, '', '2016-06-20 10:00:05', '2017-02-02 13:55:56'),
+(98, 10, 3, 'Água Sem Gás 500ml', 'Ativo', 0.650, 2.000, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:10', '2017-02-02 13:53:24'),
+(99, 10, 3, 'Água Com Gás 500ml', 'Ativo', 0.850, 2.500, 'Sim', 'Sim', 20.000, '', '2016-06-20 10:01:33', '2017-02-02 13:54:04'),
+(100, 11, 3, 'Concha y Toro', 'Ativo', 22.000, 38.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:09', '2017-02-02 13:57:21'),
+(101, 11, 3, 'Santa Helena', 'Ativo', 23.000, 37.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:02:42', '2017-02-02 13:57:19'),
+(102, 11, 3, 'Concha y Toro Sauvignon', 'Ativo', 22.000, 39.000, 'Sim', 'Sim', 5.000, '', '2016-06-20 10:03:26', '2017-02-02 13:57:18'),
+(103, 11, 19, 'Quinta do Morgado', 'Ativo', 2.450, 6.000, 'Sim', 'Sim', 4.000, '', '2016-06-20 10:04:13', '2017-02-02 13:58:03'),
+(120, 12, 1, 'Suco de Laranja', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:48:33'),
+(121, 12, 1, 'Suco de Acerola', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:48:17'),
+(122, 12, 1, 'Suco de Maracujá', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:57'),
+(123, 12, 1, 'Suco de Limão', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:40'),
+(125, 12, 1, 'Laranja com Acerola', 'Ativo', 3.000, 6.000, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:23'),
+(126, 12, 1, 'Suco de Uva', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:47:04'),
+(127, 12, 1, 'Suco de Abacaxi', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:50'),
+(128, 12, 1, 'Abacaxi com Hortelã', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:27'),
+(129, 12, 1, 'Suco de Morango', 'Ativo', 2.000, 4.500, 'Sim', 'Não', 0.000, '', '2016-06-20 10:05:08', '2016-12-08 22:46:11'),
+(130, 12, 1, 'suco de Laranja com Morango', 'Ativo', 3.000, 7.000, 'Sim', 'Não', 0.000, '', '2016-12-08 22:50:12', '2016-12-08 22:50:12'),
+(131, 1, 18, 'Grelhado de Pirarucu', 'Ativo', 13.000, 23.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:16:15', '2017-01-20 13:16:15'),
+(132, 1, 18, 'Salada Moda da Casa', 'Ativo', 8.000, 15.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:16:58', '2017-01-20 13:16:58'),
+(133, 2, 17, 'Isca de Tilápia', 'Ativo', 12.500, 33.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:18:37', '2017-01-20 13:18:37'),
+(134, 2, 17, 'Carne na Chapa', 'Ativo', 24.800, 42.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:20:37', '2017-01-20 13:20:37'),
+(135, 4, 17, 'Batata temperada', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:21:29', '2017-02-02 13:56:01'),
+(136, 4, 17, 'molho da casa', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:02', '2017-02-02 13:56:03'),
+(137, 4, 17, 'Molho Picante', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:29', '2017-02-02 13:56:05'),
+(138, 4, 17, 'Molho Mostarda e Mel', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:22:59', '2017-02-02 13:56:07'),
+(139, 4, 17, 'Molho de Ervas', 'Ativo', 1.500, 1.500, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:23:24', '2017-02-02 13:56:10'),
+(140, 4, 17, 'Molho Barbecue', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:23:55', '2017-02-02 13:56:16'),
+(141, 4, 17, 'Geleia de Pimenta', 'Ativo', 1.500, 4.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:24:27', '2017-02-02 13:56:17'),
+(142, 4, 17, 'Adicional de Queijo', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:25:04', '2017-02-02 13:56:17'),
+(143, 4, 17, 'Adicional de Bacon', 'Ativo', 1.500, 3.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:25:30', '2017-02-02 13:56:19'),
+(144, 4, 17, 'Adicional de Hamburguer', 'Ativo', 3.200, 7.000, 'Sim', 'Sim', 40.000, '', '2017-01-20 13:26:32', '2017-02-02 13:56:22'),
+(145, 4, 13, 'Gelo', 'Ativo', 1.000, 2.500, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:26:55', '2017-02-02 13:55:58'),
+(146, 10, 3, 'H2O Limoneto', 'Ativo', 3.100, 5.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:27:37', '2017-02-02 13:54:06'),
+(147, 10, 3, 'H2O Limão', 'Ativo', 3.200, 5.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:28:01', '2017-02-02 13:54:08'),
+(148, 6, 3, 'Eisenbahn ', 'Ativo', 3.500, 8.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:29:08', '2017-02-02 13:54:22'),
+(149, 6, 3, 'Colorado Appia', 'Ativo', 16.900, 24.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:29:56', '2017-02-02 13:54:24'),
+(150, 6, 3, 'Weihenstephan Vitus', 'Ativo', 19.900, 28.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:31:23', '2017-02-02 13:54:27'),
+(151, 6, 3, 'Duvel', 'Ativo', 17.200, 28.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:32:01', '2017-02-02 13:54:31'),
+(152, 6, 3, 'Paulaner ', 'Ativo', 19.900, 28.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:32:33', '2017-02-02 13:54:33'),
+(153, 6, 3, 'Baden Baden Cristal', 'Ativo', 12.900, 21.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:33:11', '2017-02-02 13:54:35'),
+(154, 11, 3, 'Lambrusco Cella', 'Ativo', 19.000, 35.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:33:56', '2017-02-02 13:57:16'),
+(155, 11, 3, 'Periquita Original', 'Ativo', 32.000, 65.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:35:07', '2017-02-02 13:57:14'),
+(156, 11, 3, 'Casa Valduga', 'Ativo', 38.000, 73.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:35:41', '2017-02-02 13:58:00'),
+(157, 11, 3, 'Porto Vaoldouro', 'Ativo', 47.000, 84.000, 'Sim', 'Sim', 5.000, '', '2017-01-20 13:36:19', '2017-02-02 13:58:02'),
+(158, 7, 19, 'Absolut Vanilia', 'Ativo', 4.900, 12.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:40:28', '2017-02-02 13:56:37'),
+(159, 7, 8, 'Black Label', 'Ativo', 4.900, 12.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:41:11', '2017-02-02 13:54:40'),
+(160, 7, 8, 'Pinga de Mutamba', 'Ativo', 1.250, 5.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:42:06', '2017-02-02 13:54:43'),
+(161, 7, 8, 'Bananinha', 'Ativo', 2.600, 6.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:42:56', '2017-02-02 13:56:41'),
+(162, 7, 8, 'Licor 43', 'Ativo', 4.450, 10.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:43:31', '2017-02-02 13:56:39'),
+(163, 8, 5, 'Schweppes', 'Ativo', 2.650, 4.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:44:31', '2017-02-02 13:57:29'),
+(164, 5, 17, 'Pastelzinho de Nutela', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:46:16', '2017-02-02 13:57:27'),
+(165, 5, 17, 'Coquetel de Churros', 'Ativo', 5.000, 18.000, 'Sim', 'Sim', 10.000, '', '2017-01-20 13:46:55', '2017-02-02 13:57:26'),
+(166, 5, 17, 'Mousse de Maracujá', 'Ativo', 3.000, 6.000, 'Sim', 'Sim', 20.000, '', '2017-01-20 13:47:28', '2017-02-02 13:57:25');
 
 -- --------------------------------------------------------
 
@@ -716,11 +847,12 @@ INSERT INTO `products` (`id`, `subcategory_id`, `unit_id`, `name`, `status`, `co
 --
 
 CREATE TABLE IF NOT EXISTS `product_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -729,15 +861,17 @@ CREATE TABLE IF NOT EXISTS `product_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `stages` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Ativo',
   `show_on_kitchen` enum('Sim','Não') DEFAULT 'Sim',
   `consider_as` enum('Concluídos','Pendentes') DEFAULT 'Pendentes' COMMENT 'Diferenciação para montagem da Fila de Pedidos (Pedidos Pendentes e Pedidos Concluídos)',
   `label_class` varchar(55) DEFAULT 'label-primary',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `stages`
@@ -757,12 +891,14 @@ INSERT INTO `stages` (`id`, `name`, `status`, `show_on_kitchen`, `consider_as`, 
 --
 
 CREATE TABLE IF NOT EXISTS `status_bills` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_bills`
@@ -779,12 +915,14 @@ INSERT INTO `status_bills` (`id`, `name`, `finish`, `created`, `modified`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `status_entry_notes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_entry_notes`
@@ -801,12 +939,14 @@ INSERT INTO `status_entry_notes` (`id`, `name`, `finish`, `created`, `modified`)
 --
 
 CREATE TABLE IF NOT EXISTS `status_internal_transfers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `finish` enum('Sim','Não') COLLATE utf8_swedish_ci DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_internal_transfers`
@@ -823,12 +963,14 @@ INSERT INTO `status_internal_transfers` (`id`, `name`, `finish`, `created`, `mod
 --
 
 CREATE TABLE IF NOT EXISTS `status_orders` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_orders`
@@ -845,11 +987,11 @@ INSERT INTO `status_orders` (`id`, `name`, `finish`, `created`, `modified`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `status_payment_methods` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `status_payment_methods`
@@ -866,7 +1008,7 @@ INSERT INTO `status_payment_methods` (`id`, `name`, `created`, `modified`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `stocks` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) NOT NULL,
@@ -877,8 +1019,386 @@ CREATE TABLE IF NOT EXISTS `stocks` (
   `manual_adjustment_id` int(11) DEFAULT NULL,
   `finished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=374 ;
+
+--
+-- Extraindo dados da tabela `stocks`
+--
+
+INSERT INTO `stocks` (`id`, `location_id`, `product_id`, `quantity`, `value`, `entry_note_item_id`, `internal_transfer_item_id`, `order_id`, `manual_adjustment_id`, `finished`, `created`, `modified`) VALUES
+(1, 2, 52, 1.000, NULL, NULL, NULL, 43, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(2, 100, 52, -1.000, NULL, NULL, NULL, 43, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(3, 2, 52, 1.000, NULL, NULL, NULL, 44, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(4, 100, 52, -1.000, NULL, NULL, NULL, 44, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(5, 2, 52, 1.000, NULL, NULL, NULL, 45, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(6, 100, 52, -1.000, NULL, NULL, NULL, 45, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(7, 2, 52, 1.000, NULL, NULL, NULL, 46, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(8, 100, 52, -1.000, NULL, NULL, NULL, 46, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(9, 2, 52, 1.000, NULL, NULL, NULL, 47, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(10, 100, 52, -1.000, NULL, NULL, NULL, 47, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(11, 2, 90, 1.000, NULL, NULL, NULL, 49, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(12, 100, 90, -1.000, NULL, NULL, NULL, 49, NULL, '2016-11-13 18:18:32', '2016-11-13 18:18:32', '2016-11-13 18:18:32'),
+(13, 2, 51, 1.000, NULL, NULL, NULL, 58, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(14, 100, 51, -1.000, NULL, NULL, NULL, 58, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(15, 2, 52, 1.000, NULL, NULL, NULL, 59, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(16, 100, 52, -1.000, NULL, NULL, NULL, 59, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(17, 2, 52, 1.000, NULL, NULL, NULL, 60, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(18, 100, 52, -1.000, NULL, NULL, NULL, 60, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(19, 2, 53, 1.000, NULL, NULL, NULL, 61, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(20, 100, 53, -1.000, NULL, NULL, NULL, 61, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(21, 2, 53, 1.000, NULL, NULL, NULL, 62, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(22, 100, 53, -1.000, NULL, NULL, NULL, 62, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(23, 2, 53, 1.000, NULL, NULL, NULL, 63, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(24, 100, 53, -1.000, NULL, NULL, NULL, 63, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(25, 2, 53, 1.000, NULL, NULL, NULL, 64, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(26, 100, 53, -1.000, NULL, NULL, NULL, 64, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(27, 2, 53, 1.000, NULL, NULL, NULL, 65, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(28, 100, 53, -1.000, NULL, NULL, NULL, 65, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(29, 2, 53, 1.000, NULL, NULL, NULL, 66, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(30, 100, 53, -1.000, NULL, NULL, NULL, 66, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(31, 2, 53, 1.000, NULL, NULL, NULL, 67, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(32, 100, 53, -1.000, NULL, NULL, NULL, 67, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(33, 2, 53, 1.000, NULL, NULL, NULL, 68, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(34, 100, 53, -1.000, NULL, NULL, NULL, 68, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(35, 2, 80, 1.000, NULL, NULL, NULL, 69, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(36, 100, 80, -1.000, NULL, NULL, NULL, 69, NULL, '2016-12-08 22:57:29', '2016-12-08 22:57:29', '2016-12-08 22:57:29'),
+(39, 100, 51, 45.000, NULL, NULL, NULL, NULL, 1, '2017-01-20 13:53:56', '2017-01-20 13:53:56', '2017-01-20 13:53:56'),
+(40, 100, 52, 57.000, NULL, NULL, NULL, NULL, 2, '2017-01-20 13:54:37', '2017-01-20 13:54:37', '2017-01-20 13:54:37'),
+(41, 100, 53, 296.000, NULL, NULL, NULL, NULL, 3, '2017-01-20 13:55:02', '2017-01-20 13:55:02', '2017-01-20 13:55:02'),
+(42, 100, 52, 2.000, NULL, NULL, NULL, NULL, 4, '2017-01-20 13:55:26', '2017-01-20 13:55:26', '2017-01-20 13:55:26'),
+(43, 100, 80, 18.000, NULL, NULL, NULL, NULL, 5, '2017-01-20 13:56:00', '2017-01-20 13:56:00', '2017-01-20 13:56:00'),
+(44, 100, 90, 11.000, NULL, NULL, NULL, NULL, 6, '2017-01-20 13:56:18', '2017-01-20 13:56:18', '2017-01-20 13:56:18'),
+(45, 2, 52, 1.000, NULL, NULL, NULL, 80, NULL, '2017-01-27 19:28:10', '2017-01-27 19:28:10', '2017-01-27 19:28:10'),
+(46, 100, 52, -1.000, NULL, NULL, NULL, 80, NULL, '2017-01-27 19:28:10', '2017-01-27 19:28:10', '2017-01-27 19:28:10'),
+(47, 2, 55, 1.000, NULL, NULL, NULL, 81, NULL, '2017-01-27 19:28:10', '2017-01-27 19:28:10', '2017-01-27 19:28:10'),
+(48, 100, 55, -1.000, NULL, NULL, NULL, 81, NULL, '2017-01-27 19:28:10', '2017-01-27 19:28:10', '2017-01-27 19:28:10'),
+(49, 2, 53, 1.000, NULL, NULL, NULL, 82, NULL, '2017-01-27 19:29:13', '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(50, 100, 53, -1.000, NULL, NULL, NULL, 82, NULL, '2017-01-27 19:29:13', '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(51, 2, 103, 1.000, NULL, NULL, NULL, 83, NULL, '2017-01-27 19:29:13', '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(52, 100, 103, -1.000, NULL, NULL, NULL, 83, NULL, '2017-01-27 19:29:13', '2017-01-27 19:29:13', '2017-01-27 19:29:13'),
+(53, 2, 103, 1.000, NULL, NULL, NULL, 86, NULL, '2017-01-27 19:35:57', '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(54, 100, 103, -1.000, NULL, NULL, NULL, 86, NULL, '2017-01-27 19:35:57', '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(55, 2, 103, 1.000, NULL, NULL, NULL, 87, NULL, '2017-01-27 19:35:57', '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(56, 100, 103, -1.000, NULL, NULL, NULL, 87, NULL, '2017-01-27 19:35:57', '2017-01-27 19:35:57', '2017-01-27 19:35:57'),
+(57, 2, 52, 1.000, NULL, NULL, NULL, 88, NULL, '2017-01-27 19:48:09', '2017-01-27 19:48:09', '2017-01-27 19:48:09'),
+(58, 100, 52, -1.000, NULL, NULL, NULL, 88, NULL, '2017-01-27 19:48:09', '2017-01-27 19:48:09', '2017-01-27 19:48:09'),
+(59, 2, 53, 1.000, NULL, NULL, NULL, 92, NULL, '2017-01-27 20:05:00', '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(60, 100, 53, -1.000, NULL, NULL, NULL, 92, NULL, '2017-01-27 20:05:00', '2017-01-27 20:05:00', '2017-01-27 20:05:00'),
+(61, 2, 53, 1.000, NULL, NULL, NULL, 94, NULL, '2017-01-27 20:05:29', '2017-01-27 20:05:29', '2017-01-27 20:05:29'),
+(62, 100, 53, -1.000, NULL, NULL, NULL, 94, NULL, '2017-01-27 20:05:29', '2017-01-27 20:05:29', '2017-01-27 20:05:29'),
+(63, 2, 54, 1.000, NULL, NULL, NULL, 95, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(64, 100, 54, -1.000, NULL, NULL, NULL, 95, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(65, 2, 54, 1.000, NULL, NULL, NULL, 96, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(66, 100, 54, -1.000, NULL, NULL, NULL, 96, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(67, 2, 54, 1.000, NULL, NULL, NULL, 97, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(68, 100, 54, -1.000, NULL, NULL, NULL, 97, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(69, 2, 54, 1.000, NULL, NULL, NULL, 98, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(70, 100, 54, -1.000, NULL, NULL, NULL, 98, NULL, '2017-01-31 23:51:47', '2017-01-31 23:51:47', '2017-01-31 23:51:47'),
+(71, 2, 53, 1.000, NULL, NULL, NULL, 99, NULL, '2017-01-31 23:58:32', '2017-01-31 23:58:32', '2017-01-31 23:58:32'),
+(72, 100, 53, -1.000, NULL, NULL, NULL, 99, NULL, '2017-01-31 23:58:32', '2017-01-31 23:58:32', '2017-01-31 23:58:32'),
+(73, 2, 53, 1.000, NULL, NULL, NULL, 100, NULL, '2017-01-31 23:58:32', '2017-01-31 23:58:32', '2017-01-31 23:58:32'),
+(74, 100, 53, -1.000, NULL, NULL, NULL, 100, NULL, '2017-01-31 23:58:32', '2017-01-31 23:58:32', '2017-01-31 23:58:32'),
+(75, 100, 98, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:53:24', '2017-02-02 13:53:24', '2017-02-02 13:53:24'),
+(76, 101, 98, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:53:24', '2017-02-02 13:53:24', '2017-02-02 13:53:24'),
+(77, 1, 98, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:53:24', '2017-02-02 13:53:24', '2017-02-02 13:53:24'),
+(78, 2, 98, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:53:24', '2017-02-02 13:53:24', '2017-02-02 13:53:24'),
+(79, 3, 98, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:53:24', '2017-02-02 13:53:24', '2017-02-02 13:53:24'),
+(80, 100, 99, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:04', '2017-02-02 13:54:04', '2017-02-02 13:54:04'),
+(81, 101, 99, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:04', '2017-02-02 13:54:04', '2017-02-02 13:54:04'),
+(82, 1, 99, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:04', '2017-02-02 13:54:04', '2017-02-02 13:54:04'),
+(83, 2, 99, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:04', '2017-02-02 13:54:04', '2017-02-02 13:54:04'),
+(84, 3, 99, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:04', '2017-02-02 13:54:04', '2017-02-02 13:54:04'),
+(85, 100, 146, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:06', '2017-02-02 13:54:06', '2017-02-02 13:54:06'),
+(86, 101, 146, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:06', '2017-02-02 13:54:06', '2017-02-02 13:54:06'),
+(87, 1, 146, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:06', '2017-02-02 13:54:06', '2017-02-02 13:54:06'),
+(88, 2, 146, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:06', '2017-02-02 13:54:06', '2017-02-02 13:54:06'),
+(89, 3, 146, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:06', '2017-02-02 13:54:06', '2017-02-02 13:54:06'),
+(90, 100, 147, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:08', '2017-02-02 13:54:08', '2017-02-02 13:54:08'),
+(91, 101, 147, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:08', '2017-02-02 13:54:08', '2017-02-02 13:54:08'),
+(92, 1, 147, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:08', '2017-02-02 13:54:08', '2017-02-02 13:54:08'),
+(93, 2, 147, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:08', '2017-02-02 13:54:08', '2017-02-02 13:54:08'),
+(94, 3, 147, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:08', '2017-02-02 13:54:08', '2017-02-02 13:54:08'),
+(95, 101, 51, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:16', '2017-02-02 13:54:16', '2017-02-02 13:54:16'),
+(96, 1, 51, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:16', '2017-02-02 13:54:16', '2017-02-02 13:54:16'),
+(97, 3, 51, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:16', '2017-02-02 13:54:16', '2017-02-02 13:54:16'),
+(98, 101, 52, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(99, 1, 52, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(100, 3, 52, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(101, 101, 53, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(102, 1, 53, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(103, 3, 53, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:18', '2017-02-02 13:54:18', '2017-02-02 13:54:18'),
+(104, 101, 54, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:20', '2017-02-02 13:54:20', '2017-02-02 13:54:20'),
+(105, 1, 54, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:20', '2017-02-02 13:54:20', '2017-02-02 13:54:20'),
+(106, 3, 54, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:20', '2017-02-02 13:54:20', '2017-02-02 13:54:20'),
+(107, 100, 148, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:22', '2017-02-02 13:54:22', '2017-02-02 13:54:22'),
+(108, 101, 148, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:22', '2017-02-02 13:54:22', '2017-02-02 13:54:22'),
+(109, 1, 148, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:22', '2017-02-02 13:54:22', '2017-02-02 13:54:22'),
+(110, 2, 148, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:22', '2017-02-02 13:54:22', '2017-02-02 13:54:22'),
+(111, 3, 148, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:22', '2017-02-02 13:54:22', '2017-02-02 13:54:22'),
+(112, 100, 149, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:24', '2017-02-02 13:54:24', '2017-02-02 13:54:24'),
+(113, 101, 149, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:24', '2017-02-02 13:54:24', '2017-02-02 13:54:24'),
+(114, 1, 149, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:24', '2017-02-02 13:54:24', '2017-02-02 13:54:24'),
+(115, 2, 149, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:24', '2017-02-02 13:54:24', '2017-02-02 13:54:24'),
+(116, 3, 149, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:24', '2017-02-02 13:54:24', '2017-02-02 13:54:24'),
+(117, 100, 150, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:28', '2017-02-02 13:54:28', '2017-02-02 13:54:28'),
+(118, 101, 150, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:28', '2017-02-02 13:54:28', '2017-02-02 13:54:28'),
+(119, 1, 150, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:28', '2017-02-02 13:54:28', '2017-02-02 13:54:28'),
+(120, 2, 150, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:28', '2017-02-02 13:54:28', '2017-02-02 13:54:28'),
+(121, 3, 150, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:28', '2017-02-02 13:54:28', '2017-02-02 13:54:28'),
+(122, 100, 151, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:31', '2017-02-02 13:54:31', '2017-02-02 13:54:31'),
+(123, 101, 151, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:31', '2017-02-02 13:54:31', '2017-02-02 13:54:31'),
+(124, 1, 151, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:31', '2017-02-02 13:54:31', '2017-02-02 13:54:31'),
+(125, 2, 151, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:31', '2017-02-02 13:54:31', '2017-02-02 13:54:31'),
+(126, 3, 151, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:31', '2017-02-02 13:54:31', '2017-02-02 13:54:31'),
+(127, 100, 152, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:33', '2017-02-02 13:54:33', '2017-02-02 13:54:33'),
+(128, 101, 152, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:33', '2017-02-02 13:54:33', '2017-02-02 13:54:33'),
+(129, 1, 152, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:33', '2017-02-02 13:54:33', '2017-02-02 13:54:33'),
+(130, 2, 152, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:33', '2017-02-02 13:54:33', '2017-02-02 13:54:33'),
+(131, 3, 152, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:33', '2017-02-02 13:54:33', '2017-02-02 13:54:33'),
+(132, 100, 153, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:35', '2017-02-02 13:54:35', '2017-02-02 13:54:35'),
+(133, 101, 153, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:35', '2017-02-02 13:54:35', '2017-02-02 13:54:35'),
+(134, 1, 153, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:35', '2017-02-02 13:54:35', '2017-02-02 13:54:35'),
+(135, 2, 153, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:35', '2017-02-02 13:54:35', '2017-02-02 13:54:35'),
+(136, 3, 153, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:35', '2017-02-02 13:54:35', '2017-02-02 13:54:35'),
+(137, 101, 55, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:37', '2017-02-02 13:54:37', '2017-02-02 13:54:37'),
+(138, 1, 55, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:38', '2017-02-02 13:54:38', '2017-02-02 13:54:38'),
+(139, 3, 55, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:38', '2017-02-02 13:54:38', '2017-02-02 13:54:38'),
+(140, 100, 159, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:40', '2017-02-02 13:54:40', '2017-02-02 13:54:40'),
+(141, 101, 159, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:40', '2017-02-02 13:54:40', '2017-02-02 13:54:40'),
+(142, 1, 159, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:40', '2017-02-02 13:54:40', '2017-02-02 13:54:40'),
+(143, 2, 159, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:40', '2017-02-02 13:54:40', '2017-02-02 13:54:40'),
+(144, 3, 159, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:40', '2017-02-02 13:54:40', '2017-02-02 13:54:40'),
+(145, 100, 160, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:43', '2017-02-02 13:54:43', '2017-02-02 13:54:43'),
+(146, 101, 160, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:43', '2017-02-02 13:54:43', '2017-02-02 13:54:43'),
+(147, 1, 160, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:43', '2017-02-02 13:54:43', '2017-02-02 13:54:43'),
+(148, 2, 160, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:43', '2017-02-02 13:54:43', '2017-02-02 13:54:43'),
+(149, 3, 160, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:54:43', '2017-02-02 13:54:43', '2017-02-02 13:54:43'),
+(150, 100, 60, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:37', '2017-02-02 13:55:37', '2017-02-02 13:55:37'),
+(151, 101, 60, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:37', '2017-02-02 13:55:37', '2017-02-02 13:55:37'),
+(152, 1, 60, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:37', '2017-02-02 13:55:37', '2017-02-02 13:55:37'),
+(153, 2, 60, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:37', '2017-02-02 13:55:37', '2017-02-02 13:55:37'),
+(154, 3, 60, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:37', '2017-02-02 13:55:37', '2017-02-02 13:55:37'),
+(155, 100, 61, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:39', '2017-02-02 13:55:39', '2017-02-02 13:55:39'),
+(156, 101, 61, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:39', '2017-02-02 13:55:39', '2017-02-02 13:55:39'),
+(157, 1, 61, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:39', '2017-02-02 13:55:39', '2017-02-02 13:55:39'),
+(158, 2, 61, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:39', '2017-02-02 13:55:39', '2017-02-02 13:55:39'),
+(159, 3, 61, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:39', '2017-02-02 13:55:39', '2017-02-02 13:55:39'),
+(160, 100, 62, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:41', '2017-02-02 13:55:41', '2017-02-02 13:55:41'),
+(161, 101, 62, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:41', '2017-02-02 13:55:41', '2017-02-02 13:55:41'),
+(162, 1, 62, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:41', '2017-02-02 13:55:41', '2017-02-02 13:55:41'),
+(163, 2, 62, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:41', '2017-02-02 13:55:41', '2017-02-02 13:55:41'),
+(164, 3, 62, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:41', '2017-02-02 13:55:41', '2017-02-02 13:55:41'),
+(165, 100, 70, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:43', '2017-02-02 13:55:43', '2017-02-02 13:55:43'),
+(166, 101, 70, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:43', '2017-02-02 13:55:43', '2017-02-02 13:55:43'),
+(167, 1, 70, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:43', '2017-02-02 13:55:43', '2017-02-02 13:55:43'),
+(168, 2, 70, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:43', '2017-02-02 13:55:43', '2017-02-02 13:55:43'),
+(169, 3, 70, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:43', '2017-02-02 13:55:43', '2017-02-02 13:55:43'),
+(170, 100, 71, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:45', '2017-02-02 13:55:45', '2017-02-02 13:55:45'),
+(171, 101, 71, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:45', '2017-02-02 13:55:45', '2017-02-02 13:55:45'),
+(172, 1, 71, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:45', '2017-02-02 13:55:45', '2017-02-02 13:55:45'),
+(173, 2, 71, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:45', '2017-02-02 13:55:45', '2017-02-02 13:55:45'),
+(174, 3, 71, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:45', '2017-02-02 13:55:45', '2017-02-02 13:55:45'),
+(175, 100, 78, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:47', '2017-02-02 13:55:47', '2017-02-02 13:55:47'),
+(176, 101, 78, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:47', '2017-02-02 13:55:47', '2017-02-02 13:55:47'),
+(177, 1, 78, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:47', '2017-02-02 13:55:47', '2017-02-02 13:55:47'),
+(178, 2, 78, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:47', '2017-02-02 13:55:47', '2017-02-02 13:55:47'),
+(179, 3, 78, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:47', '2017-02-02 13:55:47', '2017-02-02 13:55:47'),
+(180, 100, 79, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:50', '2017-02-02 13:55:50', '2017-02-02 13:55:50'),
+(181, 101, 79, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:50', '2017-02-02 13:55:50', '2017-02-02 13:55:50'),
+(182, 1, 79, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:50', '2017-02-02 13:55:50', '2017-02-02 13:55:50'),
+(183, 2, 79, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:50', '2017-02-02 13:55:50', '2017-02-02 13:55:50'),
+(184, 3, 79, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:50', '2017-02-02 13:55:50', '2017-02-02 13:55:50'),
+(185, 101, 90, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:54', '2017-02-02 13:55:54', '2017-02-02 13:55:54'),
+(186, 1, 90, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:54', '2017-02-02 13:55:54', '2017-02-02 13:55:54'),
+(187, 3, 90, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:54', '2017-02-02 13:55:54', '2017-02-02 13:55:54'),
+(188, 100, 91, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:57', '2017-02-02 13:55:57', '2017-02-02 13:55:57'),
+(189, 101, 91, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:57', '2017-02-02 13:55:57', '2017-02-02 13:55:57'),
+(190, 1, 91, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:57', '2017-02-02 13:55:57', '2017-02-02 13:55:57'),
+(191, 2, 91, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:57', '2017-02-02 13:55:57', '2017-02-02 13:55:57'),
+(192, 3, 91, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:57', '2017-02-02 13:55:57', '2017-02-02 13:55:57'),
+(193, 100, 145, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:58', '2017-02-02 13:55:58', '2017-02-02 13:55:58'),
+(194, 101, 145, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:58', '2017-02-02 13:55:58', '2017-02-02 13:55:58'),
+(195, 1, 145, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:58', '2017-02-02 13:55:58', '2017-02-02 13:55:58'),
+(196, 2, 145, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:58', '2017-02-02 13:55:58', '2017-02-02 13:55:58'),
+(197, 3, 145, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:55:58', '2017-02-02 13:55:58', '2017-02-02 13:55:58'),
+(198, 100, 135, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:01', '2017-02-02 13:56:01', '2017-02-02 13:56:01'),
+(199, 101, 135, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:01', '2017-02-02 13:56:01', '2017-02-02 13:56:01'),
+(200, 1, 135, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:01', '2017-02-02 13:56:01', '2017-02-02 13:56:01'),
+(201, 2, 135, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:01', '2017-02-02 13:56:01', '2017-02-02 13:56:01'),
+(202, 3, 135, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:01', '2017-02-02 13:56:01', '2017-02-02 13:56:01'),
+(203, 100, 136, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:03', '2017-02-02 13:56:03', '2017-02-02 13:56:03'),
+(204, 101, 136, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:03', '2017-02-02 13:56:03', '2017-02-02 13:56:03'),
+(205, 1, 136, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:03', '2017-02-02 13:56:03', '2017-02-02 13:56:03'),
+(206, 2, 136, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:03', '2017-02-02 13:56:03', '2017-02-02 13:56:03'),
+(207, 3, 136, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:03', '2017-02-02 13:56:03', '2017-02-02 13:56:03'),
+(208, 100, 137, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:05', '2017-02-02 13:56:05', '2017-02-02 13:56:05'),
+(209, 101, 137, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:05', '2017-02-02 13:56:05', '2017-02-02 13:56:05'),
+(210, 1, 137, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:05', '2017-02-02 13:56:05', '2017-02-02 13:56:05'),
+(211, 2, 137, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:05', '2017-02-02 13:56:05', '2017-02-02 13:56:05'),
+(212, 3, 137, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:05', '2017-02-02 13:56:05', '2017-02-02 13:56:05'),
+(213, 100, 138, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:07', '2017-02-02 13:56:07', '2017-02-02 13:56:07'),
+(214, 101, 138, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:07', '2017-02-02 13:56:07', '2017-02-02 13:56:07'),
+(215, 1, 138, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:07', '2017-02-02 13:56:07', '2017-02-02 13:56:07'),
+(216, 2, 138, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:08', '2017-02-02 13:56:08', '2017-02-02 13:56:08'),
+(217, 3, 138, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:08', '2017-02-02 13:56:08', '2017-02-02 13:56:08'),
+(218, 100, 139, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:10', '2017-02-02 13:56:10', '2017-02-02 13:56:10'),
+(219, 101, 139, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:10', '2017-02-02 13:56:10', '2017-02-02 13:56:10'),
+(220, 1, 139, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:14', '2017-02-02 13:56:14', '2017-02-02 13:56:14'),
+(221, 2, 139, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:14', '2017-02-02 13:56:14', '2017-02-02 13:56:14'),
+(222, 3, 139, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:14', '2017-02-02 13:56:14', '2017-02-02 13:56:14'),
+(223, 100, 140, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:16', '2017-02-02 13:56:16', '2017-02-02 13:56:16'),
+(224, 101, 140, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:16', '2017-02-02 13:56:16', '2017-02-02 13:56:16'),
+(225, 1, 140, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:16', '2017-02-02 13:56:16', '2017-02-02 13:56:16'),
+(226, 2, 140, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:16', '2017-02-02 13:56:16', '2017-02-02 13:56:16'),
+(227, 3, 140, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:16', '2017-02-02 13:56:16', '2017-02-02 13:56:16'),
+(228, 100, 141, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(229, 101, 141, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(230, 1, 141, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(231, 2, 141, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(232, 3, 141, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(233, 100, 142, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(234, 101, 142, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(235, 1, 142, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(236, 2, 142, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(237, 3, 142, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:17', '2017-02-02 13:56:17', '2017-02-02 13:56:17'),
+(238, 100, 143, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:19', '2017-02-02 13:56:19', '2017-02-02 13:56:19'),
+(239, 101, 143, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:19', '2017-02-02 13:56:19', '2017-02-02 13:56:19'),
+(240, 1, 143, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:19', '2017-02-02 13:56:19', '2017-02-02 13:56:19'),
+(241, 2, 143, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:19', '2017-02-02 13:56:19', '2017-02-02 13:56:19'),
+(242, 3, 143, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:19', '2017-02-02 13:56:19', '2017-02-02 13:56:19'),
+(243, 100, 144, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:22', '2017-02-02 13:56:22', '2017-02-02 13:56:22'),
+(244, 101, 144, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:22', '2017-02-02 13:56:22', '2017-02-02 13:56:22'),
+(245, 1, 144, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:22', '2017-02-02 13:56:22', '2017-02-02 13:56:22'),
+(246, 2, 144, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:22', '2017-02-02 13:56:22', '2017-02-02 13:56:22'),
+(247, 3, 144, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:22', '2017-02-02 13:56:22', '2017-02-02 13:56:22'),
+(248, 100, 158, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:37', '2017-02-02 13:56:37', '2017-02-02 13:56:37'),
+(249, 101, 158, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:37', '2017-02-02 13:56:37', '2017-02-02 13:56:37'),
+(250, 1, 158, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:37', '2017-02-02 13:56:37', '2017-02-02 13:56:37'),
+(251, 2, 158, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:37', '2017-02-02 13:56:37', '2017-02-02 13:56:37'),
+(252, 3, 158, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:37', '2017-02-02 13:56:37', '2017-02-02 13:56:37'),
+(253, 100, 162, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:39', '2017-02-02 13:56:39', '2017-02-02 13:56:39'),
+(254, 101, 162, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:39', '2017-02-02 13:56:39', '2017-02-02 13:56:39'),
+(255, 1, 162, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:39', '2017-02-02 13:56:39', '2017-02-02 13:56:39'),
+(256, 2, 162, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:39', '2017-02-02 13:56:39', '2017-02-02 13:56:39'),
+(257, 3, 162, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:39', '2017-02-02 13:56:39', '2017-02-02 13:56:39'),
+(258, 100, 161, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:41', '2017-02-02 13:56:41', '2017-02-02 13:56:41'),
+(259, 101, 161, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:41', '2017-02-02 13:56:41', '2017-02-02 13:56:41'),
+(260, 1, 161, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:41', '2017-02-02 13:56:41', '2017-02-02 13:56:41'),
+(261, 2, 161, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:41', '2017-02-02 13:56:41', '2017-02-02 13:56:41'),
+(262, 3, 161, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:56:41', '2017-02-02 13:56:41', '2017-02-02 13:56:41'),
+(263, 100, 155, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:14', '2017-02-02 13:57:14', '2017-02-02 13:57:14'),
+(264, 101, 155, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:14', '2017-02-02 13:57:14', '2017-02-02 13:57:14'),
+(265, 1, 155, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:14', '2017-02-02 13:57:14', '2017-02-02 13:57:14'),
+(266, 2, 155, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:14', '2017-02-02 13:57:14', '2017-02-02 13:57:14'),
+(267, 3, 155, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:14', '2017-02-02 13:57:14', '2017-02-02 13:57:14'),
+(268, 100, 154, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:16', '2017-02-02 13:57:16', '2017-02-02 13:57:16'),
+(269, 101, 154, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:16', '2017-02-02 13:57:16', '2017-02-02 13:57:16'),
+(270, 1, 154, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:16', '2017-02-02 13:57:16', '2017-02-02 13:57:16'),
+(271, 2, 154, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:16', '2017-02-02 13:57:16', '2017-02-02 13:57:16'),
+(272, 3, 154, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:16', '2017-02-02 13:57:16', '2017-02-02 13:57:16'),
+(273, 100, 102, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:18', '2017-02-02 13:57:18', '2017-02-02 13:57:18'),
+(274, 101, 102, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:18', '2017-02-02 13:57:18', '2017-02-02 13:57:18'),
+(275, 1, 102, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:18', '2017-02-02 13:57:18', '2017-02-02 13:57:18'),
+(276, 2, 102, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:18', '2017-02-02 13:57:18', '2017-02-02 13:57:18'),
+(277, 3, 102, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:18', '2017-02-02 13:57:18', '2017-02-02 13:57:18'),
+(278, 100, 101, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:19', '2017-02-02 13:57:19', '2017-02-02 13:57:19'),
+(279, 101, 101, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:19', '2017-02-02 13:57:19', '2017-02-02 13:57:19'),
+(280, 1, 101, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:19', '2017-02-02 13:57:19', '2017-02-02 13:57:19'),
+(281, 2, 101, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:20', '2017-02-02 13:57:20', '2017-02-02 13:57:20'),
+(282, 3, 101, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:20', '2017-02-02 13:57:20', '2017-02-02 13:57:20'),
+(283, 100, 100, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:21', '2017-02-02 13:57:21', '2017-02-02 13:57:21'),
+(284, 101, 100, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:21', '2017-02-02 13:57:21', '2017-02-02 13:57:21'),
+(285, 1, 100, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:21', '2017-02-02 13:57:21', '2017-02-02 13:57:21'),
+(286, 2, 100, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:21', '2017-02-02 13:57:21', '2017-02-02 13:57:21'),
+(287, 3, 100, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:21', '2017-02-02 13:57:21', '2017-02-02 13:57:21'),
+(288, 100, 3, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:22', '2017-02-02 13:57:22', '2017-02-02 13:57:22'),
+(289, 101, 3, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:22', '2017-02-02 13:57:22', '2017-02-02 13:57:22'),
+(290, 1, 3, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:22', '2017-02-02 13:57:22', '2017-02-02 13:57:22'),
+(291, 2, 3, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:22', '2017-02-02 13:57:22', '2017-02-02 13:57:22'),
+(292, 3, 3, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:22', '2017-02-02 13:57:22', '2017-02-02 13:57:22'),
+(293, 100, 2, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:23', '2017-02-02 13:57:23', '2017-02-02 13:57:23'),
+(294, 101, 2, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:23', '2017-02-02 13:57:23', '2017-02-02 13:57:23'),
+(295, 1, 2, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:23', '2017-02-02 13:57:23', '2017-02-02 13:57:23'),
+(296, 2, 2, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:23', '2017-02-02 13:57:23', '2017-02-02 13:57:23'),
+(297, 3, 2, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:23', '2017-02-02 13:57:23', '2017-02-02 13:57:23'),
+(298, 100, 166, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:25', '2017-02-02 13:57:25', '2017-02-02 13:57:25'),
+(299, 101, 166, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:25', '2017-02-02 13:57:25', '2017-02-02 13:57:25'),
+(300, 1, 166, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:25', '2017-02-02 13:57:25', '2017-02-02 13:57:25'),
+(301, 2, 166, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:25', '2017-02-02 13:57:25', '2017-02-02 13:57:25'),
+(302, 3, 166, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:25', '2017-02-02 13:57:25', '2017-02-02 13:57:25'),
+(303, 100, 165, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:26', '2017-02-02 13:57:26', '2017-02-02 13:57:26'),
+(304, 101, 165, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:26', '2017-02-02 13:57:26', '2017-02-02 13:57:26'),
+(305, 1, 165, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:26', '2017-02-02 13:57:26', '2017-02-02 13:57:26'),
+(306, 2, 165, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:26', '2017-02-02 13:57:26', '2017-02-02 13:57:26'),
+(307, 3, 165, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:26', '2017-02-02 13:57:26', '2017-02-02 13:57:26'),
+(308, 100, 164, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:27', '2017-02-02 13:57:27', '2017-02-02 13:57:27'),
+(309, 101, 164, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:27', '2017-02-02 13:57:27', '2017-02-02 13:57:27'),
+(310, 1, 164, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:27', '2017-02-02 13:57:27', '2017-02-02 13:57:27'),
+(311, 2, 164, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:28', '2017-02-02 13:57:28', '2017-02-02 13:57:28'),
+(312, 3, 164, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:28', '2017-02-02 13:57:28', '2017-02-02 13:57:28'),
+(313, 100, 163, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:29', '2017-02-02 13:57:29', '2017-02-02 13:57:29'),
+(314, 101, 163, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:29', '2017-02-02 13:57:29', '2017-02-02 13:57:29'),
+(315, 1, 163, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:29', '2017-02-02 13:57:29', '2017-02-02 13:57:29'),
+(316, 2, 163, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:29', '2017-02-02 13:57:29', '2017-02-02 13:57:29'),
+(317, 3, 163, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:29', '2017-02-02 13:57:29', '2017-02-02 13:57:29'),
+(318, 100, 85, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:30', '2017-02-02 13:57:30', '2017-02-02 13:57:30'),
+(319, 101, 85, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:30', '2017-02-02 13:57:30', '2017-02-02 13:57:30'),
+(320, 1, 85, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:30', '2017-02-02 13:57:30', '2017-02-02 13:57:30'),
+(321, 2, 85, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:30', '2017-02-02 13:57:30', '2017-02-02 13:57:30'),
+(322, 3, 85, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:30', '2017-02-02 13:57:30', '2017-02-02 13:57:30'),
+(323, 100, 84, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:32', '2017-02-02 13:57:32', '2017-02-02 13:57:32'),
+(324, 101, 84, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:32', '2017-02-02 13:57:32', '2017-02-02 13:57:32'),
+(325, 1, 84, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:32', '2017-02-02 13:57:32', '2017-02-02 13:57:32'),
+(326, 2, 84, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:32', '2017-02-02 13:57:32', '2017-02-02 13:57:32'),
+(327, 3, 84, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:32', '2017-02-02 13:57:32', '2017-02-02 13:57:32'),
+(328, 100, 82, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:33', '2017-02-02 13:57:33', '2017-02-02 13:57:33'),
+(329, 101, 82, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:34', '2017-02-02 13:57:34', '2017-02-02 13:57:34'),
+(330, 1, 82, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:34', '2017-02-02 13:57:34', '2017-02-02 13:57:34'),
+(331, 2, 82, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:34', '2017-02-02 13:57:34', '2017-02-02 13:57:34'),
+(332, 3, 82, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:34', '2017-02-02 13:57:34', '2017-02-02 13:57:34'),
+(333, 100, 81, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:35', '2017-02-02 13:57:35', '2017-02-02 13:57:35'),
+(334, 101, 81, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:35', '2017-02-02 13:57:35', '2017-02-02 13:57:35'),
+(335, 1, 81, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:35', '2017-02-02 13:57:35', '2017-02-02 13:57:35'),
+(336, 2, 81, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:35', '2017-02-02 13:57:35', '2017-02-02 13:57:35'),
+(337, 3, 81, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:35', '2017-02-02 13:57:35', '2017-02-02 13:57:35'),
+(338, 101, 80, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:36', '2017-02-02 13:57:36', '2017-02-02 13:57:36'),
+(339, 1, 80, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:36', '2017-02-02 13:57:36', '2017-02-02 13:57:36'),
+(340, 3, 80, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:36', '2017-02-02 13:57:36', '2017-02-02 13:57:36'),
+(341, 100, 14, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:37', '2017-02-02 13:57:37', '2017-02-02 13:57:37'),
+(342, 101, 14, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:38', '2017-02-02 13:57:38', '2017-02-02 13:57:38'),
+(343, 1, 14, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:38', '2017-02-02 13:57:38', '2017-02-02 13:57:38'),
+(344, 2, 14, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:38', '2017-02-02 13:57:38', '2017-02-02 13:57:38'),
+(345, 3, 14, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:38', '2017-02-02 13:57:38', '2017-02-02 13:57:38'),
+(346, 100, 13, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:39', '2017-02-02 13:57:39', '2017-02-02 13:57:39'),
+(347, 101, 13, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:39', '2017-02-02 13:57:39', '2017-02-02 13:57:39'),
+(348, 1, 13, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:39', '2017-02-02 13:57:39', '2017-02-02 13:57:39'),
+(349, 2, 13, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:39', '2017-02-02 13:57:39', '2017-02-02 13:57:39'),
+(350, 3, 13, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:39', '2017-02-02 13:57:39', '2017-02-02 13:57:39'),
+(351, 100, 12, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:40', '2017-02-02 13:57:40', '2017-02-02 13:57:40'),
+(352, 101, 12, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:40', '2017-02-02 13:57:40', '2017-02-02 13:57:40'),
+(353, 1, 12, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:40', '2017-02-02 13:57:40', '2017-02-02 13:57:40'),
+(354, 2, 12, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:40', '2017-02-02 13:57:40', '2017-02-02 13:57:40'),
+(355, 3, 12, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:40', '2017-02-02 13:57:40', '2017-02-02 13:57:40'),
+(356, 100, 11, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:42', '2017-02-02 13:57:42', '2017-02-02 13:57:42'),
+(357, 101, 11, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:42', '2017-02-02 13:57:42', '2017-02-02 13:57:42'),
+(358, 1, 11, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:42', '2017-02-02 13:57:42', '2017-02-02 13:57:42'),
+(359, 2, 11, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:42', '2017-02-02 13:57:42', '2017-02-02 13:57:42'),
+(360, 3, 11, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:57:42', '2017-02-02 13:57:42', '2017-02-02 13:57:42'),
+(361, 100, 156, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:00', '2017-02-02 13:58:00', '2017-02-02 13:58:00'),
+(362, 101, 156, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:00', '2017-02-02 13:58:00', '2017-02-02 13:58:00'),
+(363, 1, 156, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:00', '2017-02-02 13:58:00', '2017-02-02 13:58:00'),
+(364, 2, 156, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:00', '2017-02-02 13:58:00', '2017-02-02 13:58:00'),
+(365, 3, 156, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:00', '2017-02-02 13:58:00', '2017-02-02 13:58:00'),
+(366, 100, 157, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:02', '2017-02-02 13:58:02', '2017-02-02 13:58:02'),
+(367, 101, 157, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:02', '2017-02-02 13:58:02', '2017-02-02 13:58:02'),
+(368, 1, 157, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:02', '2017-02-02 13:58:02', '2017-02-02 13:58:02'),
+(369, 2, 157, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:02', '2017-02-02 13:58:02', '2017-02-02 13:58:02'),
+(370, 3, 157, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:02', '2017-02-02 13:58:02', '2017-02-02 13:58:02'),
+(371, 101, 103, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:03', '2017-02-02 13:58:03', '2017-02-02 13:58:03'),
+(372, 1, 103, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:03', '2017-02-02 13:58:03', '2017-02-02 13:58:03'),
+(373, 3, 103, 0.000, 0.000, NULL, NULL, NULL, NULL, '2017-02-02 13:58:03', '2017-02-02 13:58:03', '2017-02-02 13:58:03');
 
 -- --------------------------------------------------------
 
@@ -887,13 +1407,15 @@ CREATE TABLE IF NOT EXISTS `stocks` (
 --
 
 CREATE TABLE IF NOT EXISTS `subcategories` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `name` varchar(55) NOT NULL,
   `stage_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `subcategories`
@@ -920,15 +1442,17 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `stage_id`, `created`,
 --
 
 CREATE TABLE IF NOT EXISTS `suppliers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_name` varchar(45) NOT NULL,
   `contact_name` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `fax` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `suppliers`
@@ -944,12 +1468,14 @@ INSERT INTO `suppliers` (`id`, `company_name`, `contact_name`, `phone`, `fax`, `
 --
 
 CREATE TABLE IF NOT EXISTS `tables` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `balcony` enum('Sim','Não') NOT NULL DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `tables`
@@ -970,7 +1496,22 @@ INSERT INTO `tables` (`id`, `name`, `balcony`, `created`, `modified`) VALUES
 (12, '12', 'Não', '2015-12-11 00:23:09', '2015-12-11 00:23:09'),
 (13, '13', 'Não', '2015-12-11 00:23:12', '2015-12-11 00:23:12'),
 (14, '14', 'Não', '2015-12-11 00:23:15', '2015-12-11 00:23:15'),
-(15, '15', 'Não', '2015-12-11 00:23:18', '2015-12-11 00:23:18');
+(15, '15', 'Não', '2015-12-11 00:23:18', '2015-12-11 00:23:18'),
+(16, '16', '', '2017-01-20 13:48:01', '2017-01-20 13:48:01'),
+(17, '17', '', '2017-01-20 13:48:10', '2017-01-20 13:48:10'),
+(18, '18', '', '2017-01-20 13:48:17', '2017-01-20 13:48:17'),
+(19, '19', '', '2017-01-20 13:48:24', '2017-01-20 13:48:24'),
+(24, '20', '', '2017-01-20 13:49:52', '2017-01-20 13:49:52'),
+(25, '21', '', '2017-01-20 13:50:01', '2017-01-20 13:50:01'),
+(26, '22', '', '2017-01-20 13:50:36', '2017-01-20 13:50:36'),
+(27, '23', '', '2017-01-20 13:50:44', '2017-01-20 13:50:44'),
+(28, '24', '', '2017-01-20 13:50:56', '2017-01-20 13:50:56'),
+(29, '25', '', '2017-01-20 13:51:01', '2017-01-20 13:51:01'),
+(30, '26', '', '2017-01-20 13:51:05', '2017-01-20 13:51:05'),
+(31, '27', '', '2017-01-20 13:51:10', '2017-01-20 13:51:10'),
+(32, '28', '', '2017-01-20 13:51:16', '2017-01-20 13:51:16'),
+(33, '29', '', '2017-01-20 13:51:21', '2017-01-20 13:51:21'),
+(34, '30', '', '2017-01-20 13:51:27', '2017-01-20 13:51:27');
 
 -- --------------------------------------------------------
 
@@ -979,12 +1520,15 @@ INSERT INTO `tables` (`id`, `name`, `balcony`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `units` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `initials` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`),
+  UNIQUE KEY `initials_UNIQUE` (`initials`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Extraindo dados da tabela `units`
@@ -1019,376 +1563,25 @@ INSERT INTO `units` (`id`, `name`, `initials`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Inativo',
   `name` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `group_id`, `status`, `name`, `email`, `password`, `created`, `modified`) VALUES
-(1, 1, 'Ativo', 'Gustavo César de Melo', 'delfino.cesar@gmail.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2016-02-09 14:36:03', '2016-05-21 15:33:12'),
-(2, 3, 'Ativo', 'Garçom 1', 'gustavo.cesar123@outlook.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2017-01-23 11:30:49', '2017-01-23 11:30:49');
+(1, 1, 'Ativo', 'Gustavo César de Melo', 'delfino.cesar@gmail.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2016-02-09 14:36:03', '2016-05-21 15:33:12');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `acos`
---
-ALTER TABLE `acos`
- ADD PRIMARY KEY (`id`), ADD KEY `idx_acos_lft_rght` (`lft`,`rght`), ADD KEY `idx_acos_alias` (`alias`);
-
---
--- Indexes for table `aros`
---
-ALTER TABLE `aros`
- ADD PRIMARY KEY (`id`), ADD KEY `idx_aros_lft_rght` (`lft`,`rght`), ADD KEY `idx_aros_alias` (`alias`);
-
---
--- Indexes for table `aros_acos`
---
-ALTER TABLE `aros_acos`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`), ADD KEY `idx_aco_id` (`aco_id`);
-
---
--- Indexes for table `bills`
---
-ALTER TABLE `bills`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cashiers`
---
-ALTER TABLE `cashiers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `entry_notes`
---
-ALTER TABLE `entry_notes`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `entry_note_items`
---
-ALTER TABLE `entry_note_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `internal_transfers`
---
-ALTER TABLE `internal_transfers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `internal_transfer_items`
---
-ALTER TABLE `internal_transfer_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `locations`
---
-ALTER TABLE `locations`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `location_types`
---
-ALTER TABLE `location_types`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `manual_adjustments`
---
-ALTER TABLE `manual_adjustments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `payments`
---
-ALTER TABLE `payments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `payment_methods`
---
-ALTER TABLE `payment_methods`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product_items`
---
-ALTER TABLE `product_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stages`
---
-ALTER TABLE `stages`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_bills`
---
-ALTER TABLE `status_bills`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_entry_notes`
---
-ALTER TABLE `status_entry_notes`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_internal_transfers`
---
-ALTER TABLE `status_internal_transfers`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_orders`
---
-ALTER TABLE `status_orders`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_payment_methods`
---
-ALTER TABLE `status_payment_methods`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stocks`
---
-ALTER TABLE `stocks`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subcategories`
---
-ALTER TABLE `subcategories`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `suppliers`
---
-ALTER TABLE `suppliers`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
-
---
--- Indexes for table `tables`
---
-ALTER TABLE `tables`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `units`
---
-ALTER TABLE `units`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`), ADD UNIQUE KEY `initials_UNIQUE` (`initials`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `acos`
---
-ALTER TABLE `acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=554;
---
--- AUTO_INCREMENT for table `aros`
---
-ALTER TABLE `aros`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `aros_acos`
---
-ALTER TABLE `aros_acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `bills`
---
-ALTER TABLE `bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `cashiers`
---
-ALTER TABLE `cashiers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `entry_notes`
---
-ALTER TABLE `entry_notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `entry_note_items`
---
-ALTER TABLE `entry_note_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `internal_transfers`
---
-ALTER TABLE `internal_transfers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `internal_transfer_items`
---
-ALTER TABLE `internal_transfer_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `locations`
---
-ALTER TABLE `locations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
---
--- AUTO_INCREMENT for table `location_types`
---
-ALTER TABLE `location_types`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `manual_adjustments`
---
-ALTER TABLE `manual_adjustments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT for table `payments`
---
-ALTER TABLE `payments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `payment_methods`
---
-ALTER TABLE `payment_methods`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=130;
---
--- AUTO_INCREMENT for table `product_items`
---
-ALTER TABLE `product_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `stages`
---
-ALTER TABLE `stages`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `status_bills`
---
-ALTER TABLE `status_bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_entry_notes`
---
-ALTER TABLE `status_entry_notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_internal_transfers`
---
-ALTER TABLE `status_internal_transfers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_orders`
---
-ALTER TABLE `status_orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_payment_methods`
---
-ALTER TABLE `status_payment_methods`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `stocks`
---
-ALTER TABLE `stocks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `suppliers`
---
-ALTER TABLE `suppliers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tables`
---
-ALTER TABLE `tables`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `units`
---
-ALTER TABLE `units`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
---ALTER TABLE `payments` ADD `payment_method_id` INT NOT NULL DEFAULT '1' AFTER `bill_id`;
