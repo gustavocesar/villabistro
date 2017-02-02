@@ -21,7 +21,7 @@ class Stock extends AppModel {
                 WHEN internal_transfer_item_id IS NOT NULL  THEN 'Transferencia Interna'
                 WHEN manual_adjustment_id IS NOT NULL       THEN 'Ajuste Manual'
                 WHEN order_id IS NOT NULL                   THEN 'Pedido'
-                ELSE ''
+                ELSE 'Estoque Inicial'
             END
         ",
         "reference_id" => "

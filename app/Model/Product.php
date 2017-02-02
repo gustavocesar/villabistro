@@ -63,27 +63,68 @@ class Product extends AppModel {
 
     public function insertEmptyStock() {
 
+        $this->recursive = -1;
+        $product = $this->findById($this->id);
+
+        if ($product['Product']['stockable'] <> 'Sim') {
+            return true;
+        }
+
         $this->Stock->recursive = 0;
-        $count = $this->Stock->find('count', [
+        
+        /**
+         * Quantidade de localizações o produto já possui movimentação.
+         * Se houver alguma localização em que o produto não movimentou, inserir o stock zerado
+         */
+        $countStocksLocations = $this->Stock->find('count', [
+            'fields' => [
+                "{$this->Stock->alias}.location_id",
+                "COUNT({$this->Stock->alias}.id) AS count"
+            ],
             'conditions' => [
                 "{$this->Stock->alias}.product_id" => $this->id
-            ]
+            ],
+            'group' => [
+                "{$this->Stock->alias}.location_id"
+            ],
         ]);
 
-//        if ($count <= 0) {
-//            $arrData = [];
-//            $arrData[$this->Stock->alias]['location_id']           = $locationId;
-//            $arrData[$this->Stock->alias]['entry_note_item_id']    = $entryNoteItem['id'];
-//            $arrData[$this->Stock->alias]['product_id']            = $entryNoteItem['product_id'];
-//            $arrData[$this->Stock->alias]['quantity']              = $entryNoteItem['quantity'] * $coefficient;
-//            $arrData[$this->Stock->alias]['value']                 = $entryNoteItem['total_cost'] * $coefficient;
-//            $arrData[$this->Stock->alias]['finished']              = $finishDate;
-//            $arrData[$this->Stock->alias]['order_id']              = null;
-//            $arrData[$this->Stock->alias]['internal_transfer_item_id']  = null;
-//
-//            $this->Stock->create();
-//            $this->Stock->save($arrData);
-//        }
+        $this->Stock->Location->recursive = 0;
+        $arrLocations = $this->Stock->Location->find('all');
+        $countLocations = count($arrLocations);
+
+        if ($countStocksLocations < $countLocations) {
+
+            foreach ($arrLocations as $location) {
+                
+                $count = $this->Stock->find('count', [
+                    'fields' => [
+                        "{$this->Stock->alias}.location_id",
+                        "COUNT({$this->Stock->alias}.id) AS count"
+                    ],
+                    'conditions' => [
+                        "{$this->Stock->alias}.product_id" => $this->id,
+                        "{$this->Stock->alias}.location_id" => $location['Location']['id']
+                    ],
+                    'group' => [
+                        "{$this->Stock->alias}.location_id"
+                    ],
+                ]);
+
+                if ($count <= 0) {
+                    $arrData = [];
+                    $arrData[$this->Stock->alias]['location_id']           = $location['Location']['id'];
+                    $arrData[$this->Stock->alias]['product_id']            = $this->id;
+                    $arrData[$this->Stock->alias]['quantity']              = '0';
+                    $arrData[$this->Stock->alias]['value']                 = '0';
+                    $arrData[$this->Stock->alias]['finished']              = date('Y-m-d H:i:s');
+
+                    $this->Stock->create();
+                    $this->Stock->save($arrData);
+                }
+            }
+
+        }
     }
     
     /**
