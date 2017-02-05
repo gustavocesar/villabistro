@@ -23,3 +23,11 @@
 .no-border {
     border: 0px !important;
 }
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.print-bill-table tr td {
+    padding: 2px !important;
+}
