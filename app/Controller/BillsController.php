@@ -190,9 +190,14 @@ class BillsController extends AppController {
 
         $this->set('bill', $bill);
 
+        $group = [
+            'Order.product_id',
+            'Order.status_order_id'
+        ];
+
         $this->Bill->Payment->Order->recursive = 0;
-        $this->set('pendingOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [1]));
-        $this->set('completedOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [2]));
+        $this->set('pendingOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [1], $group));
+        $this->set('completedOrders', $this->Bill->Payment->Order->getOrdersByPaymentStatus(null, $billId, [2], $group));
         $this->set('payments', $this->Bill->Payment->getPaymentsByTable(null, $billId));
     }
 

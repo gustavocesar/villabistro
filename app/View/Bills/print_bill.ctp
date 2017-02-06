@@ -39,6 +39,7 @@ $table = $bill["Table"];
 <table class="table print-bill-table">
     <tr class="">
         <td class="text-center"><strong>Código</strong></td>
+        <td class="text-right"><strong><?= __("Quantity"); ?></strong></td>
         <td class="text-right"><strong>Valor (R$)</strong></td>
         <td>&nbsp;</td>
         <td><strong>Pedido</strong></td>
@@ -55,11 +56,13 @@ $table = $bill["Table"];
         $productCode = $order['Products']['id'];
         $productName = $order['Products']['name'];
         $productValue = $order['Products']['sell_price'];
+        $quantity = $order['0']['quantity'];
 
         $total += $productValue;
         ?>
         <tr>
             <td class="text-center"><?= $productCode; ?></td>
+            <td class="text-right"><?php echo h($this->MyFormat->format_show($quantity, 2)); ?></td>
             <td class="text-right"><?php echo h($this->MyFormat->format_show($productValue, 2)); ?></td>
             <td>&nbsp;</td>
             <td><?= $productName; ?></td>
@@ -81,6 +84,7 @@ $table = $bill["Table"];
         ?>
         <tr>
             <td class="text-center"><del><?= $productCode; ?></del></td>
+            <td class="text-right"><?= __("Quantity"); ?></td>
             <td class="text-right"><del><?php echo h($this->MyFormat->format_show($productValue, 2)); ?></del></td>
             <td>&nbsp;</td>
             <td><del><?= $productName; ?></del></td>
@@ -111,6 +115,7 @@ $table = $bill["Table"];
 
     <tr>
         <td class="text-right"><strong>TOTAL</strong></td>
+        <td>&nbsp;</td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($total, 2)); ?></strong></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -118,6 +123,7 @@ $table = $bill["Table"];
 
     <tr>
         <td class="text-right"><strong>VALOR PAGO</strong></td>
+        <td>&nbsp;</td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($totalPayments * (-1), 2)); ?></strong></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -131,6 +137,7 @@ $table = $bill["Table"];
             $subtotal = 0;
         }
         ?>
+        <td>&nbsp;</td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($subtotal, 2)); ?></strong></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>

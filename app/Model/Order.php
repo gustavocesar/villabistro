@@ -185,7 +185,7 @@ class Order extends AppModel {
         $this->Stock->save($arrData);
     }
 
-    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null) {
+    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null, $arrGroupBy = null) {
 
         $conditions = [];
 
@@ -204,6 +204,19 @@ class Order extends AppModel {
         if (count($arrPaymentStatus) > 0) {
             $conditions = array_merge($conditions, [
                 "StatusOrders.id" => implode(",", $arrPaymentStatus)
+            ]);
+        }
+
+        $group = ['Order.id'];
+
+        if (count($arrGroupBy) > 0) {
+            $group = $arrGroupBy;
+        }
+
+        $fields = ['DISTINCT Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'];
+        if (count($arrGroupBy) > 0) {
+            $fields = array_merge($fields, [
+                "COUNT(Order.quantity) as quantity"
             ]);
         }
 
@@ -259,9 +272,9 @@ class Order extends AppModel {
                 ],
             ],
             'conditions' => $conditions,
-            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'],
+            'fields' => $fields,
             'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc'],
-            'group' => ['Order.id']
+            'group' => $group
         ]);
 //        debug($this->getDataSource()->getLog(false, false));
 
