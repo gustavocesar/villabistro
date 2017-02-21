@@ -38,54 +38,52 @@ $table = $bill["Table"];
 
 <table class="table print-bill-table">
     <tr class="">
-        <td class="text-left"><strong>Produto</strong></td>
-        <td class="text-right"><strong>Qtd</strong></td>
-        <td class="text-right"><strong>Valor Unitário</strong></td>
-        <td class="text-right"><strong>Total</strong></td>
+        <td class="text-center"><strong>Código</strong></td>
+        <td class="text-right"><strong>Valor (R$)</strong></td>
+        <td>&nbsp;</td>
+        <td><strong>Pedido</strong></td>
     </tr>
     <?php
     $total = 0;
 
     /* PENDING ORDERS */
-    foreach ($pendingOrderProducts as $productId => $arrProduct) {
-        $product = $arrProduct['Products'];
-        $quantity = $arrProduct['quantity'];
+    foreach ($pendingOrders as $order) {
+        if ($order['Order']['stage_id'] == 5) {
+            continue;
+        }
 
-        $productCode = $product['id'];
-        $productFormatedCode =  str_pad($productCode, 4, '0', STR_PAD_LEFT);
-        $productName = $product['name'];
-        $productValue = $product['sell_price'];
-        $productTotal = $productValue * $quantity;
+        $productCode = $order['Products']['id'];
+        $productName = $order['Products']['name'];
+        $productValue = $order['Products']['sell_price'];
 
-        $total += $productTotal;
+        $total += $productValue;
         ?>
         <tr>
-            <td class="text-left"><?= $productFormatedCode." - ". $productName; ?></td>
-            <td class="text-right"><?= str_pad($quantity, 2, '0', STR_PAD_LEFT); ?></td>
+            <td class="text-center"><?= $productCode; ?></td>
             <td class="text-right"><?php echo h($this->MyFormat->format_show($productValue, 2)); ?></td>
-            <td class="text-right"><?php echo h($this->MyFormat->format_show($productTotal, 2)); ?></td>
+            <td>&nbsp;</td>
+            <td><?= $productName; ?></td>
         </tr>
         <?php
     }
 
     /* COMPLETED ORDERS */
-    foreach ($completedOrderProducts as $productId => $arrProduct) {
-        $product = $arrProduct['Products'];
-        $quantity = $arrProduct['quantity'];
+    foreach ($completedOrders as $order) {
+        if ($order['Order']['stage_id'] == 5) {
+            continue;
+        }
 
-        $productCode = $product['id'];
-        $productFormatedCode =  str_pad($productCode, 4, '0', STR_PAD_LEFT);
-        $productName = $product['name'];
-        $productValue = $product['sell_price'];
-        $productTotal = $productValue * $quantity;
+        $productCode = $order['Products']['id'];
+        $productName = $order['Products']['name'];
+        $productValue = $order['Products']['sell_price'];
 
-        $total += $productTotal;
+        $total += $productValue;
         ?>
         <tr>
-            <td class="text-left"><del><?= $productFormatedCode." - ". $productName; ?></del></td>
-            <td class="text-right"><del><?= str_pad($quantity, 2, '0', STR_PAD_LEFT); ?></del></td>
+            <td class="text-center"><del><?= $productCode; ?></del></td>
             <td class="text-right"><del><?php echo h($this->MyFormat->format_show($productValue, 2)); ?></del></td>
-            <td class="text-right"><del><?php echo h($this->MyFormat->format_show($productTotal, 2)); ?></del></td>
+            <td>&nbsp;</td>
+            <td><del><?= $productName; ?></del></td>
         </tr>
         <?php
     }
@@ -112,30 +110,30 @@ $table = $bill["Table"];
     ?>
 
     <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
         <td class="text-right"><strong>TOTAL</strong></td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($total, 2)); ?></strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
     </tr>
 
     <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
         <td class="text-right"><strong>VALOR PAGO</strong></td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($totalPayments * (-1), 2)); ?></strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
     </tr>
 
     <tr class="warning">
+        <td class="text-right"><strong>A PAGAR</strong></td>
         <?php
         $subtotal = $total - $totalPayments;
         if ($statusBill['finish'] == 'Sim') {
             $subtotal = 0;
         }
         ?>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td class="text-right"><strong>A PAGAR</strong></td>
         <td class="text-right"><strong><?php echo h($this->MyFormat->format_show($subtotal, 2)); ?></strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
     </tr>
 
 </table>

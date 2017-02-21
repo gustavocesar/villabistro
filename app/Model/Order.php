@@ -185,7 +185,7 @@ class Order extends AppModel {
         $this->Stock->save($arrData);
     }
 
-    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null, $arrGroupBy = null) {
+    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null, $groupBy = null) {
 
         $conditions = [];
 
@@ -207,20 +207,7 @@ class Order extends AppModel {
             ]);
         }
 
-        $group = ['Order.id'];
-
-        if (count($arrGroupBy) > 0) {
-            $group = $arrGroupBy;
-        }
-
-        $fields = ['DISTINCT Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'];
-        if (count($arrGroupBy) > 0) {
-            $fields = array_merge($fields, [
-                "COUNT(Order.quantity) as quantity"
-            ]);
-        }
-
-        $result = $this->find('all', [
+        $arrResult = $this->find('all', [
             'joins' => [
                 [
                     'table' => 'stages',
@@ -272,13 +259,45 @@ class Order extends AppModel {
                 ],
             ],
             'conditions' => $conditions,
-            'fields' => $fields,
+            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'],
             'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc'],
-            'group' => $group
+            'group' => ['Order.id']
         ]);
 //        debug($this->getDataSource()->getLog(false, false));
 
-        return $result;
+        if ($groupBy == 'product') {
+
+            $arrGroupResult = [];
+            foreach ($arrResult as $result) {
+                $_order = $result['Order'];
+//                $_stage = $result['Stages'];
+//                $_user = $result['Users'];
+                $_product = $result['Products'];
+//                $_statusOrder = $result['StatusOrders'];
+//                $_bill = $result['Bills'];
+//                $_table = $result['Tables'];
+                
+                $_productId = $_product['id'];
+
+                if ($_order['stage_id'] == 5) {
+                    continue;
+                }
+
+                if (isset($arrGroupResult[$_productId])) {
+                    $arrGroupResult[$_productId]['quantity']++;
+                    $arrGroupResult[$_productId]['Products'] = $_product;
+                } else {
+                    $arrGroupResult[$_productId]['quantity'] = 1;
+                    $arrGroupResult[$_productId]['Products'] = $_product;
+                }
+            }
+//            pr($arrGroupResult);
+//            die();
+
+            return $arrGroupResult;
+        }
+
+        return $arrResult;
     }
 
     /**
