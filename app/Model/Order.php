@@ -254,7 +254,7 @@ class Order extends AppModel {
                     'alias' => 'Tables',
                     'type' => 'LEFT',
                     'conditions' => [
-                        'Bills.table_id = Table.id'
+                        'Bills.table_id = Tables.id'
                     ]
                 ],
             ],
