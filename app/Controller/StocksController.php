@@ -20,6 +20,7 @@ class StocksController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Stocks'));
+        $this->set('activeStockControl', 'active');
     }
 
     /**
@@ -159,7 +160,6 @@ class StocksController extends AppController {
     public function stock_control() {
         $title = __('Stock Control');
         $this->set('title', $title);
-        $this->set('activeStockControl', 'active');
 
         $arrLocations = $this->getListLocation();
         $this->set('arrLocations', $arrLocations);
