@@ -24,8 +24,10 @@ class Bill extends AppModel {
     public function close() {
         $countPendingOrders = $this->countPendingOrders();
         $sumPendingTotal = $this->sumPendingTotal();
-
-        if ($countPendingOrders <= 0 || $sumPendingTotal <= 0) {
+        $sumTotalPayd = $this->sumTotalPayd();
+        $sumTotalBill = $this->sumTotalBill();
+        
+        if ($countPendingOrders <= 0 || $sumPendingTotal <= 0 || $sumTotalPayd >= $sumTotalBill) {
             
             $this->Order->recursive = 0;
             $pendingOrders = $this->Order->find('all', [
@@ -72,6 +74,20 @@ class Bill extends AppModel {
         return $result[0][0]['PendingTotal'];
     }
 
+    public function sumTotalBill() {
+        $this->Order->recursive = 0;
+        $result = $this->Order->find('all', [
+            'conditions' => [
+                "{$this->Order->alias}.bill_id" => $this->id
+            ],
+            'fields' => [
+                "SUM(Product.sell_price * Order.quantity) AS Total"
+            ],
+        ]);
+
+        return $result[0][0]['Total'];
+    }
+
     public function sumTotalPayd() {
         $this->Payment->recursive = 0;
         $result = $this->Payment->find('all', [
@@ -79,7 +95,7 @@ class Bill extends AppModel {
                 "{$this->Payment->alias}.bill_id" => $this->id
             ],
             'fields' => [
-                "SUM(Payment.payd_value) AS TotalPayd"
+                "SUM(Payment.payd_value - payback) AS TotalPayd"
             ],
         ]);
 
