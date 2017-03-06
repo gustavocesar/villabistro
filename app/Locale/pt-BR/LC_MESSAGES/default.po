@@ -1097,6 +1097,33 @@ msgstr "Este usuário foi inativado!"
 
 
 
+msgid  "PublicPlaces"
+msgstr "Logradouro"
+
+msgid  "PublicPlace"
+msgstr "Logradouro"
+
+msgid  "Public Place"
+msgstr "Logradouro"
+
+msgid  "Invalid public place"
+msgstr "Logradouro não encontrado"
+
+msgid  "The public place has been saved."
+msgstr "Logradouro gravado com sucesso"
+
+msgid  "The public place could not be saved. Please, try again."
+msgstr "O Logradouro não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "The public place has been deleted."
+msgstr "Logradouro excluído com sucesso"
+
+msgid  "The public place could not be deleted. Please, try again."
+msgstr "O Logradouro não pôde ser excluído. Por favor, tente novamente"
+
+
+
+
 
 
 msgid  "Orders Board"
@@ -1259,3 +1286,30 @@ msgstr "Hora Final"
 
 msgid  "Print"
 msgstr "Imprimir"
+
+msgid  "Related Addresses"
+msgstr "Endereços Relacionados"
+
+msgid  "Addresses"
+msgstr "Endereços"
+
+msgid  "Status Address"
+msgstr "Situação"
+
+msgid  "Zip Code"
+msgstr "CEP"
+
+msgid  "State"
+msgstr "Estado"
+
+msgid  "City"
+msgstr "Cidade"
+
+msgid  "Number"
+msgstr "Número"
+
+msgid  "Is Primary"
+msgstr "Principal"
+
+msgid  "Reference"
+msgstr "Ponto de Referência"

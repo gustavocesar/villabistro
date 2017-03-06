@@ -1,13 +1,14 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 06-Mar-2017 às 18:06
--- Versão do servidor: 5.6.21
--- PHP Version: 5.6.3
+-- Servidor: localhost
+-- Tempo de Geração: 06/03/2017 às 17:07:16
+-- Versão do Servidor: 10.0.28-MariaDB
+-- Versão do PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `villabistro`
+-- Banco de Dados: `u267690752_bistr`
 --
 
 -- --------------------------------------------------------
@@ -27,21 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `acos` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=578 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_acos_lft_rght` (`lft`,`rght`),
+  KEY `idx_acos_alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=554 ;
 
 --
 -- Extraindo dados da tabela `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, NULL, NULL, 'controllers', 1, 472),
+(1, NULL, NULL, NULL, 'controllers', 1, 424),
 (2, 1, NULL, NULL, 'Bills', 2, 17),
 (3, 2, NULL, NULL, 'index', 3, 4),
 (4, 2, NULL, NULL, 'view', 5, 6),
@@ -252,54 +256,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (550, 548, NULL, NULL, 'view', 415, 416),
 (551, 548, NULL, NULL, 'add', 417, 418),
 (552, 548, NULL, NULL, 'edit', 419, 420),
-(553, 548, NULL, NULL, 'delete', 421, 422),
-(554, 1, NULL, NULL, 'Addresses', 424, 435),
-(555, 554, NULL, NULL, 'index', 425, 426),
-(556, 554, NULL, NULL, 'view', 427, 428),
-(557, 554, NULL, NULL, 'add', 429, 430),
-(558, 554, NULL, NULL, 'edit', 431, 432),
-(559, 554, NULL, NULL, 'delete', 433, 434),
-(560, 1, NULL, NULL, 'PublicPlaces', 436, 447),
-(561, 560, NULL, NULL, 'index', 437, 438),
-(562, 560, NULL, NULL, 'view', 439, 440),
-(563, 560, NULL, NULL, 'add', 441, 442),
-(564, 560, NULL, NULL, 'edit', 443, 444),
-(565, 560, NULL, NULL, 'delete', 445, 446),
-(566, 1, NULL, NULL, 'States', 448, 459),
-(567, 566, NULL, NULL, 'index', 449, 450),
-(568, 566, NULL, NULL, 'view', 451, 452),
-(569, 566, NULL, NULL, 'add', 453, 454),
-(570, 566, NULL, NULL, 'edit', 455, 456),
-(571, 566, NULL, NULL, 'delete', 457, 458),
-(572, 1, NULL, NULL, 'StatusAddresses', 460, 471),
-(573, 572, NULL, NULL, 'index', 461, 462),
-(574, 572, NULL, NULL, 'view', 463, 464),
-(575, 572, NULL, NULL, 'add', 465, 466),
-(576, 572, NULL, NULL, 'edit', 467, 468),
-(577, 572, NULL, NULL, 'delete', 469, 470);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `addresses`
---
-
-CREATE TABLE IF NOT EXISTS `addresses` (
-`id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `status_address_id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `zip_code` varchar(45) NOT NULL,
-  `state_id` int(11) NOT NULL,
-  `city` varchar(45) NOT NULL,
-  `public_place_id` int(11) NOT NULL,
-  `number` varchar(45) NOT NULL,
-  `is_primary` enum('Sim','Não') NOT NULL DEFAULT 'Sim',
-  `reference` varchar(255) DEFAULT NULL,
-  `observation` text,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(553, 548, NULL, NULL, 'delete', 421, 422);
 
 -- --------------------------------------------------------
 
@@ -308,14 +265,17 @@ CREATE TABLE IF NOT EXISTS `addresses` (
 --
 
 CREATE TABLE IF NOT EXISTS `aros` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
   `model` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `foreign_key` int(10) DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `rght` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_aros_lft_rght` (`lft`,`rght`),
+  KEY `idx_aros_alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `aros`
@@ -333,14 +293,17 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros_acos` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `aro_id` int(10) NOT NULL,
   `aco_id` int(10) NOT NULL,
   `_create` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_read` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
   `_update` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
-  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `_delete` varchar(2) COLLATE utf8_swedish_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`),
+  KEY `idx_aco_id` (`aco_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=18 ;
 
 --
 -- Extraindo dados da tabela `aros_acos`
@@ -372,13 +335,14 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 --
 
 CREATE TABLE IF NOT EXISTS `bills` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `status_bill_id` int(11) NOT NULL,
   `table_id` int(11) DEFAULT NULL,
   `identifier` varchar(45) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
 
 --
 -- Extraindo dados da tabela `bills`
@@ -512,11 +476,13 @@ INSERT INTO `bills` (`id`, `status_bill_id`, `table_id`, `identifier`, `created`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `categories`
@@ -533,15 +499,16 @@ INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `entry_notes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `supplier_id` int(11) DEFAULT NULL,
   `status_entry_note_id` int(11) NOT NULL DEFAULT '1',
   `fiscal_note` varchar(45) NOT NULL,
   `entry_date` date NOT NULL,
   `entry_hour` time DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -550,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `entry_notes` (
 --
 
 CREATE TABLE IF NOT EXISTS `entry_note_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `entry_note_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) unsigned NOT NULL,
@@ -558,8 +525,9 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
   `total_cost` double(50,6) unsigned NOT NULL,
   `location_id` int(11) NOT NULL COMMENT 'Local de destino, para onde o produto vai quando a nota for concluída',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -568,9 +536,11 @@ CREATE TABLE IF NOT EXISTS `entry_note_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
-`id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `groups`
@@ -588,7 +558,7 @@ INSERT INTO `groups` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
   `location_destiny_id` int(11) NOT NULL,
   `status_internal_transfer_id` int(11) NOT NULL DEFAULT '1',
@@ -596,8 +566,9 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
   `time` time NOT NULL,
   `observation` text COLLATE utf8_swedish_ci,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -606,13 +577,14 @@ CREATE TABLE IF NOT EXISTS `internal_transfers` (
 --
 
 CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `internal_transfer_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` double(50,3) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -621,12 +593,14 @@ CREATE TABLE IF NOT EXISTS `internal_transfer_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `location_type_id` int(11) NOT NULL DEFAULT '1',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=102 ;
 
 --
 -- Extraindo dados da tabela `locations`
@@ -646,11 +620,13 @@ INSERT INTO `locations` (`id`, `name`, `location_type_id`, `created`, `modified`
 --
 
 CREATE TABLE IF NOT EXISTS `location_types` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `location_types`
@@ -667,11 +643,12 @@ INSERT INTO `location_types` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `manual_adjustments` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -680,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `manual_adjustments` (
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` float(10,2) unsigned NOT NULL,
@@ -692,8 +669,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `observation` text,
   `kitchen_order` int(10) unsigned NOT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=1161 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1161 ;
 
 --
 -- Extraindo dados da tabela `orders`
@@ -1870,7 +1848,7 @@ INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `stage_id`, `ta
 --
 
 CREATE TABLE IF NOT EXISTS `payments` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `table_id` int(11) DEFAULT NULL,
   `bill_id` int(11) DEFAULT NULL,
   `payment_method_id` int(11) NOT NULL DEFAULT '1',
@@ -1878,8 +1856,9 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `payd_value` double(50,2) DEFAULT NULL,
   `payback` double(50,2) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=140 ;
 
 --
 -- Extraindo dados da tabela `payments`
@@ -2058,7 +2037,7 @@ INSERT INTO `payment_methods` (`id`, `name`, `status_payment_method_id`, `sequen
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `subcategory_id` int(11) NOT NULL,
   `unit_id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL,
@@ -2070,8 +2049,9 @@ CREATE TABLE IF NOT EXISTS `products` (
   `minimum_stock` double(50,3) unsigned NOT NULL DEFAULT '0.000',
   `description` text,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=177 ;
 
 --
 -- Extraindo dados da tabela `products`
@@ -2189,36 +2169,12 @@ INSERT INTO `products` (`id`, `subcategory_id`, `unit_id`, `name`, `status`, `co
 --
 
 CREATE TABLE IF NOT EXISTS `product_items` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `public_places`
---
-
-CREATE TABLE IF NOT EXISTS `public_places` (
-`id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `public_places`
---
-
-INSERT INTO `public_places` (`id`, `name`, `created`, `modified`) VALUES
-(1, 'Rua', '2017-03-06 13:48:36', '2017-03-06 13:48:36'),
-(2, 'Avenida', '2017-03-06 13:49:16', '2017-03-06 13:49:16'),
-(3, 'Chácara', '2017-03-06 13:50:12', '2017-03-06 13:50:12'),
-(4, 'Rodovia', '2017-03-06 13:50:30', '2017-03-06 13:50:30'),
-(5, 'Praça', '2017-03-06 13:50:40', '2017-03-06 13:50:40'),
-(6, 'Viela', '2017-03-06 13:50:56', '2017-03-06 13:50:56');
+  `quantity` double(50,3) unsigned NOT NULL DEFAULT '0.000',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2227,15 +2183,17 @@ INSERT INTO `public_places` (`id`, `name`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `stages` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Ativo',
   `show_on_kitchen` enum('Sim','Não') DEFAULT 'Sim',
   `consider_as` enum('Concluídos','Pendentes') DEFAULT 'Pendentes' COMMENT 'Diferenciação para montagem da Fila de Pedidos (Pedidos Pendentes e Pedidos Concluídos)',
   `label_class` varchar(55) DEFAULT 'label-primary',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `stages`
@@ -2251,56 +2209,18 @@ INSERT INTO `stages` (`id`, `name`, `status`, `show_on_kitchen`, `consider_as`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `states`
---
-
-CREATE TABLE IF NOT EXISTS `states` (
-`id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `uf` varchar(2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `states`
---
-
-INSERT INTO `states` (`id`, `name`, `uf`) VALUES
-(1, 'Goiás', 'GO');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `status_addresses`
---
-
-CREATE TABLE IF NOT EXISTS `status_addresses` (
-`id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `status_addresses`
---
-
-INSERT INTO `status_addresses` (`id`, `name`, `created`, `modified`) VALUES
-(1, 'Ativo', '2017-03-06 13:46:31', '2017-03-06 13:46:31'),
-(2, 'Inativo', '2017-03-06 13:47:15', '2017-03-06 13:47:15');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `status_bills`
 --
 
 CREATE TABLE IF NOT EXISTS `status_bills` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_bills`
@@ -2317,12 +2237,14 @@ INSERT INTO `status_bills` (`id`, `name`, `finish`, `created`, `modified`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `status_entry_notes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_entry_notes`
@@ -2339,12 +2261,14 @@ INSERT INTO `status_entry_notes` (`id`, `name`, `finish`, `created`, `modified`)
 --
 
 CREATE TABLE IF NOT EXISTS `status_internal_transfers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_swedish_ci NOT NULL,
   `finish` enum('Sim','Não') COLLATE utf8_swedish_ci DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_internal_transfers`
@@ -2361,12 +2285,14 @@ INSERT INTO `status_internal_transfers` (`id`, `name`, `finish`, `created`, `mod
 --
 
 CREATE TABLE IF NOT EXISTS `status_orders` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `finish` enum('Sim','Não') DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `status_orders`
@@ -2404,7 +2330,7 @@ INSERT INTO `status_payment_methods` (`id`, `name`, `created`, `modified`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `stocks` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` double(50,3) NOT NULL,
@@ -2415,8 +2341,9 @@ CREATE TABLE IF NOT EXISTS `stocks` (
   `manual_adjustment_id` int(11) DEFAULT NULL,
   `finished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1856 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1856 ;
 
 --
 -- Extraindo dados da tabela `stocks`
@@ -4264,13 +4191,15 @@ INSERT INTO `stocks` (`id`, `location_id`, `product_id`, `quantity`, `value`, `e
 --
 
 CREATE TABLE IF NOT EXISTS `subcategories` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `name` varchar(55) NOT NULL,
   `stage_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `subcategories`
@@ -4298,15 +4227,17 @@ INSERT INTO `subcategories` (`id`, `category_id`, `name`, `stage_id`, `created`,
 --
 
 CREATE TABLE IF NOT EXISTS `suppliers` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_name` varchar(45) NOT NULL,
   `contact_name` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `fax` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `suppliers`
@@ -4322,12 +4253,14 @@ INSERT INTO `suppliers` (`id`, `company_name`, `contact_name`, `phone`, `fax`, `
 --
 
 CREATE TABLE IF NOT EXISTS `tables` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `balcony` enum('Sim','Não') NOT NULL DEFAULT 'Não',
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `tables`
@@ -4372,12 +4305,15 @@ INSERT INTO `tables` (`id`, `name`, `balcony`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `units` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `initials` varchar(45) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`),
+  UNIQUE KEY `initials_UNIQUE` (`initials`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Extraindo dados da tabela `units`
@@ -4412,15 +4348,17 @@ INSERT INTO `units` (`id`, `name`, `initials`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL,
   `status` enum('Ativo','Inativo') NOT NULL DEFAULT 'Inativo',
   `name` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `users`
@@ -4429,366 +4367,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `group_id`, `status`, `name`, `email`, `password`, `created`, `modified`) VALUES
 (1, 1, 'Ativo', 'Gustavo César de Melo', 'delfino.cesar@gmail.com', 'd9f626c44c10101c2ab684d64ca2dd27608e232f', '2016-02-09 14:36:03', '2016-05-21 15:33:12');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `acos`
---
-ALTER TABLE `acos`
- ADD PRIMARY KEY (`id`), ADD KEY `idx_acos_lft_rght` (`lft`,`rght`), ADD KEY `idx_acos_alias` (`alias`);
-
---
--- Indexes for table `addresses`
---
-ALTER TABLE `addresses`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `aros`
---
-ALTER TABLE `aros`
- ADD PRIMARY KEY (`id`), ADD KEY `idx_aros_lft_rght` (`lft`,`rght`), ADD KEY `idx_aros_alias` (`alias`);
-
---
--- Indexes for table `aros_acos`
---
-ALTER TABLE `aros_acos`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`), ADD KEY `idx_aco_id` (`aco_id`);
-
---
--- Indexes for table `bills`
---
-ALTER TABLE `bills`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `entry_notes`
---
-ALTER TABLE `entry_notes`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `entry_note_items`
---
-ALTER TABLE `entry_note_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `internal_transfers`
---
-ALTER TABLE `internal_transfers`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `internal_transfer_items`
---
-ALTER TABLE `internal_transfer_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `locations`
---
-ALTER TABLE `locations`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `location_types`
---
-ALTER TABLE `location_types`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `manual_adjustments`
---
-ALTER TABLE `manual_adjustments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `payments`
---
-ALTER TABLE `payments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `product_items`
---
-ALTER TABLE `product_items`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `public_places`
---
-ALTER TABLE `public_places`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `stages`
---
-ALTER TABLE `stages`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `states`
---
-ALTER TABLE `states`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`), ADD UNIQUE KEY `uf_UNIQUE` (`uf`);
-
---
--- Indexes for table `status_addresses`
---
-ALTER TABLE `status_addresses`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_bills`
---
-ALTER TABLE `status_bills`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_entry_notes`
---
-ALTER TABLE `status_entry_notes`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_internal_transfers`
---
-ALTER TABLE `status_internal_transfers`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `status_orders`
---
-ALTER TABLE `status_orders`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `stocks`
---
-ALTER TABLE `stocks`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subcategories`
---
-ALTER TABLE `subcategories`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `suppliers`
---
-ALTER TABLE `suppliers`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
-
---
--- Indexes for table `tables`
---
-ALTER TABLE `tables`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`);
-
---
--- Indexes for table `units`
---
-ALTER TABLE `units`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name_UNIQUE` (`name`), ADD UNIQUE KEY `initials_UNIQUE` (`initials`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email_UNIQUE` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `acos`
---
-ALTER TABLE `acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=578;
---
--- AUTO_INCREMENT for table `addresses`
---
-ALTER TABLE `addresses`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `aros`
---
-ALTER TABLE `aros`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `aros_acos`
---
-ALTER TABLE `aros_acos`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `bills`
---
-ALTER TABLE `bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=120;
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `entry_notes`
---
-ALTER TABLE `entry_notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `entry_note_items`
---
-ALTER TABLE `entry_note_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `internal_transfers`
---
-ALTER TABLE `internal_transfers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `internal_transfer_items`
---
-ALTER TABLE `internal_transfer_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `locations`
---
-ALTER TABLE `locations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=102;
---
--- AUTO_INCREMENT for table `location_types`
---
-ALTER TABLE `location_types`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `manual_adjustments`
---
-ALTER TABLE `manual_adjustments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1161;
---
--- AUTO_INCREMENT for table `payments`
---
-ALTER TABLE `payments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=140;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=177;
---
--- AUTO_INCREMENT for table `product_items`
---
-ALTER TABLE `product_items`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `public_places`
---
-ALTER TABLE `public_places`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `stages`
---
-ALTER TABLE `stages`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `states`
---
-ALTER TABLE `states`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `status_addresses`
---
-ALTER TABLE `status_addresses`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_bills`
---
-ALTER TABLE `status_bills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_entry_notes`
---
-ALTER TABLE `status_entry_notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_internal_transfers`
---
-ALTER TABLE `status_internal_transfers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status_orders`
---
-ALTER TABLE `status_orders`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `stocks`
---
-ALTER TABLE `stocks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1856;
---
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `suppliers`
---
-ALTER TABLE `suppliers`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tables`
---
-ALTER TABLE `tables`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
---
--- AUTO_INCREMENT for table `units`
---
-ALTER TABLE `units`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
