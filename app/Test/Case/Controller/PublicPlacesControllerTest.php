@@ -41,7 +41,8 @@ class PublicPlacesControllerTest extends ControllerTestCase {
 		'app.payment_method',
 		'app.status_payment_method',
 		'app.status_order',
-		'app.status_address'
+		'app.status_address',
+		'app.state'
 	);
 
 /**
