@@ -17,5 +17,6 @@
 <?php echo $this->fetch('content'); ?>
 
 <?php
+echo $this->Html->script('admin');
 //echo $this->element('sql_dump');
 ?>

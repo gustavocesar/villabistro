@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo __('id'); ?></th>
+                                <th class="text-center"><?php echo __('id'); ?></th>
                                 <th><?php echo __('name'); ?></th>
                                 <th><?php echo __('group id'); ?></th>
                                 <th><?php echo __('status'); ?></th>
@@ -67,7 +67,7 @@
                                     );
                                     ?>
                                 </td>
-                                <td><?php echo h($user['User']['id']); ?></td>
+                                <td class="text-center"><?php echo h($user['User']['id']); ?></td>
                                 <td><?php echo h($user['User']['name']); ?></td>
                                 <td><?php echo h($user['Group']['name']); ?></td>
                                 <td><?php echo h($user['User']['status']); ?></td>

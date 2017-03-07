@@ -19,25 +19,25 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('location_id', __('Origin')); ?></th>
-                                <th><?php echo $this->Paginator->sort('location_destiny'); ?></th>
-                                <th><?php echo $this->Paginator->sort('status_internal_transfer_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('date'); ?></th>
-                                <th><?php echo $this->Paginator->sort('time'); ?></th>
+                                <th class="text-center"><?php echo __('id'); ?></th>
+                                <th><?php echo __('Origin'); ?></th>
+                                <th><?php echo __('location_destiny'); ?></th>
+                                <th><?php echo __('status_internal_transfer_id'); ?></th>
+                                <th><?php echo __('date'); ?></th>
+                                <th><?php echo __('time'); ?></th>
                                 <th class="text-center">Itens</th>
-                                <th><?php echo $this->Paginator->sort('created'); ?></th>
-                                <th><?php echo $this->Paginator->sort('modified'); ?></th>
+                                <th><?php echo __('created'); ?></th>
+                                <th><?php echo __('modified'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($internalTransfers as $internalTransfer): ?>
                                 <tr>
-                                    <td class="text-center">
+                                    <td class="text-center dt-body-nowrap">
                                         <?php
                                         echo $this->Html->link(
                                                 '<i class="fa fa-check"></i>', [
@@ -72,7 +72,7 @@
                                         );
                                         ?>
                                     </td>
-                                    <td><?php echo h($internalTransfer['InternalTransfer']['id']); ?></td>
+                                    <td class="text-center"><?php echo h($internalTransfer['InternalTransfer']['id']); ?></td>
                                     <td><?php echo h($internalTransfer['LocationOrigin']['name']); ?></td>
                                     <td><?php echo h($internalTransfer['LocationDestiny']['name']); ?></td>
                                     
@@ -126,24 +126,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <ul class="pagination mtm mbm">
-            <?php
-            echo $this->Paginator->prev(
-                    '«', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'disabled', 'tag' => 'li']
-            );
-            echo $this->Paginator->numbers(
-                    ['separator' => '', 'tag' => 'li', 'currentClass' => 'disabled', 'currentTag' => 'a']
-            );
-            echo $this->Paginator->next(
-                    '»', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'next disabled', 'tag' => 'li']
-            );
-            ?>
-        </ul>
     </div>
 </div>

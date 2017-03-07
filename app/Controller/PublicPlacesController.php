@@ -26,7 +26,9 @@ class PublicPlacesController extends AppController {
  */
 	public function index() {
 		$this->PublicPlace->recursive = 0;
-		$this->set('publicPlaces', $this->Paginator->paginate());
+        $this->set('publicPlaces', $this->PublicPlace->find('all', [
+            'order' => "{$this->PublicPlace->alias}.id asc"
+        ]));
 	}
 
 /**

@@ -43,13 +43,10 @@ class InternalTransfersController extends AppController {
      * @return void
      */
     public function index() {
-        
-        $this->Paginator->settings = [
-            'order' => 'InternalTransfer.status_internal_transfer_id asc, InternalTransfer.id desc'
-        ];
-        
         $this->InternalTransfer->recursive = 1;
-        $this->set('internalTransfers', $this->Paginator->paginate());
+        $this->set('internalTransfers', $this->InternalTransfer->find('all', [
+            'order' => "{$this->InternalTransfer->alias}.status_internal_transfer_id asc, {$this->InternalTransfer->alias}.id desc"
+        ]));
         
         $this->set('arrayBreadCrumb', [
             0 => [

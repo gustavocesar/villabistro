@@ -2,7 +2,12 @@ $(document).ready(function () {
 
     setInputMask();
 
-    $('.datatable').DataTable({
+    if (myDataTable) {
+        myDataTable.destroy();
+    }
+
+    var myDataTable = $('.datatable').DataTable({
+        retrieve: true,
         language: {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

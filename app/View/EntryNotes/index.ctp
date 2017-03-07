@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-sm-2 pull-right">
         <p>
@@ -20,25 +19,25 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('supplier_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('status_entry_note_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('fiscal_note'); ?></th>
-                                <th><?php echo $this->Paginator->sort('entry_date'); ?></th>
-                                <th><?php echo $this->Paginator->sort('entry_hour'); ?></th>
+                                <th class="text-center"><?php echo __('id'); ?></th>
+                                <th><?php echo __('supplier_id'); ?></th>
+                                <th><?php echo __('status_entry_note_id'); ?></th>
+                                <th><?php echo __('fiscal_note'); ?></th>
+                                <th><?php echo __('entry_date'); ?></th>
+                                <th><?php echo __('entry_hour'); ?></th>
                                 <th class="text-center">Itens</th>
-                                <th><?php echo $this->Paginator->sort('created'); ?></th>
-                                <th><?php echo $this->Paginator->sort('modified'); ?></th>
+                                <th><?php echo __('created'); ?></th>
+                                <th><?php echo __('modified'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($entryNotes as $entryNote): ?>
                                 <tr>
-                                    <td class="text-center">
+                                    <td class="text-center dt-body-nowrap">
                                         <?php
                                         echo $this->Html->link(
                                                 '<i class="fa fa-check"></i>', [
@@ -73,7 +72,7 @@
                                         );
                                         ?>
                                     </td>
-                                    <td><?php echo h($entryNote['EntryNote']['id']); ?></td>
+                                    <td class="text-center"><?php echo h($entryNote['EntryNote']['id']); ?></td>
                                     <td><?php echo h($entryNote['Supplier']['company_name']); ?></td>
 
                                     <td>
@@ -126,24 +125,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <ul class="pagination mtm mbm">
-            <?php
-            echo $this->Paginator->prev(
-                    '«', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'disabled', 'tag' => 'li']
-            );
-            echo $this->Paginator->numbers(
-                    ['separator' => '', 'tag' => 'li', 'currentClass' => 'disabled', 'currentTag' => 'a']
-            );
-            echo $this->Paginator->next(
-                    '»', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'next disabled', 'tag' => 'li']
-            );
-            ?>
-        </ul>
     </div>
 </div>

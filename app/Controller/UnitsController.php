@@ -29,12 +29,10 @@ class UnitsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = [
-            'order' => "{$this->Unit->alias}.id asc"
-        ];
-
         $this->Unit->recursive = 0;
-        $this->set('units', $this->Paginator->paginate());
+        $this->set('units', $this->Unit->find('all', [
+            'order' => "{$this->Unit->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

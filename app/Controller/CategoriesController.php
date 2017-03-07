@@ -34,7 +34,9 @@ class CategoriesController extends AppController {
         ];
 
         $this->Category->recursive = 0;
-        $this->set('categories', $this->Paginator->paginate());
+        $this->set('categories', $this->Category->find('all', [
+            'order' => "{$this->Category->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

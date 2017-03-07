@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-sm-2 pull-right">
         <p>
@@ -20,20 +19,20 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('name'); ?></th>
-                                <th><?php echo $this->Paginator->sort('category_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('stage_id', __('Default Stage')); ?></th>
+                                <th class="text-center"><?php echo __('id'); ?></th>
+                                <th><?php echo __('name'); ?></th>
+                                <th><?php echo __('category_id'); ?></th>
+                                <th><?php echo __('Default Stage'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($subcategories as $subcategory): ?>
                                 <tr>
-                                    <td class="text-center">
+                                    <td class="text-center dt-body-nowrap">
                                         <?php
                                         echo $this->Html->link(
                                                 '<i class="fa fa-check"></i>', [
@@ -68,7 +67,7 @@
                                         );
                                         ?>
                                     </td>
-                                    <td><?php echo h($subcategory['Subcategory']['id']); ?></td>
+                                    <td class="text-center"><?php echo h($subcategory['Subcategory']['id']); ?></td>
                                     <td><?php echo h($subcategory['Subcategory']['name']); ?></td>
                                     <td>
                                         <?php echo $this->Html->link($subcategory['Category']['name'], array('controller' => 'categories', 'action' => 'view', $subcategory['Category']['id'])); ?>
@@ -83,22 +82,4 @@
         </div>
     </div>
 
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <ul class="pagination mtm mbm">
-            <?php
-            echo $this->Paginator->prev(
-                    '«', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'disabled', 'tag' => 'li']
-            );
-            echo $this->Paginator->numbers(
-                    ['separator' => '', 'tag' => 'li', 'currentClass' => 'disabled', 'currentTag' => 'a']
-            );
-            echo $this->Paginator->next(
-                    '»', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'next disabled', 'tag' => 'li']
-            );
-            ?>
-        </ul>
-    </div>
 </div>

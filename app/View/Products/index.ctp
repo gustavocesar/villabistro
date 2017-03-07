@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo __('id'); ?></th>
+                                <th class="text-center"><?php echo __('id'); ?></th>
                                 <th><?php echo __('name'); ?></th>
                                 <th><?php echo __("Subcategory Id"); ?></th>
                                 <th><?php echo __("Unit Id"); ?></th>

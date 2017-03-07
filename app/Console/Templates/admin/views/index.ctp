@@ -1,7 +1,6 @@
 <?php
 $arrHiddenFields = ['label_class'];
 ?>
-
 <div class="row">
     <div class="col-sm-2 pull-right">
         <p>
@@ -25,7 +24,7 @@ $arrHiddenFields = ['label_class'];
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
 
@@ -38,7 +37,7 @@ $arrHiddenFields = ['label_class'];
                                     }
                                     ?>
 
-                                    <th><?php echo "<?php echo \$this->Paginator->sort('{$field}'); ?>"; ?></th>
+                                    <th><?php echo "<?php echo __('{$field}'); ?>"; ?></th>
                                 <?php endforeach; ?>
                             </tr>
                         </thead>
@@ -46,7 +45,7 @@ $arrHiddenFields = ['label_class'];
                             <?php
                             echo "<?php foreach (\${$pluralVar} as \${$singularVar}): ?>\n";
                             echo "\t<tr>\n";
-                            echo "\t\t<td class=\"text-center\">\n";
+                            echo "\t\t<td class=\"text-center dt-body-nowrap\">\n";
                             echo "\t\t\t<?php
                     echo \$this->Html->link(
                         '<i class=\"fa fa-check\"></i>',
@@ -120,26 +119,5 @@ $arrHiddenFields = ['label_class'];
                 </div>
             </div>
         </div>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <ul class="pagination mtm mbm">
-            <?php
-            echo "<?php
-                echo \$this->Paginator->prev(
-                        '«', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'disabled', 'tag' => 'li']
-                );
-                echo \$this->Paginator->numbers(
-                        ['separator' => '', 'tag' => 'li', 'currentClass' => 'disabled', 'currentTag' => 'a']
-                );
-                echo \$this->Paginator->next(
-                        '»', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'next disabled', 'tag' => 'li']
-                );
-                ?>\n";
-            ?>
-        </ul>
     </div>
 </div>

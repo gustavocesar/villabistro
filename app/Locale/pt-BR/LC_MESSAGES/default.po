@@ -98,6 +98,9 @@ msgstr "Configurações"
 msgid  "Sequence"
 msgstr "Sequência"
 
+msgid  "sequence"
+msgstr "Sequência"
+
 msgid  "Consider As"
 msgstr "Considerar Pedidos Como"
 
@@ -314,7 +317,13 @@ msgstr "Notas de Entrada"
 msgid  "Status Entry Note"
 msgstr "Situação"
 
+msgid  "status_entry_note_id"
+msgstr "Situação"
+
 msgid  "Fiscal Note"
+msgstr "Nota Fiscal"
+
+msgid  "fiscal_note"
 msgstr "Nota Fiscal"
 
 msgid  "Related Entry Note Items"
@@ -451,6 +460,9 @@ msgstr "Situação"
 msgid  "Status Payment Method Id"
 msgstr "Situação"
 
+msgid  "status_payment_method_id"
+msgstr "Situação"
+
 
 
 
@@ -541,11 +553,17 @@ msgstr "Unidades de Medida Relacionadas"
 msgid  "Initials"
 msgstr "Sigla"
 
+msgid  "initials"
+msgstr "Sigla"
+
 msgid  "Bill Id"
 msgstr "Conta"
 
 msgid  "Subcategory Id"
 msgstr "Subcategoria"
+
+msgid  "category_id"
+msgstr "Categoria"
 
 msgid  "Unit Id"
 msgstr "Unidade de Medida"
@@ -713,8 +731,15 @@ msgstr "Situação"
 msgid  "Entry Date"
 msgstr "Data da Entrada"
 
+msgid  "entry_date"
+msgstr "Data da Entrada"
+
 msgid  "Entry Hour"
 msgstr "Hora da Entrada"
+
+msgid  "entry_hour"
+msgstr "Hora da Entrada"
+
 
 
 
@@ -844,15 +869,29 @@ msgstr "Fornecedores"
 msgid  "Company Name"
 msgstr "Nome da Empresa"
 
+msgid  "company_name"
+msgstr "Nome da Empresa"
+
 msgid  "Contact Name"
+msgstr "Nome para Contato"
+
+msgid  "contact_name"
 msgstr "Nome para Contato"
 
 msgid  "Phone"
 msgstr "Telefone"
 
+msgid  "phone"
+msgstr "Telefone"
+
+msgid  "fax"
+msgstr "Fax"
+
 msgid  "Supplier Id"
 msgstr "Fornecedor"
 
+msgid  "supplier_id"
+msgstr "Fornecedor"
 
 
 
@@ -936,6 +975,9 @@ msgid  "Locations"
 msgstr "Localizações"
 
 msgid  "Location Type"
+msgstr "Tipo"
+
+msgid  "location_type_id"
 msgstr "Tipo"
 
 msgid  "LocationTypes"
@@ -1024,13 +1066,22 @@ msgstr "Origem"
 msgid  "Location Destiny"
 msgstr "Destino"
 
+msgid  "location_destiny"
+msgstr "Destino"
+
 msgid  "Destiny"
 msgstr "Destino"
 
 msgid  "Status Internal Transfers"
 msgstr "Situação"
 
+msgid  "status_internal_transfer_id"
+msgstr "Situação"
+
 msgid  "Time"
+msgstr "Hora"
+
+msgid  "time"
 msgstr "Hora"
 
 
@@ -1065,6 +1116,9 @@ msgid  "Status Internal Transfer"
 msgstr "Situação"
 
 msgid  "Date"
+msgstr "Dia"
+
+msgid  "date"
 msgstr "Dia"
 
 msgid  "Related Internal Transfer Items"

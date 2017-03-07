@@ -29,12 +29,10 @@ class SuppliersController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = [
-            'order' => "{$this->Supplier->alias}.id asc"
-        ];
-
         $this->Supplier->recursive = 0;
-        $this->set('suppliers', $this->Paginator->paginate());
+        $this->set('suppliers', $this->Supplier->find('all', [
+            'order' => "{$this->Supplier->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

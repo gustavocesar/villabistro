@@ -29,12 +29,10 @@ class LocationsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = [
-            'order' => "{$this->Location->alias}.id asc"
-        ];
-
         $this->Location->recursive = 0;
-        $this->set('locations', $this->Paginator->paginate());
+        $this->set('locations', $this->Location->find('all', [
+            'order' => "{$this->Location->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

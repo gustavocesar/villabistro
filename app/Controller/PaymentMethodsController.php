@@ -26,7 +26,9 @@ class PaymentMethodsController extends AppController {
  */
 	public function index() {
 		$this->PaymentMethod->recursive = 0;
-		$this->set('paymentMethods', $this->Paginator->paginate());
+        $this->set('paymentMethods', $this->PaymentMethod->find('all', [
+            'order' => "{$this->PaymentMethod->alias}.id asc"
+        ]));
 	}
 
 /**

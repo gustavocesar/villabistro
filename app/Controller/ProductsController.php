@@ -34,7 +34,9 @@ class ProductsController extends AppController {
         ];
 
         $this->Product->recursive = 0;
-        $this->set('products', $this->Product->find('all'));
+        $this->set('products', $this->Product->find('all', [
+            'order' => "{$this->Product->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [

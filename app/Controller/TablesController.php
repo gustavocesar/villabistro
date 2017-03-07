@@ -28,12 +28,12 @@ class TablesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = [
-            'order' => "{$this->Table->alias}.id asc"
-        ];
-
+        $this->set('activeConfigurations', 'active');
+        
         $this->Table->recursive = 0;
-        $this->set('tables', $this->Paginator->paginate());
+        $this->set('tables', $this->Table->find('all', [
+            'order' => "{$this->Table->alias}.id asc"
+        ]));
 
         $this->set('arrayBreadCrumb', [
             0 => [
@@ -63,6 +63,8 @@ class TablesController extends AppController {
      * @return void
      */
     public function view($id = null) {
+        $this->set('activeConfigurations', 'active');
+        
         if (!$this->Table->exists($id)) {
             throw new NotFoundException(__('Invalid table'));
         }
@@ -104,6 +106,8 @@ class TablesController extends AppController {
      * @return void
      */
     public function add() {
+        $this->set('activeConfigurations', 'active');
+
         if ($this->request->is('post')) {
             $this->Table->create();
             if ($this->Table->save($this->request->data)) {
@@ -150,6 +154,8 @@ class TablesController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $this->set('activeConfigurations', 'active');
+
         if (!$this->Table->exists($id)) {
             throw new NotFoundException(__('Invalid table'));
         }

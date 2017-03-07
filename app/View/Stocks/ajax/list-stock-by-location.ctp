@@ -7,7 +7,7 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -20,7 +20,7 @@
                         <tbody>
                             <?php foreach ($arrListStock as $stock): ?>
                                 <tr>
-                                    <td>
+                                    <td class="text-center dt-body-nowrap">
                                         <?php
                                         echo $this->Html->link(
                                                 '<i class="fa fa-check-square-o"></i>', [

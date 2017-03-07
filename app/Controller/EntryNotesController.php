@@ -44,11 +44,13 @@ class EntryNotesController extends AppController {
      */
     public function index() {
         $this->Paginator->settings = [
-            'order' => 'EntryNote.status_entry_note_id asc, EntryNote.id desc'
+            
         ];
         
         $this->EntryNote->recursive = 1;
-        $this->set('entryNotes', $this->Paginator->paginate());
+        $this->set('entryNotes', $this->EntryNote->find('all', [
+            'order' => "{$this->EntryNote->alias}.status_entry_note_id asc, {$this->EntryNote->alias}.id desc"
+        ]));
         
         $this->set('arrayBreadCrumb', [
             0 => [
