@@ -107,7 +107,8 @@ class UsersController extends AppController {
         ];
 
         $this->User->recursive = 0;
-        $this->set('users', $this->Paginator->paginate());
+//        $this->set('users', $this->Paginator->paginate());
+        $this->set('users', $this->User->find('all', []));
 
         $this->set('arrayBreadCrumb', [
             0 => [
