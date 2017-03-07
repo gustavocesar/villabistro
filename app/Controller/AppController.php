@@ -70,9 +70,6 @@ class AppController extends Controller {
         $this->set('action', $this->request->params['action']);
         
         $this->set('activeHome', '');
-        $this->set('activeStockControl', '');
-        $this->set('activeEntryNotes', '');
-        $this->set('activeInternalTransfers', '');
         $this->set('activeOrdersBoard', '');
         $this->set('activeTables', '');
         $this->set('activeKitchen', '');

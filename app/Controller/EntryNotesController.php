@@ -20,7 +20,7 @@ class EntryNotesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('EntryNotes'));
-        $this->set('activeEntryNotes', 'active');
+        $this->set('activeConfigurations', 'active');
     }
 
     public function beforeRender() {

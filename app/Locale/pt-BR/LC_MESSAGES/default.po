@@ -1322,3 +1322,6 @@ msgstr "Principal"
 
 msgid  "Reference"
 msgstr "Ponto de Referência"
+
+msgid  "Internal Transf."
+msgstr "Transf. Interna"

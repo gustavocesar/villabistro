@@ -9,7 +9,7 @@ class ChartsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Charts'));
-        $this->set('activeCharts', 'active');
+        $this->set('activeConfigurations', 'active');
     }
 
     public function index() {

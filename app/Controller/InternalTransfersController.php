@@ -20,7 +20,7 @@ class InternalTransfersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('InternalTransfers'));
-        $this->set('activeInternalTransfers', 'active');
+        $this->set('activeConfigurations', 'active');
     }
 
     public function beforeRender() {

@@ -80,46 +80,44 @@
     </div>
 </div>
 
-
-<!--
 <div class="row">
     <div class="col-lg-12">
         <div class="col-sm-3">
             <p>
                 <?php
-//                echo $this->Html->link(
-//                        '<span class="fa fa-archive"></span>&nbsp' . __('Stocks'), ['controller' => 'stocks', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
-//                )
+                echo $this->Html->link(
+                        '<span class="fa fa-shopping-cart"></span>&nbsp' . __('Entry Notes'), ['controller' => 'entry_notes', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
+                )
                 ?>
             </p>
         </div>
         <div class="col-sm-3">
             <p>
                 <?php
-//                echo $this->Html->link(
-//                        '<span class="fa fa-map-signs"></span>&nbsp' . __('Stages'), ['controller' => 'stages', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
-//                )
+                echo $this->Html->link(
+                        '<span class="fa fa-exchange"></span>&nbsp' . __('Internal Transf.'), ['controller' => 'internal_transfers', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
+                )
                 ?>
             </p>
         </div>
         <div class="col-sm-3">
             <p>
                 <?php
-//                echo $this->Html->link(
-//                        '<span class="fa fa-book"></span>&nbsp' . __('Bills'), ['controller' => 'bills', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
-//                )
+                echo $this->Html->link(
+                        '<span class="fa fa-archive"></span>&nbsp' . __('Stock'), ['controller' => 'stock_control', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
+                )
                 ?>
             </p>
         </div>
         <div class="col-sm-3">
             <p>
                 <?php
-//                echo $this->Html->link(
-//                        '<span class="fa fa-comments"></span>&nbsp' . __('Orders'), ['controller' => 'orders', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
-//                )
+                echo $this->Html->link(
+                        '<span class="fa fa-pie-chart"></span>&nbsp' . __('Charts'), ['controller' => 'charts', 'action' => 'index'], ['class' => 'btn btn-primary btn-lg btn-block', 'escape' => false]
+                )
                 ?>
             </p>
         </div>
     </div>
 </div>
--->
+

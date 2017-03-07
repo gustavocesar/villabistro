@@ -20,7 +20,7 @@ class StocksController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Stocks'));
-        $this->set('activeStockControl', 'active');
+        $this->set('activeConfigurations', 'active');
     }
 
     /**
