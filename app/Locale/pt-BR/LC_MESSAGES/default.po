@@ -1325,3 +1325,9 @@ msgstr "Ponto de Referência"
 
 msgid  "Internal Transf."
 msgstr "Transf. Interna"
+
+msgid  "minimum_stock"
+msgstr "Estoque Mínimo"
+
+msgid  "stockable"
+msgstr "Estocável"

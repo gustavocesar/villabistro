@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-sm-2 pull-right">
         <p>
@@ -20,26 +19,23 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('name'); ?></th>
-                                <th><?php echo $this->Paginator->sort('Subcategory.name', __("Subcategory Id")); ?></th>
-                                <th><?php echo $this->Paginator->sort('Unit.name', __("Unit Id")); ?></th>
-                                <th><?php echo $this->Paginator->sort('status'); ?></th>
-                                <th><?php echo $this->Paginator->sort('cost_price'); ?></th>
-                                <th><?php echo $this->Paginator->sort('sell_price'); ?></th>
-                                <th><?php echo $this->Paginator->sort('avaliable_to_order'); ?></th>
-                                <th><?php echo $this->Paginator->sort('stockable'); ?></th>
-                                <th><?php echo $this->Paginator->sort('minimum_stock'); ?></th>
+                                <th><?php echo __('id'); ?></th>
+                                <th><?php echo __('name'); ?></th>
+                                <th><?php echo __("Subcategory Id"); ?></th>
+                                <th><?php echo __("Unit Id"); ?></th>
+                                <th class="text-center"><?php echo __('status'); ?></th>
+                                <th class="text-right"><?php echo __('cost_price'); ?></th>
+                                <th class="text-right"><?php echo __('sell_price'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($products as $product): ?>
                                 <tr>
-                                    <td class="text-center">
+                                    <td class="text-center dt-body-nowrap">
                                         <?php
                                         echo $this->Html->link(
                                                 '<i class="fa fa-check"></i>', [
@@ -74,7 +70,7 @@
                                         );
                                         ?>
                                     </td>
-                                    <td><?php echo h($product['Product']['id']); ?></td>
+                                    <td class="text-center"><?php echo h($product['Product']['code']); ?></td>
                                     <td><?php echo h($product['Product']['name']); ?></td>
                                     <td>
                                         <?php echo $this->Html->link($product['Subcategory']['name'], array('controller' => 'subcategories', 'action' => 'view', $product['Subcategory']['id'])); ?>
@@ -82,12 +78,9 @@
                                     <td>
                                         <?php echo $this->Html->link($product['Unit']['name'], array('controller' => 'units', 'action' => 'view', $product['Unit']['id'])); ?>
                                     </td>
-                                    <td><?php echo h($product['Product']['status']); ?></td>
-                                    <td><?php echo $product['Product']['cost_price'] ? "R$ ". h($this->MyFormat->format_show($product['Product']['cost_price'], 2)) : ""; ?></td>
-                                    <td><?php echo $product['Product']['sell_price'] ? "R$ ". h($this->MyFormat->format_show($product['Product']['sell_price'], 2)): ""; ?></td>
-                                    <td><?php echo h($product['Product']['avaliable_to_order']); ?></td>
-                                    <td><?php echo h($product['Product']['stockable']); ?></td>
-                                    <td><?php echo h($this->MyFormat->format_show($product['Product']['minimum_stock'])); ?></td>
+                                    <td class="text-center"><?php echo h($product['Product']['status']); ?></td>
+                                    <td class="text-right"><?php echo $product['Product']['cost_price'] ? h($this->MyFormat->format_show($product['Product']['cost_price'], 2)) : ""; ?></td>
+                                    <td class="text-right"><?php echo $product['Product']['sell_price'] ? h($this->MyFormat->format_show($product['Product']['sell_price'], 2)): ""; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -99,20 +92,3 @@
 
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <ul class="pagination mtm mbm">
-            <?php
-            echo $this->Paginator->prev(
-                    '«', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'disabled', 'tag' => 'li']
-            );
-            echo $this->Paginator->numbers(
-                    ['separator' => '', 'tag' => 'li', 'currentClass' => 'disabled', 'currentTag' => 'a']
-            );
-            echo $this->Paginator->next(
-                    '»', ['tag' => 'li', 'disabledTag' => 'a'], null, ['class' => 'next disabled', 'tag' => 'li']
-            );
-            ?>
-        </ul>
-    </div>
-</div>

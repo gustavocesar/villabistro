@@ -8,7 +8,7 @@
                         <tr>
                             <td class="col-lg-3"><?php echo __('Id'); ?></td>
                             <td class="col-lg-9">
-                                <?php echo h($product['Product']['id']); ?>
+                                <?php echo h($product['Product']['code']); ?>
                             </td>
                         </tr>
                         <tr>

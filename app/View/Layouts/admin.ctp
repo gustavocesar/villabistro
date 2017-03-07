@@ -31,6 +31,10 @@
         echo $this->Html->css('custom');
         echo $this->Html->css('datepicker');
 
+        //datatable
+        echo $this->Html->css('/DataTables-1.10.13/media/css/jquery.dataTables.min');
+        echo $this->Html->css('/DataTables-1.10.13/media/css/dataTables.bootstrap4.min');
+
         echo $this->fetch('meta');
         echo $this->fetch('css');
         echo $this->fetch('script');
@@ -118,6 +122,9 @@
 //        echo $this->Html->script('index');
         echo $this->Html->script('jQuery-Mask-Plugin/jquery.mask');
         echo $this->Html->script('bignumber/bignumber');
+        
+        //datatable
+        echo $this->Html->script('/DataTables-1.10.13/media/js/jquery.dataTables.min');
 
         echo $this->Html->script('admin');
         ?>

@@ -13,6 +13,10 @@ App::uses('AppModel', 'Model');
  * @property Stock $Stock
  */
 class Product extends AppModel {
+
+    public $virtualFields = [
+        "code" => "LPAD(Product.id, 4, '0')"
+    ];
     
     /**
      * Antes de Salvar

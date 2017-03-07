@@ -34,7 +34,7 @@ class ProductsController extends AppController {
         ];
 
         $this->Product->recursive = 0;
-        $this->set('products', $this->Paginator->paginate());
+        $this->set('products', $this->Product->find('all'));
 
         $this->set('arrayBreadCrumb', [
             0 => [
