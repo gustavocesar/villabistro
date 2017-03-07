@@ -227,6 +227,9 @@ msgstr "A Categoria não pôde ser excluída. Por favor, tente novamente"
 msgid  "Name"
 msgstr "Nome"
 
+msgid  "name"
+msgstr "Nome"
+
 msgid  "Category Id"
 msgstr "Categoria"
 
@@ -345,6 +348,9 @@ msgid  "Groups"
 msgstr "Grupos"
 
 msgid  "Group Id"
+msgstr "Grupo"
+
+msgid  "group id"
 msgstr "Grupo"
 
 msgid  "Password"
@@ -1152,6 +1158,9 @@ msgstr "Controle de Localização"
 
 msgid  "Close"
 msgstr "Fechar"
+
+msgid  "email"
+msgstr "Email"
 
 msgid  "Add Item"
 msgstr "Incluir Item"

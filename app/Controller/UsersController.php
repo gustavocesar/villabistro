@@ -130,6 +130,39 @@ class UsersController extends AppController {
     }
 
     /**
+     * index method
+     *
+     * @return void
+     */
+    public function index2() {
+        $this->Paginator->settings = [
+            'order' => "{$this->User->alias}.id asc"
+        ];
+
+        $this->User->recursive = 0;
+        $this->set('users', $this->Paginator->paginate());
+
+        $this->set('arrayBreadCrumb', [
+            0 => [
+                'label' => __('Configurations'),
+                'link' => [
+                    'controller' => 'configurations',
+                    'action' => '/',
+                    'params' => []
+                ]
+            ],
+            1 => [
+                'label' => __('Users'),
+                'link' => [
+                    'controller' => $this->params['controller'],
+                    'action' => '/',
+                    'params' => []
+                ]
+            ]
+        ]);
+    }
+
+    /**
      * view method
      *
      * @throws NotFoundException
