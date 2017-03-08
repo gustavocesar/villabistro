@@ -10,6 +10,16 @@ App::uses('AppModel', 'Model');
  */
 class Address extends AppModel {
 
+    /**
+     * Antes de Salvar
+     * @param array $options
+     * @return boolean
+     */
+    public function beforeSave($options = array()) {
+        parent::beforeSave($options);
+        return true;
+    }
+
 /**
  * Validation rules
  *
@@ -79,6 +89,16 @@ class Address extends AppModel {
 		'public_place_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+        'public_place_name' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

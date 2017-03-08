@@ -5,6 +5,7 @@
         <title>
             Villa Bistrô: Login
         </title>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <?php
         echo $this->Html->meta('icon');
 

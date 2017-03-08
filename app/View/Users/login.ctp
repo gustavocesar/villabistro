@@ -45,6 +45,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="inputPassword" class="col-md-3 control-label">
+                        &nbsp;
+                    </label>
+                    <div class="col-md-9">
+                        <div class="input-icon right" data-size="compact" class="g-recaptcha" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+                            <?php echo $this->Recaptcha->display([]); ?>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="form-group mbn">
                     <div class="col-lg-12">
                         <div class="form-group mbn">

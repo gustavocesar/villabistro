@@ -51,10 +51,10 @@ msgid  "created"
 msgstr "Data de Cadastro"
 
 msgid  "Modified"
-msgstr "Data de Alteração"
+msgstr "Última Alteração"
 
 msgid  "modified"
-msgstr "Data de Alteração"
+msgstr "Última Alteração"
 
 msgid  "List"
 msgstr "Listagem"
@@ -1166,6 +1166,9 @@ msgstr "Logradouro"
 msgid  "Public Place"
 msgstr "Logradouro"
 
+msgid  "public_place_id"
+msgstr "Logradouro"
+
 msgid  "Invalid public place"
 msgstr "Logradouro não encontrado"
 
@@ -1356,22 +1359,52 @@ msgstr "Endereços Relacionados"
 msgid  "Addresses"
 msgstr "Endereços"
 
+msgid  "Add Address"
+msgstr "Incluir Endereço"
+
 msgid  "Status Address"
+msgstr "Situação"
+
+msgid  "The address has been saved."
+msgstr "Endereço gravado com sucesso"
+
+msgid  "The address has been deleted."
+msgstr "Endereço excluído com sucesso"
+
+msgid  "The address could not be deleted. Please, try again."
+msgstr "O endereço não pôde ser excluído. Por favor, tente novamente"
+
+msgid  "status_address_id"
 msgstr "Situação"
 
 msgid  "Zip Code"
 msgstr "CEP"
 
+msgid  "zip_code"
+msgstr "CEP"
+
 msgid  "State"
+msgstr "Estado"
+
+msgid  "state_id"
 msgstr "Estado"
 
 msgid  "City"
 msgstr "Cidade"
 
+msgid  "city"
+msgstr "Cidade"
+
 msgid  "Number"
 msgstr "Número"
 
+msgid  "number"
+msgstr "Número"
+
 msgid  "Is Primary"
+msgstr "Principal"
+
+msgid  "is_primary"
 msgstr "Principal"
 
 msgid  "Reference"
@@ -1385,3 +1418,12 @@ msgstr "Estoque Mínimo"
 
 msgid  "stockable"
 msgstr "Estocável"
+
+msgid  "public_place_name"
+msgstr "Nome Logradouro"
+
+msgid  "Public Place Name"
+msgstr "Nome Logradouro"
+
+msgid  "Robot! Incorrect captcha"
+msgstr "Tu és robô? Se não for, clique em 'Não sou um robô'"

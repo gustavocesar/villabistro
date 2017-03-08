@@ -69,6 +69,9 @@ Cache::config('default', array('engine' => 'File'));
 CakePlugin::load('DebugKit');
 CakePlugin::load('AclExtras');
 
+//https://github.com/CakeDC/recaptcha/blob/master/Docs/Documentation/Setup.md
+CakePlugin::load('Recaptcha');
+
 /**
  * To prefer app translation over plugin translation, you can set
  *
@@ -125,3 +128,6 @@ Configure::write('google-analytics.tracker-code', 'UA-67514463-2'); // Google An
 
 Configure::write('Status.pendent', 1);
 Configure::write('Status.payd', 2);
+
+Configure::write('Recaptcha.publicKey', '6Lc1yRcTAAAAAD8ddVCDiPN23Hd2m_rWmQ7Szwiu');
+Configure::write('Recaptcha.privateKey', '6Lc1yRcTAAAAAFFkJ_vdyGOYZvSHBWUXG2LaXKsm');

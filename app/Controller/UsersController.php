@@ -15,7 +15,10 @@ class UsersController extends AppController {
      *
      * @var array
      */
-    public $components = ['Paginator'];
+    public $components = [
+        'Paginator',
+        'Recaptcha.Recaptcha'
+    ];
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -26,6 +29,12 @@ class UsersController extends AppController {
     public function login() {
         $this->layout = 'auth';
         if ($this->request->is('post')) {
+
+            if (!$this->Recaptcha->verify()) {
+                $this->Flash->error(__('Robot! ' . $this->Recaptcha->error));
+                $this->Auth->logout();
+                return $this->redirect($this->Auth->redirectUrl());
+            }
 
             if ($this->Auth->login()) {
                 //$this->Auth->user('status')

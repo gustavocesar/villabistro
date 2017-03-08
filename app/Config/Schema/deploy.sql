@@ -73,3 +73,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 ALTER TABLE `status_addresses`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+
+ALTER TABLE `villabistro`.`addresses`
+ADD COLUMN `public_place_name` VARCHAR(45) NULL AFTER `public_place_id`;
