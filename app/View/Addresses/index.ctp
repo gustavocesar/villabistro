@@ -30,7 +30,6 @@
                         <th><?php echo __('state_id'); ?></th>
                         <th><?php echo __('city'); ?></th>
                         <th><?php echo __('public_place_id'); ?></th>
-                        <th><?php echo __('public_place_name'); ?></th>
                         <th><?php echo __('number'); ?></th>
                         <th><?php echo __('is_primary'); ?></th>
                         <th><?php echo __('created'); ?></th>
@@ -67,15 +66,12 @@
                                 ]);
                                 ?>
                             </td>
-                            <td>
-                                <?php echo $this->Html->link($address['StatusAddress']['name'], array('controller' => 'status_addresses', 'action' => 'view', $address['StatusAddress']['id'])); ?>
-                            </td>
+                            <td><?php echo h($address['StatusAddress']['name']); ?></td>
                             <td><?php echo h($address['Address']['name']); ?></td>
                             <td><?php echo h($address['Address']['zip_code']); ?></td>
                             <td><?php echo h($address['State']['name']); ?></td>
                             <td><?php echo h($address['Address']['city']); ?></td>
-                            <td><?php echo h($address['PublicPlace']['name']); ?></td>
-                            <td><?php echo h($address['Address']['public_place_name']); ?></td>
+                            <td><?php echo trim(h($address['PublicPlace']['name'])).' '.trim(h($address['Address']['public_place_name'])); ?></td>
                             <td><?php echo h($address['Address']['number']); ?></td>
                             <td><?php echo h($address['Address']['is_primary']); ?></td>
                             <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($address['Address']['created']))); ?></td>

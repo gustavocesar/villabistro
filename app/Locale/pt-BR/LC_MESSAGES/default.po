@@ -1374,6 +1374,9 @@ msgstr "Endereço excluído com sucesso"
 msgid  "The address could not be deleted. Please, try again."
 msgstr "O endereço não pôde ser excluído. Por favor, tente novamente"
 
+msgid  "The address could not be saved. Please, try again."
+msgstr "O endereço não pôde ser gravado. Por favor, tente novamente"
+
 msgid  "status_address_id"
 msgstr "Situação"
 

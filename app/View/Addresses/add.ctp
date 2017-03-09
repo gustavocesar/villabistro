@@ -17,37 +17,54 @@
     <?php echo $this->Form->input('user_id', ['type' => 'hidden', 'value' => $userId]); ?>
 
     <div class="form-group">
-        <?php echo $this->Form->input('status_address_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <?php echo $this->Form->input('name', ['class' => 'form-control', 'placeholder'=>'Casa, Apartamento, Trabalho', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+
     <div class="form-group">
-        <?php echo $this->Form->input('name', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <?php
+        $options = [
+            'Sim' => 'Sim',
+            'Não' => 'Não'
+        ];
+
+        echo $this->Form->input('is_primary', ['class' => 'form-control', 'options'=>$options, 'div' => false, 'label' => ['class' => 'control-label']]);
+        ?>
     </div>
+
     <div class="form-group">
-        <?php echo $this->Form->input('zip_code', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <?php echo $this->Form->input('zip_code', ['class' => 'form-control', 'value'=>'75180-000', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+
     <div class="form-group">
-        <?php echo $this->Form->input('state_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <span class="col-sm-3" style="padding-left: 0px;">
+            <?php echo $this->Form->input('state_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label', 'text'=>'Estado/Cidade']]); ?>
+        </span>
+        <span class="col-sm-9">
+            <?php echo $this->Form->input('city', ['class' => 'form-control', 'placeholder'=>__('City'), 'value'=>'Silvânia', 'div' => false, 'label' => ['class' => 'control-label', 'text'=>'&nbsp;']]); ?>
+        </span>
     </div>
+    
     <div class="form-group">
-        <?php echo $this->Form->input('city', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <span class="col-sm-3" style="padding-left: 0px;">
+            <?php echo $this->Form->input('public_place_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        </span>
+        <span class="col-sm-9">
+            <?php echo $this->Form->input('public_place_name', ['class' => 'form-control', 'placeholder'=>__('Public Place'), 'div' => false, 'label' => ['class' => 'control-label', 'text'=>'&nbsp;']]); ?>
+        </span>
     </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('public_place_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+
+    <div class="clearfix"></div>
+
+    <div class="form-group" style="margin-top: 15px;">
+        <?php echo $this->Form->input('number', ['class' => 'form-control', 'placeholder'=>'S/N', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+    
     <div class="form-group">
-        <?php echo $this->Form->input('public_place_name', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <?php echo $this->Form->input('reference', ['class' => 'form-control', 'placeholder'=>'Próximo ao...', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+    
     <div class="form-group">
-        <?php echo $this->Form->input('number', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('is_primary', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('reference', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
-    </div>
-    <div class="form-group">
-        <?php echo $this->Form->input('observation', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+        <?php echo $this->Form->input('observation', ['class' => 'form-control', 'rows'=>2, 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
 
     <div class="modal-footer">
