@@ -24,7 +24,6 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th><?php echo __('status_address_id'); ?></th>
                         <th><?php echo __('name'); ?></th>
                         <th><?php echo __('zip_code'); ?></th>
                         <th><?php echo __('state_id'); ?></th>
@@ -67,7 +66,6 @@
                                 ]);
                                 ?>
                             </td>
-                            <td><?php echo h($address['StatusAddress']['name']); ?></td>
                             <td><?php echo h($address['Address']['name']); ?></td>
                             <td><?php echo h($address['Address']['zip_code']); ?></td>
                             <td><?php echo h($address['State']['name']); ?></td>
