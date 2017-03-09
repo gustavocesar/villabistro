@@ -1428,5 +1428,11 @@ msgstr "Nome Logradouro"
 msgid  "Public Place Name"
 msgstr "Nome Logradouro"
 
+msgid  "Neighborhood"
+msgstr "Bairro"
+
+msgid  "neighborhood"
+msgstr "Bairro"
+
 msgid  "Robot! Incorrect captcha"
 msgstr "Tu és robô? Se não for, clique em 'Não sou um robô'"

@@ -31,6 +31,7 @@
                         <th><?php echo __('city'); ?></th>
                         <th><?php echo __('public_place_id'); ?></th>
                         <th><?php echo __('number'); ?></th>
+                        <th><?php echo __('neighborhood'); ?></th>
                         <th><?php echo __('is_primary'); ?></th>
                         <th><?php echo __('created'); ?></th>
                         <th><?php echo __('modified'); ?></th>
@@ -73,6 +74,7 @@
                             <td><?php echo h($address['Address']['city']); ?></td>
                             <td><?php echo trim(h($address['PublicPlace']['name'])).' '.trim(h($address['Address']['public_place_name'])); ?></td>
                             <td><?php echo h($address['Address']['number']); ?></td>
+                            <td><?php echo h($address['Address']['neighborhood']); ?></td>
                             <td><?php echo h($address['Address']['is_primary']); ?></td>
                             <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($address['Address']['created']))); ?></td>
                             <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($address['Address']['modified']))); ?></td>

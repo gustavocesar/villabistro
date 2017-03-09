@@ -58,6 +58,10 @@
     <div class="form-group" style="margin-top: 15px;">
         <?php echo $this->Form->input('number', ['class' => 'form-control', 'placeholder'=>'S/N', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+
+    <div class="form-group">
+        <?php echo $this->Form->input('neighborhood', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+    </div>
     
     <div class="form-group">
         <?php echo $this->Form->input('reference', ['class' => 'form-control', 'placeholder'=>'Próximo ao...', 'div' => false, 'label' => ['class' => 'control-label']]); ?>

@@ -21,11 +21,9 @@
     <?php echo $this->Form->input('user_id', ['type' => 'hidden']); ?>
 
     <div class="form-group">
-        <?php echo $this->Form->input('status_address_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
-    </div>
-    <div class="form-group">
         <?php echo $this->Form->input('name', ['class' => 'form-control', 'placeholder'=>'Casa, Apartamento, Trabalho', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
+    
     <div class="form-group">
         <?php
         $options = [
@@ -63,6 +61,10 @@
 
     <div class="form-group" style="margin-top: 15px;">
         <?php echo $this->Form->input('number', ['class' => 'form-control', 'placeholder'=>'S/N', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+    </div>
+
+    <div class="form-group">
+        <?php echo $this->Form->input('neighborhood', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
 
     <div class="form-group">
