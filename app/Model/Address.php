@@ -10,6 +10,9 @@ App::uses('AppModel', 'Model');
  */
 class Address extends AppModel {
 
+    const ATIVO   = 1;
+    const INATIVO = 2;
+
     /**
      * Antes de Salvar
      * @param array $options
@@ -17,6 +20,36 @@ class Address extends AppModel {
      */
     public function beforeSave($options = array()) {
         parent::beforeSave($options);
+
+        $this->recursive = 1;
+        $old = $this->find('first', ['conditions' => array($this->alias.'.'.$this->primaryKey => $this->id)]);
+
+        if ($old) {
+
+            if ($old[$this->StatusAddress->alias]['id'] == Address::INATIVO) {
+                $this->error = __("The operation could not be done because the Address has been inactivated!");
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+    /**
+     * Antes de Excluir
+     * @param bool $cascade
+     * @return boolean
+     */
+    public function beforeDelete($cascade = true) {
+        parent::beforeDelete($cascade);
+        
+        $this->error = __("Addresses cannot be deleted!");
+        return false;
+    }
+
+    public function inactivate() {
+        $this->saveField('status_address_id', 2);
         return true;
     }
 

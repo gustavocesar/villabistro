@@ -1368,14 +1368,23 @@ msgstr "Situação"
 msgid  "The address has been saved."
 msgstr "Endereço gravado com sucesso"
 
-msgid  "The address has been deleted."
-msgstr "Endereço excluído com sucesso"
+msgid  "The address has been inactivated."
+msgstr "Endereço inativado com sucesso"
 
-msgid  "The address could not be deleted. Please, try again."
-msgstr "O endereço não pôde ser excluído. Por favor, tente novamente"
+msgid  "The address could not be inactivated. Please, try again."
+msgstr "O endereço não pôde ser inativado. Por favor, tente novamente"
+
+msgid  "The operation could not be done because the Address has been inactivated!"
+msgstr "O endereço não pôde ser gravado pois o mesmo se encontra inativado"
+
+msgid  "Addresses cannot be deleted!"
+msgstr "Endereços não podem ser excluídos!"
 
 msgid  "The address could not be saved. Please, try again."
 msgstr "O endereço não pôde ser gravado. Por favor, tente novamente"
+
+msgid  "Inactivate"
+msgstr "Inativar"
 
 msgid  "status_address_id"
 msgstr "Situação"

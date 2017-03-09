@@ -165,14 +165,14 @@ class AddressesController extends AppController {
             throw new NotFoundException(__('Invalid address'));
         }
         $this->request->allowMethod('post', 'delete');
-        if ($this->Address->delete()) {
+        if ($this->Address->inactivate()) {
             $this->response->body(json_encode([
                 'success' => true,
-                'message' => __('The address has been deleted.')
+                'message' => __('The address has been inactivated.')
             ]));
         } else {
             if (!$this->Address->error) {
-                $this->Address->error = __('The address could not be deleted. Please, try again.');
+                $this->Address->error = __('The address could not be inactivated. Please, try again.');
             }
 
             $this->response->body(json_encode([

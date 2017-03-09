@@ -41,29 +41,32 @@
                         <tr>
                             <td class="text-center">
                                 <?php
-                                echo $this->Html->link(
-                                        '<i class="fa fa-pencil"></i>', $this->Html->url([
-                                            'controller' => 'addresses',
-                                            'action' => 'edit',
-                                            $address['Address']['id']
-                                                ], true), [
-                                    'class' => 'editItem',
-                                    'data-toggle' => 'modal',
-                                    'data-target' => '#modal',
-                                    'escape' => false,
-                                    'title' => __('Edit')
-                                        ]
-                                );
-                                ?>
+                                if ($address['Address']['status_address_id'] == Address::ATIVO) {
 
-                                &nbsp;
+                                    echo $this->Html->link(
+                                            '<i class="fa fa-pencil"></i>', $this->Html->url([
+                                                'controller' => 'addresses',
+                                                'action' => 'edit',
+                                                $address['Address']['id']
+                                                    ], true), [
+                                        'class' => 'editItem',
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '#modal',
+                                        'escape' => false,
+                                        'title' => __('Edit')
+                                            ]
+                                    );
+                                    ?>
 
-                                <?php
-                                echo $this->Html->tag('a', '<i class="fa fa-trash-o"></i>', [
-                                    'onclick' => "javascript:ajaxDelete('" . $address['Address']['id'] . "', '" . $this->Html->url(['controller' => 'addresses', 'action' => 'delete', $address['Address']['id']], true) . "');",
-                                    'title' => __("Delete"),
-                                    'class' => 'deleteItem'
-                                ]);
+                                    &nbsp;
+
+                                    <?php
+                                    echo $this->Html->tag('a', '<i class="fa fa-trash-o"></i>', [
+                                        'onclick' => "javascript:ajaxDelete('" . $address['Address']['id'] . "', '" . $this->Html->url(['controller' => 'addresses', 'action' => 'delete', $address['Address']['id']], true) . "');",
+                                        'title' => __("Inactivate"),
+                                        'class' => 'deleteItem'
+                                    ]);
+                                }
                                 ?>
                             </td>
                             <td><?php echo h($address['Address']['name']); ?></td>
@@ -85,15 +88,11 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-
-    });
-
     function ajaxDelete(id, url) {
 
         hideReturnMessage();
 
-        if (confirm("Tem certeza que deseja excluir este endereço?")) {
+        if (confirm("Tem certeza que deseja inativar este endereço?")) {
 
             $.ajax({
                 async: false,
