@@ -30,10 +30,29 @@ class Address extends AppModel {
                 $this->error = __("The operation could not be done because the Address has been inactivated!");
                 return false;
             }
-
         }
 
         return true;
+    }
+
+    /**
+     * Depois de Salvar
+     * @param bool $created
+     * @param array $options
+     */
+    public function afterSave($created, $options = array()) {
+        parent::afterSave($created, $options);
+
+//        $this->setAtLeastOnePrimary();
+    }
+
+    public function setAtLeastOnePrimary() {
+        $this->recursive = 1;
+        $address = $this->find('first', [
+            'conditions' => [
+                "{$this->alias}.{$this->primaryKey}" => $this->id
+            ]
+        ]);
     }
 
     /**
