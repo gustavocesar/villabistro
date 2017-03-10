@@ -13,6 +13,9 @@ class Address extends AppModel {
     const ATIVO   = 1;
     const INATIVO = 2;
 
+    const SIM = 'Sim';
+    const NAO = 'Não';
+
     /**
      * Antes de Salvar
      * @param array $options
@@ -30,6 +33,20 @@ class Address extends AppModel {
                 $this->error = __("The operation could not be done because the Address has been inactivated!");
                 return false;
             }
+
+            /**
+             * update other addresses to NOT PRIMARY
+             */
+//            if ($old[$this->alias]['is_primary'] == Address::SIM) {
+//                $this->query("
+//                    UPDATE addresses
+//                    SET is_primary = '".Address::NAO."'
+//                    WHERE 1 = 1
+//                        AND addresses.user_id      = ".$old[$this->alias]['user_id']."
+//                        AND addresses.is_primary   = '".Address::SIM."'
+//                        AND addresses.id          <> ".$old[$this->alias]['id']."
+//                ");
+//            }
         }
 
         return true;
@@ -48,11 +65,7 @@ class Address extends AppModel {
 
     public function setAtLeastOnePrimary() {
         $this->recursive = 1;
-        $address = $this->find('first', [
-            'conditions' => [
-                "{$this->alias}.{$this->primaryKey}" => $this->id
-            ]
-        ]);
+        $address = $this->findById($this->id);
     }
 
     /**

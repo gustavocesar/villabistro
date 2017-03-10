@@ -37,9 +37,9 @@ class AddressesController extends AppController {
         $this->Address->recursive = 0;
         $this->set('userId', $userId);
         $this->set('addresses', $this->Address->find('all', [
-                    'conditions' => [
-                        "{$this->Address->alias}.user_id" => $userId
-                    ]
+            'conditions' => [
+                "{$this->Address->alias}.user_id" => $userId
+            ]
         ]));
     }
 

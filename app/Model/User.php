@@ -64,6 +64,18 @@ class User extends AppModel {
         return true;
     }
 
+    public function getPrimaryAddress() {
+        $this->loadModel("Address");
+        $addresses = $this->Address->find("all", [
+            "conditions" => [
+                "{$this->Address->alias}.user_id" => $this->id,
+                "{$this->Address->alias}.is_primary" => Address::SIM
+            ]
+        ]);
+
+        return $addresses;
+    }
+
     /**
      * Validation rules
      *
