@@ -37,16 +37,28 @@ class Address extends AppModel {
             /**
              * update other addresses to NOT PRIMARY
              */
-//            if ($old[$this->alias]['is_primary'] == Address::SIM) {
-//                $this->query("
-//                    UPDATE addresses
-//                    SET is_primary = '".Address::NAO."'
-//                    WHERE 1 = 1
-//                        AND addresses.user_id      = ".$old[$this->alias]['user_id']."
-//                        AND addresses.is_primary   = '".Address::SIM."'
-//                        AND addresses.id          <> ".$old[$this->alias]['id']."
-//                ");
-//            }
+            if ($old[$this->alias]['is_primary'] == Address::SIM) {
+                $this->query("
+                    UPDATE addresses
+                    SET is_primary = '".Address::NAO."'
+                    WHERE 1 = 1
+                        AND addresses.user_id      = ".$old[$this->alias]['user_id']."
+                        AND addresses.is_primary   = '".Address::SIM."'
+                        AND addresses.id          <> ".$old[$this->alias]['id']."
+                ");
+            } elseif ($old[$this->alias]['is_primary'] == Address::NAO) {
+                $countActive = $this->find("count", [
+                    'conditions' => [
+                        "{$this->alias}.user_id" => $old[$this->alias]['user_id'],
+                        "{$this->alias}.is_primary" => Address::SIM
+                    ]
+                ]);
+
+                if ($countActive == 0) {
+                    $this->data[$this->alias]['is_primary'] = Address::SIM;
+                }
+            }
+
         }
 
         return true;
@@ -59,13 +71,6 @@ class Address extends AppModel {
      */
     public function afterSave($created, $options = array()) {
         parent::afterSave($created, $options);
-
-//        $this->setAtLeastOnePrimary();
-    }
-
-    public function setAtLeastOnePrimary() {
-        $this->recursive = 1;
-        $address = $this->findById($this->id);
     }
 
     /**
@@ -81,7 +86,8 @@ class Address extends AppModel {
     }
 
     public function inactivate() {
-        $this->saveField('status_address_id', 2);
+        $this->saveField('status_address_id', Address::INATIVO);
+        $this->saveField('is_primary', Address::NAO);
         return true;
     }
 
