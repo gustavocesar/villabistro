@@ -42,6 +42,9 @@ class AddressesController extends AppController {
         $this->set('addresses', $this->Address->find('all', [
             'conditions' => [
                 "{$this->Address->alias}.user_id" => $userId
+            ],
+            'order' => [
+                "{$this->Address->StatusAddress->alias}.id" => "asc"
             ]
         ]));
     }

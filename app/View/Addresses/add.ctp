@@ -21,17 +21,6 @@
     </div>
 
     <div class="form-group">
-        <?php
-        $options = [
-            'Sim' => 'Sim',
-            'Não' => 'Não'
-        ];
-
-        echo $this->Form->input('is_primary', ['class' => 'form-control', 'options'=>$options, 'div' => false, 'label' => ['class' => 'control-label']]);
-        ?>
-    </div>
-
-    <div class="form-group">
         <?php echo $this->Form->input('zip_code', ['class' => 'form-control', 'value'=>'75180-000', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
     </div>
 

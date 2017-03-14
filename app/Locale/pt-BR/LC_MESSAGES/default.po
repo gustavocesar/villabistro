@@ -1399,9 +1399,6 @@ msgstr "Número"
 msgid  "Is Primary"
 msgstr "Principal"
 
-msgid  "is_primary"
-msgstr "Principal"
-
 msgid  "Reference"
 msgstr "Ponto de Referência"
 

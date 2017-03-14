@@ -56,9 +56,8 @@
 		<th><?php echo __('Zip Code'); ?></th>
 		<th><?php echo __('State Id'); ?></th>
 		<th><?php echo __('City'); ?></th>
-		<th><?php echo __('Public Place Id'); ?></th>
+		<th><?php echo __('Public Place'); ?></th>
 		<th><?php echo __('Number'); ?></th>
-		<th><?php echo __('Is Primary'); ?></th>
 		<th><?php echo __('Reference'); ?></th>
 		<th><?php echo __('Observation'); ?></th>
 		<th><?php echo __('Created'); ?></th>
@@ -73,9 +72,8 @@
 			<td><?php echo $address['zip_code']; ?></td>
 			<td><?php echo $address['state_id']; ?></td>
 			<td><?php echo $address['city']; ?></td>
-			<td><?php echo $address['public_place_id']; ?></td>
+			<td><?php echo $address['public_place']; ?></td>
 			<td><?php echo $address['number']; ?></td>
-			<td><?php echo $address['is_primary']; ?></td>
 			<td><?php echo $address['reference']; ?></td>
 			<td><?php echo $address['observation']; ?></td>
 			<td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($address['created']))); ?></td>

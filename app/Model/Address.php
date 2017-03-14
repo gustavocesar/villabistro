@@ -32,32 +32,6 @@ class Address extends AppModel {
                 $this->error = __("The operation could not be done because the Address has been inactivated!");
                 return false;
             }
-
-            /**
-             * update other addresses to NOT PRIMARY
-             */
-            if ($old[$this->alias]['is_primary'] == Address::SIM) {
-                $this->query("
-                    UPDATE addresses
-                    SET is_primary = '".Address::NAO."'
-                    WHERE 1 = 1
-                        AND addresses.user_id      = ".$old[$this->alias]['user_id']."
-                        AND addresses.is_primary   = '".Address::SIM."'
-                        AND addresses.id          <> ".$old[$this->alias]['id']."
-                ");
-            } elseif ($old[$this->alias]['is_primary'] == Address::NAO) {
-                $countActive = $this->find("count", [
-                    'conditions' => [
-                        "{$this->alias}.user_id" => $old[$this->alias]['user_id'],
-                        "{$this->alias}.is_primary" => Address::SIM
-                    ]
-                ]);
-
-                if ($countActive == 0) {
-                    $this->data[$this->alias]['is_primary'] = Address::SIM;
-                }
-            }
-
         }
 
         return true;
@@ -86,7 +60,6 @@ class Address extends AppModel {
 
     public function inactivate() {
         $this->saveField('status_address_id', Address::INATIVO);
-        $this->saveField('is_primary', Address::NAO);
         return true;
     }
 
@@ -128,7 +101,9 @@ class Address extends AppModel {
 		),
 		'zip_code' => array(
 			'notBlank' => array(
-				'rule' => array('notBlank'),
+				'rule' => array('minLength', 9),
+                                'message' => 'Cep inválido'
+//				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -156,7 +131,7 @@ class Address extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-        'public_place' => array(
+                'public_place' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -166,7 +141,7 @@ class Address extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-        'neighborhood' => array(
+                'neighborhood' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
