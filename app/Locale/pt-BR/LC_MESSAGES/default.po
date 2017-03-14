@@ -1166,25 +1166,8 @@ msgstr "Logradouro"
 msgid  "Public Place"
 msgstr "Logradouro"
 
-msgid  "public_place_id"
+msgid  "public_place"
 msgstr "Logradouro"
-
-msgid  "Invalid public place"
-msgstr "Logradouro não encontrado"
-
-msgid  "The public place has been saved."
-msgstr "Logradouro gravado com sucesso"
-
-msgid  "The public place could not be saved. Please, try again."
-msgstr "O Logradouro não pôde ser gravado. Por favor, tente novamente"
-
-msgid  "The public place has been deleted."
-msgstr "Logradouro excluído com sucesso"
-
-msgid  "The public place could not be deleted. Please, try again."
-msgstr "O Logradouro não pôde ser excluído. Por favor, tente novamente"
-
-
 
 
 
@@ -1431,17 +1414,17 @@ msgstr "Estoque Mínimo"
 msgid  "stockable"
 msgstr "Estocável"
 
-msgid  "public_place_name"
-msgstr "Nome Logradouro"
-
-msgid  "Public Place Name"
-msgstr "Nome Logradouro"
-
 msgid  "Neighborhood"
 msgstr "Bairro"
 
 msgid  "neighborhood"
 msgstr "Bairro"
+
+msgid  "Invalid cep"
+msgstr "Cep não informado"
+
+msgid  "Unknown Zip Code: %s"
+msgstr "Cep desconhecido: %s"
 
 msgid  "Robot! Incorrect captcha"
 msgstr "Tu és robô? Se não for, clique em 'Não sou um robô'"

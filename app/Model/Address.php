@@ -6,7 +6,6 @@ App::uses('AppModel', 'Model');
  * @property User $User
  * @property StatusAddress $StatusAddress
  * @property State $State
- * @property PublicPlace $PublicPlace
  */
 class Address extends AppModel {
 
@@ -157,17 +156,7 @@ class Address extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'public_place_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-        'public_place_name' => array(
+        'public_place' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -215,13 +204,6 @@ class Address extends AppModel {
 		'State' => array(
 			'className' => 'State',
 			'foreignKey' => 'state_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'PublicPlace' => array(
-			'className' => 'PublicPlace',
-			'foreignKey' => 'public_place_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

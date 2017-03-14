@@ -43,7 +43,8 @@ class AppController extends Controller {
                 'order_wizard',
                 'list_orders',
                 'add',
-                'change_table'
+                'change_table',
+                'location_by_zip_code'
             ]
         ],
     ];

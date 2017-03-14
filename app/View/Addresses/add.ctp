@@ -46,18 +46,14 @@
     
     <div class="form-group">
         <span class="col-sm-3" style="padding-left: 0px;">
-            <?php echo $this->Form->input('public_place_id', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
+            <?php echo $this->Form->input('public_place', ['class' => 'form-control', 'placeholder'=>__('Public Place'), 'div' => false, 'label' => ['class' => 'control-label']]); ?>
         </span>
         <span class="col-sm-9">
-            <?php echo $this->Form->input('public_place_name', ['class' => 'form-control', 'placeholder'=>__('Public Place'), 'div' => false, 'label' => ['class' => 'control-label', 'text'=>'&nbsp;']]); ?>
+            <?php echo $this->Form->input('number', ['class' => 'form-control', 'placeholder'=>'S/N', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
         </span>
     </div>
 
     <div class="clearfix"></div>
-
-    <div class="form-group" style="margin-top: 15px;">
-        <?php echo $this->Form->input('number', ['class' => 'form-control', 'placeholder'=>'S/N', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
-    </div>
 
     <div class="form-group">
         <?php echo $this->Form->input('neighborhood', ['class' => 'form-control', 'div' => false, 'label' => ['class' => 'control-label']]); ?>
@@ -78,3 +74,15 @@
 </div>
 
 <?php echo $this->Form->end(); ?>
+
+<?php
+echo $this->Form->input('url-get-location', [
+    'type' => 'hidden',
+    'value' => $this->Html->url([
+        'controller' => 'addresses',
+        'action' => 'location_by_zip_code'
+    ])
+]);
+?>
+
+<?= $this->Html->script('models/addresses'); ?>

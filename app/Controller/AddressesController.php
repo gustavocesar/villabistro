@@ -15,7 +15,10 @@ class AddressesController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = [
+        'Paginator',
+        'LocateMe'
+    ];
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -98,8 +101,7 @@ class AddressesController extends AppController {
 
             $statusAddresses = $this->Address->StatusAddress->find('list');
             $states = $this->Address->State->find('list');
-            $publicPlaces = $this->Address->PublicPlace->find('list');
-            $this->set(compact('users', 'statusAddresses', 'states', 'publicPlaces'));
+            $this->set(compact('users', 'statusAddresses', 'states'));
 
             $this->set('userId', $userId);
         }
@@ -144,8 +146,7 @@ class AddressesController extends AppController {
             
             $statusAddresses = $this->Address->StatusAddress->find('list');
             $states = $this->Address->State->find('list');
-            $publicPlaces = $this->Address->PublicPlace->find('list');
-            $this->set(compact('users', 'statusAddresses', 'states', 'publicPlaces'));
+            $this->set(compact('users', 'statusAddresses', 'states'));
         }
     }
 
@@ -178,6 +179,49 @@ class AddressesController extends AppController {
             $this->response->body(json_encode([
                 'success' => false,
                 'message' => $this->Address->error
+            ]));
+        }
+    }
+
+    public function location_by_zip_code() {
+
+        $this->layout = 'ajax';
+        $this->autoRender = false;
+
+        $zipCode = trim($this->request->data['zip_code']);
+
+        if (!$zipCode) {
+            return null;
+        }
+
+        try {
+            $this->request->allowMethod('post');
+
+            $arrLocation = $this->LocateMe->cep($zipCode);
+
+            if (!$arrLocation || empty($arrLocation)) {
+                throw new Exception(__("Unknown Zip Code: %s", $zipCode));
+            }
+
+            $this->response->body(json_encode([
+                'success' => true,
+                'location' => [
+                    'cep'           => $arrLocation['cep'],
+                    'logradouro'    => $arrLocation['logradouro'],
+                    'complemento'   => $arrLocation['complemento'],
+                    'bairro'        => $arrLocation['bairro'],
+                    'localidade'    => $arrLocation['localidade'],
+                    'uf'            => $arrLocation['uf'],
+                    'unidade'       => $arrLocation['unidade'],
+                    'ibge'          => $arrLocation['ibge'],
+                    'gia'           => $arrLocation['gia']
+                ]
+            ]));
+
+        } catch (Exception $ex) {
+            $this->response->body(json_encode([
+                'success' => false,
+                'message' => $ex->getMessage()
             ]));
         }
     }
