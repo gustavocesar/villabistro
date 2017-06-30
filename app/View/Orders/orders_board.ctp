@@ -1,4 +1,34 @@
 <div class="row">
+    <div class="col-sm-5">
+        <?php
+        $options = [
+            'id' => 'start_date',
+            'type' => 'text',
+            'class' => 'form-control',
+            'div' => ['class' => 'form-group'],
+            'label' => ['class' => 'control-label'],
+            'value' => date("d/m/Y", strtotime("yesterday"))
+        ];
+
+        echo $this->Form->input("start_date", $options);
+        echo $this->Html->div('start_datepicker', ' ', array('id' => 'start_datepicker'));
+        ?>
+    </div>
+    <div class="col-sm-5">
+        <?php
+        $options = [
+            'id' => 'finish_date',
+            'type' => 'text',
+            'class' => 'form-control',
+            'div' => ['class' => 'form-group'],
+            'label' => ['class' => 'control-label'],
+            'value' => date('d/m/Y')
+        ];
+
+        echo $this->Form->input("finish_date", $options);
+        echo $this->Html->div('finish_datepicker', ' ', array('id' => 'finish_datepicker'));
+        ?>
+    </div>
     <div class="col-sm-2 pull-right">
         <p>
             <?php

@@ -96,6 +96,11 @@ class AppController extends Controller {
 
         $this->Auth->allow('modal');
 
+        if (!empty($this->request->data) && empty($this->request->data[$this->Auth->userModel])) {
+            $user['User']['id'] = $this->Auth->user('id');
+            $this->request->data[$this->Auth->userModel] = $user;
+        }
+
 //        $this->Security->unlockedActions = ['index'];
 //        $this->Auth->allow();
     }

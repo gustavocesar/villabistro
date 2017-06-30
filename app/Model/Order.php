@@ -185,7 +185,7 @@ class Order extends AppModel {
         $this->Stock->save($arrData);
     }
 
-    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null, $groupBy = null) {
+    public function getOrdersByPaymentStatus($tableId = null, $billId = null, $arrPaymentStatus = null, $groupBy = null, $startDate = null, $endDate = null) {
 
         $conditions = [];
 
