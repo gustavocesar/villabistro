@@ -75,6 +75,7 @@ echo $this->Form->create(
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
+                                        <th>Subcategoria</th>
                                         <th class="text-right">Valor Unitário (R$)</th>
                                         <th class="text-center">Quantidade</th>
                                         <th class="text-right">Total (R$)</th>
@@ -99,6 +100,9 @@ echo $this->Form->create(
                                                 ?>
                                                 <tr>
                                                     <th scope="row"><?php echo str_pad($product['Product']['id'], 3, '0', STR_PAD_LEFT) .' - '. $product['Product']['name']; ?></th>
+                                                    <td>
+                                                        <?php echo $arrSubcategory['name']; ?>
+                                                    </td>
                                                     <td class="text-right">
                                                         <?php echo $this->MyFormat->format_show($sellPrice, 2); ?>
                                                         <input type="hidden" id="hiddenSellPrice_<?= $subcategoryId . "_" . $product['Product']['id'] ?>" value="<?= $sellPrice; ?>" />
@@ -243,12 +247,31 @@ echo $this->Html->script('prevent_doubleclick');
                 
                 $(".dataTables_filter input").addClass("form-control");
             },
+            "columnDefs": [
+                { "visible": false, "targets": [1] }
+            ],
             "columns": [
+                {"orderable": false},
                 {"orderable": false},
                 {"orderable": false},
                 {"orderable": false},
                 {"orderable": false}
             ],
+            "drawCallback": function ( settings ) {
+                var api = this.api();
+                var rows = api.rows( {page:'current'} ).nodes();
+                var last=null;
+
+                api.column(1, {page:'current'} ).data().each( function ( group, i ) {
+                    if ( last !== group ) {
+                        $(rows).eq( i ).before(
+                            '<tr class="group text-center"><td colspan="4"><strong>'+group+'</strong></td></tr>'
+                        );
+
+                        last = group;
+                    }
+                } );
+            },
             language: {
                 "sEmptyTable": "Nenhum registro encontrado",
                 "sInfo": "",
