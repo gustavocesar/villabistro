@@ -1,6 +1,3 @@
-<?= $this->Html->script('/jquery-timepicker/jquery.timepicker'); ?>
-<?= $this->Html->css('/jquery-timepicker/jquery.timepicker'); ?>
-
 <div class="panel panel-blue" style="background:#fff;">
     <div class="panel-heading">
         <?php echo '<i class="fa fa-plus"></i>&nbsp;' . __('Add'); ?>
@@ -23,14 +20,13 @@
                 $options = [
                     'id' => 'entry_date',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control date-picker',
                     'div' => ['class' => 'form-group'],
                     'label' => ['class' => 'control-label'],
                     'value' => date('d/m/Y')
                 ];
 
                 echo $this->Form->input("entry_date", $options);
-                echo $this->Html->div('datepicker', ' ', array('id' => 'datepicker'));
                 ?>
             </div>
 
@@ -39,7 +35,7 @@
                 $options2 = [
                     'id' => 'entry_hour',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control time-picker',
                     'div' => false,
                     'label' => [
                         'class' => 'control-label'
@@ -50,7 +46,6 @@
                 ?>
             </div>
 
-
         </div>
         <div class="form-actions text-right pal">
             <?php echo $this->Form->submit(__('Submit'), ['value' => __('Submit'), 'class' => 'pull-left btn btn-primary']); ?>
@@ -60,24 +55,3 @@
         <?php echo $this->Form->end(); ?>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $("#entry_date").click(function () {
-            $("#datepicker").datepicker({
-                dateFormat: 'dd/mm/yy',
-                autoclose: true,
-                onSelect: function (dateText, inst) {
-                    $('#entry_date').val(dateText);
-                    $("#datepicker").datepicker("destroy");
-                }
-            });
-        });
-
-        $("#entry_hour").timepicker({
-            timeFormat: 'H:i'
-        });
-
-    });
-</script>

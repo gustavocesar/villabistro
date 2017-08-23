@@ -1,6 +1,3 @@
-<?= $this->Html->script('/jquery-timepicker/jquery.timepicker'); ?>
-<?= $this->Html->css('/jquery-timepicker/jquery.timepicker'); ?>
-
 <div class="panel panel-blue" style="background:#fff;">
     <div class="panel-heading">
         <?php echo '<i class="fa fa-plus"></i>&nbsp;' . __('Add'); ?>
@@ -23,14 +20,13 @@
                 $options = [
                     'id' => 'date',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control date-picker',
                     'div' => ['class' => 'form-group'],
                     'label' => ['class' => 'control-label'],
                     'value' => date('d/m/Y')
                 ];
 
                 echo $this->Form->input("date", $options);
-                echo $this->Html->div('datepicker', ' ', array('id' => 'datepicker'));
                 ?>
             </div>
 
@@ -39,7 +35,7 @@
                 $options2 = [
                     'id' => 'time',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control time-picker',
                     'div' => false,
                     'label' => [
                         'class' => 'control-label'
@@ -62,25 +58,3 @@
         <?php echo $this->Form->end(); ?>
     </div>
 </div>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $("#date").click(function () {
-            $("#datepicker").datepicker({
-                dateFormat: 'dd/mm/yy',
-                autoclose: true,
-                onSelect: function (dateText, inst) {
-                    $('#date').val(dateText);
-                    $("#datepicker").datepicker("destroy");
-                }
-            });
-        });
-
-        $("#time").timepicker({
-            timeFormat: 'H:i'
-        });
-    });
-
-</script>

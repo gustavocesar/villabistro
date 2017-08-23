@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    $('.date-picker').datepicker({
+        dateFormat: 'dd/mm/yy',
+        todayHighlight: true,
+        todayBtn: true,
+        autoclose: true
+    });
+
+    $(".time-picker").timepicker({
+        timeFormat: 'H:i'
+    });
+
     setInputMask();
 
     if (myDataTable) {
