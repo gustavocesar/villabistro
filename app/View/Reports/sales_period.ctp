@@ -11,14 +11,13 @@
                 $options = [
                     'id' => 'start_date',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control date-picker',
                     'div' => ['class' => 'form-group'],
                     'label' => ['class' => 'control-label'],
                     'value' => date('d/m/Y')
                 ];
 
                 echo $this->Form->input("start_date", $options);
-                echo $this->Html->div('start_datepicker', ' ', array('id' => 'start_datepicker'));
                 ?>
             </div>
         </div>
@@ -30,7 +29,7 @@
                 $options2 = [
                     'id' => 'start_hour',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control time-picker',
                     'div' => false,
                     'label' => [
                         'class' => 'control-label'
@@ -51,14 +50,13 @@
                 $options = [
                     'id' => 'finish_date',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control date-picker',
                     'div' => ['class' => 'form-group'],
                     'label' => ['class' => 'control-label'],
                     'value' => date('d/m/Y')
                 ];
 
                 echo $this->Form->input("finish_date", $options);
-                echo $this->Html->div('finish_datepicker', ' ', array('id' => 'finish_datepicker'));
                 ?>
             </div>
         </div>
@@ -70,7 +68,7 @@
                 $options2 = [
                     'id' => 'finish_hour',
                     'type' => 'text',
-                    'class' => 'form-control',
+                    'class' => 'form-control time-picker',
                     'div' => false,
                     'label' => [
                         'class' => 'control-label'
@@ -90,39 +88,3 @@
 </div>
 <div class="clearfix"></div>
 <?php echo $this->Form->end(); ?>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $("#start_date").click(function () {
-            $("#start_datepicker").datepicker({
-                dateFormat: 'dd/mm/yy',
-                autoclose: true,
-                onSelect: function (dateText, inst) {
-                    $('#start_date').val(dateText);
-                    $("#start_datepicker").datepicker("destroy");
-                }
-            });
-        });
-
-        $("#start_hour").timepicker({
-            timeFormat: 'H:i'
-        });
-
-        $("#finish_date").click(function () {
-            $("#finish_datepicker").datepicker({
-                dateFormat: 'dd/mm/yy',
-                autoclose: true,
-                onSelect: function (dateText, inst) {
-                    $('#finish_date').val(dateText);
-                    $("#finish_datepicker").datepicker("destroy");
-                }
-            });
-        });
-
-        $("#finish_hour").timepicker({
-            timeFormat: 'H:i'
-        });
-
-    });
-</script>

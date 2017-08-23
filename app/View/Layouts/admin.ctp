@@ -30,6 +30,7 @@
         echo $this->Html->css('jquery.news-ticker');
         echo $this->Html->css('custom');
         echo $this->Html->css('datepicker');
+        echo $this->Html->css('/jquery-timepicker/jquery.timepicker');
 
         //datatable
         echo $this->Html->css('/DataTables-1.10.13/media/css/jquery.dataTables.min');
@@ -122,6 +123,7 @@
 //        echo $this->Html->script('index');
         echo $this->Html->script('jQuery-Mask-Plugin/jquery.mask');
         echo $this->Html->script('bignumber/bignumber');
+        echo $this->Html->script('/jquery-timepicker/jquery.timepicker');
         
         //datatable
         echo $this->Html->script('/DataTables-1.10.13/media/js/jquery.dataTables.min');

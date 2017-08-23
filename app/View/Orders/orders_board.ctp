@@ -4,7 +4,7 @@
         $options = [
             'id' => 'start_date',
             'type' => 'text',
-            'class' => 'form-control',
+            'class' => 'form-control date-picker',
             'div' => ['class' => 'form-group'],
             'label' => ['class' => 'control-label'],
             'value' => date("d/m/Y", strtotime("yesterday"))
@@ -19,7 +19,7 @@
         $options = [
             'id' => 'finish_date',
             'type' => 'text',
-            'class' => 'form-control',
+            'class' => 'form-control date-picker',
             'div' => ['class' => 'form-group'],
             'label' => ['class' => 'control-label'],
             'value' => date('d/m/Y')
