@@ -41,7 +41,7 @@ echo $this->Form->create(
                                     $table = $arrTable['Table'];
 
                                     $arrBills = $this->requestAction(
-                                        ['controller' => 'tables', 'action' => 'getBills', $table['id'], 1], ['return']
+                                            ['controller' => 'tables', 'action' => 'getBills', $table['id'], 1], ['return']
                                     );
                                     $class = 'default';
                                     $icon = 'fa-bookmark-o';
@@ -54,7 +54,7 @@ echo $this->Form->create(
                                         <p>
                                             <?php
                                             echo $this->Form->button(
-                                                '<span class="fa ' . $icon . '"></span>&nbsp' . $table['name'], ['id' => $table['id'], 'name' => $table['name'], 'type' => 'button', 'class' => 'btn btn-lg btn-block btn-' . $class, 'escape' => false]
+                                                    '<span class="fa ' . $icon . '"></span>&nbsp' . $table['name'], ['id' => $table['id'], 'name' => $table['name'], 'type' => 'button', 'class' => 'btn btn-lg btn-block btn-' . $class, 'escape' => false]
                                             )
                                             ?>
                                         </p>
@@ -71,7 +71,7 @@ echo $this->Form->create(
                 <div class="tab-pane" id="tab2">
                     <div class="table-responsive">
                         <div class="row col-md-12">
-                            <table class="order-datatable table table-striped">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
@@ -86,8 +86,10 @@ echo $this->Form->create(
                                     foreach ($arrFullMenu as $categoryId => $arrCategories) {
                                         foreach ($arrCategories['Subcategories'] as $subcategoryId => $arrSubcategory) {
                                             ?>
+                                            <tr class="success">
+                                                <th scope="row" colspan="4" class="text-center"><h4><?php echo $arrSubcategory['name']; ?></h4></th>
+                                            </tr>
                                             <?php
-//                                            echo $arrSubcategory['name'];
                                             foreach ($arrSubcategory['products'] as $key => $product) {
 
                                                 $inputId = "input_" . $subcategoryId . "_" . $product['Product']['id'];
@@ -122,6 +124,11 @@ echo $this->Form->create(
                                         }
                                     }
                                     ?>
+
+                                    <tr>
+                                        <td colspan="3" class="text-right"><strong>Total:&nbsp;</strong></td>
+                                        <td class="text-right"><strong>R$ <span id="spanTotal">0,00</span></strong></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -225,55 +232,12 @@ echo $this->Html->script('prevent_doubleclick');
             }
         });
 
+        updateTotal();
+
         if (originTable && originTable > 0 && originTable != '') {
             $("#" + originTable).click();
         }
 
-        if (orderDataTable) {
-            orderDataTable.destroy();
-        }
-
-        var orderDataTable = $('.order-datatable').DataTable({
-            retrieve: true,
-            "bPaginate": false,
-            initComplete : function() {
-                $(".dataTables_filter input").detach().appendTo('#DataTables_Table_0_filter');
-                $(".dataTables_filter input").parent().css("width", "100%");
-                $(".dataTables_filter input").css("width", "100%");
-                
-                $(".dataTables_filter input").addClass("form-control");
-            },
-            "columns": [
-                {"orderable": false},
-                {"orderable": false},
-                {"orderable": false},
-                {"orderable": false}
-            ],
-            language: {
-                "sEmptyTable": "Nenhum registro encontrado",
-                "sInfo": "",
-                "sInfoEmpty": "",
-                "sInfoFiltered": "",
-                "sInfoPostFix": "",
-                "sInfoThousands": ".",
-                "sLengthMenu": "",
-                "sLoadingRecords": "Carregando...",
-                "sProcessing": "Processando...",
-                "sZeroRecords": "Nenhum registro encontrado",
-                "sSearch": "",
-                "searchPlaceholder": "Pesquisar...",
-                "oPaginate": {
-                    "sNext": "Próximo",
-                    "sPrevious": "Anterior",
-                    "sFirst": "Primeiro",
-                    "sLast": "Último"
-                },
-                "oAria": {
-                    "sSortAscending": ": Ordenar colunas de forma ascendente",
-                    "sSortDescending": ": Ordenar colunas de forma descendente"
-                }
-            }
-        });
     });
 
     function isNumeric(n) {
@@ -356,6 +320,19 @@ echo $this->Html->script('prevent_doubleclick');
             spanSubtotal.html("0.00");
             hiddenSubtotal.val('');
         }
+
+        updateTotal();
+    }
+
+    function updateTotal() {
+        var total = 0;
+        $("input.hiddenSubtotal").each(function () {
+            if ($(this).val() && $(this).val() > 0) {
+                total += parseFloat($(this).val());
+            }
+        });
+
+        $("#spanTotal").html(parseCurrency(total, 2));
     }
 
     function updateFinishStep() {
@@ -383,8 +360,6 @@ echo $this->Html->script('prevent_doubleclick');
         html += '</thead>';
 
         html += '<tbody>';
-        
-        var total = 0;
 
         $("input.hiddenSubtotal").each(function () {
             if ($(this).val() && $(this).val() > 0) {
@@ -397,9 +372,8 @@ echo $this->Html->script('prevent_doubleclick');
 
                 var subtotal = $($tableRow).find('.hiddenSubtotal').val();
                 var subtotalFormatted = parseCurrency(subtotal, 2);
-                
-                total += parseFloat(subtotal);
 
+//                var quantity = $($tableRow).find('.customQuantityDouble').val();
                 var quantity = subtotal / sellPrice;
 
                 html += '<tr>';
@@ -409,11 +383,6 @@ echo $this->Html->script('prevent_doubleclick');
                 html += '</tr>';
             }
         });
-        
-        html += '<tr>';
-        html += '<td colspan="2" class="text-right"><strong>Total:&nbsp;</strong></td>';
-        html += '<td class="text-right"><strong>R$ <span id="spanTotal">'+parseCurrency(total, 2)+'</span></strong></td>';
-        html += '</tr>';
 
         html += '</tbody>';
 

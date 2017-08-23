@@ -7,6 +7,10 @@ $(document).ready(function () {
     }
 
     var myDataTable = $('.datatable').DataTable({
+        initComplete : function() {
+            $(".dataTables_filter input").addClass("form-control");
+            $(".dataTables_length select").addClass("form-control");
+        },
         retrieve: true,
         language: {
             "sEmptyTable": "Nenhum registro encontrado",
@@ -19,7 +23,8 @@ $(document).ready(function () {
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
             "sZeroRecords": "Nenhum registro encontrado",
-            "sSearch": "Pesquisar",
+            "sSearch": "",
+            "searchPlaceholder": "Pesquisar...",
             "oPaginate": {
                 "sNext": "Próximo",
                 "sPrevious": "Anterior",
