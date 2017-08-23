@@ -5590,3 +5590,34 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+CREATE TABLE `audits` (
+  `id` varchar(36) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `model` varchar(255) NOT NULL,
+  `entity_id` varchar(36) NOT NULL,
+  `request_id` varchar(36) NOT NULL,
+  `json_object` text NOT NULL,
+  `description` text,
+  `source_id` varchar(255) DEFAULT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `audit_deltas` (
+  `id` varchar(36) NOT NULL,
+  `audit_id` varchar(36) NOT NULL,
+  `property_name` varchar(255) NOT NULL,
+  `old_value` text,
+  `new_value` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `audits`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `audit_deltas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `audit_id` (`audit_id`);
+COMMIT;
