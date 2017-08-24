@@ -2,18 +2,18 @@
 /**
  * MS SQL Server layer for DBO
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Datasource.Database
  * @since         CakePHP(tm) v 0.10.5.1790
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('DboSource', 'Model/Datasource');
@@ -85,12 +85,15 @@ class Sqlserver extends DboSource {
  * MS SQL column definition
  *
  * @var array
+ * @link https://msdn.microsoft.com/en-us/library/ms187752.aspx SQL Server Data Types
  */
 	public $columns = array(
 		'primary_key' => array('name' => 'IDENTITY (1, 1) NOT NULL'),
 		'string' => array('name' => 'nvarchar', 'limit' => '255'),
 		'text' => array('name' => 'nvarchar', 'limit' => 'MAX'),
 		'integer' => array('name' => 'int', 'formatter' => 'intval'),
+		'smallinteger' => array('name' => 'smallint', 'formatter' => 'intval'),
+		'tinyinteger' => array('name' => 'tinyint', 'formatter' => 'intval'),
 		'biginteger' => array('name' => 'bigint'),
 		'numeric' => array('name' => 'decimal', 'formatter' => 'floatval'),
 		'decimal' => array('name' => 'decimal', 'formatter' => 'floatval'),
@@ -435,6 +438,12 @@ class Sqlserver extends DboSource {
 		if (strpos($col, 'bigint') !== false) {
 			return 'biginteger';
 		}
+		if (strpos($col, 'smallint') !== false) {
+			return 'smallinteger';
+		}
+		if (strpos($col, 'tinyint') !== false) {
+			return 'tinyinteger';
+		}
 		if (strpos($col, 'int') !== false) {
 			return 'integer';
 		}
@@ -526,6 +535,9 @@ class Sqlserver extends DboSource {
 				extract($data);
 				$fields = trim($fields);
 
+				$having = !empty($having) ? " $having" : '';
+				$lock = !empty($lock) ? " $lock" : '';
+
 				if (strpos($limit, 'TOP') !== false && strpos($fields, 'DISTINCT ') === 0) {
 					$limit = 'DISTINCT ' . trim($limit);
 					$fields = substr($fields, 9);
@@ -547,7 +559,7 @@ class Sqlserver extends DboSource {
 					$rowCounter = static::ROW_COUNTER;
 					$sql = "SELECT {$limit} * FROM (
 							SELECT {$fields}, ROW_NUMBER() OVER ({$order}) AS {$rowCounter}
-							FROM {$table} {$alias} {$joins} {$conditions} {$group}
+							FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having}
 						) AS _cake_paging_
 						WHERE _cake_paging_.{$rowCounter} > {$offset}
 						ORDER BY _cake_paging_.{$rowCounter}
@@ -555,9 +567,9 @@ class Sqlserver extends DboSource {
 					return trim($sql);
 				}
 				if (strpos($limit, 'FETCH') !== false) {
-					return trim("SELECT {$fields} FROM {$table} {$alias} {$joins} {$conditions} {$group} {$order} {$limit}");
+					return trim("SELECT {$fields} FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having} {$order} {$limit}");
 				}
-				return trim("SELECT {$limit} {$fields} FROM {$table} {$alias} {$joins} {$conditions} {$group} {$order}");
+				return trim("SELECT {$limit} {$fields} FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having} {$order}");
 			case "schema":
 				extract($data);
 
@@ -814,4 +826,18 @@ class Sqlserver extends DboSource {
 		return $this->config['schema'];
 	}
 
+/**
+ * Returns a locking hint for the given mode.
+ *
+ * Currently, this method only returns WITH (UPDLOCK) when the mode is set to true.
+ *
+ * @param mixed $mode Lock mode
+ * @return string|null WITH (UPDLOCK) clause or null
+ */
+	public function getLockingHint($mode) {
+		if ($mode !== true) {
+			return null;
+		}
+		return ' WITH (UPDLOCK)';
+	}
 }

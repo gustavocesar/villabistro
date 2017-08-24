@@ -7,18 +7,18 @@
  * This class is the implementation of those methods.
  * They are mostly used by the Session Component.
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Datasource
  * @since         CakePHP(tm) v .0.10.0.1222
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Hash', 'Utility');
@@ -230,8 +230,11 @@ class CakeSession {
  * @return bool True if variable is there
  */
 	public static function check($name) {
-		if (empty($name) || !static::_hasSession() || !static::start()) {
+		if (!static::_hasSession() || !static::start()) {
 			return false;
+		}
+		if (isset($_SESSION[$name])) {
+			return true;
 		}
 
 		return Hash::get($_SESSION, $name) !== null;
@@ -380,9 +383,6 @@ class CakeSession {
  *   session not started, or provided name not found in the session, false on failure.
  */
 	public static function read($name = null) {
-		if (empty($name) && $name !== null) {
-			return null;
-		}
 		if (!static::_hasSession() || !static::start()) {
 			return null;
 		}
@@ -418,7 +418,7 @@ class CakeSession {
  * @return bool True if the write was successful, false if the write failed
  */
 	public static function write($name, $value = null) {
-		if (empty($name) || !static::start()) {
+		if (!static::start()) {
 			return false;
 		}
 
