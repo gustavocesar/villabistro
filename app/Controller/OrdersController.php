@@ -175,14 +175,6 @@ class OrdersController extends AppController {
         $this->set('title', $title);
         $this->set('activeOrdersBoard', 'active');
 
-        $startDate = date("d/m/Y", strtotime("yesterday"));
-        $endDate = date('d/m/Y');
-
-        $this->set('pendingOrders', $this->Order->getOrdersByPaymentStatus(null, null, [1], $startDate, $endDate));
-        $this->set('completedOrders', $this->Order->getOrdersByPaymentStatus(null, null, [2], $startDate, $endDate));
-        $this->set('startDate', $startDate);
-        $this->set('endDate', $endDate);
-
         $this->set('arrayBreadCrumb', [
             0 => [
                 'label' => $title,
@@ -193,6 +185,19 @@ class OrdersController extends AppController {
                 ]
             ]
         ]);
+
+        $startDate = date("d/m/Y", strtotime("yesterday"));
+        $endDate   = date('d/m/Y');
+
+        if ($this->request->is(array('post', 'put'))) {
+            $startDate = $this->request->data['Order']['start_date'];
+            $endDate   = $this->request->data['Order']['finish_date'];
+        }
+
+        $this->set('pendingOrders', $this->Order->getOrdersByPaymentStatus(null, null, [1], null, $startDate, $endDate));
+        $this->set('completedOrders', $this->Order->getOrdersByPaymentStatus(null, null, [2], null, $startDate, $endDate));
+        $this->set('startDate', $startDate);
+        $this->set('endDate', $endDate);
     }
 
     public function add_order() {

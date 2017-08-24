@@ -134,6 +134,14 @@ function setInputMask() {
 
     $('.threeDigitsDouble').mask('000.000.000,000', options);
     $('.twoDigitsDouble').mask('000.000.000,00', options);
+
+    $('.date-picker').mask('00/00/0000', {
+        reverse: false
+    });
+
+    $('.time-picker').mask('00:00', {
+        reverse: false
+    });
 }
 
 function hideReturnMessage() {

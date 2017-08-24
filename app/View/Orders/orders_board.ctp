@@ -1,3 +1,9 @@
+<?php
+echo $this->Form->create(
+    'Order'
+);
+?>
+
 <div class="row">
     <div class="col-sm-5">
         <?php
@@ -37,6 +43,7 @@
         </p>
     </div>
 </div>
+<?php echo $this->Form->end(); ?>
 
 <div class="row">
 
@@ -262,3 +269,7 @@
         </div>
     </div>
 </div>
+
+<?php
+echo $this->Html->script('models/orders-board');
+?>

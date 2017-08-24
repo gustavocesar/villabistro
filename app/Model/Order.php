@@ -207,6 +207,20 @@ class Order extends AppModel {
             ]);
         }
 
+        if ($startDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $startDate);
+            $conditions = array_merge($conditions, [
+                "Order.created >= " => $date->format('Y-m-d')." 00:00:00"
+            ]);
+        }
+
+        if ($endDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $endDate);
+            $conditions = array_merge($conditions, [
+                "Order.created <= " => $date->format('Y-m-d')." 23:59:59"
+            ]);
+        }
+
         $arrResult = $this->find('all', [
             'joins' => [
                 [
