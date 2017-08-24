@@ -90,14 +90,16 @@
             <div class="panel-body">
                 <?php if (!empty($internalTransfer['InternalTransferItem'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Product Id'); ?></th>
-                                <th><?php echo __('Quantity'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Product Id'); ?></th>
+                                    <th><?php echo __('Quantity'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($internalTransfer['InternalTransferItem'] as $internalTransferItem): ?>
                                 <tr>
                                     <td><?php echo $internalTransferItem['id']; ?></td>

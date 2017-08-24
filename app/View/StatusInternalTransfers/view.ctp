@@ -60,18 +60,20 @@
             <div class="panel-body">
                 <?php if (!empty($statusInternalTransfer['InternalTransfer'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Location Id'); ?></th>
-                                <th><?php echo __('Location Destiny'); ?></th>
-                                <th><?php echo __('Status Internal Transfer Id'); ?></th>
-                                <th><?php echo __('Date'); ?></th>
-                                <th><?php echo __('Time'); ?></th>
-                                <th><?php echo __('Observation'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Location Id'); ?></th>
+                                    <th><?php echo __('Location Destiny'); ?></th>
+                                    <th><?php echo __('Status Internal Transfer Id'); ?></th>
+                                    <th><?php echo __('Date'); ?></th>
+                                    <th><?php echo __('Time'); ?></th>
+                                    <th><?php echo __('Observation'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($statusInternalTransfer['InternalTransfer'] as $internalTransfer): ?>
                                 <tr>
                                     <td><?php echo $internalTransfer['id']; ?></td>

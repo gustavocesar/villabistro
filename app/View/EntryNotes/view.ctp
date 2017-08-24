@@ -97,17 +97,19 @@
             <div class="panel-body">
                 <?php if (!empty($entryNote['EntryNoteItem'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Product Id'); ?></th>
-                                <th><?php echo __('Quantity'); ?></th>
-                                <th><?php echo __('Unit Cost'); ?></th>
-                                <th><?php echo __('Cost Price'); ?></th>
-                                <th><?php echo __('Location Id'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Product Id'); ?></th>
+                                    <th><?php echo __('Quantity'); ?></th>
+                                    <th><?php echo __('Unit Cost'); ?></th>
+                                    <th><?php echo __('Cost Price'); ?></th>
+                                    <th><?php echo __('Location Id'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($entryNote['EntryNoteItem'] as $entryNoteItem): ?>
                                 <tr>
                                     <td><?php echo $entryNoteItem['id']; ?></td>

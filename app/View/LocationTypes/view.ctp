@@ -54,14 +54,16 @@
             <div class="panel-body">
                 <?php if (!empty($locationType['Location'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Name'); ?></th>
-                                <th><?php echo __('Location Type Id'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Name'); ?></th>
+                                    <th><?php echo __('Location Type Id'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($locationType['Location'] as $location): ?>
                                 <tr>
                                     <td><?php echo $location['id']; ?></td>

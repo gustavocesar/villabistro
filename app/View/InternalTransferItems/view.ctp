@@ -70,19 +70,21 @@
             <div class="panel-body">
                 <?php if (!empty($internalTransferItem['Stock'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Location Id'); ?></th>
-                                <th><?php echo __('Product Id'); ?></th>
-                                <th><?php echo __('Quantity'); ?></th>
-                                <th><?php echo __('Value'); ?></th>
-                                <th><?php echo __('Entry Note Item Id'); ?></th>
-                                <th><?php echo __('Internal Transfer Item Id'); ?></th>
-                                <th><?php echo __('Order Id'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Location Id'); ?></th>
+                                    <th><?php echo __('Product Id'); ?></th>
+                                    <th><?php echo __('Quantity'); ?></th>
+                                    <th><?php echo __('Value'); ?></th>
+                                    <th><?php echo __('Entry Note Item Id'); ?></th>
+                                    <th><?php echo __('Internal Transfer Item Id'); ?></th>
+                                    <th><?php echo __('Order Id'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($internalTransferItem['Stock'] as $stock): ?>
                                 <tr>
                                     <td><?php echo $stock['id']; ?></td>

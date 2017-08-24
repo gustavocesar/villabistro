@@ -26,7 +26,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="col-lg-3"><?php echo __('Stage'); ?></td>
+                            <td class="col-lg-3"><?php echo __('Default Stage'); ?></td>
                             <td class="col-lg-9">
                                 <span class="label label-sm label-success custom-label-link">
                                     <?php echo h($subcategory['Stage']['name']); ?>
@@ -70,19 +70,21 @@
             <div class="panel-body">
                 <?php if (!empty($subcategory['Product'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Unit Id'); ?></th>
-                                <th><?php echo __('Name'); ?></th>
-                                <th><?php echo __('Status'); ?></th>
-                                <th><?php echo __('Cost Price'); ?></th>
-                                <th><?php echo __('Sell Price'); ?></th>
-                                <th><?php echo __('Stockable'); ?></th>
-                                <th><?php echo __('Minimum Stock'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Unit Id'); ?></th>
+                                    <th><?php echo __('Name'); ?></th>
+                                    <th><?php echo __('Status'); ?></th>
+                                    <th><?php echo __('Cost Price'); ?></th>
+                                    <th><?php echo __('Sell Price'); ?></th>
+                                    <th><?php echo __('Stockable'); ?></th>
+                                    <th><?php echo __('Minimum Stock'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($subcategory['Product'] as $product): ?>
                                 <tr>
                                     <td><?php echo $product['id']; ?></td>

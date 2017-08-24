@@ -42,16 +42,18 @@
             <div class="panel-body">
                 <?php if (!empty($group['User'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Group Id'); ?></th>
-                                <th><?php echo __('Status'); ?></th>
-                                <th><?php echo __('Name'); ?></th>
-                                <th><?php echo __('Email'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Group Id'); ?></th>
+                                    <th><?php echo __('Status'); ?></th>
+                                    <th><?php echo __('Name'); ?></th>
+                                    <th><?php echo __('Email'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($group['User'] as $user): ?>
                                 <tr>
                                     <td><?php echo $user['id']; ?></td>

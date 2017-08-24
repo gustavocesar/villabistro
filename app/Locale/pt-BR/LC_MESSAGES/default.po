@@ -140,6 +140,9 @@ msgstr "A Conta não pôde ser excluída. Por favor, tente novamente"
 msgid  "Identifier"
 msgstr "Identificação"
 
+msgid  "identifier"
+msgstr "Identificação"
+
 msgid  "Related Orders"
 msgstr "Pedidos Relacionados"
 
@@ -607,6 +610,8 @@ msgstr "Etapas"
 msgid  "Status Bill Id"
 msgstr "Situação"
 
+msgid  "status_bill_id"
+msgstr "Situação"
 
 
 
@@ -642,6 +647,9 @@ msgstr "O Produto não pôde ser excluído. Por favor, tente novamente"
 
 
 msgid  "Table Id"
+msgstr "Mesa"
+
+msgid  "table_id"
 msgstr "Mesa"
 
 msgid  "table"

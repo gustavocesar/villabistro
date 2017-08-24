@@ -60,21 +60,21 @@
             <div class="panel-body">
                 <?php if (!empty($table['Bill'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Status Bill Id'); ?></th>
-                                <th><?php echo __('Table Id'); ?></th>
-                                <th><?php echo __('Identifier'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Status Bill Id'); ?></th>
+                                    <th><?php echo __('Table Id'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($table['Bill'] as $bill): ?>
                                 <tr>
                                     <td><?php echo $bill['id']; ?></td>
                                     <td><?php echo $bill['StatusBill']['name']; ?></td>
                                     <td><?php echo $bill['Table']['name']; ?></td>
-                                    <td><?php echo $bill['identifier']; ?></td>
                                     <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($bill['created']))); ?></td>
                                     <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($bill['modified']))); ?></td>
                                 </tr>

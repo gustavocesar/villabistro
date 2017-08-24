@@ -102,14 +102,16 @@ foreach ($relations as $alias => $details):
                 <div class="panel-heading"><?php echo "<?php echo __('Related " . $otherPluralHumanName . "'); ?>"; ?></div>
                 <div class="panel-body">
                     <?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])): ?>\n"; ?>
-                    <table class="table table-hover">
-                        <tr>
-                            <?php
-                            foreach ($details['fields'] as $field) {
-                                echo "\t\t<th><?php echo __('" . Inflector::humanize($field) . "'); ?></th>\n";
-                            }
-                            ?>
-                        </tr>
+                    <table class="table table-hover datatable">
+                        <thead>
+                            <tr>
+                                <?php
+                                foreach ($details['fields'] as $field) {
+                                    echo "\t\t<th><?php echo __('" . Inflector::humanize($field) . "'); ?></th>\n";
+                                }
+                                ?>
+                            </tr>
+                        </thead>
                         <?php
                         echo "\t<?php foreach (\${$singularVar}['{$alias}'] as \${$otherSingularVar}): ?>\n";
                         echo "\t\t<tr>\n";

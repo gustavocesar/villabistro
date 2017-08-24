@@ -78,15 +78,17 @@
             <div class="panel-body">
                 <?php if (!empty($supplier['EntryNote'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Status Entry Note Id'); ?></th>
-                                <th><?php echo __('Fiscal Note'); ?></th>
-                                <th><?php echo __('Entry Date'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Status Entry Note Id'); ?></th>
+                                    <th><?php echo __('Fiscal Note'); ?></th>
+                                    <th><?php echo __('Entry Date'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($supplier['EntryNote'] as $entryNote): ?>
                                 <tr>
                                     <td><?php echo $entryNote['id']; ?></td>

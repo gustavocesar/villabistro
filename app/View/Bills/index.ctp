@@ -20,16 +20,15 @@
             <div class="panel-body">
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="datatable table table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('status_bill_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('table_id'); ?></th>
-                                <th><?php echo $this->Paginator->sort('identifier'); ?></th>
-                                <th><?php echo $this->Paginator->sort('created'); ?></th>
-                                <th><?php echo $this->Paginator->sort('modified'); ?></th>
+                                <th><?php echo __('id'); ?></th>
+                                <th><?php echo __('status_bill_id'); ?></th>
+                                <th><?php echo __('table_id'); ?></th>
+                                <th><?php echo __('created'); ?></th>
+                                <th><?php echo __('modified'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,20 +54,6 @@
                                                 ], ['escape' => false, 'title' => __('Edit')]
                                         );
                                         ?>
-                                        &nbsp;
-                                        <?php
-                                        echo $this->Form->postLink(
-                                                '<i class="fa fa-trash-o"></i>', [
-                                            'controller' => 'bills',
-                                            'action' => 'delete',
-                                            $bill['Bill']['id']
-                                                ], [
-                                            'escape' => false,
-                                            'title' => __('Delete'),
-                                            'confirm' => __('Are you sure you want to delete # %s?', $bill['Bill']['id'])
-                                                ]
-                                        );
-                                        ?>
                                     </td>
                                     <td><?php echo h($bill['Bill']['id']); ?></td>
                                     <td>
@@ -77,7 +62,6 @@
                                     <td>
                                         <?php echo $this->Html->link($bill['Table']['name'], array('controller' => 'tables', 'action' => 'view', $bill['Table']['id'])); ?>
                                     </td>
-                                    <td><?php echo h($bill['Bill']['identifier']); ?></td>
                                     <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($bill['Bill']['created']))); ?></td>
                                     <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($bill['Bill']['modified']))); ?></td>
                                 </tr>

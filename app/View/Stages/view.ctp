@@ -47,51 +47,7 @@
     </div>
 </div>
 
-
-
-
 <p>&nbsp;</p>
-
-
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-violet">
-            <div class="panel-heading"><?php echo __('Related Orders'); ?></div>
-            <div class="panel-body">
-                <?php if (!empty($stage['Order'])): ?>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('User Id'); ?></th>
-                                <th><?php echo __('Product Id'); ?></th>
-                                <th><?php echo __('Quantity'); ?></th>
-                                <th><?php echo __('Bill Id'); ?></th>
-                                <th><?php echo __('Status Order Id'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
-                            <?php foreach ($stage['Order'] as $order): ?>
-                                <tr>
-                                    <td><?php echo $order['id']; ?></td>
-                                    <td><?php echo $order['User']['name']; ?></td>
-                                    <td><?php echo $order['Product']['name']; ?></td>
-                                    <td><?php echo $order['quantity']; ?></td>
-                                    <td><?php echo $order['bill_id']; ?></td>
-                                    <td><?php echo $order['StatusOrder']['name']; ?></td>
-                                    <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($order['created']))); ?></td>
-                                    <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($order['modified']))); ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
-                <?php endif; ?>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-lg-12">
@@ -99,15 +55,17 @@
             <div class="panel-heading"><?php echo __('Related Subcategories'); ?></div>
             <div class="panel-body">
                 <?php if (!empty($stage['Subcategory'])): ?>
-                    <table class="table table-hover">
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th><?php echo __('Id'); ?></th>
-                            <th><?php echo __('Category Id'); ?></th>
-                            <th><?php echo __('Name'); ?></th>
-                            <th><?php echo __('Created'); ?></th>
-                            <th><?php echo __('Modified'); ?></th>
-                        </tr>
+                    <table class="table table-hover datatable">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th><?php echo __('Id'); ?></th>
+                                <th><?php echo __('Category Id'); ?></th>
+                                <th><?php echo __('Name'); ?></th>
+                                <th><?php echo __('Created'); ?></th>
+                                <th><?php echo __('Modified'); ?></th>
+                            </tr>
+                        </thead>
                         <?php foreach ($stage['Subcategory'] as $subcategory): ?>
                             <tr>
                                 <td>

@@ -60,19 +60,21 @@
             <div class="panel-body">
                 <?php if (!empty($unit['Product'])): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th><?php echo __('Id'); ?></th>
-                                <th><?php echo __('Subcategory Id'); ?></th>
-                                <th><?php echo __('Name'); ?></th>
-                                <th><?php echo __('Status'); ?></th>
-                                <th><?php echo __('Cost Price'); ?></th>
-                                <th><?php echo __('Sell Price'); ?></th>
-                                <th><?php echo __('Stockable'); ?></th>
-                                <th><?php echo __('Minimum Stock'); ?></th>
-                                <th><?php echo __('Created'); ?></th>
-                                <th><?php echo __('Modified'); ?></th>
-                            </tr>
+                        <table class="table table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Id'); ?></th>
+                                    <th><?php echo __('Subcategory Id'); ?></th>
+                                    <th><?php echo __('Name'); ?></th>
+                                    <th><?php echo __('Status'); ?></th>
+                                    <th><?php echo __('Cost Price'); ?></th>
+                                    <th><?php echo __('Sell Price'); ?></th>
+                                    <th><?php echo __('Stockable'); ?></th>
+                                    <th><?php echo __('Minimum Stock'); ?></th>
+                                    <th><?php echo __('Created'); ?></th>
+                                    <th><?php echo __('Modified'); ?></th>
+                                </tr>
+                            </thead>
                             <?php foreach ($unit['Product'] as $product): ?>
                                 <tr>
                                     <td><?php echo $product['id']; ?></td>
