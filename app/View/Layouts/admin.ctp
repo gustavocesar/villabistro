@@ -57,49 +57,53 @@
             </div>
             <div class="pace-activity"></div>
         </div>
-        <div>
 
-            <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <?php
+        echo $this->element('topbar', [], [
+            'cache' => true
+        ]);
+        ?>
+
+        <div id="wrapper">
 
             <?php
-            echo $this->element('topbar', [], [
-                'cache' => true
+            echo $this->element('sidebar', [], [
+//                'cache' => true
             ]);
             ?>
 
-            <div id="wrapper">
+            <div id="page-wrapper">
+
+                <?= $this->element('breadcrumb'); ?>
+
+                <?php echo $this->Flash->render(); ?>
+                <?php echo $this->Flash->render('auth', ['element' => 'Flash/authError']); ?>
+
+                <div class="page-content">
+                    <div id="tab-general">
+                        <div class="row mbl">
+                            <?= $this->fetch('content'); ?>
+                        </div>
+                    </div>
+                </div>
 
                 <?php
-                echo $this->element('sidebar', [], [
-//                    'cache' => true
+                echo $this->element('footer', [], [
+                    'cache' => true
                 ]);
                 ?>
 
-                <div id="page-wrapper">
-
-                    <?= $this->element('breadcrumb'); ?>
-
-                    <?php echo $this->Flash->render(); ?>
-                    <?php echo $this->Flash->render('auth', ['element'=>'Flash/authError']); ?>
-
-                    <div class="page-content">
-                        <div id="tab-general">
-                            <div class="row mbl">
-                                <?= $this->fetch('content'); ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <?php
-                    echo $this->element('footer', [], [
-                        'cache' => true
-                    ]);
-                    ?>
-
-                </div>
-
             </div>
 
+        </div>
+
+        <div id="audit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div id="modal-content" class="modal-content">
+                </div>
+            </div>
         </div>
 
         <!--CORE JAVASCRIPT-->
@@ -119,12 +123,12 @@
         echo $this->Html->script('pace.min');
         echo $this->Html->script('holder');
         echo $this->Html->script('responsive-tabs');
-        // echo $this->Html->script('zabuto_calendar.min');
+//        echo $this->Html->script('zabuto_calendar.min');
 //        echo $this->Html->script('index');
         echo $this->Html->script('jQuery-Mask-Plugin/jquery.mask');
         echo $this->Html->script('bignumber/bignumber');
         echo $this->Html->script('/jquery-timepicker/jquery.timepicker');
-        
+
         //datatable
         echo $this->Html->script('/DataTables-1.10.13/media/js/jquery.dataTables.min');
 
@@ -135,9 +139,4 @@
     </body>
 
     <?= $this->element('google-analytics'); ?>
-
 </html>
-
-<?php
-//echo $this->element('sql_dump');
-?>

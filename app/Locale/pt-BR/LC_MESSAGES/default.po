@@ -547,6 +547,9 @@ msgstr "Estoque Mínimo"
 msgid  "Description"
 msgstr "Descrição"
 
+msgid  "description"
+msgstr "Descrição"
+
 msgid  "Related Stocks"
 msgstr "Estoque Relacionado"
 
@@ -1050,6 +1053,9 @@ msgstr "Transferências Internas"
 msgid  "InternalTransfers"
 msgstr "Transferências Internas"
 
+msgid  "InternalTransfer"
+msgstr "Transferência Interna"
+
 msgid  "internal_transfer"
 msgstr "Transferência Interna"
 
@@ -1433,3 +1439,48 @@ msgstr "Cep desconhecido: %s"
 
 msgid  "Robot! Incorrect captcha"
 msgstr "Tu és robô? Se não for, clique em 'Não sou um robô'"
+
+msgid  "Audit"
+msgstr "Log de Alterações"
+
+msgid  "event"
+msgstr "Evento"
+
+msgid  "model"
+msgstr "Entidade"
+
+msgid  "json_object"
+msgstr "Conteúdo"
+
+msgid  "EDIT"
+msgstr "Edição"
+
+msgid  "CREATE"
+msgstr "Inserção"
+
+msgid  "event date"
+msgstr "Data do Evento"
+
+msgid  "details"
+msgstr "Detalhes"
+
+msgid  "stage_id"
+msgstr "Etapa"
+
+msgid  "status_order_id"
+msgstr "Status"
+
+msgid  "observation"
+msgstr "Observação"
+
+msgid  "location_destiny_id"
+msgstr "Destino"
+
+msgid  "bill_id"
+msgstr "Conta"
+
+msgid  "kitchen_order"
+msgstr "Ordem na Cozinha"
+
+msgid  "payment_id"
+msgstr "Pagamento"

@@ -27,16 +27,13 @@ $arrHiddenFields = ['label_class'];
                     <table class="datatable compact hover row-border">
                         <thead>
                             <tr>
-
                                 <th>&nbsp;</th>
                                 <?php foreach ($fields as $field): ?>
-
                                     <?php
                                     if (in_array($field, $arrHiddenFields)) {
                                         continue;
                                     }
                                     ?>
-
                                     <th><?php echo "<?php echo __('{$field}'); ?>"; ?></th>
                                 <?php endforeach; ?>
                             </tr>

@@ -66,7 +66,6 @@ class AppController extends Controller {
 
         $this->layout = $defaultLayout;
         $this->set('title', __('Home'));
-        $this->set('action', $this->request->params['action']);
         $this->set('controller', $this->request->params['controller']);
         $this->set('action', $this->request->params['action']);
         

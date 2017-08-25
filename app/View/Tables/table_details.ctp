@@ -90,7 +90,6 @@
                 <?php
             }
             ?>
-            <strong></strong>
             <div class="table-responsive">
 
                 <table class="table table-hover table-bordered">
@@ -116,6 +115,7 @@
                                 <th class="text-center"><?php echo __("attendant") ?></th>
                                 <th class="text-center"><?php echo __("date/time") ?></th>
                                 <th class="text-center"><?php echo __("last updated") ?></th>
+                                <th class="text-center">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -183,6 +183,25 @@
 
                                     <td class="text-center"><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($order['created']))); ?>&nbsp;</td>
                                     <td class="text-center"><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($order['modified']))); ?>&nbsp;</td>
+
+                                    <td class="text-center">
+                                        <?php
+                                        echo $this->Html->link(
+                                            '<i class="fa fa-list-alt"></i>',
+                                            $this->Html->url([
+                                                'controller' => 'audits',
+                                                'action' => 'index',
+                                                'Order', $order['id']
+                                            ], true),
+                                            [
+                                                'title' => __('Audit'),
+                                                'data-toggle' => 'modal',
+                                                'data-target' => '#audit-modal',
+                                                'escape' => false
+                                            ]
+                                        );
+                                        ?>
+                                    </td>
                                 </tr>
                                 <?php
                             }
