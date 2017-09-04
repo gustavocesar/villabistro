@@ -194,8 +194,8 @@ class OrdersController extends AppController {
             $endDate   = $this->request->data['Order']['finish_date'];
         }
 
-        $this->set('pendingOrders', $this->Order->getOrdersByPaymentStatus(null, null, [1], null, $startDate, $endDate));
-        $this->set('completedOrders', $this->Order->getOrdersByPaymentStatus(null, null, [2], null, $startDate, $endDate));
+        $this->set('pendingOrders', $this->Order->getPendingOrders(null, null, $startDate, $endDate));
+        $this->set('completedOrders', $this->Order->getCompletedOrders(null, null, $startDate, $endDate));
         $this->set('startDate', $startDate);
         $this->set('endDate', $endDate);
     }

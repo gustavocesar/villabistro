@@ -314,6 +314,196 @@ class Order extends AppModel {
         return $arrResult;
     }
 
+    public function getPendingOrders($tableId = null, $billId = null, $startDate = null, $endDate = null) {
+
+        $conditions = [];
+
+        if ($tableId) {
+            $conditions = array_merge($conditions, [
+                "Order.table_id" => $tableId
+            ]);
+        }
+
+        if ($billId) {
+            $conditions = array_merge($conditions, [
+                "Order.bill_id" => $billId
+            ]);
+        }
+
+        if ($startDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $startDate);
+            $conditions = array_merge($conditions, [
+                "Order.created >= " => $date->format('Y-m-d')." 00:00:00"
+            ]);
+        }
+
+        if ($endDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $endDate);
+            $conditions = array_merge($conditions, [
+                "Order.created <= " => $date->format('Y-m-d')." 23:59:59"
+            ]);
+        }
+
+        $conditions = array_merge($conditions, [
+            "Stages.consider_as" => "Pendentes"
+        ]);
+
+        $arrResult = $this->find('all', [
+            'joins' => [
+                [
+                    'table' => 'stages',
+                    'alias' => 'Stages',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Stages.id = Order.stage_id'
+                    ]
+                ],
+                [
+                    'table' => 'users',
+                    'alias' => 'Users',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Users.id = Order.user_id'
+                    ]
+                ],
+                [
+                    'table' => 'products',
+                    'alias' => 'Products',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Products.id = Order.product_id'
+                    ]
+                ],
+                [
+                    'table' => 'status_orders',
+                    'alias' => 'StatusOrders',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'StatusOrders.id = Order.status_order_id'
+                    ]
+                ],
+                [
+                    'table' => 'bills',
+                    'alias' => 'Bills',
+                    'type' => 'LEFT',
+                    'conditions' => [
+                        'Bills.id = Order.bill_id'
+                    ]
+                ],
+                [
+                    'table' => 'tables',
+                    'alias' => 'Tables',
+                    'type' => 'LEFT',
+                    'conditions' => [
+                        'Bills.table_id = Tables.id'
+                    ]
+                ],
+            ],
+            'conditions' => $conditions,
+            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'],
+            'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc'],
+            'group' => ['Order.id']
+        ]);
+//        debug($this->getDataSource()->getLog(false, false));
+
+        return $arrResult;
+    }
+
+    public function getCompletedOrders($tableId = null, $billId = null, $startDate = null, $endDate = null) {
+
+        $conditions = [];
+
+        if ($tableId) {
+            $conditions = array_merge($conditions, [
+                "Order.table_id" => $tableId
+            ]);
+        }
+
+        if ($billId) {
+            $conditions = array_merge($conditions, [
+                "Order.bill_id" => $billId
+            ]);
+        }
+
+        if ($startDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $startDate);
+            $conditions = array_merge($conditions, [
+                "Order.created >= " => $date->format('Y-m-d')." 00:00:00"
+            ]);
+        }
+
+        if ($endDate) {
+            $date = DateTime::createFromFormat('d/m/Y', $endDate);
+            $conditions = array_merge($conditions, [
+                "Order.created <= " => $date->format('Y-m-d')." 23:59:59"
+            ]);
+        }
+
+        $conditions = array_merge($conditions, [
+            "Stages.consider_as" => "Concluídos"
+        ]);
+
+        $arrResult = $this->find('all', [
+            'joins' => [
+                [
+                    'table' => 'stages',
+                    'alias' => 'Stages',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Stages.id = Order.stage_id'
+                    ]
+                ],
+                [
+                    'table' => 'users',
+                    'alias' => 'Users',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Users.id = Order.user_id'
+                    ]
+                ],
+                [
+                    'table' => 'products',
+                    'alias' => 'Products',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'Products.id = Order.product_id'
+                    ]
+                ],
+                [
+                    'table' => 'status_orders',
+                    'alias' => 'StatusOrders',
+                    'type' => 'INNER',
+                    'conditions' => [
+                        'StatusOrders.id = Order.status_order_id'
+                    ]
+                ],
+                [
+                    'table' => 'bills',
+                    'alias' => 'Bills',
+                    'type' => 'LEFT',
+                    'conditions' => [
+                        'Bills.id = Order.bill_id'
+                    ]
+                ],
+                [
+                    'table' => 'tables',
+                    'alias' => 'Tables',
+                    'type' => 'LEFT',
+                    'conditions' => [
+                        'Bills.table_id = Tables.id'
+                    ]
+                ],
+            ],
+            'conditions' => $conditions,
+            'fields' => ['Order.*', 'Stages.*', 'Users.*', 'Products.*', 'StatusOrders.*', 'Bills.*', 'Tables.*'],
+            'order' => ['Order.status_order_id asc', 'Order.created desc', 'Order.id desc'],
+            'group' => ['Order.id']
+        ]);
+//        debug($this->getDataSource()->getLog(false, false));
+
+        return $arrResult;
+    }
+
     /**
      * Validation rules
      *

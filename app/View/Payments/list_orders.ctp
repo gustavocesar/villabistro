@@ -46,9 +46,6 @@ echo $this->Html->script('/checked-list-group/list-group');
             }
 
             foreach ($completedOrders as $order) {
-                
-                //não mostrar os itens já pagos
-                break;
 
                 if ($order['Order']['stage_id'] == 5) {
                     continue;
@@ -58,6 +55,9 @@ echo $this->Html->script('/checked-list-group/list-group');
                 $product = $order['Products']['name'];
 
                 $total += $order['Products']['sell_price'];
+                
+                //totalizar, mas não mostrar os itens já pagos
+                continue;
                 ?>
                 <li class="list-group-item">
                     <s>

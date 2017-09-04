@@ -21,9 +21,9 @@ class Payment extends AppModel {
         parent::beforeSave($options);
 
         if (
-                !isset($this->data[$this->alias]['bill_id']) ||
-                empty($this->data[$this->alias]['bill_id']) ||
-                !$this->data[$this->alias]['bill_id']
+            !isset($this->data[$this->alias]['bill_id']) ||
+            empty($this->data[$this->alias]['bill_id']) ||
+            !$this->data[$this->alias]['bill_id']
         ) {
 
             if (isset($this->data[$this->alias]['table_id'])) {
@@ -54,6 +54,11 @@ class Payment extends AppModel {
         if (isset($this->data[$this->alias]['payback'])) {
             $this->data[$this->alias]['payback'] = str_replace(".", "", $this->data[$this->alias]['payback']);
             $this->data[$this->alias]['payback'] = str_replace(",", ".", $this->data[$this->alias]['payback']);
+
+            if ($this->data[$this->alias]['payback'] < 0) {
+                $this->error = "O valor do troco não pode ser negativo.";
+                return false;
+            }
         }
 
         return true;
