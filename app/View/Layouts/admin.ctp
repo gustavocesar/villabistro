@@ -137,6 +137,12 @@
 
         <div style="display: none; position: absolute; background: rgb(255, 255, 255) none repeat scroll 0% 0%; z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap;" id="flotTip"></div>
     </body>
+    
+    <?php
+    echo $this->element('google-analytics', [], [
+        'cache' => false
+    ]);
+    ?>
 
     <?= $this->element('google-analytics'); ?>
 </html>
