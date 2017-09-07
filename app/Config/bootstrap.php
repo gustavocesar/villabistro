@@ -61,7 +61,7 @@ Configure::write('number_locale', 'pt_BR');
 Configure::write('Language.default', 'pt-br');
 Configure::write('Config.language', 'pt-BR');
 
-Configure::write('google-analytics.tracker-code', 'UA-67514463-2'); // Google Analytics Enabled
+Configure::write('google-analytics.tracker-code', 'UA-67514463-4'); // Google Analytics Enabled
 
 Configure::write('Status.pendent', 1);
 Configure::write('Status.payd', 2);
