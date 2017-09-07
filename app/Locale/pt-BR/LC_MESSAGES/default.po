@@ -149,6 +149,9 @@ msgstr "Pedidos Relacionados"
 msgid  "User Id"
 msgstr "Usuário"
 
+msgid  "user"
+msgstr "Usuário"
+
 msgid  "user_id"
 msgstr "Usuário"
 
