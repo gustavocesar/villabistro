@@ -140,7 +140,7 @@
     
     <?php
     echo $this->element('google-analytics', [], [
-        'cache' => false
+        'cache' => true
     ]);
     ?>
 
