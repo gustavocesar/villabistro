@@ -12,6 +12,7 @@
                 <tr>
                     <th><?php echo __('event date'); ?></th>
                     <th><?php echo __('event'); ?></th>
+                    <th><?php echo __('user'); ?></th>
                     <!--<th><?php //echo __('json_object'); ?></th>-->
                     <th><?php echo __('details'); ?></th>
                 </tr>
@@ -22,6 +23,8 @@
                         <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($audit['Audit']['created']))); ?></td>
 
                         <td><?php echo h(__($audit['Audit']['event'])); ?></td>
+
+                        <td><?php echo h(__($audit['User']['name'])); ?></td>
 
                         <!--
                         <td>

@@ -1,4 +1,5 @@
 <?php
+
 App::uses('AppController', 'Controller');
 
 /**
@@ -11,10 +12,10 @@ class AuditsController extends AppController {
 
     public $components = array('Paginator');
 
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->set('title', __('Audits'));
-	}
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->set('title', __('Audits'));
+    }
 
     public function beforeRender() {
         parent::beforeRender();
@@ -26,7 +27,7 @@ class AuditsController extends AppController {
      *
      * @return void
      */
-	public function index($model=null, $id=null) {
+    public function index($model = null, $id = null) {
         if (!$model || !$id) {
             throw new NotFoundException(__('Invalid record!'));
         }
@@ -36,11 +37,13 @@ class AuditsController extends AppController {
                 "{$this->Audit->alias}.model = " => $model,
                 "{$this->Audit->alias}.entity_id = " => $id
             ],
+            'order' => $this->Audit->alias.".created DESC"
         ];
 
-		$this->Audit->recursive = 1;
-		$this->set('audits', $this->Paginator->paginate());
-	}
+        $this->Audit->recursive = 1;
+        $this->set('audits', $this->Paginator->paginate());
+        $this->render();
+    }
 
     /**
      * view method
@@ -49,11 +52,12 @@ class AuditsController extends AppController {
      * @param string $id
      * @return void
      */
-	public function view($id = null) {
-		if (!$this->Audit->exists($id)) {
-			throw new NotFoundException(__('Invalid audit'));
-		}
-		$options = array('conditions' => array('Audit.' . $this->Audit->primaryKey => $id));
-		$this->set('audit', $this->Audit->find('first', $options));
-	}
+    public function view($id = null) {
+        if (!$this->Audit->exists($id)) {
+            throw new NotFoundException(__('Invalid audit'));
+        }
+        $options = array('conditions' => array('Audit.' . $this->Audit->primaryKey => $id));
+        $this->set('audit', $this->Audit->find('first', $options));
+    }
+
 }
