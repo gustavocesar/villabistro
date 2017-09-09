@@ -100,7 +100,7 @@ class AppController extends Controller {
             $this->request->data[$this->Auth->userModel] = $user;
         }
         
-        $this->set('isProduction', isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'teste.villabistro.net');
+        $this->set('isProduction', isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'villabistro.net');
     }
 
     public function beforeRender() {
