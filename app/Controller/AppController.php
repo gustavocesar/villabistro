@@ -99,9 +99,9 @@ class AppController extends Controller {
             $user['User']['id'] = $this->Auth->user('id');
             $this->request->data[$this->Auth->userModel] = $user;
         }
-
-//        $this->Security->unlockedActions = ['index'];
-//        $this->Auth->allow();
+        
+        pr($_SERVER);
+        $this->set('isProduction', true);
     }
 
     public function beforeRender() {

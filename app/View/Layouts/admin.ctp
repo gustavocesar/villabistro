@@ -13,9 +13,6 @@
         -->
         <?php
         echo $this->Html->meta('icon');
-//        echo $this->Html->meta('favicon.ico', '/favicon2.ico', array(
-//            'type' => 'icon'
-//        ));
 
         echo $this->Html->css('jquery-ui-1.10.4.custom.min');
         echo $this->Html->css('main');
@@ -50,6 +47,16 @@
         ?>
     </head>
     <body class="pace-done">
+        <?php
+        if (isset($isProduction) && $isProduction == true) {
+            ?>
+            <div class="text-center" style="overflow: hidden; top:0;position: fixed; z-index: 999!important; width: 100%;background-color: #666;color: white">
+                { Ambiente de Testes }
+            </div>
+            <br>
+            <?php
+        }
+        ?>
 
         <div class="pace  pace-inactive">
             <div data-progress="99" data-progress-text="100%" style="width: 100%;" class="pace-progress">
@@ -66,6 +73,7 @@
         ]);
         ?>
 
+        
         <div id="wrapper">
 
             <?php
