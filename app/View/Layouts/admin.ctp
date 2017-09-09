@@ -48,7 +48,7 @@
     </head>
     <body class="pace-done">
         <?php
-        if (isset($isProduction) && $isProduction == true) {
+        if (isset($isProduction) && $isProduction == false) {
             ?>
             <div class="text-center" style="overflow: hidden; top:0;position: fixed; z-index: 999!important; width: 100%;background-color: #666;color: white">
                 { Ambiente de Testes }
