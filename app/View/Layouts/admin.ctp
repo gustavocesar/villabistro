@@ -3,6 +3,7 @@
     <head>
         <?php echo $this->Html->charset(); ?>
         <title>
+            <?php echo (isset($isProduction) && $isProduction == false) ? "[Testes]&nbsp;-&nbsp;" : "" ?>
             Villa Bistrô: <?php echo __($this->fetch('title')); ?>
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
