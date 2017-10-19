@@ -21,23 +21,23 @@ class ReportsController extends AppController {
      */
     public function received_payments() {
         
-        $this->set('title', __('Sales by Period'));
+        $this->set('title', __('Received Payments'));
 
         if ($this->request->is('post')) {
             $this->layout = 'pdf';
             
             if (
-                isset($this->request->data['SalesPeriod']) &&
-                isset($this->request->data['SalesPeriod']['start_date']) &&
-                isset($this->request->data['SalesPeriod']['start_hour']) &&
-                isset($this->request->data['SalesPeriod']['finish_date']) &&
-                isset($this->request->data['SalesPeriod']['finish_hour'])
+                isset($this->request->data['ReceivedPayments']) &&
+                isset($this->request->data['ReceivedPayments']['start_date']) &&
+                isset($this->request->data['ReceivedPayments']['start_hour']) &&
+                isset($this->request->data['ReceivedPayments']['finish_date']) &&
+                isset($this->request->data['ReceivedPayments']['finish_hour'])
             ) {
-                $startHour  = $this->request->data['SalesPeriod']['start_hour'];
-                $finishHour = $this->request->data['SalesPeriod']['finish_hour'];
+                $startHour  = $this->request->data['ReceivedPayments']['start_hour'];
+                $finishHour = $this->request->data['ReceivedPayments']['finish_hour'];
                 
-                $startDate  = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['SalesPeriod']['start_date'] . " {$startHour}:00");
-                $finishDate = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['SalesPeriod']['finish_date'] . " {$finishHour}:59");
+                $startDate  = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['ReceivedPayments']['start_date'] . " {$startHour}:00");
+                $finishDate = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['ReceivedPayments']['finish_date'] . " {$finishHour}:59");
                 
                 $this->loadModel('Payment');
                 $this->Payment->recursive = 0;
@@ -82,7 +82,7 @@ class ReportsController extends AppController {
                     ]
                 ],
                 1 => [
-                    'label' => __('Sales by Period'),
+                    'label' => __('Received Payments'),
                     'link' => [
                         'controller' => $this->params['controller'],
                         'action' => $this->params['action'],
@@ -93,26 +93,26 @@ class ReportsController extends AppController {
         }
     }
 
-    public function stock_position() {
+    public function quantity_sold() {
 
-        $this->set('title', __('Sales by Period'));
+        $this->set('title', __('Quantity Sold'));
 
         if ($this->request->is('post')) {
             $this->layout = 'pdf';
-
+            
             if (
-                isset($this->request->data['SalesPeriod']) &&
-                isset($this->request->data['SalesPeriod']['start_date']) &&
-                isset($this->request->data['SalesPeriod']['start_hour']) &&
-                isset($this->request->data['SalesPeriod']['finish_date']) &&
-                isset($this->request->data['SalesPeriod']['finish_hour'])
+                isset($this->request->data['QuantitySold']) &&
+                isset($this->request->data['QuantitySold']['start_date']) &&
+                isset($this->request->data['QuantitySold']['start_hour']) &&
+                isset($this->request->data['QuantitySold']['finish_date']) &&
+                isset($this->request->data['QuantitySold']['finish_hour'])
             ) {
-                $startHour  = $this->request->data['SalesPeriod']['start_hour'];
-                $finishHour = $this->request->data['SalesPeriod']['finish_hour'];
-
-                $startDate  = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['SalesPeriod']['start_date'] . " {$startHour}:00");
-                $finishDate = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['SalesPeriod']['finish_date'] . " {$finishHour}:59");
-
+                $startHour  = $this->request->data['QuantitySold']['start_hour'];
+                $finishHour = $this->request->data['QuantitySold']['finish_hour'];
+                
+                $startDate  = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['QuantitySold']['start_date'] . " {$startHour}:00");
+                $finishDate = DateTime::createFromFormat('d/m/Y H:i:s', $this->request->data['QuantitySold']['finish_date'] . " {$finishHour}:59");
+                
                 $this->loadModel('Payment');
                 $this->Payment->recursive = 0;
                 $options = [
@@ -136,13 +136,13 @@ class ReportsController extends AppController {
                     'order' => ['PaymentMethods.sequence' => 'ASC'],
                     'group' => ['PaymentMethod.name']
                 ];
-
+                        
                 $this->set('payments', $this->Payment->find('all', $options));
-
+                
                 $this->set('startDate', $startDate->format('d/m/Y - H:i'));
                 $this->set('finishDate', $finishDate->format('d/m/Y - H:i'));
-
-                $this->render('/Reports/print/sales_period');
+                
+                $this->render('/Reports/print/quantity_sold');
             }
         } else {
 
@@ -156,7 +156,7 @@ class ReportsController extends AppController {
                     ]
                 ],
                 1 => [
-                    'label' => __('Sales by Period'),
+                    'label' => __('Quantity Sold'),
                     'link' => [
                         'controller' => $this->params['controller'],
                         'action' => $this->params['action'],

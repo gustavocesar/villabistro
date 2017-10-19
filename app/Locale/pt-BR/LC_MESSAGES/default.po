@@ -1487,3 +1487,9 @@ msgstr "Ordem na Cozinha"
 
 msgid  "payment_id"
 msgstr "Pagamento"
+
+msgid  "Received Payments"
+msgstr "Pagamentos Recebidos"
+
+msgid  "Quantity Sold"
+msgstr "Quantidade Vendida"

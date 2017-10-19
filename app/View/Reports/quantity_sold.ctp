@@ -1,7 +1,7 @@
 <?= $this->Html->script('/jquery-timepicker/jquery.timepicker'); ?>
 <?= $this->Html->css('/jquery-timepicker/jquery.timepicker'); ?>
 
-<?php echo $this->Form->create('ReceivedPayments', ['target' => '_blank', 'inputDefaults' => ['error' => ['attributes' => ['class' => 'alert alert-danger custom-required']]]]); ?>
+<?php echo $this->Form->create('QuantitySold', ['target' => '_blank', 'inputDefaults' => ['error' => ['attributes' => ['class' => 'alert alert-danger custom-required']]]]); ?>
 
 <div class="row">
     <div class="col-sm-6">
