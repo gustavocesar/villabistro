@@ -3,7 +3,7 @@
         <a href="#" class="btn" onclick="javascript:window.top.close();" title="Fechar Esta Aba">
             <span class="fa fa-times"></span>
         </a>
-        <?php echo __("Sales by Period Report"); ?>
+        <?php echo __("Received Payments"); ?>
         <a href="#" class="btn" onclick="javascript:printPage();" title="Imprimir">
             <span class="fa fa-print"></span>
         </a>

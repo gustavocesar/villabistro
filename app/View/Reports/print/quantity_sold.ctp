@@ -3,7 +3,7 @@
         <a href="#" class="btn" onclick="javascript:window.top.close();" title="Fechar Esta Aba">
             <span class="fa fa-times"></span>
         </a>
-        <?php echo __("Sales by Period Report"); ?>
+        <?php echo __("Quantity Sold"); ?>
         <a href="#" class="btn" onclick="javascript:printPage();" title="Imprimir">
             <span class="fa fa-print"></span>
         </a>
@@ -29,30 +29,31 @@
 <table class="table">
     <thead>
         <tr>
-            <th><?php echo __("Payment Method");?></th>
-            <th class="text-right"><?php echo __("Total");?></th>
+            <th><?php echo __("Product");?></th>
+            <th class="text-right"><?php echo __("Quantity");?></th>
         </tr>
     </thead>
     <tbody>
         <?php
         $total = 0;
+        
 
-        foreach ($payments as $payment) {
-            $paymentMethod = $payment['PaymentMethod']['name'];
-            $sum = $payment[0];
+        foreach ($orders as $order) {
+            $product = $order['Product']['name'];
+            $sum = $order[0];
             
             $total += $sum['Total'];
             ?>
             <tr>
-                <td><?php echo h($paymentMethod);?></td>
-                <td class="text-right"><?php echo h($this->MyFormat->format_show($sum['Total'], 2));?></td>
+                <td><?php echo h($product);?></td>
+                <td class="text-right"><?php echo h($this->MyFormat->format_show($sum['Total'], 0));?></td>
             </tr>
             <?php
         }
         ?>
         <tr>
             <td class="text-center"><strong><?php echo h("Total Geral");?></strong></td>
-            <td class="text-right"><?php echo h($this->MyFormat->format_show($total, 2));?></td>
+            <td class="text-right"><?php echo h($this->MyFormat->format_show($total, 0));?></td>
         </tr>
     </tbody>
 </table>
