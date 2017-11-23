@@ -1493,3 +1493,12 @@ msgstr "Pagamentos Recebidos"
 
 msgid  "Quantity Sold"
 msgstr "Quantidade Vendida"
+
+msgid  "Delete All Products"
+msgstr "Excluir Todos Os Produtos"
+
+msgid  "Routines"
+msgstr "Rotinas"
+
+msgid  "Proceed"
+msgstr "Continuar"
