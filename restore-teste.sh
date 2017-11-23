@@ -21,3 +21,7 @@ echo "Restoring Data..."
 mysql --host=localhost --user=villabistro teste < $OUTPUT
 
 echo "Done!"
+
+echo "Updating Acl Objects..."
+/home/gustavocesar147/www/teste/app/Console/cake AclExtras.AclExtras aco_sync
+echo "Done!"

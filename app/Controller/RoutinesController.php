@@ -7,7 +7,7 @@ class RoutinesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Routines'));
-//        $this->set('activeRoutines', 'active');
+        $this->set('activeConfigurations', 'active');
     }
 
     public function index() {

@@ -76,7 +76,6 @@ class AppController extends Controller {
         $this->set('activeConfigurations', '');
         $this->set('activeCharts', '');
         $this->set('activeReports', '');
-        $this->set('activeRoutines', '');
 
         //Configure AuthComponent
         $this->Auth->loginAction = [
