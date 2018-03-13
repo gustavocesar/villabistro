@@ -1,7 +1,7 @@
 <?php
-echo $this->Form->create('ReceivedPayments',[
+echo $this->Form->create('InactivateProducts',[
     'inputDefaults' => ['error' => ['attributes' => ['class' => 'alert alert-danger custom-required']]],
-    'onsubmit' => "return confirm(\"Confirma a exclusão de todos os produtos?\");"
+    'onsubmit' => "return confirm(\"Confirma a inativação de todos os produtos?\");"
 ]);
 ?>
 
@@ -9,8 +9,9 @@ echo $this->Form->create('ReceivedPayments',[
     <div class="col-sm-12">
         <div class="alert alert-info">
             <i class="fa fa-exclamation-triangle"></i>&nbsp;<strong>Importante</strong>
-            <p>Essa ação irá excluir todos os produtos cadastrados.</p>
-            <p>Os registros vinculados aos produtos (como Pedidos e Estoque) serão mantidos, mas todos os locais que listam produtos (como Impressão de Conta e Relatórios) só vão exibir informações dos novos produtos cadastrados após a execução dessa operação.</p>
+            <p>Essa ação irá inativar todos os produtos cadastrados.</p>
+            <p>Os registros vinculados aos produtos (como Pedidos e Estoque) serão mantidos como histórico.</p>
+            <p>Além disso, os produtos podem ser Ativados novamente a qualquer momento, através do menu Configurações -> Produtos.</p>
         </div>
     </div>
 </div>

@@ -13,14 +13,13 @@ class RoutinesController extends AppController {
     public function index() {
     }
 
-    public function delete_all_products() {
+    public function inactivate_all_products() {
 
-        $this->set('title', __('Delete All Products'));
+        $this->set('title', __('Inactivate All Products'));
 
         if ($this->request->is('post')) {
             $this->loadModel('Products');
-            $this->Products->query('delete from product_items');
-            $this->Products->query('delete from products');
+            $this->Products->query('update products set status="Inativo" where status="Ativo"');
 
             return $this->redirect(array('controller' => 'products', 'action' => 'index'));
         } else {
@@ -35,7 +34,7 @@ class RoutinesController extends AppController {
                     ]
                 ],
                 1 => [
-                    'label' => __('Delete All Products'),
+                    'label' => __('Inactivate All Products'),
                     'link' => [
                         'controller' => $this->params['controller'],
                         'action' => $this->params['action'],
