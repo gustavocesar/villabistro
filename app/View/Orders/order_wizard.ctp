@@ -74,6 +74,7 @@ echo $this->Form->create(
                             <table class="order-datatable table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>&nbsp;</th>
                                         <th>Produto</th>
                                         <th>Subcategoria</th>
                                         <th class="text-right">Valor Unitário (R$)</th>
@@ -89,6 +90,7 @@ echo $this->Form->create(
                                             foreach ($arrSubcategory['products'] as $key => $product) {
 
                                                 $inputId = "input_" . $subcategoryId . "_" . $product['Product']['id'];
+                                                $obsId = "textarea_" . intval($product['Product']['id']);
 
                                                 $sellPrice = 0;
                                                 if (isset($product['Product']['sell_price'])) {
@@ -96,7 +98,18 @@ echo $this->Form->create(
                                                 }
                                                 ?>
                                                 <tr>
-                                                    <th scope="row"><?php echo str_pad($product['Product']['id'], 3, '0', STR_PAD_LEFT) .' - '. $product['Product']['name']; ?></th>
+                                                    <td scope="row" class="text-center dt-body-nowrap cursor-pointer tdSetObservation" value="<?=$product['Product']['id']?>">
+                                                        <span class="fa fa-ellipsis-h">&nbsp;</span>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <span class="spnProductName">
+                                                            <?php echo str_pad($product['Product']['id'], 3, '0', STR_PAD_LEFT) .' - '. $product['Product']['name']; ?>
+                                                        </span>
+                                                        <br />
+                                                        <textarea style="display: none;" id="<?= $obsId ?>" name="observations[<?= $subcategoryId ?>][<?= $product['Product']['id'] ?>]" rows="1" class="text-area-observation" onkeyup="textAreaAdjust(this)"></textarea>
+                                                    </td>
+                                                    
                                                     <td>
                                                         <?php echo $arrSubcategory['name']; ?>
                                                     </td>

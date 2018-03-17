@@ -82,6 +82,8 @@ $(document).ready(function () {
     if (orderDataTable) {
         orderDataTable.destroy();
     }
+    
+    var titleColumn = 2;
 
     var orderDataTable = $('.order-datatable').DataTable({
         retrieve: true,
@@ -94,9 +96,10 @@ $(document).ready(function () {
             $(".dataTables_filter input").addClass("form-control");
         },
         "columnDefs": [
-            { "visible": false, "targets": [1] }
+            { "visible": false, "targets": [titleColumn] }
         ],
         "columns": [
+            {"orderable": false},
             {"orderable": false},
             {"orderable": false},
             {"orderable": false},
@@ -108,10 +111,10 @@ $(document).ready(function () {
             var rows = api.rows( {page:'current'} ).nodes();
             var last=null;
 
-            api.column(1, {page:'current'} ).data().each( function ( group, i ) {
+            api.column(titleColumn, {page:'current'} ).data().each( function ( group, i ) {
                 if ( last !== group ) {
                     $(rows).eq( i ).before(
-                        '<tr class="group text-center"><td colspan="4"><strong>'+group+'</strong></td></tr>'
+                        '<tr class="group text-center"><td colspan="5"><strong>'+group+'</strong></td></tr>'
                     );
 
                     last = group;
@@ -143,7 +146,31 @@ $(document).ready(function () {
             }
         }
     });
+    
+    $(".tdSetObservation").click(function () {
+        var productId = $(this).attr('value');
+        
+        // Set the options for the effect type chosen
+        var options = { direction: 'up' };
+
+        // Set the duration (default: 400 milliseconds)
+        var duration = 500;
+
+        $('#textarea_'+productId).toggle('slide', options, duration, function(){
+            $(this).val('');
+        });
+    });
+    
+    $("textarea").each(function () {
+        $(this).val('');
+    });
+    
 });
+
+function textAreaAdjust(o) {
+  o.style.height = "1px";
+  o.style.height = (25+o.scrollHeight)+"px";
+}
 
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -260,7 +287,17 @@ function updateFinishStep() {
 
             var $tableRow = $(this).parent().parent().html();
 
-            var productName = $($tableRow).first('th').html();
+            var arrProduct = $($tableRow).find('.spnProductName').html().split('-');
+            
+            var productId = parseInt(arrProduct[0].trim());
+            var productName = arrProduct[1].trim();
+            
+            var observation = '';
+            
+            var textArea = $('#tab2').find('#textarea_'+productId);
+            if (textArea) {
+                observation = '<br />'+textArea.val().replace(/\n/g,"<br>");
+            }
 
             var sellPrice = $($tableRow).find("input[id*='hiddenSellPrice_']").val();
 
@@ -273,7 +310,7 @@ function updateFinishStep() {
 
             html += '<tr>';
             html += '<td class="text-right">' + quantity.toFixed(2) + '</td>';
-            html += '<td class="text-left">' + productName + '</td>';
+            html += '<td class="text-left">' + productName + observation + '</td>';
             html += '<td class="text-right">' + subtotalFormatted + '</td>';
             html += '</tr>';
         }

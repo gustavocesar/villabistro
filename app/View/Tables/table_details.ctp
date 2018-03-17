@@ -165,7 +165,18 @@
 
                                     <td class="text-right"><?php echo h($order['id']); ?></td>
 
-                                    <td><?php echo h($product['name']); ?></td>
+                                    <td>
+                                        <?php
+                                        echo h($product['name']);
+                                        
+                                        if (isset($order['observation'])) {
+                                            foreach (explode("\n", $order['observation']) as $obs) {
+                                                echo "<br />&nbsp;&nbsp;".$obs;
+                                            }
+                                            //echo "<br />&nbsp;&nbsp;".nl2br($order['observation']);
+                                        }
+                                        ?>
+                                    </td>
 
                                     <td class="text-right"><?php echo h($this->MyFormat->format_show($order['quantity'])); ?></td>
 

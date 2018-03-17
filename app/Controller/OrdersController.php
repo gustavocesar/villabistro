@@ -383,6 +383,11 @@ class OrdersController extends AppController {
                     if ($quantity <= 0) {
                         continue;
                     }
+                    
+                    $observation = "";
+                    if (isset($this->request['data']['observations'][$subcategoryId][$productId])) {
+                        $observation = trim($this->request['data']['observations'][$subcategoryId][$productId]);
+                    }
 
                     for ($i = 1; $i <= $quantity; $i++) {
 
@@ -409,7 +414,7 @@ class OrdersController extends AppController {
                                 'stage_id' => '4',
                                 'stage_id' => $stage['Stage']['id'],
                                 'status_order_id' => '1',
-                                'observation' => ''
+                                'observation' => $observation
                         ]];
 
                         $this->Order->create();

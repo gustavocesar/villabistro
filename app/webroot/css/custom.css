@@ -31,3 +31,12 @@
 .print-bill-table tr td {
     padding: 2px !important;
 }
+
+.text-area-observation {
+    border-radius: 3px;
+    border-color: #999;
+    border-style: groove;
+    box-shadow: 1px 1px 1px 1px #666;
+    padding: 6px;
+    resize: none;
+}
