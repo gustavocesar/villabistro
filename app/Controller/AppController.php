@@ -8,7 +8,6 @@ class AppController extends Controller {
         'Html', 'Form', 'Session', 'Flash', 'MyFormat', 'Cache',
         'Js' => ['Jquery']
     ];
-    
     public $components = [
 //        'DebugKit.Toolbar',
         'Flash',
@@ -35,17 +34,6 @@ class AppController extends Controller {
         'Security' => [
             'csrfExpires' => '+1 hour',
             'csrfUseOnce' => false,
-            'unlockedActions' => [
-                'index',
-                'delete',
-                'update_sequence',
-                'add_order',
-                'order_wizard',
-                'list_orders',
-                'add',
-                'change_table',
-                'location_by_zip_code'
-            ]
         ],
     ];
 
@@ -68,7 +56,7 @@ class AppController extends Controller {
         $this->set('title', __('Home'));
         $this->set('controller', $this->request->params['controller']);
         $this->set('action', $this->request->params['action']);
-        
+
         $this->set('activeHome', '');
         $this->set('activeOrdersBoard', '');
         $this->set('activeTables', '');
@@ -77,6 +65,10 @@ class AppController extends Controller {
         $this->set('activeCharts', '');
         $this->set('activeReports', '');
 
+        $this->Auth->allow('initDB');
+        $this->Auth->allow('modal');
+        $this->Auth->allow('documentation');
+        
         //Configure AuthComponent
         $this->Auth->loginAction = [
             'controller' => 'users',
@@ -90,21 +82,19 @@ class AppController extends Controller {
             'controller' => 'pages',
             'action' => 'home'
         ];
-
-        $this->Auth->allow('initDB');
-
-        $this->Auth->allow('modal');
-
+        
+        $this->Auth->unauthorizedRedirect = $this->referer();
+        
         if (!empty($this->request->data) && empty($this->request->data[$this->Auth->userModel])) {
             $user['User']['id'] = $this->Auth->user('id');
             $this->request->data[$this->Auth->userModel] = $user;
         }
-        
+
         $this->set('isProduction', isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'villabistro.net');
     }
 
     public function beforeRender() {
         parent::beforeRender();
     }
-    
+
 }

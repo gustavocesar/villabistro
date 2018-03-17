@@ -3,7 +3,7 @@
     <head>
         <?php echo $this->Html->charset(); ?>
         <title>
-            <?php echo (isset($isProduction) && $isProduction == false) ? "[Testes]&nbsp;-&nbsp;" : "" ?>
+            <?php echo (isset($isProduction) && $isProduction == false) ? "[TESTES]&nbsp;-&nbsp;" : "" ?>
             Villa Bistrô: <?php echo __($this->fetch('title')); ?>
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,8 +51,8 @@
         <?php
         if (isset($isProduction) && $isProduction == false) {
             ?>
-            <div class="text-center" style="overflow: hidden; top:0;position: fixed; z-index: 999!important; width: 100%;background-color: #666;color: white">
-                { Ambiente de Testes }
+            <div class="text-center" style="overflow: hidden; top:0;position: fixed; width: 100%;background-color: red;color: black;font-weight: bold;z-index: 1002;border-bottom:1px solid black">
+                <i class="fa fa-user-secret"></i> &nbsp;&nbsp; Ambiente de Testes &nbsp;&nbsp;<i class="fa fa-user-secret"></i>
             </div>
             <br>
             <?php

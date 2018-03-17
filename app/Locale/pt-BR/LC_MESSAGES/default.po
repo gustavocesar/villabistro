@@ -263,6 +263,9 @@ msgstr "Label Class (deixe em branco)"
 msgid  "Entry Note Item"
 msgstr "Item"
 
+msgid  "Entry Note Item Id"
+msgstr "Item"
+
 msgid  "Entry Note Items"
 msgstr "Itens da Nota de Entrada"
 
@@ -473,6 +476,9 @@ msgstr "Situação"
 
 
 msgid  "Order"
+msgstr "Pedido"
+
+msgid  "Order Id"
 msgstr "Pedido"
 
 msgid  "Orders"
@@ -1121,6 +1127,9 @@ msgid  "The internal transfer item could not be deleted. Please, try again."
 msgstr "O Item da Transferência não pôde ser excluído. Por favor, tente novamente"
 
 msgid  "Internal Transfer Item"
+msgstr "Item da Transferência Interna"
+
+msgid  "Internal Transfer Item Id"
 msgstr "Item da Transferência Interna"
 
 msgid  "internal_transfer_item"

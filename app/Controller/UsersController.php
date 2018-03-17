@@ -78,7 +78,7 @@ class UsersController extends AppController {
         $this->Acl->deny($group, 'controllers');
         $this->Acl->allow($group, 'controllers');
 
-        $this->Acl->deny($group, 'controllers/orders/cancel');
+        $this->Acl->deny($group, 'controllers/Orders/cancel');
         
 
         /**
@@ -86,20 +86,27 @@ class UsersController extends AppController {
          */
         $group->id = 3;
         $this->Acl->deny($group, 'controllers');
-        $this->Acl->allow($group, 'controllers');
-        
-        $this->Acl->deny($group, 'controllers/orders/cancel');
+        $this->Acl->allow($group, 'controllers/Pages/home');
 
-//        $this->Acl->allow($group, 'controllers/bills');
-//        $this->Acl->allow($group, 'controllers/pages/home');
-//        $this->Acl->allow($group, 'controllers/configurations/index');
-//
-//        $this->Acl->allow($group, 'controllers/users/index');
-//        $this->Acl->allow($group, 'controllers/users/view');
-//        $this->Acl->allow($group, 'controllers/users/login');
-//        $this->Acl->allow($group, 'controllers/users/logout');
-//
-//        $this->Acl->allow($group, 'controllers/orders/add_order');
+        $this->Acl->allow($group, 'controllers/Configurations/index');
+        $this->Acl->allow($group, 'controllers/Users/index');
+        $this->Acl->allow($group, 'controllers/Users/view');
+        $this->Acl->allow($group, 'controllers/Users/edit');
+        $this->Acl->allow($group, 'controllers/Users/login');
+        $this->Acl->allow($group, 'controllers/Users/logout');
+        
+        $this->Acl->allow($group, 'controllers/Bills');
+        $this->Acl->allow($group, 'controllers/Addresses');
+        $this->Acl->allow($group, 'controllers/Tables/tables_board');
+        $this->Acl->allow($group, 'controllers/Tables/table_details');
+        $this->Acl->allow($group, 'controllers/Tables/close_table');
+        $this->Acl->deny($group, 'controllers/Tables/change_table');
+        
+        $this->Acl->allow($group, 'controllers/Payments/add');
+        $this->Acl->allow($group, 'controllers/Payments/list_orders');
+
+        $this->Acl->allow($group, 'controllers/Orders/add_order');
+        $this->Acl->allow($group, 'controllers/Orders/order_wizard');
 
         echo "all done";
         exit;

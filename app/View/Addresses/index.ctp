@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th><?php echo __('status'); ?></th>
+                        <th class="text-center"><?php echo __('status'); ?></th>
                         <th><?php echo __('name'); ?></th>
                         <th><?php echo __('zip_code'); ?></th>
                         <th><?php echo __('state_id'); ?></th>
@@ -69,7 +69,19 @@
                                 }
                                 ?>
                             </td>
-                            <td><?php echo h($address['StatusAddress']['name']); ?></td>
+                            
+                            <td class="text-center">
+                                <?php
+                                if ($address['StatusAddress']['name'] == 'Ativo') {
+                                    $label = 'label-success';
+                                } else {
+                                    $label = 'label-danger';
+                                }
+                                ?>
+                                <span class="label <?=$label?>">
+                                    <?php echo h($address['StatusAddress']['name']); ?>
+                                </span>
+                            </td>
                             <td><?php echo h($address['Address']['name']); ?></td>
                             <td><?php echo h($address['Address']['zip_code']); ?></td>
                             <td><?php echo h($address['State']['name']); ?></td>

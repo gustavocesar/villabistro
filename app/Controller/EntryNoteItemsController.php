@@ -20,6 +20,13 @@ class EntryNoteItemsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('EntryNoteItems'));
+        
+        $this->Security->unlockedActions = [
+            'index',
+            'add',
+            'edit',
+            'delete'
+        ];
     }
 
     public function beforeRender() {

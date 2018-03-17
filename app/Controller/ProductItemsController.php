@@ -20,6 +20,11 @@ class ProductItemsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('ProductItems'));
+        
+        $this->Security->unlockedActions = [
+            'index',
+            'delete'
+        ];
     }
 
     public function beforeRender() {
@@ -40,7 +45,7 @@ class ProductItemsController extends AppController {
         }
 
         $this->Paginator->settings = [
-            'fields' => ['DISTINCT ProductItem.*'],
+//            'fields' => ['DISTINCT ProductItem.*'],
             'conditions' => ['ProductItem.product_id = ' => $productId],
             'order' => 'ProductItem.id desc',
             'limit' => 999999999

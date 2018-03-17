@@ -20,6 +20,13 @@ class PaymentsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Payments'));
+        
+        $this->Security->unlockedActions = [
+            'add',
+            'edit',
+            'delete',
+            'list_orders'
+        ];
     }
 
     public function beforeRender() {

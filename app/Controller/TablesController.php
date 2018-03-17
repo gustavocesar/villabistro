@@ -20,6 +20,10 @@ class TablesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Tables'));
+        
+        $this->Security->unlockedActions = [
+            'change_table'
+        ];
     }
 
     /**

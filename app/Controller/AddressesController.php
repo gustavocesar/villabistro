@@ -24,6 +24,12 @@ class AddressesController extends AppController {
         parent::beforeFilter();
         $this->layout = 'modal';
         $this->set('title', __('Addresses'));
+        
+        $this->Security->unlockedActions = [
+            'index',
+            'delete',
+            'location_by_zip_code'
+        ];
     }
 
     /**

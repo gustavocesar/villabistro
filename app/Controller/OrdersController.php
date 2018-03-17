@@ -20,6 +20,11 @@ class OrdersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('Orders'));
+        
+        $this->Security->unlockedActions = [
+            'order_wizard',
+            'update_sequence'
+        ];
     }
 
     /**

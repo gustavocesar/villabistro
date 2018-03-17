@@ -4,7 +4,7 @@ clear;
 
 if [ -z $MYSQL_PWD  ]; then
   echo " >> Enviroment variable MYSQL_PWD not defined."
-  echo " >> To create it: export MYSQL_PWD=mysql_password"
+  echo " >> To create it: export MYSQL_PWD=1qBKHs2z8PRfGiRw"
   exit 1
 fi
 

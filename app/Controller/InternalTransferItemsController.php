@@ -20,6 +20,13 @@ class InternalTransferItemsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->set('title', __('InternalTransferItems'));
+        
+        $this->Security->unlockedActions = [
+            'index',
+            'add',
+            'edit',
+            'delete'
+        ];
     }
 
     public function beforeRender() {
