@@ -49,7 +49,7 @@ class Table extends AppModel {
             'table_id' => $this->id
         ];
 
-        if (count($statusBillId) > 0) {
+        if ($statusBillId) {
             $conditions = array_merge($conditions, [
                 "{$this->Bill->alias}.status_bill_id" => $statusBillId
             ]);

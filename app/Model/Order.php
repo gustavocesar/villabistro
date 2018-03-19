@@ -201,7 +201,7 @@ class Order extends AppModel {
             ]);
         }
 
-        if (count($arrPaymentStatus) > 0) {
+        if ($arrPaymentStatus && count($arrPaymentStatus) > 0) {
             $conditions = array_merge($conditions, [
                 "StatusOrders.id" => implode(",", $arrPaymentStatus)
             ]);
