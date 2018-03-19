@@ -68,6 +68,7 @@ class AppController extends Controller {
         $this->Auth->allow('initDB');
         $this->Auth->allow('modal');
         $this->Auth->allow('documentation');
+        $this->Auth->allow('getBills');
         
         //Configure AuthComponent
         $this->Auth->loginAction = [
