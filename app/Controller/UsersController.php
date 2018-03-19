@@ -100,7 +100,6 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Tables/tables_board');
         $this->Acl->allow($group, 'controllers/Tables/table_details');
         $this->Acl->allow($group, 'controllers/Tables/close_table');
-        $this->Acl->deny($group, 'controllers/Tables/change_table');
         
         $this->Acl->allow($group, 'controllers/Payments/add');
         $this->Acl->allow($group, 'controllers/Payments/list_orders');

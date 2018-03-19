@@ -70,7 +70,7 @@
 
         <?php
         echo $this->element('topbar', [], [
-            'cache' => true
+            'cache' => false
         ]);
         ?>
 

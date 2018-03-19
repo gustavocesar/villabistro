@@ -96,7 +96,6 @@
                         ]
                 );
                 ?>
-                <link href="../../../../../../Users/gusta_000.SENACDN513/AppData/Local/Temp/font-awesome.min.css" rel="stylesheet" type="text/css"/>
             </li>
 
             <li class="<?=$activeConfigurations?>">
