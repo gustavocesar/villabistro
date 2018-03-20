@@ -171,9 +171,10 @@
                                         
                                         if (isset($order['observation'])) {
                                             foreach (explode("\n", $order['observation']) as $obs) {
-                                                echo "<br />&nbsp;&nbsp;".$obs;
+                                                if ($obs) {
+                                                    echo "<br />&nbsp;&nbsp;".$obs;
+                                                }
                                             }
-                                            //echo "<br />&nbsp;&nbsp;".nl2br($order['observation']);
                                         }
                                         ?>
                                     </td>
