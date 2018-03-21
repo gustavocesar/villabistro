@@ -114,11 +114,7 @@
                                     <th><?php echo __('Product Id'); ?></th>
                                     <th><?php echo __('Order Id'); ?></th>
                                     <th><?php echo __('Quantity'); ?></th>
-                                    <th><?php echo __('Value'); ?></th>
-                                    <th><?php echo __('Entry Note Item Id'); ?></th>
-                                    <th><?php echo __('Internal Transfer Item Id'); ?></th>
                                     <th><?php echo __('Created'); ?></th>
-                                    <th><?php echo __('Modified'); ?></th>
                                 </tr>
                             </thead>
                             <?php foreach ($order['Stock'] as $stock): ?>
@@ -128,11 +124,7 @@
                                     <td><?php echo $stock['Product']['name']; ?></td>
                                     <td><?php echo $stock['order_id']; ?></td>
                                     <td><?php echo $stock['quantity']; ?></td>
-                                    <td><?php echo $stock['value']; ?></td>
-                                    <td><?php echo $stock['entry_note_item_id']; ?></td>
-                                    <td><?php echo $stock['internal_transfer_item_id']; ?></td>
                                     <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($stock['created']))); ?></td>
-                                    <td><?php echo h(date(Configure::read('ShowDateTimeFormat'), strtotime($stock['modified']))); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </table>

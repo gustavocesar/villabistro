@@ -93,24 +93,28 @@ echo $this->Html->script('/checked-list-group/list-group');
             }
             ?>
 
-            <div class="col-xs-12 text-right">
-                <strong>
-                    TOTAL: <?php echo $this->MyFormat->format_show($total, 2); ?>
-                </strong>
-            </div>
+            <?php
+            if ($total > 0) {
+                ?>
+                <div class="col-xs-12 text-right">
+                    <strong>
+                        TOTAL: <?php echo $this->MyFormat->format_show($total, 2); ?>
+                    </strong>
+                </div>
+                <?php
+            }
+            ?>
         </ul>
         <div class="clearfix"></div>
         <br />
         <?php
-        echo $this->Html->link(
-                '<span class="fa fa-usd"></span>&nbsp' . __('Pay'), '', [
+        echo $this->Html->link('<span class="fa fa-usd"></span>&nbsp' . __('Pay'), '', [
             'id' => 'btnPay',
             'data-toggle' => 'modal',
             'data-target' => '#modal',
             'class' => 'btn btn-success btn-lg btn-block',
             'escape' => false
-                ]
-        );
+        ]);
         ?>
     </div>
 </div>

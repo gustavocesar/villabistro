@@ -1353,6 +1353,9 @@ msgstr "Data Inicial"
 msgid  "Finish Date"
 msgstr "Data Final"
 
+msgid  "Finish"
+msgstr "Finalizado"
+
 msgid  "Start Hour"
 msgstr "Hora Inicial"
 

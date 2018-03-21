@@ -63,7 +63,12 @@ class EntryNoteItem extends AppModel {
     public function afterSave($created, $options = array()) {
         parent::afterSave($created, $options);
         
-        $this->moveStock(end($this->data), 1);
+        if (isset($this->data['EntryNoteItem'])) {
+            $this->moveStock($this->data['EntryNoteItem'], 1);
+        } else {
+            throw new Exception("Ocorreu um erro ao movimentar o Estoque!");
+        }
+        
     }
 
     /**
