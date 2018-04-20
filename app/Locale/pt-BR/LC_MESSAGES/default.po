@@ -212,6 +212,36 @@ msgstr "Última Atualização"
 
 
 
+msgid  "Nature"
+msgstr "Natureza"
+
+msgid  "nature"
+msgstr "Natureza"
+
+msgid  "AccountingAccounts"
+msgstr "Contas"
+
+msgid  "Accounting Accounts"
+msgstr "Contas"
+
+msgid  "Invalid accounts"
+msgstr "Conta não encontrada"
+
+msgid  "The accounting account has been saved."
+msgstr "Conta gravada com sucesso"
+
+msgid  "The accounting account could not be saved. Please, try again."
+msgstr "A Conta não pôde ser gravada. Por favor, tente novamente"
+
+msgid  "The accounting account has been deleted."
+msgstr "Conta excluída com sucesso"
+
+msgid  "The accounting account could not be deleted. Please, try again."
+msgstr "A Conta não pôde ser excluída. Por favor, tente novamente"
+
+
+
+
 msgid  "Category"
 msgstr "Categoria"
 
